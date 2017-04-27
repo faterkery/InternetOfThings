@@ -1,0 +1,79 @@
+ <div id="service" class="mrg_t15 fl">
+    <div class="layout">
+      <div class="service-box">
+		<ul>
+          <li>
+            <span class="icon1"></span>
+            <div class="li-ct fl">
+              <h6>线上采购</h6>
+              <p>首创的线上打包式采购</p>
+            </div>
+          </li>
+          <li>
+            <span class="icon2"></span>
+            <div class="li-ct">
+              <h6>买卖无忧</h6>
+              <p>会员认证，网加平台保障</p>
+            </div>
+          </li>
+          <li>
+            <span class="icon3"></span>
+            <div class="li-ct">
+              <h6>送货上门</h6>
+              <p>确保准时送货到厂</p>
+            </div>
+          </li>
+          <li>
+            <span class="icon4"></span>
+            <div class="li-ct">
+              <h6>行情现货</h6>
+              <p>每天都会有当天的行情信息</p>
+            </div>
+          </li>
+          <li>
+            <span class="icon5"></span>
+            <div class="li-ct">
+              <h6>优质服务</h6>
+              <p>专业人员全程服务贴心呵护</p>
+            </div>
+          </li>
+        </ul>
+	  </div>
+	  
+      <div class="service-box2">
+        <ul>
+		  #set($typeList = $vMUtils.getResourceByType("faq"))
+		  #set($indexNum=0)
+		  #foreach($type in $typeList)
+		  #if($indexNum<4)
+		  <li>
+            <h6><a href="$!base/faqgenre.html?method=detail&sid=$!vMUtils.encrypt($!type.id)" target="_blank" title="$!type.value">$!type.value</a></h6>
+			#set($itemlist = $vMUtils.getFaqList($type.id))
+			<span>
+			  #set($indexNum1=0)
+              #foreach($item in $itemlist)
+                 #if($indexNum1<3)
+                 <a href="$!base/faqgenre_detail.html?sid=$!vMUtils.encrypt($!item.id)" target="_blank" title="$!item.title">$!item.title</a>
+                 #end
+  			  #set($indexNum1=$indexNum1+1)
+  		      #end
+  		    </span>
+          </li>
+          #end
+          #set($indexNum=$indexNum+1)
+		  #end
+          <li class="ewm">
+            <div class="ewm-l">
+              <h6>客服中心</h6>
+              <span>0580-8688111</span>
+              <a href="tencent://message/?uin=1226712360&Site=sc.chinaz.com&Menu=yes" title="QQ在线客服">24小时在线客服</a>
+            </div>
+            <div class="ewm-r">
+              <span><img src="$!base/eportalstyle/images/QR_code.jpg" width="89" height="89" /></span>
+              <p></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>

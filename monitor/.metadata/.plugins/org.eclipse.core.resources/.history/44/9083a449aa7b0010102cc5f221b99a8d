@@ -1,0 +1,96 @@
+sys.spring.configfile = /spring-sys.xml,/spring-admin.xml
+sys.root = D:/workspace/zhoushan/
+sys.domain = 127.0.0.1
+sys.timeout =18
+sys.retrytimes =1
+
+water.bank = 483
+water.ip =172.28.192.17
+water.port =1000
+water.file.path = D:/workspace/zhoushan/web/upload/water/
+water.ftp.ip = 172.28.192.17
+water.ftp.port = 1001
+water.ftp.user = DKYH
+water.ftp.password =  
+water.ftp.path = / 
+water.flowNo = 0
+
+gas.bank = 111
+gas.ip =10.172.34.100
+gas.port =1000
+gas.file.path = D:/workspace/zhoushan/web/upload/gas/
+gas.ftp.ip = 10.172.34.100
+gas.ftp.port = 21
+gas.ftp.user = hsbj
+gas.ftp.password =  hsbj
+gas.ftp.path = upload/
+gas.flowNo = 2
+
+elec.bank = 003
+elec.area = 337001
+elec.thirdPartNo = 000001
+elec.ip =172.18.122.234
+elec.port =8845
+elec.file.path = D:/workspace/zhoushan/web/upload/elec/
+elec.ftp.ip = 172.18.122.234
+elec.ftp.port = 21
+elec.ftp.user = elec
+elec.ftp.password = elecpwd
+elec.ftp.path = upload/
+elec.flowNo = 1
+
+#recharge.bank = 004
+#recharge.area = 337001
+#recharge.thirdPartNo = 000001
+recharge.ip =220.189.210.142
+recharge.port =3638
+recharge.file.path = D:/workspace/zhoushan/web/upload/lian/
+recharge.ftp.ip =220.189.210.142
+recharge.ftp.port =21
+recharge.ftp.user =13666666666
+recharge.ftp.password =111111
+recharge.ftp.path = upload/
+recharge.flowNo = 1
+
+#通用
+recharge.common.startFlag=KZLL
+recharge.common.busitype=YDCZ
+
+#登录 request
+recharge.login.msgCode=800001
+recharge.login.bwlen=0068
+recharge.login.flowno=1
+recharge.login.opercodes=LLKJ
+recharge.login.qycode=ZHOUSHAN
+recharge.login.qypwd=123456
+recharge.login.iversion=1.2
+recharge.login.suc.result=10000000
+
+
+#充值 request
+recharge.trade.msgCode=800003
+recharge.trade.bwlen=0134
+recharge.trade.flowno=1
+recharge.trade.area=057100
+recharge.trade.internelCode=0000000000000000000000000000
+
+recharge.trade.telphone=13666666666
+recharge.trade.telpwd=111111
+
+recharge.trade.msgCode=805003
+
+#查詢
+recharge.query.msgCode=800005
+recharge.query.bwlen=0063
+
+#明细查询
+recharge.querydetail.msgCode=800006
+recharge.querydetail.bwlen=0071
+
+#代理商余额查询
+recharge.balance.msgCode=800011
+recharge.balance.bwlen=0043
+
+
+mysql.password=root
+

@@ -1,0 +1,122 @@
+<link href="$base/branding/default/style/business.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="$base/eportalstyle/kindeditor-master/themes/default/default.css" />
+<link rel="stylesheet" href="$base/eportalstyle/kindeditor-master/plugins/code/prettify.css" />
+<script charset="utf-8" src="$base/eportalstyle/kindeditor-master/kindeditor-all.js"></script>
+<script charset="utf-8" src="$base/eportalstyle/kindeditor-master/lang/zh-CN.js"></script>
+<script charset="utf-8" src="$base/eportalstyle/kindeditor-master/plugins/code/prettify.js"></script>
+<script type="text/javascript" src="$base/eportalstyle/js/jquery 1.7.1.js"></script>
+<script>
+myroot = '$!base/getpic.html?path=';
+	var editor1;
+	var editor2;
+	KindEditor.ready(function(K) {
+	editor1 = K.create('textarea[name="advice"]', {
+			cssPath : '$base/eportalstyle/kindeditor-master/plugins/code/prettify.css',
+			uploadJson : '$base/kindeditorUpload.html',
+			fileManagerJson : '$base/eportalstyle/kindeditor-master/jsp/file_manager_json.jsp',
+			allowFileManager : true,
+			afterCreate : function() {
+				var self = this;
+				K.ctrl(document, 13, function() {
+					self.sync();
+					document.forms['diagnosisForm'].submit();
+				});
+				K.ctrl(self.edit.doc, 13, function() {
+					self.sync();
+					document.forms['diagnosisForm'].submit();
+				});
+			}
+		});
+		var editor = K.editor({
+		cssPath : '$base/eportalstyle/kindeditor-master/plugins/code/prettify.css',
+		uploadJson : '$base/kindeditorUpload.html',
+		fileManagerJson : '$base/eportalstyle/kindeditor-master/jsp/file_manager_json.jsp',
+		allowFileManager : true
+	});
+		prettyPrint();
+});	
+	KindEditor.ready(function(K) {
+	editor2 = K.create('textarea[name="resolvent"]', {
+			cssPath : '$base/eportalstyle/kindeditor-master/plugins/code/prettify.css',
+			uploadJson : '$base/kindeditorUpload.html',
+			fileManagerJson : '$base/eportalstyle/kindeditor-master/jsp/file_manager_json.jsp',
+			allowFileManager : true,
+			afterCreate : function() {
+				var self = this;
+				K.ctrl(document, 13, function() {
+					self.sync();
+					document.forms['diagnosisForm'].submit();
+				});
+				K.ctrl(self.edit.doc, 13, function() {
+					self.sync();
+					document.forms['diagnosisForm'].submit();
+				});
+			}
+		});
+		var editor = K.editor({
+		cssPath : '$base/eportalstyle/kindeditor-master/plugins/code/prettify.css',
+		uploadJson : '$base/kindeditorUpload.html',
+		fileManagerJson : '$base/eportalstyle/kindeditor-master/jsp/file_manager_json.jsp',
+		allowFileManager : true
+	});
+		prettyPrint();
+});
+</script>
+<form id="diagnosisForm" name="diagnosisForm" method="post" action="$!actionUrl">
+<input type=hidden name=id value=$!bizObj.id>
+<div class="maincon">
+      <div class="frminfo org">
+         <ul>
+            <li>
+              <span class="ft">名称：</span>
+              <dd>#showFormText("name" "$!bizObj.name" 50)#showMustFill()</dd>
+            </li>
+            <li>
+              <span class="ft">解决方法：</span>
+			  <dd>
+			  #if($!action=="detail")
+			    $!bizObj.resolvent
+			  #else  
+			    <textarea id="resolvent" name="resolvent" style="width:825px; height:500px; visibility:hidden;">
+				 $!vMUtils.htmlspecialchars($!bizObj.resolvent)
+			    </textarea>
+			  #end
+			  </dd>
+            </li>
+          
+             <li>
+              <span class="ft">专家建议：</span>
+			  <dd>
+			  #if($!action=="detail")
+			    $!bizObj.advice
+			  #else  
+			    <textarea id="advice" name="advice" style="width:825px; height:500px; visibility:hidden;">
+				 $!vMUtils.htmlspecialchars($!bizObj.advice)
+			    </textarea>
+			  #end
+			  </dd>
+            </li>
+            <li class="bot">
+              #if($!action != "detail")
+              <input name="insert" type="button" class="btn_save mrg_y20" value="确 定" onclick="toSubmit();" />
+              #end
+              <input type="button" class="btn_cancel" value="返回" onclick="window.location='$base/diagnosis/actions.html?method=list&menuname=$menuname'"/>
+            </li>
+         </ul>
+         <div class="clear"></div>
+      </div>
+   </div>
+</form>
+
+<script>
+	function toSubmit(){
+		var name = document.getElementById("name").value;
+		   if(name==""){
+		      alert("请输入名称");
+		      return;
+		   }
+		   document.getElementById("resolvent").value=editor2.html(); 
+		   document.getElementById("advice").value=editor1.html();   
+		   document.getElementById("diagnosisForm").submit();
+		}
+</script>

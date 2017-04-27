@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="monitor">
+        <wb-resource deploy-path="/" source-path="/web"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/java/framework"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/conf"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/java/modules"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/java/share"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/java/web"/>
+        <property name="java-output-path"/>
+        <property name="context-root" value="monitor"/>
+    </wb-module>
+</project-modules>

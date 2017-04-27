@@ -1,0 +1,72 @@
+#renhehead()
+#renheMenu("index")
+#set($urlPre = "$base/module/actions.html?method=list&menuname=$menuname")
+<style type="text/css">
+.ctl{table-layout:fixed}
+.ctl td{text-overflow:ellipsis;overflow:hidden;white-space:nowrap;padding:2px}
+.STYLE8 {font-size: xx-large}
+</style>
+<div class="Main_Right" >
+		<div class="Main_Right_Top"><span></span></div>
+		<div class="Main_Right_Content" id="Main_Right_Content">
+			<div class="Main_Right_Title">当前位置：管理员 --> 模块管理</div>
+			  	  <div class="Main_Right_ListTable">   
+			 <form name="searchForm" method="post" action="$base/module/actions.html?method=list&menuname=$!menuname"> 
+			         <input type = hidden name="searchAction" value=y>
+				       <div class="ToolSearch">
+				  	 <div class="ToolSearchBar">模版名称:
+                             #showFormText("name" "$!name" 20)&nbsp;&nbsp;
+				        <input type=submit name="search" value=" 搜 索 " class="button8" onmouseover="this.className='button8_hover'" onmouseout="this.className='button8'"/>
+					    </div></div>
+		          </form> 
+		          </div>         
+			<div class="ToolBar">
+					<!--工具栏-->
+					<div class="Main_Right_SearchTable_Bottom2">
+                      <input type='button'  class="button8"  value='  新  增  '  onclick="window.location='$base/module/actions.html?method=insert&menuname=$menuname'" onmouseover="this.className='button8_hover'" onmouseout="this.className='button8'">
+	     		  </div>
+			   </div>
+				<div class="Main_Right_SearchTable_Title">
+					<span class="Main_Right_SearchTable_Title_Left"></span>
+					模块列表
+					<span class="Main_Right_SearchTable_Title_Right"></span>				</div>
+				  <div class="Main_Right_ListTable_Table">
+				  <div class="ctl">
+                  <table  width="100%"  border="0" cellpadding="0" cellspacing="0" class="listTable-01">
+                    <tr>
+					  <th width="10%" >模版名称</th>
+					  <th width="10%" >模版介绍</th>
+					  <th width="10%" >创建时间</th>
+					  <th width="10%"  >操作</th>
+					</tr>
+					#set($indexNum=0)
+					#foreach($biz in $bizObjList)
+					<tr class="odd" onmouseover="this.className='even'" onmouseout="this.className='odd'">
+						<td >&nbsp;$!biz.name</td>
+						<td title="$!biz.memo">&nbsp;$!biz.memo</td>
+						<td >#showDate($!biz.timeCreate)</td>
+						<td >
+							<a href="$base/module/actions.html?method=update&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname"  >编辑</a>
+							<a href="$base/module/actions.html?method=detail&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname"  >详细</a>
+						    <a href="$base/module/actions.html?method=delete&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname"  onclick="return confirm('确定删除吗？');">刪除</a>
+						</td>
+			         </tr>
+					#set($indexNum=$indexNum+1)
+					#end
+					#if($indexNum<10)
+						#set($indexNum=10-$indexNum)
+						#foreach($foo in [1..$indexNum])
+							<tr class="odd" onmouseover="this.className='even'" onmouseout="this.className='odd'"><td colspan="4">&nbsp;</td></tr>
+						#end
+					#end
+                  </table>
+			  	</div>
+			  	 #parse( "/WEB-INF/pages/common/page.vm" )
+			  	</div>
+				</td>
+                </tr>
+                </table>	
+		  </div>
+		</div>
+	</div>
+#renheend()

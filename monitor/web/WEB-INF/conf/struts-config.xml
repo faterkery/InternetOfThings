@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<!-- ======================================== Form Bean Definitions -->
+	<form-beans>
+		<form-bean name="loginForm" type="com.tyloo.web.form.LoginForm" />
+		<form-bean name="changePwdForm" type="com.tyloo.web.form.ChangePwdForm" />
+		<form-bean name="recommendForm" type="com.tyloo.web.form.RecommendForm" />
+		<form-bean name="aboutUsForm" type="com.tyloo.web.form.AboutUsForm" />
+		<form-bean name="memberForm" type="com.tyloo.web.form.MemberForm" />
+		<form-bean name="roleModuleForm" type="com.tyloo.web.form.RoleModuleForm" />
+		<form-bean name="roleForm" type="com.tyloo.web.form.RoleForm" />
+		<form-bean name="groupsForm" type="com.tyloo.web.form.GroupsForm" />
+		<form-bean name="moduleForm" type="com.tyloo.web.form.ModuleForm" />
+		<form-bean name="resourcesForm" type="com.tyloo.web.form.ResourcesForm" />
+		<form-bean name="productsForm" type="com.tyloo.web.form.ProductsForm" />
+		<form-bean name="thresholdForm" type="com.tyloo.web.form.ThresholdForm" />
+		<form-bean name="diagnosisForm" type="com.tyloo.web.form.DiagnosisForm" />
+		<form-bean name="expertForm" type="com.tyloo.web.form.ExpertForm" />
+		
+		<!--  <form-bean name="echartsForm" type="com.tyloo.web.form.EchartsForm" />-->
+	</form-beans>
+
+	<!-- =================================== Global Forward Definitions -->
+	<global-forwards>
+		<!-- forward name="systemError" path="/systemerror.html" /> -->
+		<forward name="login" path="/login.html" redirect="true" />
+		<forward name="nlogin" path="/login.html?o=y" redirect="true" />
+		<forward name="forbidden" path="/WEB-INF/eportalpages/common/forbidden.vm" />
+	</global-forwards>
+	<!-- =================================== Action Mapping Definitions -->
+	
+	<action-mappings>
+
+        <action path="/regsms" type="com.tyloo.web.eportalaction.RegSmsAction" scope="request"></action>
+        <action path="/sms" type="com.tyloo.web.eportalaction.SmsAction" scope="request"></action>
+        <action path="/checkRegSms" type="com.tyloo.web.eportalaction.RegSmsCheckAction" scope="request"></action>
+
+		<action path="/admin" type="com.tyloo.web.root.Index">
+			<forward name="login" path="/WEB-INF/pages/root/login.vm" />
+			<forward name="index" path="/WEB-INF/pages/root/index.vm" />
+		</action>
+
+		<action path="/error" type="org.apache.struts.actions.ForwardAction" parameter="/WEB-INF/pages/common/error.vm" />
+			
+		<!--错误 -->
+		<action path="/eportal/error" type="com.tyloo.web.eportalaction.RedirectAction" scope="request">
+		    <forward name="defaultshow" path="/WEB-INF/eportalpages/web/err500.vm" />
+		</action>
+		<!-- 500错误 -->
+		<action path="/eportal/error500" type="com.tyloo.web.eportalaction.RedirectAction" scope="request">
+		    <forward name="defaultshow" path="/WEB-INF/eportalpages/web/err500.vm" />
+		</action>
+		<!-- 404错误 -->
+		<action path="/eportal/error404" type="com.tyloo.web.eportalaction.RedirectAction" scope="request">
+		    <forward name="defaultshow" path="/WEB-INF/eportalpages/web/err404.vm" />
+		</action>
+		
+		<action path="/login" name="loginForm" type="com.tyloo.web.root.Login" scope="request">
+			<forward name="show" path="/WEB-INF/pages/root/index.vm" />
+		</action>
+
+		<action path="/changepwd" name="changePwdForm" type="com.tyloo.web.member.ChangePwdAction">
+			<forward name="show" path="/WEB-INF/pages/root/changepwd.vm" />
+		</action>
+		
+		<action path="/pagechange" name="" type="com.tyloo.web.action.PageChangAction">
+			<forward name="indexinit" path="/WEB-INF/pages/root/index_main.vm" />
+		</action>
+		<!-- 角色分配模块选择 -->
+		<action path="/rolemodule/actions" type="com.tyloo.web.member.RoleModuleAction" name="roleModuleForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/pages/rolemodule/search.vm" />
+			<forward name="update" path="/WEB-INF/pages/rolemodule/update.vm" />
+			<forward name="insert" path="/WEB-INF/pages/rolemodule/insert.vm" />
+			<forward name="insertsuccess" path="/rolemodule/actions.html?method=list&amp;search=y&amp;orderBy=desc" redirect="true" />
+			<forward name="detail" path="/WEB-INF/pages/rolemodule/detail.vm" />
+			<forward name="delete" path="/rolemodule/actions.html?method=list" redirect="true" />
+		</action>
+		
+		<!-- 部门管理 -->
+		<action path="/groups/actions" type="com.tyloo.web.member.GroupsAction" name="groupsForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/pages/groups/list.vm" />
+			<forward name="insert" path="/WEB-INF/pages/groups/insert.vm" />
+			<forward name="insertsuccess" path="/groups/actions.html?method=list&amp;search=y&amp;orderBy=desc" redirect="true" />
+			<forward name="update" path="/WEB-INF/pages/groups/update.vm" />
+			<forward name="detail" path="/WEB-INF/pages/groups/detail.vm" />
+			<forward name="delete" path="/groups/actions.html?method=list" />
+		</action>
+		
+		<!-- 角色管理模块 -->
+		<action path="/role/actions" type="com.tyloo.web.member.RoleAction" name="roleForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/pages/role/list.vm" />
+			<forward name="update" path="/WEB-INF/pages/role/update.vm" />
+			<forward name="insert" path="/WEB-INF/pages/role/insert.vm" />
+			<forward name="insertsuccess" path="/role/actions.html?method=list&amp;search=y&amp;orderBy=desc" redirect="true" />
+			<forward name="detail" path="/WEB-INF/pages/role/detail.vm" />
+			<forward name="delete" path="/role/actions.html?method=list" />
+		</action>
+		
+		<!-- 用户管理 -->
+		<action path="/member/actions" type="com.tyloo.web.member.MemberAction" name="memberForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/pages/member/list.vm" />
+			<forward name="insert" path="/WEB-INF/pages/member/insert.vm" />
+			<forward name="insertsuccess" path="/member/actions.html?method=list&amp;search=y&amp;orderBy=desc" redirect="true" />
+			<forward name="update" path="/WEB-INF/pages/member/update.vm" />
+			<forward name="detail" path="/WEB-INF/pages/member/detail.vm" />
+			<forward name="delete" path="/member/actions.html?method=list" />
+			<forward name="updateDianyuan" path="/WEB-INF/pages/payapply/dianyuan/modifyInfo.vm" />
+		</action>
+		
+		<!-- 下拉选项管理 -->
+		<action path="/resources/actions" type="com.tyloo.web.resources.ResourcesActions" name="resourcesForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/pages/resources/list.vm" />
+			<forward name="detail" path="/WEB-INF/pages/resources/detail.vm" />
+			<forward name="update" path="/WEB-INF/pages/resources/update.vm" />
+			<forward name="insertsuccess" path="/resources/actions.html?method=list&amp;search=y&amp;orderBy=desc" redirect="true" />
+			<forward name="delete" path="/resources/actions.html?method=list" />
+		</action>
+		
+		<!-- 会员管理 -->
+		<action path="/shopUser/actions" type="com.tyloo.web.action.ShopUserAction" name="shopUserForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/pages/shopUser/list.vm" />
+		<!--<forward name="update" path="/WEB-INF/pages/shopUser/update.vm" /> -->
+		<!--<forward name="delete" path="/shopUser/actions.html?method=list" redirect="true" /> -->
+		</action>
+		<!-- 产品管理模块 -->
+		<action path="/recommend/actions" type="com.tyloo.web.action.RecommendAction" name="productsForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/pages/recommend/list.vm" />
+			<forward name="insert" path="/WEB-INF/pages/recommend/insert.vm" />
+			<forward name="insertsuccess" path="/recommend/actions.html?method=list" redirect="true" />
+			<forward name="update" path="/WEB-INF/pages/recommend/update.vm" />
+			<forward name="detail" path="/WEB-INF/pages/recommend/detail.vm" />
+			<forward name="delete" path="/recommend/actions.html?method=list" redirect="true" />
+		</action>
+		<!--阀值管理模块 -->
+		<action path="/threshold/actions" type="com.tyloo.web.action.ThresholdAction" name="thresholdForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/pages/threshold/list.vm" />
+			<forward name="insert" path="/WEB-INF/pages/threshold/insert.vm" />
+			<forward name="insertsuccess" path="/threshold/actions.html?method=list" redirect="true" />
+			<forward name="update" path="/WEB-INF/pages/threshold/update.vm" />
+			<forward name="detail" path="/WEB-INF/pages/threshold/detail.vm" />
+			<forward name="delete" path="/threshold/actions.html?method=list" redirect="true" />
+		</action>
+		<!--诊断库模块 -->
+		<action path="/diagnosis/actions" type="com.tyloo.web.action.DiagnosisAction" name="diagnosisForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/pages/diagnosis/list.vm" />
+			<forward name="insert" path="/WEB-INF/pages/diagnosis/insert.vm" />
+			<forward name="insertsuccess" path="/diagnosis/actions.html?method=list" redirect="true" />
+			<forward name="update" path="/WEB-INF/pages/diagnosis/update.vm" />
+			<forward name="detail" path="/WEB-INF/pages/diagnosis/detail.vm" />
+			<forward name="delete" path="/diagnosis/actions.html?method=list" redirect="true" />
+		</action>
+		<!--专家模块 -->
+		<action path="/expert/actions" type="com.tyloo.web.action.ExpertAction" name="expertForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/pages/expert/list.vm" />
+			<forward name="insert" path="/WEB-INF/pages/expert/insert.vm" />
+			<forward name="insertsuccess" path="/expert/actions.html?method=list" redirect="true" />
+			<forward name="update" path="/WEB-INF/pages/expert/update.vm" />
+			<forward name="detail" path="/WEB-INF/pages/expert/detail.vm" />
+			<forward name="delete" path="/expert/actions.html?method=list" redirect="true" />
+		</action>
+
+        <!-- =====================================前台action======================================== -->
+        
+        <!-- 首页 -->
+		<action path="/index" type="com.tyloo.web.eportalroot.Index">
+			<forward name="show" path="/WEB-INF/eportalpages/web/root/index.vm" />
+		</action>
+		
+		<!-- 注册 -->
+		<action path="/register" type="com.tyloo.web.eportalroot.RegisterAction">
+			<forward name="show" path="/WEB-INF/eportalpages/web/root/register.vm" />
+			<forward name="secucess" path="/WEB-INF/eportalpages/web/root/register_success.vm" />
+		</action>
+	
+		<!-- 登录 -->
+		<action path="/shopuser/login" type="com.tyloo.web.eportalroot.Login">
+			<forward name="show" path="/WEB-INF/eportalpages/web/root/login.vm" />
+		</action>
+		
+		
+		<!-- 用户中心 个人信息 -->
+		<action path="/centre/account" type="com.tyloo.web.eportalaction.CentreAccountAction" scope="request">
+			<forward name="show" path="/WEB-INF/eportalpages/web/userCentre/account.vm" />
+		</action>
+		
+		<!-- 用户中心 邮箱初始化 -->
+		<action path="/centre/emailinit" type="com.tyloo.web.eportalaction.EmailinitAction" scope="request">
+			<forward name="emailinit" path="/WEB-INF/eportalpages/web/email/emailinit.vm" />
+		</action>
+		
+		<!-- 用户中心 邮箱绑定 -->
+		<action path="/centre/emailbind" type="com.tyloo.web.eportalaction.EmailbindAction" scope="request"> 
+		    <forward name="emailbind" path="/WEB-INF/eportalpages/web/email/emailbind.vm" />
+		</action>	
+		
+		<!-- 用户中心 邮箱验证 -->
+		<action path="/centre/emailactive" name="" type="com.tyloo.web.eportalaction.ShopUserActiveAction" scope="request">
+			<forward name="show" path="/WEB-INF/eportalpages/web/email/success.vm" />
+		</action>
+		
+		<!-- 用户中心 密码修改 -->
+		<action path="/centre/pwdmodify" type="com.tyloo.web.eportalaction.CentreModifypswAction" scope="request">
+			<forward name="show" path="/WEB-INF/eportalpages/web/userCentre/modifypsw.vm" />
+		</action>
+		
+		<!-- 找回密码 -->
+		<action path="/findpwd" type="com.tyloo.web.eportalaction.FindPwdAction" scope="request">
+			<forward name="findpwd" path="/WEB-INF/eportalpages/web/findpwd/findpwd.vm" />
+			<forward name="resetpwd" path="/WEB-INF/eportalpages/web/findpwd/resetpwd.vm" />
+		</action>
+		
+		<!-- 重置密码 -->
+		<action path="/resetpwd" type="com.tyloo.web.eportalaction.ResetPwdAction" scope="request">
+			<forward name="resetpwd" path="/WEB-INF/eportalpages/web/findpwd/resetpwd.vm" />
+			<forward name="success" path="/WEB-INF/eportalpages/web/findpwd/success.vm" />
+		</action>
+		
+		<!-- 收藏 -->
+		<action path="/ajaxcollect" type="com.tyloo.web.eportalaction.CentreCollectionAjaxAction" scope="request"></action>
+		<!-- 删除收藏 -->
+		<action path="/ajaxCollectDel" type="com.tyloo.web.eportalaction.CentreCollectionDeleteAjaxAction" scope="request"></action>
+		
+		<!-- 收藏列表 -->
+		<action path="/centre/collect" type="com.tyloo.web.eportalaction.CentreCollectionAction" scope="request">
+			<forward name="show" path="/WEB-INF/eportalpages/web/userCentre/collection.vm" />
+		</action>
+
+		<!-- kindeditor上传文件 -->
+		<action path="/kindeditorUpload" type="com.tyloo.web.action.KindeditorUploadAction"></action>
+		
+		<!-- <action path="/old_kindeditorUpload" type="com.tyloo.web.action.KindeditorUploadYuanAction"></action>  -->
+		<action path="/getpic" type="com.tyloo.web.PicOutPutStreamAction"></action>
+		
+		<!-- 通知公告前台 -->
+		<action path="/noticeShow/actions" type="com.tyloo.web.eportalaction.NoticeShowAction"
+			name="noticeForm" input="" parameter="method" scope="request">
+			<forward name="detail" path="/WEB-INF/eportalpages/web/notice/detail.vm" />
+		</action>
+		
+		<!-- 推荐企业前台 -->
+		<action path="/enterpriseShow/actions" type="com.tyloo.web.eportalaction.EnterpriseShowAction"
+			name="enterpriseForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/eportalpages/web/enterprise/list.vm" />
+			<forward name="detail" path="/WEB-INF/eportalpages/web/enterprise/detail.vm" />
+		</action>
+		
+		<!-- 新闻资讯前台 -->
+		<action path="/eNewsShow/actions" type="com.tyloo.web.eportalaction.ENewsShowAction"
+			name="eNewsForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/eportalpages/web/eNews/list.vm" />
+			<forward name="detail" path="/WEB-INF/eportalpages/web/eNews/detail.vm" />
+		</action>
+		
+		<!-- 关于我们前台-->
+		<action path="/aboutUs" type="com.tyloo.web.eportalaction.AboutUsShowAction"
+			name="aboutUsForm" input="" parameter="method" scope="request">
+			<forward name="show" path="/WEB-INF/eportalpages/web/aboutus/aboutus.vm" />
+		</action>
+		
+		<!-- FAQ前台-->
+		<action path="/faqgenre" type="com.tyloo.web.eportalaction.FaqgenreShowAction"
+			name="faqgenreForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/eportalpages/web/faqgenre/list.vm" />
+		</action>
+		
+		<action path="/faqgenre_detail" type="com.tyloo.web.eportalaction.FaqgenreDetailShowAction"
+			name="" input="" parameter="" scope="request">
+			<forward name="show" path="/WEB-INF/eportalpages/web/faqgenre/detail.vm" />
+		</action>
+		
+		<!-- 螺杆耗材前台 -->
+		<action path="/suppliesShow" type="com.tyloo.web.eportalaction.SuppliesShowAction" name="suppliesForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/eportalpages/web/supplies/list.vm" />
+			<forward name="detail" path="/WEB-INF/eportalpages/web/supplies/detail.vm" />
+		</action>
+		
+		<!-- 螺杆原料前台 -->
+		<action path="/material" type="com.tyloo.web.eportalaction.MaterialShowAction" name="materialForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/eportalpages/web/material/list.vm" />
+		</action>
+		
+		<!-- 闲旧处理前台-->
+		 <action path="/oldmanges" type="com.tyloo.web.eportalaction.OldmangesShowAction" name="oldmangesForm" input="" parameter="method" scope="request">
+			<forward name="list"   path="/WEB-INF/eportalpages/web/oldmanges/list.vm" />
+			<forward name="insert" path="/WEB-INF/eportalpages/web/oldmanges/insert.vm" />
+			<forward name="insertsuccess" path="/centre/oldlist.html?method=list" redirect="true" />
+		    <forward name="update" path="/WEB-INF/eportalpages/web/oldmanges/insert.vm" />
+		    <forward name="delete" path="/centre/oldlist.html?method=list" redirect="true" />
+		</action> 
+		<!-- 折线图前台-->
+		 <action path="/echarts" type="com.tyloo.web.eportalaction.EchartsShowAction" name="" input="" parameter="method" scope="request">
+			<forward name="show"   path="/WEB-INF/eportalpages/web/echarts/list.vm" />
+		</action> 
+		
+		<!-- 金融服务前台 -->
+		<action path="/finance" type="com.tyloo.web.eportalaction.FinanceShowAction" name="financeForm" input="" parameter="method" scope="request">
+			<forward name="finance" path="/WEB-INF/eportalpages/web/finance/finance.vm" />
+		</action>
+		
+		<!-- 螺杆商城前台 -->
+		<action path="/mall" type="com.tyloo.web.eportalaction.MallShowAction" name="mallForm" input="" parameter="method" scope="request">
+			<forward name="mall" path="/WEB-INF/eportalpages/web/mall/mall.vm" />
+		</action>
+		
+		<!-- 企业招聘前台-->
+		 <action path="/personnel" type="com.tyloo.web.eportalaction.PersonnelShowAction" name="personnelForm" input="" parameter="method" scope="request">
+			<forward name="list"   path="/WEB-INF/eportalpages/web/personnel/list.vm" />
+			<forward name="insert" path="/WEB-INF/eportalpages/web/personnel/insert.vm" />
+			<forward name="insertsuccess" path="/centre/perlist.html?method=list" redirect="true" />
+		    <forward name="update" path="/WEB-INF/eportalpages/web/personnel/insert.vm" />
+		    <forward name="detail" path="/WEB-INF/eportalpages/web/personnel/detail.vm" />
+		</action> 
+		
+		<action path="/show1" type="com.tyloo.web.eportalaction.PersonnelShowAction1" name="personnelForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/eportalpages/web/personnel/show1.vm" />
+		</action>
+		
+		<action path="/show2" type="com.tyloo.web.eportalaction.PersonnelShowAction1" name="personnelForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/eportalpages/web/personnel/show2.vm" />
+		</action>
+		
+		<action path="/show3" type="com.tyloo.web.eportalaction.PersonnelShowAction1" name="personnelForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/eportalpages/web/personnel/show3.vm" />
+		</action>
+		
+		<!-- 人才列表 -->
+		<action path="/centre/perlist" type="com.tyloo.web.eportalaction.PerlistAction" scope="request">
+			<forward name="show" path="/WEB-INF/eportalpages/web/perlist/collection.vm" />
+		</action>
+		
+		<!-- 闲旧处理列表 -->
+		<action path="/centre/oldlist" type="com.tyloo.web.eportalaction.OldlistAction" scope="request">
+			<forward name="show" path="/WEB-INF/eportalpages/web/oldlist/collection.vm" />
+		</action>
+		<!-- 库存管理列表 -->
+		<action path="/centre/materlist" type="com.tyloo.web.eportalaction.MaterlistAction" name="materialStockForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/eportalpages/web/materlist/collection.vm" />
+			<forward name="insertsuccess" path="/centre/materlist.html?method=list&amp;flag=sucess" redirect="true" />
+			<forward name="delete" path="/centre/materlist.html?method=list" redirect="true" />
+			<forward name="update" path="/WEB-INF/eportalpages/web/materlist/collection.vm" />
+		</action>
+		<!-- ajax 登录 -->
+		<action path="/ajaxlogin" type="com.tyloo.web.eportalroot.LoginAjaxAction" scope="request" />
+		
+		<!-- 加入购物车 -->
+		<action path="/cartadd" type="com.tyloo.web.eportalaction.CartAction" scope="request">
+		    <forward name="error"   path="/WEB-INF/eportalpages/web/cart/error.vm" />
+		</action>
+		
+		<!-- AJAX加入购物车 -->
+		<action path="/cartaddajax" type="com.tyloo.web.eportalaction.CartAjaxAction" scope="request" />
+		
+		
+		
+		<!-- 页面跳转 -->
+		<action path="/redirect" type="com.tyloo.web.eportalaction.RedirectAction" scope="request">
+		    <forward name="cartaddsuccess" path="/WEB-INF/eportalpages/web/cart/add_success.vm" />
+		    <forward name="defaultshow" path="/WEB-INF/eportalpages/web/err500.vm" />
+		</action>
+		
+		<!-- 购物车 full -->
+		<action path="/cartfull" type="com.tyloo.web.eportalaction.MyCartFullAction" scope="request">
+		    <forward name="show" path="/WEB-INF/eportalpages/web/cart/cart.vm" />
+		    <forward name="goodslist" path="/WEB-INF/eportalpages/web/cart/cart_item.vm" />
+		</action>
+		
+		<!-- 更新购物车金额 -->
+		<action path="/cart/calc" type="com.tyloo.web.eportalaction.MyCartPriceCalcAction"></action>
+		
+		<!-- 计算每个页面的购物车数字 -->
+		<action path="/cartnum/calc" type="com.tyloo.web.eportalaction.CartNumCalcAction"></action>
+		
+		<!-- 收货地址管理  -->
+		<action path="/address" type="com.tyloo.web.eportalaction.AddressShowAction" name="addressForm" input="" parameter="method" scope="request">
+			<forward name="list" path="/WEB-INF/eportalpages/web/address/address.vm" />
+			<forward name="insertsuccess" path="/address.html?method=list&amp;flag=sucess" redirect="true" />
+			<forward name="delete" path="/address.html?method=list" redirect="true" />
+			<forward name="update" path="/WEB-INF/eportalpages/web/address/address.vm" />
+		</action>
+		<!-- 修改备注  -->
+		<action path="/beizorder/placeinit" type="com.tyloo.web.eportalaction.ChagenbzShowAction" name="cartForm" input="" parameter="method" scope="request">
+		</action>
+		
+		<!-- 动态获得省市数据 -->
+		<action path="/getArea" type="com.tyloo.web.eportalaction.AreasAjaxAction" scope="request"></action>
+		
+		<!-- 下单初始化 -->
+		<action path="/order/placeinit" type="com.tyloo.web.eportalaction.PlaceOrderInitAction">
+			<forward name="show"  path="/WEB-INF/eportalpages/web/order/order_place_init.vm" />
+			<forward name="error" path="/WEB-INF/eportalpages/web/order/error.vm" />
+		</action>
+		
+		<!-- 下单 -->
+		<action path="/order/place" type="com.tyloo.web.eportalaction.PlaceOrderAction"></action>
+		
+		<!-- 跳转到下单成功 -->
+		<action path="/order/place_success" type="com.tyloo.web.eportalaction.RedirectAction" scope="request">
+		    <forward name="defaultshow" path="/WEB-INF/eportalpages/web/order/order_place_success.vm" />
+		</action>
+		
+		<!-- 用户中心 订单列表 -->
+		<action path="/centre/orderlist" type="com.tyloo.web.eportalaction.CentreOrderListAction" scope="request">
+		    <forward name="show" path="/WEB-INF/eportalpages/web/userCentre/orderlist.vm" />
+		</action>
+		
+		<!-- 删除订单 -->
+		<action path="/order/cancel" type="com.tyloo.web.eportalaction.CentreOrderCancelAction"></action>
+		<!-- 确认收货 -->
+		<action path="/order/done" type="com.tyloo.web.eportalaction.CentreOrderDoneAction"></action>
+		
+		<action path="/cart/calct" type="com.tyloo.web.eportalaction.CalcJianZhiAction"></action>
+		<action path="/list/calct" type="com.tyloo.web.eportalaction.CalclistAction"></action>
+		
+		<!--  订单详细 -->
+		<action path="/order/view" type="com.tyloo.web.eportalaction.CentreOrderViewAction">
+			<forward name="show"  path="/WEB-INF/eportalpages/web/userCentre/order_detail.vm" />
+		</action>
+		
+		<!-- 打印送货单 -->
+		<action path="/ordershd/print" type="com.tyloo.web.eportalaction.CentreOrderSHDAction">
+			<forward name="show"  path="/WEB-INF/eportalpages/web/userCentre/shd.vm" />
+		</action>
+		
+		
+	</action-mappings>
+
+	<!--
+		========== Message Resource bundles ==============================
+	-->
+	<message-resources parameter="struts.ApplicationResources" />
+	<!-- ===================================== Controller Configuration -->
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/conf/validator-rules.xml,/WEB-INF/conf/validation.xml" />
+	</plug-in>
+
+</struts-config>

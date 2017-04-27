@@ -1,0 +1,463 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<script type="text/javascript">
+//登录
+function ajaxlogin()
+{
+    var returnurl = $("#returnurl");
+    var name = $("#username");
+	if(jQuery.trim(name.val())=="" || jQuery.trim(name.val())=="手机号")
+	{
+	    $(".tip").attr("class", "tip");
+	    $(".tip").html("手机号不能为空");
+		return;
+	}
+	else
+	{
+	    $(".tip").attr("class", "tip none");
+		$(".tip").empty();
+	}
+	
+	var pwd =  $("#pwd");
+	if(jQuery.trim(pwd.val())=="")
+	{
+	    $(".tip").attr("class", "tip");
+	    $(".tip").html("密码不能为空");
+		return;
+	}
+	else
+	{
+	    $(".tip").attr("class", "tip none");
+		$(".tip").empty();
+	}
+	var autologin = 0;
+	if($("#autologin").prop("checked"))
+	{
+	    autologin = 1;
+	}
+	
+ jQuery.ajax({ url: '$!base/ajaxlogin.html',
+    　　data: { mtel: $("#username").val(),pwd:$("#pwd").val(),action:'login'},
+    　　type: 'post',
+    　　dataType: 'json',
+    　　success: function(data) {
+        	if(data.result == "success")
+        	{
+			    $("#login_nav").empty();
+			    $("#login_nav").append("<li class=\"rigline\">"+data.obj+"</li>");
+				$("#login_nav").append("<li><a href=\"$!base/shopuser/login.html?logout=y\" class=\"fblue1\">退出</a></li>");
+        		$("#login_nav").append("<li><a href=\"$!base/centre/orderlist.html\">个人中心</a></li>");
+				$("#login_nav").append("<li class=\"last\"><a href=\"javascript:void(0)\" onclick=\"AddFavorite(window.location,document.title)\">收藏网站</a></li>");
+				$("#login_dialog").dialog("close");
+        		return;
+        	}
+        	else
+			{
+			   
+        	    $(".tip").attr("class", "tip");
+	            $(".tip").html("手机号码或密码错误");
+        		return;
+        	}
+			
+    },
+    　　error: function() {
+        alert("异常！");
+    }
+});
+}
+
+$(document).ready(function(){
+  $("#pwdshow").focus(function(){
+      $(this).hide();
+	  $("#pwd").show();
+	  $("#pwd").focus();
+  });
+  
+  $("#pwd").blur(function(){
+      if(jQuery.trim($(this).val()) =="")
+      {
+          $(this).hide();
+    	  $("#pwdshow").show();
+      } 
+  });
+});
+</script>
+<body>
+<div id="container"> 
+  <!--site-nav开始-->
+  #parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+
+  <!--header开始-->
+  #parse( "/WEB-INF/eportalpages/common/header.vm" )
+  <!--header结束--> 
+
+  <!--mainnav开始-->
+  #parse( "/WEB-INF/eportalpages/common/main_nav.vm" )
+  <!--mainnav结束--> 
+  
+  <!--main开始-->
+  <div id="main" class="layout" style="position:static;">
+    <div class="newpage mrg_t15 mrg_b15 fl">当前所在位置：<a href="$!base/index.html" title="首页">首页</a> > <a href="$!base/suppliesShow.html?method=list" title="耗材供应">耗材供应</a></div>
+      <div class="foodshow">
+        <script type="text/javascript" src="$!base/eportalstyle/js/jquery.jqzoom.js"></script>
+        <script type="text/javascript" src="$!base/eportalstyle/js/base.js"></script>
+            <ul class="imgarea">
+               <div id="preview" class="spec-preview">
+                  <span class="jqzoom"><img jqimg="$!base$!biz.img" src="$!base$!biz.img" width="350px" height="350px;" /></span>
+               </div>
+               <!--缩图开始-->
+               <div class="spec-scroll">
+                  <a class="prev">&lt;</a> <a class="next">&gt;</a>
+                  <div class="items">
+                     <ul>
+                       #foreach($img in $!imgsList)
+						<li><img bimg="$!base$!img.imgPath" src="$!base$!img.imgPathMini" onmousemove="preview(this);"></li>
+					   #end
+                     </ul>
+                  </div>
+               </div>
+            </ul>
+			<form id="buyform" name="buyform" method="post" action="" >
+			<input type="hidden" name="sid" value="$vMUtils.encrypt($!biz.id)" />
+			<input type="hidden" name="type" value="$!type" />
+            <ul class="parameterintro">
+               <div class="title">$!biz.name</div>
+               <div class="parameter">
+                  <li><span>销售价格：</span><label class="price1">￥$!biz.price</label></li>
+                  <li><span>品牌：</span>$!vMUtils.getResourceValue($!biz.brandId)</li>
+                  <li><span>生产厂家：</span>$vMUtils.getResourceValue($!biz.factoryId)</li>
+                  <li><span>规格：</span>$!biz.spec</li>
+		      <!--<li><span>最近售出：</span>100</li>-->
+               </div>
+               <div class="parameter sec">
+                  <li>
+                     <span>购买数量：</span>
+                     <div class="amount-widget">
+                        <label class="zs-decrease zs-no-decrease"></label>
+                        <input name="num" type="text" title="请输入购买量" value="1" class="zs-goods-number" id="zp-goods-number" fn="zp-goods-number">
+                        <label class="zs-increase"></label>
+                     </div>
+                  </li>
+               </div>
+               <div class="btnbar">
+				#if($!biz.isPublished==1)
+        				<a href="javascript:addcart()" class="addcart">加入购物车</a>
+        	        <!--<a href="#" class="buy">立即购买</a>-->
+        				<!--
+        				#if($collected)
+        					<a class="collection">已收藏</a></div>
+        				#else
+        				    <a href="javascript:to_collection('$vMUtils.encrypt($!biz.id)')" class="collection">加入收藏</a></div>
+        				#end
+				#else
+					<a class="collection">已经下架</a></div>
+				#end
+				-->
+            </ul>
+            </form>
+         </div>
+         
+         <div class="prodetail">
+           <ul class="fleft">
+               <!--产品推荐开始-->
+               <div class="box0 mrg_x15">
+                  <ul class="menu1">
+                     <h1>产品推荐</h1>                  
+                  </ul>
+                  <ul class="con">
+                     <div class="piclist0 leftmodule1">
+                        #set($indexNum=0)
+                        #foreach($biz in $!recommendList)
+                        #if($indexNum < 8)
+                        <li>
+                           <div class="picbox"><a href="http://$!biz.url" title="$!biz.name">
+                              <img src="$!base$!biz.img" />
+                              <div class="detail">
+                                 <div class="bit">$!biz.name</div>
+                              </div>
+                           </a></div>
+                        </li>
+                        #end
+                        #set($indexNum=$indexNum+1)
+                        #end
+                     </div>
+                  </ul>
+               </div>
+               <!--产品推荐结束-->
+            </ul>
+            <ul class="fright">
+               <div class="zs-tabbar">
+                  <ul class="menu">
+                     <li><a href="javascript:void(0)">商品介绍</a></li>
+                 </ul>
+              </div>
+              <div class="content">
+                 <div class="layout">
+                   <div class="zs-goods-content">
+                      <ul class="intro">
+                        $!biz.content
+                      </ul>
+                    </div>
+                 </div>
+              </div>
+            </ul>
+         </div>
+  </div>
+  <!--main结束-->
+  
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+  
+  <!--con_side开始-->
+  #parse( "/WEB-INF/eportalpages/common/con_side.vm" )
+  <!--con_side结束--> 
+  </div>
+  
+  <div id="login_dialog" title="登录" style="display:none;">
+      <div class="frmbox">
+          <ul class="conbox">
+            <li>
+              <div class="putbox">
+                <em></em>
+                <input name="username" id="username" type="text" class="input1" value="手机号" onfocus="if(this.value=='手机号') {this.value='';}" onblur="if(this.value=='') {this.value='手机号';}"/>
+              </div>
+            </li>
+            <li class="psw">
+              <div class="putbox">
+                <em></em>
+                <input name="" id="pwdshow" type="text" class="input1" value="密码"  />
+				<input name="pwd" id="pwd" type="password" class="input1" value=""  style="display:none;"/>
+              </div>
+            </li>
+            <li>
+              <span class="fl"><input name="autologin" id="autologin" type="checkbox" value="1" />&nbsp;自动登录</span>
+              <span class="fr"><a href="$!base/findpwd.html" title="忘记密码">忘记密码</a>&nbsp; | &nbsp;<a href="$!base/register.html" title="免费注册">免费注册</a></span>
+            </li>
+            <li class="btnline"><input name="" type="button" class="btnbox" value="立即登录" onclick="ajaxlogin()"/></li>
+            <li class="tip none">手机号码或密码错误</li>
+          </ul>            
+        </div>
+  </div>
+  
+</body>
+<script>
+//页面公用参数
+var decreaseObj = $(".zs-decrease");
+var increaseObj = $(".zs-increase");
+var changeNumObj = $("#zp-goods-number");
+
+$(function ($) {	
+      // 数量  
+      jQuery.extend({
+          checkStyle:function(checkGoodsNumber){
+              var maxGoodsNumber = 99; //parseInt($("#zp-choose-goods-number").val());  // 最大限购数量
+              var goodsNumber    = 1;                                             // 商品的数量
+              var tipsObj       = $('#zs-goods-number-tips');                   // 报错提示框 
+              
+             if(isNaN(maxGoodsNumber || maxGoodsNumber<=0)){
+                 goodsNumber     = 0;     // 商品库存不足
+                 tipsObj.html('商品库存不足，您可以联系商品到店购买！');
+                 tipsObj.css('display', 'block');
+                 $(".zs-increase").addClass("zs-no-increase");
+                 $(".zs-decrease").addClass("zs-no-decrease");
+             }else if (isNaN(checkGoodsNumber) ) {
+                 goodsNumber = 1;
+                 tipsObj.html('您所填写的数量不正确');
+                 tipsObj.css('display', 'block');
+                 $(".zs-decrease").addClass("zs-no-decrease");
+                 $(".zs-increase").removeClass("zs-no-increase");
+                 if (maxGoodsNumber == 1) {
+                     $(".zs-increase").addClass("zs-no-decrease");
+                 }
+             }else if(checkGoodsNumber <1 ){
+                 goodsNumber = 1;
+                 tipsObj.html('至少购买一件');
+                 tipsObj.css('display', 'block');
+                 $(".zs-increase").addClass("zs-no-increase");
+                 $(".zs-decrease").removeClass("zs-no-decrease");
+                 if (maxGoodsNumber == 1) {
+                     $(".zs-decrease").addClass("zs-no-decrease");
+                 }
+             }else if(checkGoodsNumber ==1) {
+                 goodsNumber = 1;
+                 tipsObj.css('display', "none");
+                 $(".zs-decrease").addClass("zs-no-decrease");
+                 $(".zs-increase").removeClass("zs-no-increase");
+                 if (maxGoodsNumber == 1) {
+                     $(".zs-increase").addClass("zs-no-increase");
+                 } 
+             } else if(checkGoodsNumber == maxGoodsNumber) {
+                 tipsObj.css('display', "none");
+                 goodsNumber = maxGoodsNumber;
+                 $(".zs-increase").addClass("zs-no-increase");
+                 $(".zs-decrease").removeClass("zs-no-decrease");
+                 if (maxGoodsNumber == 1) {
+                     $(".zs-decrease").addClass("zs-no-decrease");
+                  }
+            } else if(checkGoodsNumber >= 100) {
+                 tipsObj.html('您所填写的数量超过库存');
+                 tipsObj.css('display', 'block');
+                 goodsNumber = checkGoodsNumber;
+                 $(".zs-increase").addClass("zs-no-increase");
+                 $(".zs-decrease").removeClass("zs-no-decrease");
+                 if (maxGoodsNumber == 1) {
+                     $(".zs-decrease").addClass("zs-no-decrease");
+              }
+            } else {
+                 tipsObj.css('display', "none");
+                 goodsNumber = checkGoodsNumber;
+                 $(".zs-decrease").removeClass("zs-no-decrease");
+                 $(".zs-increase").removeClass("zs-no-increase");
+                 if (maxGoodsNumber == 1) {
+                    $(".zs-decrease").addClass("zs-no-decrease");
+                    $(".zs-increase").addClass("zs-no-increase");
+                 } 
+             }
+             if(maxGoodsNumber==1){
+                  $("input[fn=zp-goods-number]").attr("readonly",true);
+             }
+             
+             // 将商品数量写到页面中
+             $("input[fn=zp-goods-number]").val(goodsNumber);    
+             
+          }
+          
+      });
+});
+   
+   
+$(function () {
+      // 点击商品数量增减按钮
+      $(".zs-increase, .zs-decrease").click(function () {
+		  // 如果当前上下选择器为不能选择，则返回假
+		  if ($(this).hasClass("zs-no-decrease") || $(this).hasClass("zs-no-increase")) {
+			  return;
+		  }
+		  // 获得当前商品数量
+		  var goodsNumber = $("#zp-goods-number").val();
+		  goodsNumber = parseInt(goodsNumber);
+		  // 获取当前选择状态
+		  var className = $(this).attr("class");
+		  if ('zs-increase' == className ) {	
+			  if(goodsNumber < 99)
+			  {
+				  checkGoodsNumber =goodsNumber + 1;
+			  }
+		  } else if("zs-decrease"==className){
+				  checkGoodsNumber =goodsNumber - 1;
+		  }
+		  jQuery.checkStyle(checkGoodsNumber);
+      });
+})
+
+function to_collection(goods)
+{
+jQuery.ajax({
+    type: 'post',
+    url: '$!base/ajaxcollect.html?aa='+Math.random(),
+    data: {goods:escape(goods), insert:"INSERT"},
+    dataType: 'json',
+    success: function (json) {
+        if (json != null) 
+		{
+            if (json.result == "success") 
+			{
+                  $(".collection").text("已收藏");
+			      $(".collection").removeAttr("href");
+                  return;
+            }
+            else 
+			{
+				$( "#login_dialog" ).dialog({
+					modal: true,
+					width: 280,
+					height: 300,
+					buttons: {}
+				});
+            }
+        }
+        else
+		{
+            
+			return;
+        }
+    },
+    error: function (xmlHttpRequest, textStatus, errorThrown) {
+        alert('调用接口失败，原因如下: ' + errorThrown);
+    }
+});
+}
+
+
+//加入购物车
+function addcart()
+{ 
+    jQuery.ajax({ url: '$!base/ajaxlogin.html',
+        　　data: { mtel: $("#username").val(),pwd:$("#pwd").val(), action:'checklogin'},
+        　　type: 'post',
+        　　dataType: 'json',
+        　　success: function(data) {
+            	if(data.result == 'success')
+            	{
+				   	//加入购物车
+					var sid = $("input[name=sid]").val();
+					var num = $("#zp-goods-number").val();
+	                jQuery.ajax({ url: '$!base/cartaddajax.html',
+                                                　　data: { sid: sid,type: 2, num:num},
+                                                　　type: 'post',
+                                                　　dataType: 'json',
+                                                　　success: function(data) {
+                                           if(data.result == "success")
+                                        	{
+                                			    $("#msg").show().animate({width: '250px'}, 200).fadeOut(1000, function(){$("#msg").css("width","0px")});
+                                        	    jQuery.ajax({
+                                                    type: 'post',
+                                                    url: '$!base/cartnum/calc.html',
+                                                    dataType: 'json',
+                                                    success: function (json) {
+                                                        if (json != null) 
+                                                		{
+                                                            if (json.result == "success") 
+                                                			{
+                                                			    $(".shoppingcart_but").text("购物车("+json.obj+")");
+                                            					$(".sidebox:first").find("span").html(json.obj);
+                                                			}
+                                                        }
+                                                        else
+                                                		{
+                                                        }
+                                                    },
+                                                    error: function (xmlHttpRequest, textStatus, errorThrown) {
+                                                        //alert('调用接口失败，原因如下: ' + errorThrown);
+                                                    }
+                                                });
+											}
+    					},
+                                                　　error: function() {alert("异常！");}
+                    });
+            	}
+            	else
+    			{
+            	    //未登录
+					$( "#login_dialog" ).dialog({
+					modal: true,
+					width: 280,
+					height: 300,
+					buttons: {}
+				});
+            	}
+    			
+        },
+        　　error: function() {
+            alert("异常！");
+        }
+    });
+
+}
+</script>
+</html>

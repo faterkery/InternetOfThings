@@ -1,0 +1,32 @@
+<div id="site-nav" class="site-nav">
+  <div class="layout">
+   <span>您好，欢迎来到中国螺杆产业公共服务平台！客服热线：0580-8688111</span> 
+   <ul id="login_nav">
+     #if(!$shopUser)
+     <li class="rigline"><a href="$!base/shopuser/login.html" title="请登录" class="fblue1">请登录</a></li>
+     <li><a href="$!base/register.html" title="免费注册" class="fblue1">免费注册</a></li>
+     #else
+       <li class="rigline" title="$!shopUser.mtel">$!shopUser.mtel</li>
+	   <li><a href="$!base/shopuser/login.html?logout=y" title="登出" class="fblue1">退出</a></li> 
+	   <li><a href="$!base/centre/orderlist.html" title="用户中心">用户中心</a></li> 
+     #end
+     <li class="last"><a href="javascript:void(0)" onclick="AddFavorite(window.location,document.title)" title="收藏网站">收藏网站</a></li>
+   </ul>
+  </div>
+</div>
+<script type="text/javascript" language="javascript">
+    //加入收藏
+        function AddFavorite(sURL, sTitle) {
+            sURL = encodeURI(sURL); 
+        try{   
+            window.external.addFavorite(sURL, sTitle);   
+ 
+        }catch(e) {   
+            try{   
+                window.sidebar.addPanel(sTitle, sURL, "");   
+            }catch (e) {   
+                alert("加入收藏失败，请使用Ctrl+D进行添加,或手动在浏览器里进行设置.");
+            }   
+        }
+    }
+</script>

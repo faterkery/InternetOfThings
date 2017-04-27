@@ -1,0 +1,230 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+
+<script type="text/javascript">
+function beizhu(id){
+
+   $("#beizid").val(id);
+   var be = $("#bzhuremarks_"+id).val();
+   $("#remarks").val(be);
+   $( "#remarks_edit" ).dialog({
+        	modal: true,
+        	width: 580,
+        	height: 300,
+        	buttons: {
+			          确定: function(){
+					  $(this).dialog("close");
+        		  }
+				  
+			}
+        });
+
+
+
+}
+</script>
+
+<body>
+<div id="container"> 
+  <!--site-nav开始-->
+#parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+  <!--header开始-->
+ <div id="header">
+    <div class="layout">
+      <div id="logo"><a href="$!base/index.html" title="E螺杆——中国螺杆产业功能服务平台"><img src="$!base/eportalstyle/images/logo.png" width="387" height="88" /></a></div>
+      <div class="step fr step2">
+        <ul>
+        </ul>
+      </div>
+    </div>
+  </div>
+<!--header结束--> 
+  
+  <div id="main_shopping">
+    <div class="layout">
+      <div class="shopping_list">
+        <ul class="menu5"><h1>订单信息</h1></ul>
+        <div class="maincon box1 bg_gray1 pd_procon">
+         <div class="cart_box">
+			<form id="orderform" name="orderform" action="$!base/order/place.html" method="post" >
+				<input type="hidden" name="token" value="$!token" />
+
+             <div class="confirm_content">
+               
+                 <div class="order_fill_item">
+                   <div #if($!biz.orderState == 0 )class="order_step1" #end></div>
+                   <div #if($!biz.orderState == 1 )class="order_step2" #end></div>
+                   <div #if($!biz.orderState == 2 )class="order_step3" #end></div>
+                   <div #if($!biz.orderState == 3 )class="order_step3" #end></div>
+                   <div #if($!biz.orderState == 4 )class="order_step4" #end></div>
+                 </div>
+               
+				 <div class="order_fill_item">
+				  <div class="consignee_show fill_item_show">
+                     <h4 style="line-height:29px;">订单状态：
+                       <span>#if($!biz.orderState == 0 )等待确认 #end
+							#if($!biz.orderState == 1 )等待付款 #end
+                            #if($!biz.orderState == 2 )已付款  #end
+                            #if($!biz.orderState == 3 )已发货 #end
+                            #if($!biz.orderState == 4 )交易完成#end
+                            #if($!biz.orderState == 5 )退/换货中#end
+                            #if($!biz.orderState == 6 )订单关闭 #end
+						    #if($!biz.orderState == 3 )
+								<a href="$!base/ordershd/print.html?sid=$!vMUtils.encrypt($!biz.id)" target="_blank" class="print" title="打印送货单">打印送货单</a>
+							#end
+					   </span>
+					 </h4>
+                  </div>
+               </div>
+			   
+               <div class="order_fill_item">
+				  <div class="consignee_show fill_item_show">
+                     <h4>收货人信息</h4>
+                     <ul class="address_list">
+						<li>
+							 <span class="marker-tip">寄送至</span>
+							 #if($!address)
+                                <label>$!address.userName $!address.address $!address.telephone</label>
+							 #else
+								<label>$!biz.receiveName $!biz.receiveAddress $!biz.receiveMtel</label>
+							 #end
+                       </li>
+                     </ul>
+                  </div>
+               </div>
+               
+               <div class="order_fill_item">
+                  <div class="goods_show fill_item_show">
+                     <h4>商品信息</h4>
+                     <table class="goods_list mb10" style="margin-left:0; width:100%;">
+                       <tr class="t_head">
+                       <td>序号</td>
+                         <td>品名</td>
+                         <td>品牌</td>
+                         <td>厂家</td>
+                         <td>工艺</td>
+                         <td>规格</td>
+                         <td>长度</td>
+                         <td>单价</td>
+                         <td>购买长度</td>
+                         <td>件</td>
+                         <td>支</td>
+                         <td>数量/预发重量</td>
+                         <td>小计</td>
+                         <td>备注</td>
+                       </tr>
+					   #foreach($obj in $itemShowList)
+                       <tr>
+                        <td align="center">$!obj.xid</td>
+                         <td align="center">
+                           <input type="hidden" name="cartid" value="$obj.cart.id" />
+                           #if($obj.type==1)
+                             $!vMUtils.getResourceValue($!obj.goods.nameId)
+                           #else
+                             $!obj.goods.name
+						   #end 
+                         </td>
+                         <td align="center">
+                           #if($obj.type==2)
+                             $!vMUtils.getResourceValue($!obj.goods.brandId)
+						   #end 
+                         </td>
+                         <td align="center">
+                            $!vMUtils.getResourceValue($!obj.goods.factoryId)
+                         </td>
+                         <td align="center">
+                           #if($obj.type==1)
+                             $!vMUtils.getResourceValue($!obj.goods.craftsId)
+						   #end 
+                         </td>
+                         <td align="center">
+                           #if($obj.type==1)
+                             $!vMUtils.getResourceValue($!obj.goods.specId)
+                           #else
+                             $!obj.goods.spec
+						   #end 
+                         </td>
+                         <td align="center">
+                           #if($obj.type==1)
+                             $!obj.goods.length
+						   #end 
+                         </td>
+                         <td align="center" class="price">
+                           $!obj.goods.price
+                         </td>
+                         <td align="center">
+						   #if($obj.type==1 && $obj.goods.craftsId == 10766)
+						     $!obj.cart.lengthBuy
+						   #end
+						 </td>
+						 <td align="center">
+						   #if($obj.type==1 && $obj.goods.craftsId != 10766)
+						     $!obj.cart.jiannum
+						   #end
+						 </td>
+						 <td align="center">
+						   #if($obj.type==1)
+							 $!obj.cart.zhinum
+						   #end
+						 </td>
+                         <td align="center">
+							 $!vMUtils.changeBigNumber2String($!obj.cart.num)
+						 </td>
+                         <td align="center" class="price">
+                           $!vMUtils.changeBigNumber2String($!obj.xiaoji)
+                         </td>
+                         <input type="hidden" id="bzhuremarks_$!obj.cart.id" value="$!obj.cart.remarks" />
+                         <td align="center">
+                            #if($!obj.cart.remarks!="")
+                         <a onclick="beizhu($obj.cart.id)" id ="$obj.cart.id" class="remarks2" title="已备注"></a>
+                         #else
+                         <a onclick="beizhu($obj.cart.id)" id ="$obj.cart.id"  title="未备注"></a>
+                         #end
+                         </td>
+                       </tr>
+					   #end
+                     </table>
+					 #if($!order.remark)
+                     <div class="btnline ordernote" style="margin-left:0;"><span style="color:#000;">总备注：</span>$!order.remark</div>
+					 #end
+                  </div>
+               </div>
+               #if($biz.platformRemark)
+			   <div class="order_fill_item">
+                 <h4>平台备注</h4>
+                 <div class="total" style="float:left;">
+                   $!biz.platformRemark
+                 </div>
+               </div>
+			   #end
+			   <div class="order_fill_item" style="border-bottom:0;">
+                  <h4>结算信息</h4>
+                  <div class="total">
+                     <div class="num">参考总价：<span class="price"><label class="sm">￥</label>$!vMUtils.changeBigNumber2String($!total)</span></div>
+                  </div>
+               </div>    
+            </div>
+            </form>
+         </div>
+        </div>    
+      </div>
+    </div>
+  </div>
+  
+  <!--service开始-->
+ #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--notice结束-->
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+</div>
+
+<div id="remarks_edit" title="备注" class="beizorder_fill_item" style="display:none;">
+  <form name="beizajaxaddrssform" id="beizajaxaddrssform" method="post" action="$!base/beizorder/placeinit.html?method=ajaxUpdated" >
+  <input type="hidden" name="id" id="beizid" value="" />
+  <textarea name="remarks" id="remarks" cols="" rows="" class="remark_textarea" readonly="readonly"></textarea>
+  </form>
+</div>
+
+</body>
+</html>

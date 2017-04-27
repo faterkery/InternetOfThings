@@ -1,0 +1,107 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<body>
+<div id="container"> 
+  <!--site-nav开始-->
+  #parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+
+  <!--header开始-->
+  #parse( "/WEB-INF/eportalpages/common/header.vm" )
+  <!--header结束--> 
+
+
+<div id="main_member">
+    <div class="layout">
+      #parse( "/WEB-INF/eportalpages/common/centre_menu.vm" )
+      <div class="member_bd box1 fr">
+        <ul class="menu"><h1>密码修改</h1></ul>
+        <form name="mform" id="mform" action="$!base/centre/pwdmodify.html" method="post">
+		<input type="hidden" name="insert" value="INSERT" />
+        <div class="form_bd">
+          <ul>
+           <li><label><span class="red">*</span>旧密码：</label><input name="oldpwd" id="oldpwd" type="password" class="text text3" size="30" /><i></i></li>
+           <li><label><span class="red">*</span>设置新密码：</label><input name="pwd" id="pwd" type="password" class="text text3"  size="30" /><i></i></li>
+           <li><label><span class="red">*</span>确认新密码：</label><input name="pwd2" id="pwd2" type="password" class="text text3" size="30" /><i></i></li>
+           <li><label>&nbsp;</label><input name="" type="button" value="确认" class="submit_btn" onclick="tosubmit()" /></li>
+           <li id="errorinfo" style="color:#f00;"><label>&nbsp;</label>
+	       #if($updated == "0000")
+			修改成功
+		   #end
+		   #if($updated == "-1")
+			旧密码不正确
+		   #end
+		   #if($updated == "-2")
+			密码复杂度不够，不能是纯数字或者纯字母
+		   #end
+		   </li>
+          </ul>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+  
+  <!--con_side开始-->
+  #parse( "/WEB-INF/eportalpages/common/con_side.vm" )
+  <!--con_side结束--> 
+  
+  
+<script type="text/javascript">
+function tosubmit()
+{
+    $("#errorinfo").html("");
+    var oldpwd = $("#oldpwd");
+    var pwd = $("#pwd");
+    var pwd2 = $("#pwd2");
+	
+	if(jQuery.trim(oldpwd.val())== "")
+	{
+	   oldpwd.next().html("请填写旧密码");
+	   return;
+	}
+	else{
+		oldpwd.next().empty();
+	}
+	
+	if(jQuery.trim(pwd.val())== "")
+	{
+	   pwd.next().html("请填写新密码");
+	   return;
+	}
+	else{
+		pwd.next().empty();
+	}
+	
+	if(oldpwd.val() == pwd.val())
+	{
+	   pwd.next().html("新密码不能和旧密码相同");
+	   return;
+	}
+	else{
+		pwd.next().empty();
+	}
+	
+	if(pwd.val() != pwd2.val())
+	{
+	   pwd2.next().html("确认密码不匹配");
+	   return;
+	}
+	else{
+		pwd2.next().empty();
+	}
+	$("#mform").submit();	
+}
+</script>
+  
+  </div>
+</body>
+</html>  
+  

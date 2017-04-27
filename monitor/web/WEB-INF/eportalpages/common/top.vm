@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="icon" href="$!base/eportalstyle/images/eluogan.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="$!base/eportalstyle/images/eluogan.ico" type="image/x-icon"/>
+<title>中国螺杆产业公共服务平台</title>
+<script type="text/javascript" src="$!base/eportalstyle/js/jquery 1.7.1.js"></script>
+<script type="text/javascript" src="$!base/eportalstyle/js/jquery.min.js"></script>
+<link href="$!base/eportalstyle/jquerydialog/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$!base/eportalstyle/jquerydialog/jquery-ui.js"></script>
+<link href="$!base/eportalstyle/css/global.css" rel="stylesheet" type="text/css" />
+<link href="$!base/eportalstyle/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<script type="text/javascript">	
+$(document).ready(function(){
+    jQuery.ajax({ url: '$!base/ajaxlogin.html',
+        　　data: {action:'checklogin'},
+        　　type: 'post',
+        　　dataType: 'json',
+        　　success: function(data) {
+            	if(data.result == 'success')
+            	{
+            	    $("#login_nav").empty();
+    			    $("#login_nav").append("<li class=\"rigline\">"+data.obj+"</li>");
+    				$("#login_nav").append("<li><a href=\"$!base/shopuser/login.html?logout=y\" class=\"fblue1\">退出</a></li>");
+            		$("#login_nav").append("<li><a href=\"$!base/centre/orderlist.html\">用户中心</a></li>");
+    				$("#login_nav").append("<li class=\"last\"><a href=\"javascript:void(0)\" onclick=\"AddFavorite(window.location,document.title)\">收藏网站</a></li>");
+            	}
+        },
+        　　error: function() {
+            //alert("异常！");
+        }
+    });
+});
+</script>

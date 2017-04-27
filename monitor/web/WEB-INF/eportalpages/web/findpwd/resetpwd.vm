@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>中国螺杆产业公共服务平台</title>
+<link href="$!base/eportalstyle/css/global.css" rel="stylesheet" type="text/css" />
+<link href="$!base/eportalstyle/css/login.css"  rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$base/eportalstyle/js/jquery 1.7.1.js"></script>
+</head>
+
+<body style="background-color:#F8F8F8;">
+<div id="container"> 
+  <div class="header">
+    <a href="$!base/index.html" title="E螺杆——中国螺杆产业功能服务平台"><img src="$!base/eportalstyle/images/logo.png" width="387" height="88" /></a>
+    <h1>重置密码</h1>
+  </div>
+  <div class="register_box box1">
+    <div class="reg_from fl">
+      <ul class="menu"><h2>请输入的新密码</h2></ul>
+      <form name="resetpwdform" id="resetpwdform" method="post" action="$!base/resetpwd.html" >
+	  <input type="hidden" name="insert" value="insert" />
+	  <input type="hidden" name="mtel" value="$!mtel" />
+	  <input type="hidden" name="modifykey" value="$!smodifykey" />
+	  
+      <ul class="form">
+        <li><label><span>*</span>新密码：</label><input name="pwdtext" id="pwdtext" type="password" class="text text1" size="30" /></li>
+        <li><label><span>*</span>确认新密码：</label><input name="pwdtext2" id="pwdtext2" type="password" class="text text1" size="30" /></li>
+        <li class="last"><label>&nbsp;</label><input name="" type="button" value="确 定 密 码" class="btn"  onclick="tosubmit()" /></li>
+        <li id="errorinfo" style="color:#f00;"><label>&nbsp;</label>
+	       #if($updated == "0000")
+			修改成功
+		   #end
+		   
+		   #if($updated == "-2")
+			密码复杂度不够，不能是纯数字或者纯字母
+		   #end
+		   </li>
+      </ul>
+      </form>
+    </div>
+  </div>
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+</div>
+
+<script type="text/javascript">
+function tosubmit()
+{
+    $("#errorinfo").html("");
+	var pwdtext = $("#pwdtext").val();
+	var pwdtext2 = $("#pwdtext2").val();
+	if(pwdtext == "")
+	{
+	   $("#errorinfo").html("<label>&nbsp;</label>请填写新密码");
+	   return;
+	}
+	if(pwdtext != pwdtext2)
+	{
+	   $("#errorinfo").html("<label>&nbsp;</label>确认密码不匹配");
+	   return;
+	}
+	$("#resetpwdform").submit();	
+}
+</script>
+
+</body>
+</html>

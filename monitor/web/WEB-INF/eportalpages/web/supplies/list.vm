@@ -1,0 +1,307 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+
+<script type="text/javascript" src="$base/eportalstyle/js/jquery.blockUI.js"></script><!--blockui-->
+<script type="text/javascript">
+$(document).ready(function(){
+    //ajajx loading效果
+	$(document).ajaxStart(function(){
+		jQuery.blockUI({
+	    	message: '<img src="$base/eportalstyle/images/loading11.gif" style="text-align:center; border:none;margin:0px;" />',
+			css:{padding:'20px 0',
+		        margin:0,
+		        width:'150px', 
+		        top:'40%', 
+		        left:'40%', 
+		        textAlign:'center', 
+		        color:'#000', 
+		        border:'1px solid #F9F9F9',
+		        backgroundColor:'#fff',
+		        borderRadius:'10px'
+		       
+	            },
+	    	overlayCSS: {
+	                        backgroundColor: "#fff",
+	                        opacity:"0.1"
+	                    }
+	    });
+		
+	  });
+	  $(document).ajaxStop(function(){
+		jQuery.unblockUI();
+	  });
+	  
+	  $(document).ajaxSuccess(function(){
+		jQuery.unblockUI();
+	  });
+});
+
+//登录
+function ajaxlogin()
+{
+    var returnurl = $("#returnurl");
+    var name = $("#username");
+	if(jQuery.trim(name.val())=="" || jQuery.trim(name.val())=="手机号")
+	{
+	    $(".tip").attr("class", "tip");
+	    $(".tip").html("手机号不能为空");
+		return;
+	}
+	else
+	{
+	    $(".tip").attr("class", "tip none");
+		$(".tip").empty();
+	}
+	
+	var pwd =  $("#pwd");
+	if(jQuery.trim(pwd.val())=="")
+	{
+	    $(".tip").attr("class", "tip");
+	    $(".tip").html("密码不能为空");
+		return;
+	}
+	else
+	{
+	    $(".tip").attr("class", "tip none");
+		$(".tip").empty();
+	}
+	var autologin = 0;
+	if($("#autologin").prop("checked"))
+	{
+	    autologin = 1;
+	}
+	
+ jQuery.ajax({ url: '$!base/ajaxlogin.html',
+    　　data: { mtel: $("#username").val(),pwd:$("#pwd").val(),action:'login'},
+    　　type: 'post',
+    　　dataType: 'json',
+    　　success: function(data) {
+        	if(data.result == "success")
+        	{
+			    $("#login_nav").empty();
+			    $("#login_nav").append("<li class=\"rigline\">"+data.obj+"</li>");
+				$("#login_nav").append("<li><a href=\"$!base/shopuser/login.html?logout=y\" class=\"fblue1\">退出</a></li>");
+        		$("#login_nav").append("<li><a href=\"$!base/centre/orderlist.html\">个人中心</a></li>");
+				$("#login_nav").append("<li class=\"last\"><a href=\"javascript:void(0)\" onclick=\"AddFavorite(window.location,document.title)\">收藏网站</a></li>");
+				$("#login_dialog").dialog("close");
+        		return;
+        	}
+        	else
+			{
+        	    $(".tip").attr("class", "tip");
+	            $(".tip").html("手机号码或密码错误");
+        		return;
+        	}
+			
+    },
+    　　error: function() {
+        alert("异常！");
+    }
+});
+}
+//加入购物车
+function addcart(sid)
+{ 
+    jQuery.ajax({ url: '$!base/ajaxlogin.html',
+        　　data: { mtel: $("#username").val(),pwd:$("#pwd").val(), action:'checklogin'},
+        　　type: 'post',
+        　　dataType: 'json',
+        　　success: function(data) {
+            	if(data.result == 'success')
+            	{
+            	   //加入购物车
+	                jQuery.ajax({ url: '$!base/cartaddajax.html',
+                                                　　data: { sid: sid,type: 2},
+                                                　　type: 'post',
+                                                　　dataType: 'json',
+                                                　　success: function(data) {
+                                           if(data.result == "success")
+                                        	{
+                                			    $("#msg").show().animate({width: '250px'}, 200).fadeOut(1000, function(){$("#msg").css("width","0px")});
+                                        	    jQuery.ajax({
+                                                    type: 'post',
+                                                    url: '$!base/cartnum/calc.html',
+                                                    dataType: 'json',
+                                                    success: function (json) {
+                                                        if (json != null) 
+                                                		{
+                                                            if (json.result == "success") 
+                                                			{
+                                                			    $(".shoppingcart_but").text("购物车("+json.obj+")");
+                                            					$(".sidebox:first").find("span").html(json.obj);
+                                                			}
+                                                        }
+                                                        else
+                                                		{
+                                                        }
+                                                    },
+                                                    error: function (xmlHttpRequest, textStatus, errorThrown) {
+                                                        //alert('调用接口失败，原因如下: ' + errorThrown);
+                                                    }
+                                                });
+											}
+    					},
+                                                　　error: function() {alert("异常！");}
+                    });
+            	}
+            	else
+    			{
+            	    //未登录
+					$( "#login_dialog" ).dialog({
+					modal: true,
+					width: 280,
+					height: 300,
+					buttons: {}
+				});
+            	}
+    			
+        },
+        　　error: function() {
+            alert("异常！");
+        }
+    });
+
+}
+$(document).ready(function(){
+  $("#pwdshow").focus(function(){
+      $(this).hide();
+	  $("#pwd").show();
+	  $("#pwd").focus();
+  });
+  
+  $("#pwd").blur(function(){
+      if(jQuery.trim($(this).val()) =="")
+      {
+          $(this).hide();
+    	  $("#pwdshow").show();
+      } 
+  });
+});
+</script>
+
+
+<body>
+#set($urlPre = "$!base/suppliesShow.html?method=list")
+<div id="container"> 
+  <!--site-nav开始-->
+  #parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+
+  <!--header开始-->
+  #parse( "/WEB-INF/eportalpages/common/header.vm" )
+  <!--header结束--> 
+
+  <!--mainnav开始-->
+  #parse( "/WEB-INF/eportalpages/common/main_nav.vm" )
+  <!--mainnav结束--> 
+
+  <!--main开始-->
+  <div id="main" class="layout">
+    <div class="newpage mrg_t15 mrg_b15 fl">当前所在位置：<a href="$!base/index.html" title="首页">首页</a> > 耗材供应</div>
+      <div class="toolbar box1 fl">
+		<form name="searchForm1" id="searchForm1" method="post" action="$!base/suppliesShow.html?method=list">
+        <div class="searchbox">
+        <div class="search pro">
+          <label>名称</label> 
+          <input class="inp_srh" name="name" value="$!name" >   
+		  <div class="nice-select" name="nice-select">     
+            <input type="text" name="classIdshow" value="#if($classIdshow)$classIdshow #else 类别 #end" readonly>
+			<input type="hidden" name="classId" id="classId" value="$!classId" >
+            <ul>
+			  <li data-value="" >类别</li>
+              #foreach($obj in $hcTypeList)
+			  <li data-value="$!obj.id" #isSelected("$!obj.id" $classId )>$!obj.value</li>
+			  #end
+            </ul>
+          </div>
+          <div class="nice-select" name="nice-select">   
+            <input type="text" value="#if($brandIdshow)$brandIdshow #else 品牌 #end" name="brandIdshow" readonly>
+			<input type="hidden" name="brandId" value="$!brandId">
+            <ul>
+				<li data-value="" >品牌</li>
+              #foreach($obj in $hcBrandList)
+			  <li data-value="$!obj.id" #isSelected("$!obj.id" $brandId )>$!obj.value</li>
+              #end
+            </ul>
+          </div>
+          <div class="nice-select" name="nice-select">  
+            <input type="text" value="#if($factoryIdshow)$factoryIdshow #else 厂家 #end" name="factoryIdshow" readonly>
+			<input type="hidden" name="factoryId" value="$!factoryId" >
+            <ul>
+			  <li data-value="" >厂家</li>
+              #foreach($obj in $hccjList)
+			  <li data-value="$!obj.id" #isSelected("$!obj.id" $factoryId )>$!obj.value</li>
+			  #end
+            </ul>
+          </div>  
+          <label>规格</label> 
+          <input class="inp_srh" name="gg" value="$!gg"> 
+          <input class="buttonSearch" type="submit" name="submit" value="搜索">
+         </div>
+        </div>  
+        </form>
+      </div>
+	  
+      <div class="product box2 fl mrg_t15">
+        <ul>
+          #foreach($biz in $!suppliesList)
+          <li>
+            <div class="product_box">
+              <a href="$!base/suppliesShow.html?method=detail&sid=$!vMUtils.encrypt($biz.id)" title="$!biz.name"><img src="$!base$!biz.img"></a>
+              <div class="bit"><a href="$!base/suppliesShow.html?method=detail&sid=$!vMUtils.encrypt($biz.id)" title="$!biz.name">$!biz.name</a></div>
+              <div class="showprice">¥$!biz.price</div>
+              <input name="" type="button" value="加入购物车" class="buy" title="加入购物车" onClick="addcart('$!vMUtils.encrypt($biz.id)')"/>
+            ##<a href="javascript:void(0)" class="buy addcar" title="加入购物车">加入购物车</a>
+            </div>
+          </li>
+          #end
+        </ul>
+		#parse( "/WEB-INF/eportalpages/common/eportal_page.vm" )
+      </div>
+    <div class="bottom_banner mrg_t15 fl"><img src="$base/eportalstyle/images/bottom_banner1.jpg" width="1200" height="154" /></div>
+  </div>
+  <!--main结束-->
+  
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+  
+ 
+  </div>
+ 
+  <!--con_side开始-->
+  #parse( "/WEB-INF/eportalpages/common/con_side.vm" )
+  <!--con_side结束--> 
+ 
+ 
+ 
+  <div id="login_dialog" title="登录" style="display:none;">
+    <div class="frmbox">
+	  <ul class="conbox">
+	    <li>
+	      <div class="putbox">
+	        <em></em>
+	        <input name="username" id="username" type="text" class="input1" value="手机号" onfocus="if(this.value=='手机号') {this.value='';}" onblur="if(this.value=='') {this.value='手机号';}"/>
+	      </div>
+	    </li>
+	    <li class="psw">
+	      <div class="putbox">
+	        <em></em>
+	        <input name="" id="pwdshow" type="text" class="input1" value="密码" />
+	        <input name="pwd" id="pwd" type="password" class="input1" value=""  style="display:none;"/>
+	      </div>
+	    </li>
+	    <li>
+	      <span class="fl"><input name="autologin" id="autologin" type="checkbox" value="1" />&nbsp;自动登录</span>
+	      <span class="fr"><a href="$!base/findpwd.html" title="忘记密码">忘记密码</a>&nbsp; | &nbsp;<a href="$!base/register.html" title="免费注册">免费注册</a></span>
+	    </li>
+	    <li class="btnline"><input name="" type="button" class="btnbox" value="立即登录" onclick="ajaxlogin()"/></li>
+	    <li class="tip none">手机号码或密码错误</li>
+	  </ul>            
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="commonDao" class="com.tyloo.fw.dao.CommonDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="vMUtils" class="com.tyloo.web.VMUtils" singleton="true">
+		<property name="memberService">
+			<ref bean="memberService" />
+		</property>
+		<property name="moduleService">
+			<ref bean="moduleService" />
+		</property>
+		<property name="groupsService">
+			<ref bean="groupsService" />
+		</property>
+		<property name="roleService">
+			<ref bean="roleService" />
+		</property>
+		<property name="roleModuleService">
+			<ref bean="roleModuleService" />
+		</property>
+		<property name="resourcesService">
+			<ref bean="resourcesService" />
+		</property>
+	</bean>
+
+	<bean id="memberService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.tyloo.modules.member.MemberService">
+				<property name="dao">
+					<ref bean="commonDao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="resourcesService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.tyloo.modules.member.ResourcesService">
+				<property name="dao">
+					<ref bean="commonDao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="groupsService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.tyloo.modules.member.GroupsService">
+				<property name="dao">
+					<ref bean="commonDao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="roleModuleService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.tyloo.modules.member.RoleModuleService">
+				<property name="dao">
+					<ref bean="commonDao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="roleService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.tyloo.modules.member.RoleService">
+				<property name="dao">
+					<ref bean="commonDao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="moduleService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.tyloo.modules.member.ModuleService">
+				<property name="dao">
+					<ref bean="commonDao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="shopUserService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.tyloo.modules.service.ShopUserService">
+				<property name="dao">
+					<ref bean="commonDao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="recommendService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.tyloo.modules.member.RecommendService">
+				<property name="dao">
+					<ref bean="commonDao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,90 @@
+#renhehead()
+#set($urlPre = "$base/supplies/actions.html?method=list&menuname=$menuname")
+<script>
+function  changeSortNum(id,num){	
+	 var urlGet="$base/supplies/actions.html"
+	 if(id!=""&&num!="")
+	  {	 
+	    jQuery.get(urlGet, {method:"updateSortNum",sid:id,sortNum:num},function(result){
+		    });
+	    }
+	}
+</script>
+<div id="main" class="w100 bgmain">
+   <div class="maintopmenu">
+      <ul class="tit">螺杆耗材</ul>      
+      <div class="btnpz">
+          <a href="#" class="btn_add" onclick="window.location='$base/supplies/actions.html?method=insert&menuname=$menuname'">添加耗材</a>
+      </div>
+   </div>
+   
+   <form name="searchForm" method="post" action="$base/supplies/actions.html?method=list&menuname=$!menuname"> 
+     <input type = hidden name="searchAction" value=y>
+	   <div class="ToolSearch">
+	     <div class="ToolSearchBar">
+	             名称:
+	     <input name="name" id="name" type="text" size="20" class="input1" value="$!name"/>
+	     <input type=submit name="search" title="搜 索" value="搜 索 " class="btn_pic" />
+	    </div>
+	  </div>
+	</form> 
+
+   <div class="maincon">
+      <table width="100%" border="0" cellpadding="0" cellspacing="1" class="tb1" onmouseover="changeto()" onmouseout="changeback()">
+        <tr>
+          <td class="cell1">排序</td>
+          <td class="cell1">名称</td>
+          <td class="cell1">类别</td>
+          <td class="cell1">品牌</td>
+          <td class="cell1">厂家</td>
+          <td class="cell1">规格</td>
+          <td class="cell1">价格</td>
+          <td class="cell1">创建时间</td>
+          <td class="cell1">状态</td>		
+          <td class="cell1">操作</td>
+        </tr>
+        #set($indexNum=0)
+		#foreach($biz in $bizObjList)
+        <tr #if($indexNum%2==0)class="cell2" #else class="cell3" #end>
+          <td title="$!biz.sortNum"><input name="sort_num$!biz.id" value="$!biz.sortNum" onblur="changeSortNum($!biz.id,this.value)" size="5"/></td>
+          <td title="$!biz.name">$!biz.name</td>
+          <td title="$vMUtils.getResourceValue($!biz.classId)">$vMUtils.getResourceValue($!biz.classId)</td>
+          <td title="$vMUtils.getResourceValue($!biz.brandId)">$vMUtils.getResourceValue($!biz.brandId)</td>
+          <td title="$vMUtils.getResourceValue($!biz.factoryId)">$vMUtils.getResourceValue($!biz.factoryId)</td>
+          <td title="$!biz.spec">$!biz.spec</td>
+          <td title="$!biz.price">$!biz.price</td>
+          <td title="$!vMUtils.dateTimeFormateSimple($!biz.timeCreate)">$!vMUtils.dateTimeFormateSimple($!biz.timeCreate)</td>
+          <td>
+	          #if($!biz.isPublished==0) 
+	          <span class="down">下架</span>
+	          #elseif($!biz.isPublished==1) 
+	          <span class="up">上架</span> 
+	          #end
+          </td>
+          <td>
+		    <a href="$base/supplies/actions.html?method=update&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname" class="fblue1 mrg_zy5">编辑</a>
+			<a href="$base/supplies/actions.html?method=detail&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname" class="fblue1 mrg_zy5">详细</a>
+			<!--
+			<a href="$base/supplies/actions.html?method=delete&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname" class="fblue1 mrg_zy5" onclick="return confirm('确定删除吗？');">刪除</a>
+			-->
+			#if($!biz.isPublished==1)
+			<a href="$base/supplies/actions.html?method=audit&sid=$vMUtils.encrypt($biz.id)&isPublished=true&menuname=$menuname" class="fblue1 mrg_zy5" onclick="return confirm('确定下架吗？');"><span class="down">下架</span></a>
+			#end
+			#if($!biz.isPublished==0)
+			<a href="$base/supplies/actions.html?method=audit&sid=$vMUtils.encrypt($biz.id)&isPublished=false&menuname=$menuname" class="fblue1 mrg_zy5" onclick="return confirm('确定上架吗？');"><span class="up">上架</span> </a>
+		    #end
+		  </td>
+        </tr>
+        #set($indexNum=$indexNum+1)
+		  #end
+		  #if($indexNum<10)
+		    #set($indexNum=10-$indexNum)
+		      #foreach($foo in [1..$indexNum])
+		<tr #if($foo%2==0)class="cell3" #else class="cell2" #end><td colspan="10">&nbsp;</td></tr>
+		      #end
+		    #end
+      </table>
+      #parse( "/WEB-INF/pages/common/page.vm" )
+   </div>
+</div>
+#renheend()

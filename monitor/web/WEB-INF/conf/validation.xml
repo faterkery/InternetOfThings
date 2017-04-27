@@ -1,0 +1,32 @@
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+<form-validation>
+	<!-- ========== Default Language Form Definitions ===================== -->
+	<formset>
+		<form name="loginForm">
+			<field property="loginName" depends="required">
+				<arg key="loginForm.label.loginName" />
+			</field>
+			<field property="password" depends="required">
+				<arg key="loginForm.label.password" />
+			</field>
+		</form>
+		
+		<form name="memberForm">
+			<field property="loginName" depends="required">
+				<arg key="memberForm.label.loginName" />
+			</field>
+			<field property="password" depends="required">
+				<arg key="memberForm.label.password" />
+			</field>
+		</form>
+		
+		<form name="resourcesForm">
+			<field property="value" depends="required">
+				<arg key="resourcesForm.label.value" />
+			</field>
+		</form>
+		
+	</formset>
+</form-validation>

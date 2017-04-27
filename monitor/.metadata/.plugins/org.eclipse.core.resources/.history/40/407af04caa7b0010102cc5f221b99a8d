@@ -1,0 +1,214 @@
+package com.renhenet.web.util;
+
+import java.math.BigDecimal;
+
+public class DataEncoding {
+	public String waterDataEncode(boolean isString, int dataLength, String data) {
+		data = data.trim();
+		byte[] sourceBytes = data.getBytes();
+
+		if (sourceBytes.length > dataLength) {
+			return null;
+		}
+		if (isString) {
+			byte[] dataBytes = data.getBytes();
+			byte[] outputByte = new byte[dataLength];
+			for (int i = 0; i < dataLength; i++) {
+				if (i < dataBytes.length) {
+					outputByte[i] = dataBytes[i];
+				} else {
+					outputByte[i] = 32;
+				}
+			}
+			return new String(outputByte);
+		} else {
+			return String.format("%0" + dataLength + ".2f", new Double(data)
+					.doubleValue());
+		}
+	}
+
+	public String waterDataParser(DataPackage dataPackage, int getLength) {
+		byte[] dataBytes = dataPackage.getDataByte();
+		byte[] outBytes = new byte[getLength];
+		byte[] sourceByte = new byte[dataBytes.length];
+		for (int i = 0; i < getLength; i++) {
+			outBytes[i] = 0;
+		}
+		for (int i = 0; i < dataBytes.length; i++) {
+			sourceByte[i] = 0;
+		}
+		for (int i = 0; i < getLength; i++) {
+			outBytes[i] = dataBytes[i];
+		}
+		for (int i = getLength; i < dataBytes.length; i++) {
+			sourceByte[i - getLength] = dataBytes[i];
+		}
+
+		String temp = new String(outBytes);
+		dataPackage.setDataByte(sourceByte);
+		return temp;
+	}
+
+	public String elecDataEncode(boolean isString, int dataLength, String data) {
+		data = data.trim();
+		byte[] sourceBytes = data.getBytes();
+
+		if (sourceBytes.length > dataLength) {
+			return null;
+		}
+		if (isString) {
+			byte[] dataBytes = data.getBytes();
+			byte[] outputByte = new byte[dataLength];
+			for (int i = 0; i < dataLength; i++) {
+				if (i < dataBytes.length) {
+					outputByte[i] = dataBytes[i];
+				} else {
+					outputByte[i] = 32;
+				}
+			}
+			return new String(outputByte);
+		} else {
+
+			BigDecimal bigDecimal = new BigDecimal(data);
+			bigDecimal = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP);
+
+			return String.format("%0" + dataLength + ".2f", bigDecimal
+					.doubleValue());
+		}
+	}
+
+	public String elecDataParser(DataPackage dataPackage, int getLength) {
+		byte[] dataBytes = dataPackage.getDataByte();
+		byte[] outBytes = new byte[getLength];
+		byte[] sourceByte = new byte[dataBytes.length];
+		for (int i = 0; i < getLength; i++) {
+			outBytes[i] = 0;
+		}
+		for (int i = 0; i < dataBytes.length; i++) {
+			sourceByte[i] = 0;
+		}
+		for (int i = 0; i < getLength; i++) {
+			outBytes[i] = dataBytes[i];
+		}
+		for (int i = getLength; i < dataBytes.length; i++) {
+			sourceByte[i - getLength] = dataBytes[i];
+		}
+
+		String temp = new String(outBytes);
+		dataPackage.setDataByte(sourceByte);
+		return temp;
+	}
+
+	public String gasDataEncode(boolean isString, int dataLength, String data) {
+		data = data.trim();
+		byte[] sourceBytes = data.getBytes();
+
+		if (sourceBytes.length > dataLength) {
+			return null;
+		}
+		if (isString) {
+			byte[] dataBytes = data.getBytes();
+			byte[] outputByte = new byte[dataLength];
+			for (int i = 0; i < dataLength; i++) {
+				if (i < dataBytes.length) {
+					outputByte[i] = dataBytes[i];
+				} else {
+					outputByte[i] = 32;
+				}
+			}
+			return new String(outputByte);
+		} else {
+			String outputString = String.format(
+					"%0" + (dataLength + 1) + ".2f", new Double(data)
+							.doubleValue());
+			return outputString.replace(".", "");
+		}
+	}
+	
+	/**
+	 * @Title: rechargeDataEncode
+	 * @Description: TODO(这里用一句话描述这个方法的作用)
+	 * @param @param isString
+	 * @param @param dataLength
+	 * @param @param data
+	 * @param @return    设定文件
+	 * @return String    返回类型
+	 * @throws
+	 */
+	public String rechargeDataEncode(boolean isString, int dataLength, String data) {
+		data = data.trim();
+		byte[] sourceBytes = data.getBytes();
+
+		if (sourceBytes.length > dataLength) {
+			return null;
+		}
+		if (isString) {
+			byte[] dataBytes = data.getBytes();
+			byte[] outputByte = new byte[dataLength];
+			for (int i = 0; i < dataLength; i++) {
+				if (i < dataBytes.length) {
+					outputByte[i] = dataBytes[i];
+				} else {
+					outputByte[i] = 32;
+				}
+			}
+			return new String(outputByte);
+		} else {
+			String outputString = String.format("%0" + (dataLength + 3) + ".2f", new Double(data).doubleValue());
+			return outputString.replace(".", "");
+		}
+	}
+
+	public String gasDataParser(DataPackage dataPackage, int getLength) {
+		byte[] dataBytes = dataPackage.getDataByte();
+		byte[] outBytes = new byte[getLength];
+		byte[] sourceByte = new byte[dataBytes.length];
+		for (int i = 0; i < getLength; i++) {
+			outBytes[i] = 0;
+		}
+		for (int i = 0; i < dataBytes.length; i++) {
+			sourceByte[i] = 0;
+		}
+		for (int i = 0; i < getLength; i++) {
+			outBytes[i] = dataBytes[i];
+		}
+		for (int i = getLength; i < dataBytes.length; i++) {
+			sourceByte[i - getLength] = dataBytes[i];
+		}
+		String temp = new String(outBytes);
+		dataPackage.setDataByte(sourceByte);
+		return temp;
+	}
+	
+	public String rechargeDataParser(DataPackage dataPackage, int getLength) {
+		byte[] dataBytes = dataPackage.getDataByte();
+		byte[] outBytes = new byte[getLength];
+		byte[] sourceByte = new byte[dataBytes.length];
+		for (int i = 0; i < getLength; i++) {
+			outBytes[i] = 0;
+		}
+		for (int i = 0; i < dataBytes.length; i++) {
+			sourceByte[i] = 0;
+		}
+		for (int i = 0; i < getLength; i++) {
+			outBytes[i] = dataBytes[i];
+		}
+		for (int i = getLength; i < dataBytes.length; i++) {
+			sourceByte[i - getLength] = dataBytes[i];
+		}
+		String temp = new String(outBytes);
+		dataPackage.setDataByte(sourceByte);
+		return temp;
+	}
+
+	public String getGasMoney(String str) {
+		String strs = str.substring(0, str.length() - 2) + "."
+				+ str.substring(str.length() - 2, str.length());
+		return strs;
+	}
+
+	public static void main(String[] argv) {
+		System.out.println(new DataEncoding().waterDataEncode(true, 4, "1"));
+		System.out.println(new DataEncoding().gasDataEncode(false, 10, "10"));
+	}
+}

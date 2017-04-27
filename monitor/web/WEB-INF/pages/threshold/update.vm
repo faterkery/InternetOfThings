@@ -1,0 +1,14 @@
+#set($actionUrl="$base/threshold/actions.html?method=update&insert=y&menuname=$menuname")
+<div id="main" class="w100 bgmain">
+   <div class="maintopmenu">
+      <ul class="tit">阀值 >编辑</ul>      
+   </div>
+   <div class="Main_handleBar check_pass" id="Main_handleBar" #if(!$!updated)style="display:none"#end>
+	   <p>
+		#if($!updated)
+		 修改成功
+		 #end
+	   </p>
+   </div>
+   #parse( "/WEB-INF/pages/threshold/form.vm" )
+</div>

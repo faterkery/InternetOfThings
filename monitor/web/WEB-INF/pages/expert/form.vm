@@ -1,0 +1,68 @@
+<link href="$base/branding/default/style/business.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="$base/eportalstyle/kindeditor-master/themes/default/default.css" />
+<link rel="stylesheet" href="$base/eportalstyle/kindeditor-master/plugins/code/prettify.css" />
+<script charset="utf-8" src="$base/eportalstyle/kindeditor-master/kindeditor-all.js"></script>
+<script charset="utf-8" src="$base/eportalstyle/kindeditor-master/lang/zh-CN.js"></script>
+<script charset="utf-8" src="$base/eportalstyle/kindeditor-master/plugins/code/prettify.js"></script>
+<script type="text/javascript" src="$base/eportalstyle/js/jquery 1.7.1.js"></script>
+
+<form id="expertForm" name="expertForm" method="post" action="$!actionUrl">
+<input type=hidden name=id value=$!bizObj.id>
+<div class="maincon">
+      <div class="frminfo org">
+         <ul>
+            <li>
+              <span class="ft">姓名：</span>
+              <dd>#showFormText("name" "$!bizObj.name" 50)#showMustFill()</dd>
+            </li>
+              <li>
+            <span class="ft">性别：</span>
+             #if($action=="detail")
+            #if($!bizObj.sex==0)男#else 女#end
+            #else
+              <select id="sex" name="sex" class="sel1" style="width:100px;" >
+				  <option value="" )>--请选择--</option>
+				  <option value="0" #isSelected("0" "$!bizObj.sex")>男</option>
+				  <option value="1" #isSelected("1" "$!bizObj.sex")>女</option>
+			  </select>#showMustFill()
+			#end  
+            </li>
+              <li>
+              <span class="ft">年龄：</span>
+              <dd>#showFormText("age" "$!bizObj.age" 50)#showMustFill()</dd>
+            </li>
+              <li>
+              <span class="ft">职称：</span>
+              <dd>#showFormText("title" "$!bizObj.title" 50)#showMustFill()</dd>
+            </li>
+              <li>
+              <span class="ft">研究方向：</span>
+              <dd>#showFormText("studiec" "$!bizObj.studiec" 50)#showMustFill()</dd>
+            </li>
+              <li>
+              <span class="ft">擅长：</span>
+              <dd>#showFormText("goodat" "$!bizObj.goodat" 50)#showMustFill()</dd>
+            </li>
+            
+            <li class="bot">
+              #if($!action != "detail")
+              <input name="insert" type="button" class="btn_save mrg_y20" value="确 定" onclick="toSubmit();" />
+              #end
+              <input type="button" class="btn_cancel" value="返回" onclick="window.location='$base/expert/actions.html?method=list&menuname=$menuname'"/>
+            </li>
+         </ul>
+         <div class="clear"></div>
+      </div>
+   </div>
+</form>
+
+<script>
+	function toSubmit(){
+		var name = document.getElementById("name").value;
+		   if(name==""){
+		      alert("请输入名称");
+		      return;
+		   }  
+		   document.getElementById("expertForm").submit();
+		}
+</script>

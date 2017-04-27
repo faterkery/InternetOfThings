@@ -1,0 +1,72 @@
+<link href="$base/branding/default/style/business.css" rel="stylesheet" type="text/css" />
+	
+<form id="memberForm" name="memberForm" method="post" action="$!actionUrl">
+<input type=hidden name=id value=$!bizObj.id>
+<div class="maincon">
+      <div class="frminfo org">
+         <ul>
+            <li>
+              <span class="ft">用户名：</span>
+              <dd>#showFormText("loginName" "$!bizObj.loginName" 50)#showMustFill()</dd>
+            </li>
+            
+            <li>
+              <span class="ft">密码：</span>
+              <dd><input id="password" name="password" type="password" class="input1" size="50" value="$!bizObj.password">#showMustFill()</dd>
+            </li>
+            <li>
+              <span class="ft">联系方式：</span>
+           	  <dd>#showFormText("tel" "$!bizObj.tel" 50)</dd>
+            </li>
+            <li>
+              <span class="ft">角色：</span>
+              <dd>
+           		<select id="roleId" name="roleId" class="sel1" style="width:370px;">
+					<option value="1000" #isSelected(1000 $!bizObj.roleId )>admin(添加用户对全公司数据操作的权限)</option>
+					<option value="11" #isSelected(11 $!bizObj.roleId )>基地用户(操作数据权限)</option>
+					<option value="12" #isSelected(12 $!bizObj.roleId )>普通用户(查看数据权限)</option>
+				</select>
+			  </dd>	
+            </li>
+            <li class="bot">
+              #if($!action != "detail")
+              <input name="insert" type="button" class="btn_save mrg_y20" value="确 定" onclick="toSubmit();" />
+              #end
+              <input type="button" class="btn_cancel" value="返回" onclick="window.location='$base/member/actions.html?method=list&menuname=$menuname'"/>
+            </li>
+         </ul>
+         <div class="clear"></div>
+      </div>
+   </div>
+
+<script>
+String.prototype.TextFilter=function(){
+	 var pattern=new RegExp("[`~%!@#^=''?~！@#￥……&——‘”“'？*()（），,。.、]"); //[]内输入你要过滤的字符，这里是我的
+	 var rs="";
+	 for(var i=0;i<this.length;i++){
+	  rs+=this.substr(i,1).replace(pattern,'');
+	 }
+	 return rs;
+	}
+function toSubmit(){
+	var loginName = document.getElementById("loginName").value;
+	var logintxt=loginName.TextFilter(); //调用上面的去字符方法
+	var password = document.getElementById("password").value;
+	var roleId = document.getElementById("roleId").value;
+
+	if(loginName=="" || logintxt!=loginName){
+		alert("请填写用户名！");
+		return;
+	}
+	if(password==""){
+		alert("请填写密码！");
+		return;
+	}
+	if(roleId==""){
+		alert("请选择角色！");
+		return;
+	}
+	document.getElementById("memberForm").submit();
+}
+</script>
+

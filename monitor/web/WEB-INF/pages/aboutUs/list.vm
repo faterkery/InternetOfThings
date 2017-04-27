@@ -1,0 +1,50 @@
+#renhehead()
+#set($urlPre = "$base/aboutUs/actions.html?method=list&menuname=$menuname")
+<script>
+function  changeSortNum(id,num){	
+	 var urlGet="$base/aboutUs/actions.html"
+	 if(id!=""&&num!="")
+	  {	 
+	    jQuery.get(urlGet, {method:"updateSortNum",sid:id,sortNum:num},function(result){
+		    });
+	    }
+	}
+</script>
+<div id="main" class="w100 bgmain">
+   <div class="maintopmenu">
+      <ul class="tit">关于我们管理</ul>      
+      <div class="btnpz"><a href="#" class="btn_add" onclick="window.location='$base/aboutUs/actions.html?method=insert&menuname=$menuname'">添加</a></div>
+   </div>
+   <div class="maincon">
+      <table width="100%" border="0" cellpadding="0" cellspacing="1" class="tb1" onmouseover="changeto()" onmouseout="changeback()">
+        <tr>
+          <td width="25%" class="cell1">排序</td>
+          <td width="25%" class="cell1">标题</td>
+          <td width="25%" class="cell1">创建时间</td>
+          <td width="25%" class="cell1">操作</td>
+        </tr>
+        #set($indexNum=0)
+		#foreach($biz in $bizObjList)
+        <tr #if($indexNum%2==0)class="cell2" #else class="cell3" #end>
+          <td title="$!biz.sort_num"><input name="sort_num$!biz.id" value="$!biz.sortNum" onblur="changeSortNum($!biz.id,this.value)" size="10"/></td>
+          <td title="$!biz.title">$!biz.title</td>
+          <td title="$!vMUtils.dateTimeFormateSimple($!biz.timeCreate)">$!vMUtils.dateTimeFormateSimple($!biz.timeCreate)</td>
+          <td >
+		    <a href="$base/aboutUs/actions.html?method=update&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname" class="fblue1 mrg_zy5">编辑</a>
+			<a href="$base/aboutUs/actions.html?method=detail&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname" class="fblue1 mrg_zy5">详细</a>
+			<a href="$base/aboutUs/actions.html?method=delete&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname" class="fblue1 mrg_zy5" onclick="return confirm('确定删除吗？');">刪除</a>
+		  </td>
+        </tr>
+        #set($indexNum=$indexNum+1)
+		  #end
+		  #if($indexNum<10)
+		    #set($indexNum=10-$indexNum)
+		      #foreach($foo in [1..$indexNum])
+		<tr #if($foo%2==0)class="cell3" #else class="cell2" #end><td colspan="4">&nbsp;</td></tr>
+		      #end
+		    #end
+      </table>
+      #parse( "/WEB-INF/pages/common/page.vm" )
+   </div>
+</div>
+#renheend()

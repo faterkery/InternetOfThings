@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>中国螺杆产业公共服务平台</title>
+<link href="$!base/eportalstyle/css/global.css" rel="stylesheet" type="text/css" />
+<link href="$!base/eportalstyle/css/login.css"  rel="stylesheet" type="text/css" />
+</head>
+
+<body style="background-color:#F8F8F8;">
+<div id="container"> 
+  <div class="header">
+    <a href="$!base/index.html" title="E螺杆——中国螺杆产业公共服务平台"><img src="$!base/eportalstyle/images/logo.png" width="387" height="88" /></a>
+  </div>
+  
+  <div class="register_box box1 error" style="padding:50px 0;">
+    <P style="color:#7ABD54;font:400 24px/40px \5fae\8f6f\96c5\9ed1">商品已成功加入购物车！</P>
+	<input name="" type="button" class="return-button" value="去购物车结算" title="去购物车结算" onclick="window.location='$base/cartfull.html'"/>
+	您还可以&nbsp;<a href="javascript:history.back();" style="color:#005ea7">继续购物</a>
+  </div>
+  
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+</div>
+</body>
+</html>

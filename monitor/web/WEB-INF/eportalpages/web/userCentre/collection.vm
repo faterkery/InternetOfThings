@@ -1,0 +1,140 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<link href="$!base/eportalstyle/jquerydialog/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script src="$!base/eportalstyle/jquerydialog/jquery-ui.js" type="text/javascript"></script>
+<body>
+<div id="container"> 
+  <!--site-nav开始-->
+  #parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+
+  <!--header开始-->
+  #parse( "/WEB-INF/eportalpages/common/header.vm" )
+  <!--header结束--> 
+
+
+  <div id="main_member">
+    <div class="layout">
+      #parse( "/WEB-INF/eportalpages/common/centre_menu.vm" )
+      <div class="member_bd box1 fr">
+        <ul class="menu"><h1>我的收藏</h1></ul>
+        <div class="form_bd" style="padding:20px 0 0 0;">
+          <table class="address_infor box1" width="100%" border="1" cellspacing="0" cellpadding="0" >
+            <tr>
+              <th width="5%" class="center" scope="col"></th>
+              <th width="20%" class="center" scope="col">类型</th>
+              <th width="25%" class="center" scope="col">名称</th>
+              <th width="25%" class="center" scope="col">单价（元）</th>
+              <th width="25%" class="center" scope="col">操作</th>
+            </tr>
+            #foreach($obj in $bizObjList)
+            #if($obj.type == 2)					
+			  #set($shopitem = $!vMUtils.getSuppliesById($obj.cid))
+			#else
+			  #set($shopitem = $!vMUtils.getMaterialById($obj.cid))
+			#end
+            <tr #if($shopitem.isPublished==0) class="tmd1" #end>
+              <td class="center">
+              #if($shopitem.isPublished==1)
+			    
+			  #else
+				失效
+			  #end
+              </td>
+              <td class="center">
+              #if($obj.type == 2)					
+			        螺杆耗材
+			  #else
+			         螺杆原料
+			  #end
+			  </td>
+              <td class="center">
+               #if($obj.type == 2)
+               <a href="$!base/suppliesShow.html?method=detail&sid=$!vMUtils.encrypt($shopitem.id)" title="$!shopitem.name">$!shopitem.name</a>
+               #else
+               $!shopitem.name
+               #end
+              </td>
+              <td class="center">$!shopitem.price</td>
+              <td class="center">
+				#if($obj.type == 2)	
+  				  #if($shopitem.isPublished==1)
+  			        <input name="" onClick="window.location='$!base/cartadd.html?type=2&sid=$!vMUtils.encrypt($shopitem.id)'" type="button" value="加入购物车" class="buy" />
+  			      #end
+			    #else
+			               螺杆原料
+			    #end
+                <input name="" onClick="javascript:delGoods('$vMUtils.encrypt($!obj.id)', this)" type="button" value="删除" class="del" />
+              </td>
+            </tr>
+            #end   
+          </table>
+        </div>
+		#parse( "/WEB-INF/eportalpages/common/eportal_page.vm" )
+      </div>
+      <div id="dialog" title="删除确认" style="display:none; text-align:center; padding-top:20px;">确定要删除这个商品吗？</div>
+    </div>
+  </div>
+  
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+  
+  <!--con_side开始-->
+  #parse( "/WEB-INF/eportalpages/common/con_side.vm" )
+  <!--con_side结束--> 
+  
+
+
+<script type="text/javascript">
+//加入购物车
+function addcart(sid)
+{ 
+window.location = "$base/cartadd.html?type=2&sid="+sid;
+}
+
+//删除收藏清单
+function delGoods(sid, aobj)
+{
+var trobj = $(aobj).parents("tr");
+$( "#dialog" ).dialog({
+					modal: true,
+					width: 250,
+					height: 150,
+					buttons: {
+						确定: function(){			
+    							jQuery.ajax({ url:'$!base/ajaxCollectDel.html',
+                            	    data: {sid: sid},
+                            	    type: 'post',
+                            	    dataType: 'json',
+                            	    success: function(data) {
+									    if(data.result =="success")
+										{
+										    trobj.remove();
+											var trArray = $(".address_infor").find("tr");
+											if(trArray.length ==1)
+											{
+											  $(".address_infor").append("<tr><td colspan='5'><div class=\"no_content\"><ul class=\"content_in\">无内容</ul></div></td></tr>");
+											}
+										}
+                            	    },
+                            	    error: function(data) {
+                            	        alert("异常！");
+                            	    }
+                            	});
+							 $(this).dialog("close");
+							
+						},
+						取消: function(){
+							$(this).dialog("close");
+						}
+					}
+				});
+}
+</script>
+  </div>
+</body>
+</html>  

@@ -1,0 +1,63 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<body>
+<div id="container"> 
+  <!--site-nav开始-->
+  #parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+
+  <!--header开始-->
+  #parse( "/WEB-INF/eportalpages/common/header.vm" )
+  <!--header结束--> 
+
+  <!--mainnav开始-->
+  #parse( "/WEB-INF/eportalpages/common/main_nav.vm" )
+  <!--mainnav结束--> 
+   
+  <!--main开始-->
+  <div id="main" class="layout">
+    <div class="newpage mrg_t15 mrg_b15 fl">当前所在位置：<a href="$!base/index.html" title="首页">首页</a> > 通知公告</div>
+    <div class="news_detailed box1 fl">
+      <div class="title">
+        <h1>$!biz.title</h1>
+        <span>发布时间：$!vMUtils.dateTimeFormateSimple($!biz.timeCreate)</span>
+      </div>
+      <div class="detailed">
+        <div>$!biz.content</div>
+      </div>
+    </div>
+    <div class="news_right fr">
+      <div class="news_dynamic box1 fl">
+        <ul class="menu1"><h1>网加动态</h1><span><a href="$!base/eNewsShow/actions.html?method=list&type=1">更多>></a></span></ul>
+        <ul class="news_dynamic_list">
+          #foreach($biz in $!wjdtenewsList)
+          <li><a href="$!base/eNewsShow/actions.html?method=detail&sid=$!vMUtils.encrypt($biz.id)" title="$!biz.title">$!biz.title</a></li>
+          #end
+        </ul>
+      </div>
+      <div class="news_banner fl"><img src="$base/eportalstyle/images/news_banner.jpg" width="290" height="75" /></div> 
+      <div class="news_dynamic box1 fl">
+        <ul class="menu1"><h1>会展信息</h1><span><a href="$!base/eNewsShow/actions.html?method=list&type=3">更多>></a></span></ul>
+        <ul class="news_dynamic_list">
+          #foreach($biz in $!hzxxenewsList)
+          <li><a href="$!base/eNewsShow/actions.html?method=detail&sid=$!vMUtils.encrypt($biz.id)" title="$!biz.title">$!biz.title</a></li>
+          #end
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--main结束-->
+  
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+  
+  <!--con_side开始-->
+  #parse( "/WEB-INF/eportalpages/common/con_side.vm" )
+  <!--con_side结束--> 
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+package com.renhenet.web.util;
+public class DataPackage{
+	byte[] dataByte;
+
+	public byte[] getDataByte() {
+		return dataByte;
+	}
+
+	public void setDataByte(byte[] dataByte) {
+		this.dataByte = dataByte;
+	}
+}

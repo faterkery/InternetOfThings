@@ -1,0 +1,35 @@
+<link href="$base/branding/default/style/business.css" rel="stylesheet" type="text/css" />
+<form id="resourcesForm" name="resourcesForm" method="post" action="$!actionUrl">
+<input type=hidden name=id value=$!bizObj.id>
+<input type=hidden name=type value=$!bizObj.type>
+<input type=hidden name=createdDate value=$!bizObj.createdDate />
+<div class="maincon">
+      <div class="frminfo org">
+         <ul>
+            <li>
+              <span class="ft">名称：</span>
+              <dd>#showFormText("value" "$!bizObj.value" 50)#showMustFill()</dd>
+            </li>
+            
+            <li class="bot">
+              #if($!action != "detail")
+              <input name="insert" type="button" class="btn_save mrg_y20" value="确 定" onclick="toSubmit();" />
+              #end
+              <input type="button" class="btn_cancel" value="返回" onclick="window.location='$base/resources/actions.html?method=list&menuname=$menuname&type=$!bizObj.type'"/>
+            </li>
+         </ul>
+         <div class="clear"></div>
+      </div>
+   </div>
+</form>
+
+<script>
+	function toSubmit(){
+	   var value = document.getElementById("value").value;
+	   if(value==""){
+	      alert("请输入名称");
+	      return;
+	   }
+	   document.getElementById("resourcesForm").submit();
+	}
+</script>

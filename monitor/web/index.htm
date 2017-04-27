@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+
+<head>
+    <title>3DVPSDK开发入门教程</title>
+    <script type="text/javascript" src="/scripts/SDK.js">
+    </script>
+		<script event="FirePick3DPos(x,y,z)" for="3DVPSDK" type="text/javascript"> 
+			//alert(x + "," + y + "," + z);
+			AddDynamicLabel(x,y,z);
+		</script>
+		<script event="FireDynamicLabelBtnUp(x,y,z)" for="3DVPSDK" type="text/javascript"> 
+			//alert(x + "," + y + "," + z);
+			//alert(labelID);
+			document.getElementById("3DVPSDK").SetDynLabelMoveState(false);
+		</script>
+</head>
+<body>
+	<input id="Button1" type="button" value="连接数据" onclick="OpenModel()" />
+	<input id="Button2" type="button" value="定位" onclick="SetRoamViewpoint()">
+	<input id="Button3" type="button" value="轨迹回放" onclick="PlayRoamRecorder()">
+	<input id="Button4" type="button" value="打开拾取开关" onclick="SetPick3DPosState()">
+	<input id="Button5" type="button" value="打开标注移动开关" onclick="SetDynLabelMoveState()">
+    <div id="SDKDiv">
+	    <script language="javascript">	
+		    addObject();										
+		</script>
+  	</div>
+</body>
+</html>

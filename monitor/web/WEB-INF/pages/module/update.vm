@@ -1,0 +1,19 @@
+#renhehead()
+#renheMenu("systemPri")
+#set($actionUrl="$base/module/actions.html?method=update&insert=y&menuname=$menuname")
+	<div class="Main_Right" >
+		<div class="Main_Right_Top"><span></span></div>
+		<div class="Main_Right_Content" id="Main_Right_Content">
+			<div class="Main_Right_Title">当前位置：管理员 --> 模块管理</div>
+            <!-- Main_information begin -->
+          <div class="Main_handleBar check_pass" id="Main_handleBar" #if(!$!updated)style="display: none"#end>
+			<div class="Main_handleBar_head"></div>
+			<div class="Main_handleBar_body">
+				<p>
+				#if($!updated)
+			修改成功#end
+				</p>
+			</div>
+			</div>
+	#parse( "/WEB-INF/pages/module/form.vm" )
+#renheend()	

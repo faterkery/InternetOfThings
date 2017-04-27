@@ -1,0 +1,49 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+
+<body>
+<div id="container"> 
+  <!--site-nav开始-->
+  #parse( "/WEB-INF/eportalpages/common/site_nav.vm" )  
+  <!--site-nav结束--> 
+  
+  <!--header开始-->
+  <div id="header">
+    <div class="layout">
+      <div id="logo"><a href="$!base/index.html" title="E螺杆——中国螺杆产业功能服务平台"><img src="$!base/eportalstyle/images/logo.png" width="387" height="88" /></a></div>
+      <div class="step fr step3">
+        <ul>
+          <li>1. 查看购物车</li>
+          <li>2. 填写核对订单信息</li>
+          <li class="on">3. 提交订单成功</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--header结束--> 
+  
+  <div id="main_shopping">
+    <div class="layout">
+      <div class="cart_box0 success_notice">
+        <span class="success_icon"></span>
+        <h3 class="f20 mb10">订单提交成功！</h3>
+        <ul>
+          <li>订单号：$!order.orderCode</li>
+          <li>预计金额：<b><font color="red">￥$!vMUtils.changeBigNumber2String($!order.money)</font></b></li> 
+        </ul>
+        <div class="other_do">
+          <p><a href="$!base/order/view.html?sid=$!vMUtils.encrypt($order.id)">查看详情</a><a href="$!base/index.html">继续购物</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" ) 
+  <!--footer结束-->
+</div>
+</body>
+</html>

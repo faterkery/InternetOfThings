@@ -1,0 +1,7 @@
+#set($actionUrl="$base/recommend/actions.html?method=insert&insert=y&menuname=$menuname")
+<div id="main" class="w100 bgmain">
+   <div class="maintopmenu">
+      <ul class="tit">产品 >详细</ul>      
+   </div>
+   #parse( "/WEB-INF/pages/recommend/form.vm" )
+</div>

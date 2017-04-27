@@ -1,0 +1,10 @@
+#renhehead()
+#renheMenu("index")
+<br>
+<font color=red size = 4>系统发生错误，请与系统管理员联系!
+</font><br>
+<pre>
+	##	$errorsInfo
+</pre>
+
+#renheend()

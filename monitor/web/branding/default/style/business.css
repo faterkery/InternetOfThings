@@ -1,0 +1,19 @@
+@charset "utf-8";
+@import url("base.css");
+@import url("page.css");
+@import url("layout.css");
+
+.frminfo{position:relative; float:left; width:90%; padding:0 5%;}
+.frminfo li{line-height:24px; float:left; padding:8px 0; font-size:14px; width:100%;}
+.frminfo li span.ft{position:relative; width:9%; float:left; text-align:right; padding:0 5px 0 0; line-height:24px; display:block; font-size:14px; color:#666;}
+.frminfo li dd{width:90%; float:left; font-size:14px;}
+.frminfo li.bot{padding:10px 0 20px 155px; position:relative; clear:both; width:inherit;}
+
+.org{padding-top:30px;}
+.twocel li{width:45%;}
+.twocel li.one{width:100%;}
+
+.table_list{width:80%;}
+.table_list th,.table_list td{border:1px solid #e1e1e1; text-align:center; padding:10px;}
+.table_list .t_head th{background:#F8FCFF; padding:10px;}
+

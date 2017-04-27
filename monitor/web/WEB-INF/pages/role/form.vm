@@ -1,0 +1,63 @@
+<link href="$base/branding/default/style/business.css" rel="stylesheet" type="text/css" />
+	
+<form id="roleForm" name="roleForm" method="post" action="$!actionUrl">
+<input type=hidden name=id value=$!bizObj.id>
+<div class="maincon">
+      <div class="frminfo org">
+         <ul>
+            <li>
+              <span class="ft">角色名称：</span>
+              <dd>#showFormText("name" "$!bizObj.name" 50)#showMustFill()</dd>
+            </li>
+            <li>
+              <span class="ft">数据查看权限：</span>
+              <dd>
+				#if($!action=="detail")
+				  #if($!bizObj.groupPri==1000) 
+				          admin--对全公司数据操作的权限
+				  #elseif($!bizObj.groupPri==11)
+				     供应商
+				  #elseif($!bizObj.groupPri==12)
+				     内勤
+				  #elseif($!bizObj.groupPri==13)
+				     网站编辑
+				  #elseif($!bizObj.groupPri==14)
+				     产品编辑
+				  #end
+				#else
+				<select id="groupPri" name="groupPri" class="sel1" style="width:370px;">
+					<option value="1000" #isSelected(1000 $!bizObj.groupPri )>admin--对全公司数据操作的权限</option>
+					<option value="11" #isSelected(11 $!bizObj.groupPri )>供应商--管理自己库存权限</option>
+					<option value="12" #isSelected(12 $!bizObj.groupPri )>内勤</option>
+					<option value="13" #isSelected(13 $!bizObj.groupPri )>网站编辑</option>
+					<option value="14" #isSelected(14 $!bizObj.groupPri )>产品编辑</option>
+				</select>
+				#showMustFill()
+				#end
+			  </dd>
+            </li>
+            <li>
+              <span class="ft">简介：</span>
+              <dd>#showFormTextarea("memo" "$!bizObj.memo" 3)</dd>
+            </li>
+            <li class="bot">
+              #if($!action != "detail")
+              <input name="insert" type="button" class="btn_save mrg_y20" value="确 定" onclick="toSubmit();" />
+              #end
+              <input type="button" class="btn_cancel" value="返回" onclick="window.location='$base/role/actions.html?method=list&menuname=$menuname'"/>
+            </li>
+         </ul>
+         <div class="clear"></div>
+      </div>
+   </div>
+
+<script>
+function toSubmit(){
+	var name = document.getElementById("name").value;	
+	if(name==""){
+		alert("请填写角色名称！");
+		return;
+	}
+	document.getElementById("roleForm").submit();
+}
+</script>

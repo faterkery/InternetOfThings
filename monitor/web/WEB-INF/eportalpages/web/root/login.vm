@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>中国螺杆产业公共服务平台</title>
+<link href="$!base/eportalstyle/css/global.css" rel="stylesheet" type="text/css" />
+<link href="$!base/eportalstyle/css/login.css"  rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$base/eportalstyle/js/jquery 1.7.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#pwdshow").focus(function(){
+      $(this).hide();
+	  $("#pwd").show();
+	  $("#pwd").focus();
+  });
+  
+    $("#pwd").blur(function(){
+      if(jQuery.trim($(this).val()) =="")
+      {
+          $(this).hide();
+    	  $("#pwdshow").show();
+      }
+    });
+	//回车事件
+	 $('#pwd').bind('keypress',function(event){
+            if(event.keyCode == "13")    
+            {
+                tologin();
+            }
+     });
+});
+</script>
+</head>
+
+<body style="background-color:#F8F8F8;">
+<div id="container"> 
+  <div class="header">
+    <a href="$!base/index.html" title="E螺杆——中国螺杆产业公共服务平台"><img src="$base/eportalstyle/images/logo.png" width="387" height="88" /></a>
+  </div>
+  <div class="login_box box1">
+    <div class="login_pic fl"><img src="$base/eportalstyle/images/login_pic.jpg" width="471" height="430" /></div>
+    <div class="loginbox fr">
+      <ul class="login_hd">
+        <li class="on">登录</li>
+        <li><a href="$!base/register.html" title="注册">注册</a></li>
+      </ul>        
+      <ul class="conbox">
+        <li>
+          <div class="putbox">
+            <em></em>
+            <input name="username" id="username" type="text" class="input1" value="手机号" onfocus="if(this.value=='手机号') {this.value='';}" onblur="if(this.value=='') {this.value='手机号';}"/>
+          </div>
+        </li>
+        <li class="psw">
+          <div class="putbox">
+            <em></em>
+            <input name="" id="pwdshow" type="text" class="input1" value="密码" />
+			<input name="pwd" id="pwd" type="password" class="input1" value="" style="display:none;"/>
+          </div>
+        </li>
+        <li>
+          <span class="fl"><input name="autologin" id="autologin" type="checkbox" value="1" />&nbsp;保持登录状态</span>
+          <span class="fr"><a href="$!base/findpwd.html" title="找回密码" class="find">忘记密码</a></span>
+        </li>
+        <li class="btnline"><input name="" type="button" class="btnbox" onclick="tologin()" value="立即登录"/></li>
+        <li class="tip none">手机号码或密码错误</li>
+      </ul>
+	  <!--
+      <div class="login-other">
+         <ul>
+           <span class="sp1 fl"></span>
+           <span class="sp2 fl">使用合作网站帐号登录</span>
+           <span class="sp1 fl"></span>
+         </ul>
+         <ul class="login-icon">
+           <li class="a1"><a href="#" title=""><i></i>QQ登录</a></li>
+           <li class="a2"><a href="#" title=""><i></i>微信登录</a></li>
+           <li class="a3"><a href="#" title=""><i></i>微博登录</a></li>
+         </ul>
+      </div>            
+	  -->
+    </div>
+  </div>
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+</div>
+</body>
+<script type="text/javascript">
+function tologin()
+{
+    var returnurl = $("#returnurl");
+    var name = $("#username");
+	if(jQuery.trim(name.val())=="" || jQuery.trim(name.val())=="手机号")
+	{
+	    $(".tip").attr("class", "tip");
+	    $(".tip").html("手机号不能为空");
+		return;
+	}
+	else
+	{
+	    $(".tip").attr("class", "tip none");
+		$(".tip").empty();
+	}
+	
+	var pwd =  $("#pwd");
+	if(jQuery.trim(pwd.val())=="")
+	{
+	    $(".tip").attr("class", "tip");
+	    $(".tip").html("密码不能为空");
+		return;
+	}
+	else
+	{
+	    $(".tip").attr("class", "tip none");
+		$(".tip").empty();
+	}
+	var autologin = 0;
+	if($("#autologin").prop("checked"))
+	{
+	    autologin = 1;
+	}
+	$('.btnbox').removeAttr("onclick");
+	$('.btnbox').val("登录中...");
+	jQuery.ajax({
+                        type: 'post',
+                        url: '$!base/shopuser/login.html',
+                        data: {username:name.val(), pwd:pwd.val(), login:"y", autologin:autologin},
+                        dataType: 'json',
+                        success: function (json) {
+                            if (json != null) 
+							{
+                                if (json.result == "success") 
+								{
+                                    //登录成功
+								    $(".tip").attr("class", "tip none");
+									$(".tip").empty();
+									window.location='$base/index.html';
+                                }
+                                else 
+								{
+									$('.btnbox').attr('onclick','').click(function(){
+									    tologin();
+                                    }); 
+									$(".tip").attr("class", "tip");
+									$(".tip").html("手机号码或密码错误");
+									$('.btnbox').val("立即登录");
+                                }
+                            }
+                            else
+							{
+                                
+								$('.btnbox').attr('onclick','').click(function(){
+									    tologin();
+                                    }); 
+								$('.btnbox').val("立即登录");
+								$(".tip").attr("class", "tip");
+								$(".tip").html("系统错误，无法登录");
+								return;
+                            }
+                        },
+                        error: function (xmlHttpRequest, textStatus, errorThrown) {
+						    $('.btnbox').attr('onclick','').click(function(){
+									    tologin();
+                                    }); 
+							$('.btnbox').val("立即登录");
+							$(".tip").attr("class", "tip");
+							$(".tip").html("系统错误，无法登录");
+                        }
+                    });
+}
+</script>
+</html>

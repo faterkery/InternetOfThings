@@ -1,0 +1,18 @@
+package com.renhenet.modules.member;
+
+import com.renhenet.modules.CommonService;
+import com.renhenet.po.Role;
+import com.renhenet.po.RoleModule;
+
+public class RoleService extends CommonService {
+	public void delObject(int id) {
+		String sql = "delete from role_module where role_id = ?";
+		dao.executeBySQL(sql, new Object[] { id });
+		super.delObject(RoleModule.class, id);
+	}
+
+	public Role getCrmRoleByName(String name) {
+		Object[] a = new Object[] { name };
+		return (Role) dao.findSingle("from Role where name = ?", a);
+	}
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tyloo.po">
+    <class name="Products" table="products" lazy="false">
+        <id name="id" column="id" type="java.lang.Integer">
+            <generator class="identity"/>
+        </id>
+        <property name="goodsname" column="goodsname" type="java.lang.String" not-null="true"/>
+        <property name="img" column="img" type="java.lang.String" not-null="true"/>
+        <property name="basetype" column="basetype" type="java.lang.String" />
+        <property name="isPublished" column="isPublished" type="java.lang.Integer" />  
+        <property name="isDeleted" length="1"  column="isDeleted" not-null="true" type="java.lang.Integer" />       
+        <property name="timeCreate" column="time_create" type="java.util.Date"  not-null="true" />
+        <property name="timeModified" column="time_modified" type="java.util.Date"  not-null="true" />
+        <property name="plantingtime" column="plantingtime" type="java.lang.String"   />
+        <property name="expectedmatur" column="expectedmatur" type="java.lang.String"   />
+        <property name="name" column="name" type="java.lang.String" />
+        <property name="household" column="household" type="java.lang.String" />
+        <property name="phone" column="phone" type="java.lang.String" />
+        <property name="address" column="address" type="java.lang.String" />
+        <property name="position" column="position" type="java.lang.String" />
+        <property name="number" column="number" type="java.lang.String" />
+    </class>
+</hibernate-mapping>

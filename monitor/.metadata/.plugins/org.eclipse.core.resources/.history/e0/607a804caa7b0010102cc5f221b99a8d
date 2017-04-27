@@ -1,0 +1,67 @@
+package com.renhenet.web.member;
+
+import javax.servlet.ServletException;
+
+import org.apache.commons.lang.StringUtils;
+
+import com.renhenet.fw.waf.WebContext;
+import com.renhenet.modules.CommonService;
+import com.renhenet.modules.ServiceManager;
+import com.renhenet.modules.member.MemberService;
+import com.renhenet.po.Member;
+import com.renhenet.util.searchcontext.SearchContext;
+import com.renhenet.util.searchcontext.SearchOption;
+import com.renhenet.web.DispatchActions;
+import com.renhenet.web.form.MemberForm;
+
+@SuppressWarnings("unchecked")
+public class MemberAction extends DispatchActions {
+	private static final MemberService memberService = ServiceManager
+			.getMemberService();
+
+	@Override
+	protected Class getActionClass() {
+		return Member.class;
+	}
+
+	@Override
+	protected SearchContext getListSearchContext(WebContext context) {
+		SearchContext searchContext = new SearchContext();
+		String username = delSearchOption(context, "username");
+		String loginName = delSearchOption(context, "loginName");
+
+		if (!StringUtils.isEmpty(username)) {
+			searchContext.addOption(new SearchOption("username", "%" + username
+					+ "%", SearchOption.Option.like));
+		}
+		if (!StringUtils.isEmpty(loginName)) {
+			searchContext.addOption(new SearchOption("loginName", "%"
+					+ loginName + "%", SearchOption.Option.like));
+		}
+
+		return searchContext;
+	}
+
+	public String insertProcess(WebContext context) throws ServletException {
+		MemberForm form = (MemberForm) context.getForm();
+		if (form != null) {
+			Member meber = memberService.getMemberByName(form.getLoginName());
+			if (meber != null) {
+				context.put("nameExits", true);
+				return "insert";
+			}
+		}
+		return super.insertProcess(context);
+	}
+
+	@Override
+	protected CommonService getService() {
+		return memberService;
+	}
+
+	@Override
+	public String getWebMenuType(WebContext context) throws ServletException {
+		return "member";
+	}
+
+}

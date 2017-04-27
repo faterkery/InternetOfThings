@@ -1,0 +1,138 @@
+<!-- Put IE into quirks mode --> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<link rel="icon" href="$base/branding/default/images/eluogan.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="$base/branding/default/images/eluogan.ico" type="image/x-icon"/>
+<title>舟山市网加科技有限公司</title>
+<link href="$base/branding/default/style/base.css" rel="stylesheet" type="text/css" />
+<link href="$base/branding/default/style/layout.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$base/branding/default/js/jquery.min.js"></script>
+<script type="text/javascript" src="$base/branding/default/js/iepngfix_tilebg.js"></script>
+<script type="text/javascript" language="javascript">
+$(document).ready(function (){
+  $(".topnav li").each(function(index){
+	$(this).click(function(){
+	$("li").removeClass("cur");
+	$("li").eq(index).addClass("cur");
+	});
+	});
+});
+</script>
+
+<style type="text/css">
+html,body{height:100%; max-height:100%; height:100%; overflow:hidden;}
+</style>
+
+</head>
+
+<body>
+<div id="container">
+   <div id="header">
+   <ul class="topbg"></ul>
+   <ul id="logo"><h1>舟山市网加科技有限公司</h1></ul>
+   <ul class="toprig">
+      <a href="#" class="l1">$memberRole.loginName,欢迎您</a>
+      <a href="$!base/login.html?logout=logout">退出</a>
+   </ul>
+   
+<script type="text/javascript">
+var timeout         = 300;
+var closetimer		= 0;
+var ddmenuitem      = 0;
+
+// open hidden layer
+function mopen(id)
+{	
+	// cancel close timer
+	mcancelclosetime();
+
+	// close old layer
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+
+	// get new layer and show it
+	ddmenuitem = document.getElementById(id);
+	ddmenuitem.style.visibility = "visible";
+	
+
+}
+// close showed layer
+function mclose()
+{
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+}
+
+// go close timer
+function mclosetime()
+{
+	closetimer = window.setTimeout(mclose, timeout);
+}
+
+// cancel close timer
+function mcancelclosetime()
+{
+	if(closetimer)
+	{
+		window.clearTimeout(closetimer);
+		closetimer = null;
+	}
+}
+
+// close layer when click-out
+document.onclick = mclose; 
+// -->
+</script>
+   
+   
+   <ul class="topnav">
+      <li class="cur"><a href="$!base/admin.html">系统首页</a></li>
+	  #if($memberRole.groupPri == 1000)
+      <li><a href="$!base/member/actions.html?method=list" target="mainframe">权限管理</a></li>
+	  #end
+   </ul>
+</div>
+   <div id="content1">
+      <div id="fraleft">
+         <div class="leftsidebar">
+            <div class="menutit"><h1>系统模块管理</h1></div>
+			#if($memberRole.roleId == 1000)
+				 <div class="cms_nav_active" id="cms_menu_1" onclick="show_cms_menu(1);"><h1>权限管理</h1></div>
+                <div class="cmslist" id="cms_ul_1" style="display:none">
+                    <ul>
+                     <li><a href="$!base/member/actions.html?method=list" title="用户管理" target="mainframe">用户管理</a></li>
+                   </ul>
+                </div>
+			#end
+			<div class="cms_nav nolist"><h1><a href="$!base/recommend/actions.html?method=list" title="产品管理" target="mainframe">产品管理</a></h1></div>
+			<div class="cms_nav nolist"><h1><a href="$!base/threshold/actions.html?method=list" title="阀值管理" target="mainframe">阀值管理</a></h1></div>
+			<div class="cms_nav nolist"><h1><a href="$!base/diagnosis/actions.html?method=list" title="诊断库管理" target="mainframe">诊断库管理</a></h1></div>
+			<div class="cms_nav nolist"><h1><a href="$!base/expert/actions.html?method=list" title="专家管理" target="mainframe">专家管理</a></h1></div>
+         </div>
+         
+<script type="text/javascript" language="javascript">
+function show_cms_menu(n){
+    var obj = document.getElementById("cms_menu_"+n);
+	var classname = obj.className;
+	var $j = jQuery.noConflict();
+	if(classname.indexOf("cms_nav_active") == -1){
+		//s("cms_ul_"+n);
+		$j("#cms_ul_"+n).slideUp();
+		obj.className = "cms_nav_active";
+	} else {
+		//h("cms_ul_"+n);
+		$j("#cms_ul_"+n).slideDown();
+		obj.className = "cms_nav";
+	}
+}
+</script>
+
+      </div>
+      <div id="framain">
+         <iframe src="$!base/pagechange.html?type=indexinit" width="100%" height="100%" frameborder="0" id="mainframe" name="mainframe"></iframe>
+      </div>
+   </div>
+</div>
+</body>
+</html>

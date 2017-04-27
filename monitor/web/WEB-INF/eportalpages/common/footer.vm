@@ -1,0 +1,28 @@
+  <div #if($action == "login") class="footer" #else id="footer" #end>
+    <ul class="layout">
+      <div class="foot_item">
+        <p>
+			#set($list = $!vMUtils.getAboutUsList())
+			#set($num = $!vMUtils.getAboutUsList().size())
+			#set($index = 1)
+			#foreach($obj in $list)
+				#if($index == $num)
+					<a href="$!base/aboutUs.html?sid=$!vMUtils.encrypt($obj.id)" class="last" title="$!obj.title">$!obj.title</a>
+				#else
+			        <a href="$!base/aboutUs.html?sid=$!vMUtils.encrypt($obj.id)" title="$!obj.title">$!obj.title</a>
+				#end
+			    #set($index = $index + 1)
+			#end
+			
+		</p>
+        <p>Copyright @ E螺杆 2015-2017 www.eluogan.com   All Rights Reserved.     &nbsp;  网站备案号：浙ICP备12029890号-8</p>
+      </div>
+      <div class="foot_item imglk">
+        <!--<a href="#" title=""><img src="$!base/eportalstyle/images/security_pic1.png" width="108" height="40" /></a>
+        <a href="#" title=""><img src="$!base/eportalstyle/images/security_pic2.png" width="108" height="40" /></a>
+        <a href="#" title=""><img src="$!base/eportalstyle/images/security_pic3.png" width="108" height="40" /></a>  -->
+      </div>
+    </ul>
+  </div>
+  
+  

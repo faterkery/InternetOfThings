@@ -1,0 +1,39 @@
+!SESSION 2011-05-11 16:37:38.207 -----------------------------------------------
+eclipse.buildId=M20060921-0945
+java.version=1.6.0_03
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_CN
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2011-05-11 16:38:02.489
+!MESSAGE Installed snippet library: D:\myeclipse\eclipse\plugins\com.genuitec.eclipse.wizards_5.1.1\snippets\css_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2011-05-11 16:38:02.551
+!MESSAGE Installed snippet library: D:\myeclipse\eclipse\plugins\com.genuitec.eclipse.wizards_5.1.1\snippets\forms_lists_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2011-05-11 16:38:02.598
+!MESSAGE Installed snippet library: D:\myeclipse\eclipse\plugins\com.genuitec.eclipse.wizards_5.1.1\snippets\htmlform_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2011-05-11 16:38:02.629
+!MESSAGE Installed snippet library: D:\myeclipse\eclipse\plugins\com.genuitec.eclipse.wizards_5.1.1\snippets\html_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2011-05-11 16:38:02.660
+!MESSAGE Installed snippet library: D:\myeclipse\eclipse\plugins\com.genuitec.eclipse.wizards_5.1.1\snippets\javascript_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2011-05-11 16:38:02.707
+!MESSAGE Installed snippet library: D:\myeclipse\eclipse\plugins\com.genuitec.eclipse.wizards_5.1.1\snippets\jsf_f_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2011-05-11 16:38:02.770
+!MESSAGE Installed snippet library: D:\myeclipse\eclipse\plugins\com.genuitec.eclipse.wizards_5.1.1\snippets\jsf_h_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2011-05-11 16:38:02.817
+!MESSAGE Installed snippet library: D:\myeclipse\eclipse\plugins\com.genuitec.eclipse.wizards_5.1.1\snippets\struts_bean_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2011-05-11 16:38:02.895
+!MESSAGE Installed snippet library: D:\myeclipse\eclipse\plugins\com.genuitec.eclipse.wizards_5.1.1\snippets\struts_html_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2011-05-11 16:38:02.957
+!MESSAGE Installed snippet library: D:\myeclipse\eclipse\plugins\com.genuitec.eclipse.wizards_5.1.1\snippets\struts_logic_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2011-05-11 16:38:02.989
+!MESSAGE Installed snippet library: D:\myeclipse\eclipse\plugins\com.genuitec.eclipse.wizards_5.1.1\snippets\struts_tiles_snippets.xml

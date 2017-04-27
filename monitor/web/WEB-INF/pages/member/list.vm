@@ -1,0 +1,64 @@
+#renhehead()
+<div id="main" class="w100 bgmain">
+	<div class="maintopmenu">
+		  <ul class="tit">用户管理 >列表</ul>      
+		<div class="btnpz">
+			<a href="#" class="btn_add"
+				onclick="window.location='$base/member/actions.html?method=insert&menuname=$menuname'">添加用户</a>
+		</div>
+	</div>
+
+	<form name="searchForm" method="post"
+		action="$base/member/actions.html?method=list&menuname=$!menuname">
+		<input type=hidden name="searchAction" value=y>
+		<div class="ToolSearch">
+			<div class="ToolSearchBar">
+				用户名:&nbsp;&nbsp;<input name="loginName" id="loginName" type="text" size="20" class="input1" value="$!loginName" style="margin-right:10px;" /> 
+				<input type=submit name="search" title="搜 索" value="搜 索 " class="btn_pic" />
+			</div>
+		</div>
+	</form>
+
+	<div class="maincon">
+		<table width="100%" border="0" cellpadding="0" cellspacing="1"
+			class="tb1" onmouseover="changeto()" onmouseout="changeback()">
+			<tr>
+				<td width="10%" class="cell1">用户名</td>
+				<td width="10%" class="cell1">联系方式</td>
+				<td width="10%" class="cell1">角色</td>
+				<td width="10%" class="cell1">状态</td>
+				<td width="20%" class="cell1">创建时间</td>
+				<td width="15%" class="cell1">操作</td>
+			</tr>
+			#set($indexNum=0) #foreach($biz in $bizObjList)
+			<tr #if($indexNum%2==0)class= "cell2" #else class="cell3" #end>
+				<td title="$!biz.loginName">$!biz.loginName</td>
+				<td title="$!biz.tel">$!biz.tel</td>
+				#if($!biz.roleId==1000)
+				<td title="admin(添加用户对全公司数据操作的权限)">admin(添加用户对全公司数据操作的权限)</td>
+				#elseif($!biz.roleId==11)
+				<td title="基地用户(操作数据权限)">基地用户(操作数据权限)</td>
+				#elseif($!biz.roleId==12)
+				<td title="普通用户(查看数据权限)">普通用户(查看数据权限)</td>
+				#end
+				<td>#if($!biz.state==0) 正常 #else 停用 #end</td>
+				<td title="$!vMUtils.dateTimeFormateSimple($!biz.timeCreate)">$!vMUtils.dateTimeFormateSimple($!biz.timeCreate)</td>
+				<td>
+				  <a href="$base/member/actions.html?method=update&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname" class="fblue1 mrg_zy5">编辑</a> 
+				  <a href="$base/member/actions.html?method=detail&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname" class="fblue1 mrg_zy5">详细</a> 
+				  <a href="$base/member/actions.html?method=delete&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname" class="fblue1 mrg_zy5" onclick="return confirm('确定删除吗？');">刪除</a>
+				</td>
+			</tr>
+			#set($indexNum=$indexNum+1)
+		  #end
+		  #if($indexNum<10)
+		    #set($indexNum=10-$indexNum)
+		      #foreach($foo in [1..$indexNum])
+		<tr #if($foo%2==0)class="cell3" #else class="cell2" #end><td colspan="7">&nbsp;</td></tr>
+		      #end
+		    #end
+		</table>
+		#parse( "/WEB-INF/pages/common/page.vm" )
+	</div>
+</div>
+#renheend()

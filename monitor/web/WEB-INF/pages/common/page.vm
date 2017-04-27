@@ -1,0 +1,83 @@
+#set($split = "?")
+#if($urlPre.indexOf("?") > 0)
+	#set($split = "&")
+#end
+#if(!$pageSize)
+	#set($pageSize=10)
+#end
+<div id="page">
+  <li class="turnbtn">
+    <dd class="turnhomepage"><a href="#" title="首页" onclick='toSubmitSearch(0,1)'>首页</a></dd>
+    <dd class="turnleft">
+    #if("$!pagination.currentPage"=="1")
+      <a href="#" title="首页">上一页</a>
+    #else
+      <a href="#" title="上一页" onclick='toSubmitSearch(1,1)'>上一页</a>
+    #end
+    </dd>
+    <dd class="turnright">
+    #if("$!pagination.currentPage"=="$!pagination.getTotalPage()")
+      <a href="#" title="最后一页">下一页</a>
+    #else  
+      <a href="#" title="下一页" onclick='toSubmitSearch(3,1)'>下一页</a>
+    #end  
+    </dd>
+    <dd class="turnendpage"><a href="#" title="最后一页" onclick='toSubmitSearch(5,1)'>最后一页</a></dd>
+  </li>
+  <li class="last" style="padding-right:0">     
+    <dd class="gorig"><a href="#" title="跳转到" onclick='toSubmitSearch(4,1)'>跳转到</a></dd>
+  </li>
+  
+  <li><input type="text" id="pageNum" class="input_page mrg_s3"/> / $!pagination.getTotalPage()页</li>
+  <li>每页 10
+	<!--
+  
+    <select name="select" class="input_pagesel mrg_s3">
+      <option value="${curUrl}${split}pageSize=10">10</option>
+      <option value="${curUrl}${split}pageSize=20">20</option>
+      <option value="${curUrl}${split}pageSize=50">50</option>
+      <option value="${curUrl}${split}pageSize=100">100</option>
+      <option value="${curUrl}${split}pageSize=500">500</option>
+      <option value="${curUrl}${split}pageSize=$!pagination.getTotalRow()">全部</option>
+    </select> 
+	-->
+	条
+  </li>
+  <li class="right last">共 $!pagination.getTotalRow()条记录，当前显示第1-10条</li>
+  <input type='hidden' name='prePageUrl' id='prePageUrl'  value='${urlPre}${split}start=$!pagination.getPrePage().getStartRow()${split}pageSize=$!pageSize$!parEnd'>
+  <input type='hidden' name='nextPageUrl' id='nextPageUrl'  value='${urlPre}${split}start=$!pagination.getNPage().getStartRow()${split}pageSize=$!pageSize$!parEnd'>    
+</div>
+
+<script language='javascript'>
+   function toSubmitSearch(id,thenowPageNum){
+      var theurl = "";
+      var prePageUrl = document.getElementById("prePageUrl").value;
+      var nextPageUrl = document.getElementById("nextPageUrl").value;
+      if(document.getElementById("perPageUrl"+thenowPageNum)){
+         var perPageUrl = document.getElementById("perPageUrl"+thenowPageNum).value;
+      }
+      
+      if(id==0){
+         theurl = "${urlPre}${split}start=0${split}pageSize=$!pageSize$!parEnd";
+      }
+      if(id==1){
+         theurl = prePageUrl;
+      }
+      if(id==2){
+         theurl = perPageUrl;
+      }
+      if(id==3){
+         theurl = nextPageUrl;
+      }
+      if(id==4){
+      	var urlNum=document.getElementById("pageNum").value*10-10;
+      	nextPageUrl = "${urlPre}${split}start="+urlNum;
+        theurl = nextPageUrl;
+      }
+       if(id==5){
+         theurl = "${urlPre}${split}start=$!pagination.endRows${split}pageSize=$!pageSize$!parEnd";
+      }
+      document.searchForm.action = theurl;
+      document.searchForm.submit();
+   }
+</script>

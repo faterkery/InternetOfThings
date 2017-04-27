@@ -1,0 +1,2035 @@
+[2011/05/11 14:32:37] D:\workspace\cardcenter\web\WEB-INF\web.xml:6: unknown element `version' in web-app
+[2011/05/11 14:34:25] com.renhenet.fw.waf.SpringLoaderServlet: init
+[2011/05/11 14:34:29] null
+java.lang.ExceptionInInitializerError
+	at com.renhenet.fw.waf.SpringLoaderServlet.init(SpringLoaderServlet.java:18)
+	at javax.servlet.GenericServlet.init(GenericServlet.java:82)
+	at com.caucho.server.http.Application.createServlet(Application.java:3114)
+	at com.caucho.server.http.Application.loadServlet(Application.java:3065)
+	at com.caucho.server.http.Application.initServlets(Application.java:1923)
+	at com.caucho.server.http.Application.init(Application.java:1849)
+	at com.caucho.server.http.VirtualHost.init(VirtualHost.java:728)
+	at com.caucho.server.http.ServletServer.initHosts(ServletServer.java:887)
+	at com.caucho.server.http.ServletServer.initInternal(ServletServer.java:729)
+	at com.caucho.server.http.ServletServer.init(ServletServer.java:538)
+	at com.caucho.server.http.ResinServer.init(ResinServer.java:415)
+	at com.caucho.server.http.ResinServer.main(ResinServer.java:1176)
+	at com.caucho.server.http.HttpServer.main(HttpServer.java:103)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vMUtils' defined in class path resource [spring-admin.xml]: Cannot resolve reference to bean 'portService' while setting bean property 'portService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'portService' is defined
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:253)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:124)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1019)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:809)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:425)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:250)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:141)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:247)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:161)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:273)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:346)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:92)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:77)
+	at com.renhenet.fw.ServiceLocator.<clinit>(ServiceLocator.java:24)
+	... 13 more
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'portService' is defined
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanDefinition(DefaultListableBeanFactory.java:340)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getMergedBeanDefinition(AbstractBeanFactory.java:906)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:242)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:161)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:245)
+	... 26 more
+[2011/05/11 14:34:29] init exception for `context'
+java.lang.ExceptionInInitializerError
+	at com.renhenet.fw.waf.SpringLoaderServlet.init(SpringLoaderServlet.java:18)
+	at javax.servlet.GenericServlet.init(GenericServlet.java:82)
+	at com.caucho.server.http.Application.createServlet(Application.java:3114)
+	at com.caucho.server.http.Application.loadServlet(Application.java:3065)
+	at com.caucho.server.http.Application.initServlets(Application.java:1923)
+	at com.caucho.server.http.Application.init(Application.java:1849)
+	at com.caucho.server.http.VirtualHost.init(VirtualHost.java:728)
+	at com.caucho.server.http.ServletServer.initHosts(ServletServer.java:887)
+	at com.caucho.server.http.ServletServer.initInternal(ServletServer.java:729)
+	at com.caucho.server.http.ServletServer.init(ServletServer.java:538)
+	at com.caucho.server.http.ResinServer.init(ResinServer.java:415)
+	at com.caucho.server.http.ResinServer.main(ResinServer.java:1176)
+	at com.caucho.server.http.HttpServer.main(HttpServer.java:103)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'vMUtils' defined in class path resource [spring-admin.xml]: Cannot resolve reference to bean 'portService' while setting bean property 'portService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'portService' is defined
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:253)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:124)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1019)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:809)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:425)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:250)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:141)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:247)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:161)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:273)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:346)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:92)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:77)
+	at com.renhenet.fw.ServiceLocator.<clinit>(ServiceLocator.java:24)
+	... 13 more
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'portService' is defined
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanDefinition(DefaultListableBeanFactory.java:340)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getMergedBeanDefinition(AbstractBeanFactory.java:906)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:242)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:161)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:245)
+	... 26 more
+[2011/05/11 14:34:29] com.renhenet.fw.waf.BaseActionServlet: init
+[2011/05/11 14:34:29] org.apache.velocity.tools.view.servlet.VelocityViewServlet: init
+[2011/05/11 14:34:29]  Velocity   [info] VelocityViewServlet: Custom Properties File: /WEB-INF/conf/velocity.properties
+[2011/05/11 14:34:29]  Velocity  : *******************************************************************
+[2011/05/11 14:34:29]  Velocity  [debug] Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+[2011/05/11 14:34:29]  Velocity  : RuntimeInstance initializing.
+[2011/05/11 14:34:29]  Velocity  [debug] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+[2011/05/11 14:34:29]  Velocity  [debug] Trying to use logger class org.apache.velocity.tools.view.servlet.ServletLogger
+[2011/05/11 14:34:29]  Velocity   [info] LogSystem has been deprecated. Please use a LogChute implementation.
+[2011/05/11 14:34:29]  Velocity  [debug] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+[2011/05/11 14:34:29]  Velocity  [debug] ResourceLoader instantiated: org.apache.velocity.tools.view.servlet.WebappLoader
+[2011/05/11 14:34:29]  Velocity   [info] WebappLoader : initialization starting.
+[2011/05/11 14:34:30]  Velocity   [info] WebappLoader : initialization complete.
+[2011/05/11 14:34:30]  Velocity  [debug] ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+[2011/05/11 14:34:30]  Velocity  : Default ResourceManager initialization complete.
+[2011/05/11 14:34:30]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+[2011/05/11 14:34:30]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+[2011/05/11 14:34:30]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+[2011/05/11 14:34:30]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+[2011/05/11 14:34:30]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+[2011/05/11 14:34:30]  Velocity  [debug] Created '20' parsers.
+[2011/05/11 14:34:30]  Velocity  : Velocimacro : initialization starting.
+[2011/05/11 14:34:30]  Velocity  [debug] Velocimacro : adding VMs from VM library : /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #renheparse(  template ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #renhehead(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #renheheadSimple(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #renheMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #mainMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #renheend(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showFormSelect(  _resourctName _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showDate(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showDateSimple(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showHHMMTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showDateHuman(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showMenuClass(  _menuName ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showFormText(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showFormRadio(  _fieldName _fieldValue _defaultFieldValue _objValue _objShowValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showFormTextNumber(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showFormTextarea(  _fieldName _fieldValue _rows ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showFormDate(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showFormMonth(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showFormTime(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showResourceSelect(  resourceType selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showSimpleSelect(  selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showListPortSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showListDockSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showListBoatSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showListSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showSalesList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showCustomerServeList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showMemberName(  userId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showResourceValue(  resourceId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #isSelected(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #isChecked(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #isCheckedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #isSelectedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : added #showMustFill(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:34:30]  Velocity  : Velocimacro : VM library registration complete.
+[2011/05/11 14:34:30]  Velocity  [debug] Velocimacro : allowInline = true : VMs can be defined inline in templates
+[2011/05/11 14:34:30]  Velocity  [debug] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+[2011/05/11 14:34:30]  Velocity  [debug] Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+[2011/05/11 14:34:30]  Velocity   [info] Velocimacro : autoload on : VM system will automatically reload global library macros
+[2011/05/11 14:34:30]  Velocity  : Velocimacro : Velocimacro : initialization complete.
+[2011/05/11 14:34:30]  Velocity  : RuntimeInstance successfully initialized.
+[2011/05/11 14:34:30]  Velocity   [info] VelocityViewServlet: Default content-type is: text/html; charset=GBK
+[2011/05/11 14:35:46] com.renhenet.fw.waf.SpringLoaderServlet: init
+[2011/05/11 14:35:49] com.renhenet.fw.waf.BaseActionServlet: init
+[2011/05/11 14:35:50] org.apache.velocity.tools.view.servlet.VelocityViewServlet: init
+[2011/05/11 14:35:50]  Velocity   [info] VelocityViewServlet: Custom Properties File: /WEB-INF/conf/velocity.properties
+[2011/05/11 14:35:50]  Velocity  : *******************************************************************
+[2011/05/11 14:35:50]  Velocity  [debug] Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+[2011/05/11 14:35:50]  Velocity  : RuntimeInstance initializing.
+[2011/05/11 14:35:50]  Velocity  [debug] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+[2011/05/11 14:35:50]  Velocity  [debug] Trying to use logger class org.apache.velocity.tools.view.servlet.ServletLogger
+[2011/05/11 14:35:50]  Velocity   [info] LogSystem has been deprecated. Please use a LogChute implementation.
+[2011/05/11 14:35:50]  Velocity  [debug] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+[2011/05/11 14:35:50]  Velocity  [debug] ResourceLoader instantiated: org.apache.velocity.tools.view.servlet.WebappLoader
+[2011/05/11 14:35:50]  Velocity   [info] WebappLoader : initialization starting.
+[2011/05/11 14:35:50]  Velocity   [info] WebappLoader : initialization complete.
+[2011/05/11 14:35:50]  Velocity  [debug] ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+[2011/05/11 14:35:50]  Velocity  : Default ResourceManager initialization complete.
+[2011/05/11 14:35:50]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+[2011/05/11 14:35:50]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+[2011/05/11 14:35:50]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+[2011/05/11 14:35:50]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+[2011/05/11 14:35:50]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+[2011/05/11 14:35:50]  Velocity  [debug] Created '20' parsers.
+[2011/05/11 14:35:51]  Velocity  : Velocimacro : initialization starting.
+[2011/05/11 14:35:51]  Velocity  [debug] Velocimacro : adding VMs from VM library : /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #renheparse(  template ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #renhehead(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #renheheadSimple(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #renheMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #mainMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #renheend(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showFormSelect(  _resourctName _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showDate(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showDateSimple(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showHHMMTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showDateHuman(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showMenuClass(  _menuName ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showFormText(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showFormRadio(  _fieldName _fieldValue _defaultFieldValue _objValue _objShowValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showFormTextNumber(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showFormTextarea(  _fieldName _fieldValue _rows ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showFormDate(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showFormMonth(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showFormTime(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showResourceSelect(  resourceType selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showSimpleSelect(  selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showListPortSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showListDockSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showListBoatSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showListSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showSalesList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showCustomerServeList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showMemberName(  userId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showResourceValue(  resourceId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #isSelected(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #isChecked(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #isCheckedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #isSelectedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : added #showMustFill(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:35:51]  Velocity  : Velocimacro : VM library registration complete.
+[2011/05/11 14:35:51]  Velocity  [debug] Velocimacro : allowInline = true : VMs can be defined inline in templates
+[2011/05/11 14:35:51]  Velocity  [debug] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+[2011/05/11 14:35:51]  Velocity  [debug] Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+[2011/05/11 14:35:51]  Velocity   [info] Velocimacro : autoload on : VM system will automatically reload global library macros
+[2011/05/11 14:35:51]  Velocity  : Velocimacro : Velocimacro : initialization complete.
+[2011/05/11 14:35:51]  Velocity  : RuntimeInstance successfully initialized.
+[2011/05/11 14:35:51]  Velocity   [info] VelocityViewServlet: Default content-type is: text/html; charset=GBK
+[2011/05/11 14:36:17] com.caucho.server.http.FileServlet: init
+[2011/05/11 14:36:17] com.caucho.server.http.DirectoryServlet: init
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 14:42:30] No action config found for the specified url.
+org.apache.struts.chain.commands.InvalidPathException: No action config found for the specified url.
+	at org.apache.struts.chain.commands.AbstractSelectAction.execute(AbstractSelectAction.java:68)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:446)
+	at com.renhenet.fw.waf.BaseActionServlet.doGet(BaseActionServlet.java:22)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:126)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:171)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 14:43:02]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 45, column 120]
+[2011/05/11 14:43:02]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 46, column 120]
+[2011/05/11 14:43:38]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 45, column 120]
+[2011/05/11 14:43:38]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 46, column 120]
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 14:44:07] No action config found for the specified url.
+org.apache.struts.chain.commands.InvalidPathException: No action config found for the specified url.
+	at org.apache.struts.chain.commands.AbstractSelectAction.execute(AbstractSelectAction.java:68)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:446)
+	at com.renhenet.fw.waf.BaseActionServlet.doGet(BaseActionServlet.java:22)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:126)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:171)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+java.lang.NullPointerException
+	at org.apache.struts.config.FormBeanConfig.createActionForm(FormBeanConfig.java:286)
+	at org.apache.struts.config.FormBeanConfig.createActionForm(FormBeanConfig.java:350)
+	at org.apache.struts.chain.commands.CreateActionForm.execute(CreateActionForm.java:89)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:446)
+	at com.renhenet.fw.waf.BaseActionServlet.doGet(BaseActionServlet.java:22)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:126)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:171)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+[2011/05/11 14:46:33] null
+java.lang.NullPointerException
+	at org.apache.struts.config.FormBeanConfig.createActionForm(FormBeanConfig.java:286)
+	at org.apache.struts.config.FormBeanConfig.createActionForm(FormBeanConfig.java:350)
+	at org.apache.struts.chain.commands.CreateActionForm.execute(CreateActionForm.java:89)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:446)
+	at com.renhenet.fw.waf.BaseActionServlet.doGet(BaseActionServlet.java:22)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:126)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:171)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 14:47:49] com.renhenet.fw.waf.SpringLoaderServlet: init
+[2011/05/11 14:47:52] com.renhenet.fw.waf.BaseActionServlet: init
+[2011/05/11 14:47:53] org.apache.velocity.tools.view.servlet.VelocityViewServlet: init
+[2011/05/11 14:47:53]  Velocity   [info] VelocityViewServlet: Custom Properties File: /WEB-INF/conf/velocity.properties
+[2011/05/11 14:47:53]  Velocity  : *******************************************************************
+[2011/05/11 14:47:53]  Velocity  [debug] Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+[2011/05/11 14:47:53]  Velocity  : RuntimeInstance initializing.
+[2011/05/11 14:47:53]  Velocity  [debug] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+[2011/05/11 14:47:53]  Velocity  [debug] Trying to use logger class org.apache.velocity.tools.view.servlet.ServletLogger
+[2011/05/11 14:47:53]  Velocity   [info] LogSystem has been deprecated. Please use a LogChute implementation.
+[2011/05/11 14:47:53]  Velocity  [debug] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+[2011/05/11 14:47:53]  Velocity  [debug] ResourceLoader instantiated: org.apache.velocity.tools.view.servlet.WebappLoader
+[2011/05/11 14:47:53]  Velocity   [info] WebappLoader : initialization starting.
+[2011/05/11 14:47:53]  Velocity   [info] WebappLoader : initialization complete.
+[2011/05/11 14:47:53]  Velocity  [debug] ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+[2011/05/11 14:47:53]  Velocity  : Default ResourceManager initialization complete.
+[2011/05/11 14:47:53]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+[2011/05/11 14:47:53]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+[2011/05/11 14:47:53]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+[2011/05/11 14:47:53]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+[2011/05/11 14:47:53]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+[2011/05/11 14:47:53]  Velocity  [debug] Created '20' parsers.
+[2011/05/11 14:47:53]  Velocity  : Velocimacro : initialization starting.
+[2011/05/11 14:47:53]  Velocity  [debug] Velocimacro : adding VMs from VM library : /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #renheparse(  template ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #renhehead(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #renheheadSimple(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #renheMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #mainMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #renheend(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showFormSelect(  _resourctName _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showDate(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showDateSimple(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showHHMMTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showDateHuman(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showMenuClass(  _menuName ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showFormText(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showFormRadio(  _fieldName _fieldValue _defaultFieldValue _objValue _objShowValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showFormTextNumber(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showFormTextarea(  _fieldName _fieldValue _rows ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showFormDate(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showFormMonth(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showFormTime(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showResourceSelect(  resourceType selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showSimpleSelect(  selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showListPortSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showListDockSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showListBoatSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showListSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showSalesList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showCustomerServeList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showMemberName(  userId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showResourceValue(  resourceId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #isSelected(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #isChecked(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #isCheckedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #isSelectedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : added #showMustFill(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 14:47:53]  Velocity  : Velocimacro : VM library registration complete.
+[2011/05/11 14:47:53]  Velocity  [debug] Velocimacro : allowInline = true : VMs can be defined inline in templates
+[2011/05/11 14:47:53]  Velocity  [debug] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+[2011/05/11 14:47:53]  Velocity  [debug] Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+[2011/05/11 14:47:53]  Velocity   [info] Velocimacro : autoload on : VM system will automatically reload global library macros
+[2011/05/11 14:47:53]  Velocity  : Velocimacro : Velocimacro : initialization complete.
+[2011/05/11 14:47:53]  Velocity  : RuntimeInstance successfully initialized.
+[2011/05/11 14:47:53]  Velocity   [info] VelocityViewServlet: Default content-type is: text/html; charset=GBK
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 14:48:34] No action config found for the specified url.
+org.apache.struts.chain.commands.InvalidPathException: No action config found for the specified url.
+	at org.apache.struts.chain.commands.AbstractSelectAction.execute(AbstractSelectAction.java:68)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:446)
+	at com.renhenet.fw.waf.BaseActionServlet.doGet(BaseActionServlet.java:22)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:126)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:171)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 14:49:28] com.caucho.server.http.FileServlet: init
+[2011/05/11 14:49:28] com.caucho.server.http.DirectoryServlet: init
+[2011/05/11 14:49:39] No action config found for the specified url.
+org.apache.struts.chain.commands.InvalidPathException: No action config found for the specified url.
+	at org.apache.struts.chain.commands.AbstractSelectAction.execute(AbstractSelectAction.java:68)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:446)
+	at com.renhenet.fw.waf.BaseActionServlet.doGet(BaseActionServlet.java:22)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:126)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:171)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 14:54:47]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 45, column 120]
+[2011/05/11 14:54:47]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 46, column 120]
+[2011/05/11 14:54:50]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 45, column 120]
+[2011/05/11 14:54:50]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 46, column 120]
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 14:54:59]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 45, column 120]
+[2011/05/11 14:54:59]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 46, column 120]
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 14:57:56]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 45, column 120]
+[2011/05/11 14:57:56]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 46, column 120]
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 14:58:05]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 45, column 120]
+[2011/05/11 14:58:05]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 46, column 120]
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 15:05:55] com.renhenet.fw.waf.SpringLoaderServlet: init
+[2011/05/11 15:05:58] com.renhenet.fw.waf.BaseActionServlet: init
+[2011/05/11 15:05:59] org.apache.velocity.tools.view.servlet.VelocityViewServlet: init
+[2011/05/11 15:05:59]  Velocity   [info] VelocityViewServlet: Custom Properties File: /WEB-INF/conf/velocity.properties
+[2011/05/11 15:05:59]  Velocity  : *******************************************************************
+[2011/05/11 15:05:59]  Velocity  [debug] Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+[2011/05/11 15:05:59]  Velocity  : RuntimeInstance initializing.
+[2011/05/11 15:05:59]  Velocity  [debug] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+[2011/05/11 15:05:59]  Velocity  [debug] Trying to use logger class org.apache.velocity.tools.view.servlet.ServletLogger
+[2011/05/11 15:05:59]  Velocity   [info] LogSystem has been deprecated. Please use a LogChute implementation.
+[2011/05/11 15:05:59]  Velocity  [debug] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+[2011/05/11 15:05:59]  Velocity  [debug] ResourceLoader instantiated: org.apache.velocity.tools.view.servlet.WebappLoader
+[2011/05/11 15:05:59]  Velocity   [info] WebappLoader : initialization starting.
+[2011/05/11 15:05:59]  Velocity   [info] WebappLoader : initialization complete.
+[2011/05/11 15:05:59]  Velocity  [debug] ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+[2011/05/11 15:05:59]  Velocity  : Default ResourceManager initialization complete.
+[2011/05/11 15:05:59]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+[2011/05/11 15:05:59]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+[2011/05/11 15:05:59]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+[2011/05/11 15:05:59]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+[2011/05/11 15:05:59]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+[2011/05/11 15:05:59]  Velocity  [debug] Created '20' parsers.
+[2011/05/11 15:05:59]  Velocity  : Velocimacro : initialization starting.
+[2011/05/11 15:05:59]  Velocity  [debug] Velocimacro : adding VMs from VM library : /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #renheparse(  template ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #renhehead(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #renheheadSimple(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #renheMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #mainMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #renheend(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showFormSelect(  _resourctName _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showDate(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showDateSimple(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showHHMMTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showDateHuman(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showMenuClass(  _menuName ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showFormText(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showFormRadio(  _fieldName _fieldValue _defaultFieldValue _objValue _objShowValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showFormTextNumber(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showFormTextarea(  _fieldName _fieldValue _rows ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showFormDate(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showFormMonth(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showFormTime(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showResourceSelect(  resourceType selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showSimpleSelect(  selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showListPortSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showListDockSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showListBoatSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showListSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showSalesList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showCustomerServeList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showMemberName(  userId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showResourceValue(  resourceId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #isSelected(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #isChecked(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #isCheckedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #isSelectedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : added #showMustFill(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:05:59]  Velocity  : Velocimacro : VM library registration complete.
+[2011/05/11 15:05:59]  Velocity  [debug] Velocimacro : allowInline = true : VMs can be defined inline in templates
+[2011/05/11 15:05:59]  Velocity  [debug] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+[2011/05/11 15:05:59]  Velocity  [debug] Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+[2011/05/11 15:05:59]  Velocity   [info] Velocimacro : autoload on : VM system will automatically reload global library macros
+[2011/05/11 15:05:59]  Velocity  : Velocimacro : Velocimacro : initialization complete.
+[2011/05/11 15:05:59]  Velocity  : RuntimeInstance successfully initialized.
+[2011/05/11 15:05:59]  Velocity   [info] VelocityViewServlet: Default content-type is: text/html; charset=GBK
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 15:08:08] com.caucho.server.http.FileServlet: init
+[2011/05/11 15:08:08] com.caucho.server.http.DirectoryServlet: init
+[2011/05/11 15:08:10] No action config found for the specified url.
+org.apache.struts.chain.commands.InvalidPathException: No action config found for the specified url.
+	at org.apache.struts.chain.commands.AbstractSelectAction.execute(AbstractSelectAction.java:68)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:446)
+	at com.renhenet.fw.waf.BaseActionServlet.doGet(BaseActionServlet.java:22)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:126)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:171)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+[2011/05/11 15:08:59] com.renhenet.fw.waf.SpringLoaderServlet: init
+[2011/05/11 15:09:03] com.renhenet.fw.waf.BaseActionServlet: init
+[2011/05/11 15:09:04] org.apache.velocity.tools.view.servlet.VelocityViewServlet: init
+[2011/05/11 15:09:04]  Velocity   [info] VelocityViewServlet: Custom Properties File: /WEB-INF/conf/velocity.properties
+[2011/05/11 15:09:04]  Velocity  : *******************************************************************
+[2011/05/11 15:09:04]  Velocity  [debug] Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+[2011/05/11 15:09:04]  Velocity  : RuntimeInstance initializing.
+[2011/05/11 15:09:04]  Velocity  [debug] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+[2011/05/11 15:09:04]  Velocity  [debug] Trying to use logger class org.apache.velocity.tools.view.servlet.ServletLogger
+[2011/05/11 15:09:04]  Velocity   [info] LogSystem has been deprecated. Please use a LogChute implementation.
+[2011/05/11 15:09:04]  Velocity  [debug] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+[2011/05/11 15:09:04]  Velocity  [debug] ResourceLoader instantiated: org.apache.velocity.tools.view.servlet.WebappLoader
+[2011/05/11 15:09:04]  Velocity   [info] WebappLoader : initialization starting.
+[2011/05/11 15:09:04]  Velocity   [info] WebappLoader : initialization complete.
+[2011/05/11 15:09:04]  Velocity  [debug] ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+[2011/05/11 15:09:04]  Velocity  : Default ResourceManager initialization complete.
+[2011/05/11 15:09:04]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+[2011/05/11 15:09:04]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+[2011/05/11 15:09:04]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+[2011/05/11 15:09:04]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+[2011/05/11 15:09:04]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+[2011/05/11 15:09:04]  Velocity  [debug] Created '20' parsers.
+[2011/05/11 15:09:04]  Velocity  : Velocimacro : initialization starting.
+[2011/05/11 15:09:04]  Velocity  [debug] Velocimacro : adding VMs from VM library : /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #renheparse(  template ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #renhehead(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #renheheadSimple(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #renheMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #mainMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #renheend(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showFormSelect(  _resourctName _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showDate(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showDateSimple(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showHHMMTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showDateHuman(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showMenuClass(  _menuName ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showFormText(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showFormRadio(  _fieldName _fieldValue _defaultFieldValue _objValue _objShowValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showFormTextNumber(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showFormTextarea(  _fieldName _fieldValue _rows ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showFormDate(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showFormMonth(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showFormTime(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showResourceSelect(  resourceType selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showSimpleSelect(  selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showListPortSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showListDockSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showListBoatSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showListSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showSalesList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showCustomerServeList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showMemberName(  userId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showResourceValue(  resourceId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #isSelected(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #isChecked(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #isCheckedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #isSelectedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : added #showMustFill(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:09:04]  Velocity  : Velocimacro : VM library registration complete.
+[2011/05/11 15:09:04]  Velocity  [debug] Velocimacro : allowInline = true : VMs can be defined inline in templates
+[2011/05/11 15:09:04]  Velocity  [debug] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+[2011/05/11 15:09:04]  Velocity  [debug] Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+[2011/05/11 15:09:04]  Velocity   [info] Velocimacro : autoload on : VM system will automatically reload global library macros
+[2011/05/11 15:09:04]  Velocity  : Velocimacro : Velocimacro : initialization complete.
+[2011/05/11 15:09:04]  Velocity  : RuntimeInstance successfully initialized.
+[2011/05/11 15:09:04]  Velocity   [info] VelocityViewServlet: Default content-type is: text/html; charset=GBK
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.renhenet.web.DispatchAdminAction.action(DispatchAdminAction.java:56)
+	at com.renhenet.web.DispatchAdminAction.list(DispatchAdminAction.java:91)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.struts.actions.DispatchAction.dispatchMethod(DispatchAction.java:266)
+	at org.apache.struts.actions.DispatchAction.execute(DispatchAction.java:167)
+	at org.apache.struts.chain.commands.servlet.ExecuteAction.execute(ExecuteAction.java:53)
+	at org.apache.struts.chain.commands.AbstractExecuteAction.execute(AbstractExecuteAction.java:64)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:446)
+	at com.renhenet.fw.waf.BaseActionServlet.doGet(BaseActionServlet.java:22)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:126)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:170)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+Caused by: com.renhenet.fw.dao.DAOException: 
+	at com.renhenet.fw.dao.BaseHibernateDao.getCount(BaseHibernateDao.java:167)
+	at com.renhenet.modules.CommonService.getBizObjCount(CommonService.java:204)
+	at com.renhenet.modules.CommonService$$FastClassByCGLIB$$f101f0a7.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)
+	at org.springframework.aop.framework.Cglib2AopProxy$CglibMethodInvocation.invokeJoinpoint(Cglib2AopProxy.java:675)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:154)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:107)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:176)
+	at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:616)
+	at com.renhenet.modules.member.GroupsService$$EnhancerByCGLIB$$dd660eee.getBizObjCount(<generated>)
+	at com.renhenet.web.DispatchActions.doSearch(DispatchActions.java:90)
+	at com.renhenet.web.DispatchActions.listProcess(DispatchActions.java:54)
+	... 30 more
+Caused by: org.springframework.orm.hibernate3.HibernateJdbcException: JDBC exception on Hibernate data access; nested exception is org.hibernate.exception.SQLGrammarException: could not execute query
+	at org.springframework.orm.hibernate3.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:636)
+	at org.springframework.orm.hibernate3.HibernateAccessor.convertHibernateAccessException(HibernateAccessor.java:407)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:372)
+	at org.springframework.orm.hibernate3.HibernateTemplate.executeFind(HibernateTemplate.java:337)
+	at com.renhenet.fw.dao.BaseHibernateDao.getCount(BaseHibernateDao.java:143)
+	... 41 more
+Caused by: org.hibernate.exception.SQLGrammarException: could not execute query
+	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:67)
+	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:43)
+	at org.hibernate.loader.Loader.doList(Loader.java:2214)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2095)
+	at org.hibernate.loader.Loader.list(Loader.java:2090)
+	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:388)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:338)
+	at org.hibernate.engine.query.HQLQueryPlan.performList(HQLQueryPlan.java:172)
+	at org.hibernate.impl.SessionImpl.list(SessionImpl.java:1121)
+	at org.hibernate.impl.QueryImpl.list(QueryImpl.java:79)
+	at com.renhenet.fw.dao.BaseHibernateDao$2.doInHibernate(BaseHibernateDao.java:153)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:367)
+	... 43 more
+Caused by: java.sql.SQLException: Table 'cardcenter.groups' doesn't exist
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:2975)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1600)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:1695)
+	at com.mysql.jdbc.Connection.execSQL(Connection.java:3004)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1128)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1222)
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeQuery(NewProxyPreparedStatement.java:76)
+	at org.hibernate.jdbc.AbstractBatcher.getResultSet(AbstractBatcher.java:186)
+	at org.hibernate.loader.Loader.getResultSet(Loader.java:1778)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:662)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:224)
+	at org.hibernate.loader.Loader.doList(Loader.java:2211)
+	... 52 more
+[2011/05/11 15:10:31] null
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.renhenet.web.DispatchAdminAction.action(DispatchAdminAction.java:56)
+	at com.renhenet.web.DispatchAdminAction.list(DispatchAdminAction.java:91)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.struts.actions.DispatchAction.dispatchMethod(DispatchAction.java:266)
+	at org.apache.struts.actions.DispatchAction.execute(DispatchAction.java:167)
+	at org.apache.struts.chain.commands.servlet.ExecuteAction.execute(ExecuteAction.java:53)
+	at org.apache.struts.chain.commands.AbstractExecuteAction.execute(AbstractExecuteAction.java:64)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:446)
+	at com.renhenet.fw.waf.BaseActionServlet.doGet(BaseActionServlet.java:22)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:126)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:170)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+Caused by: com.renhenet.fw.dao.DAOException: 
+	at com.renhenet.fw.dao.BaseHibernateDao.getCount(BaseHibernateDao.java:167)
+	at com.renhenet.modules.CommonService.getBizObjCount(CommonService.java:204)
+	at com.renhenet.modules.CommonService$$FastClassByCGLIB$$f101f0a7.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)
+	at org.springframework.aop.framework.Cglib2AopProxy$CglibMethodInvocation.invokeJoinpoint(Cglib2AopProxy.java:675)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:154)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:107)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:176)
+	at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:616)
+	at com.renhenet.modules.member.GroupsService$$EnhancerByCGLIB$$dd660eee.getBizObjCount(<generated>)
+	at com.renhenet.web.DispatchActions.doSearch(DispatchActions.java:90)
+	at com.renhenet.web.DispatchActions.listProcess(DispatchActions.java:54)
+	... 30 more
+Caused by: org.springframework.orm.hibernate3.HibernateJdbcException: JDBC exception on Hibernate data access; nested exception is org.hibernate.exception.SQLGrammarException: could not execute query
+	at org.springframework.orm.hibernate3.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:636)
+	at org.springframework.orm.hibernate3.HibernateAccessor.convertHibernateAccessException(HibernateAccessor.java:407)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:372)
+	at org.springframework.orm.hibernate3.HibernateTemplate.executeFind(HibernateTemplate.java:337)
+	at com.renhenet.fw.dao.BaseHibernateDao.getCount(BaseHibernateDao.java:143)
+	... 41 more
+Caused by: org.hibernate.exception.SQLGrammarException: could not execute query
+	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:67)
+	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:43)
+	at org.hibernate.loader.Loader.doList(Loader.java:2214)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2095)
+	at org.hibernate.loader.Loader.list(Loader.java:2090)
+	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:388)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:338)
+	at org.hibernate.engine.query.HQLQueryPlan.performList(HQLQueryPlan.java:172)
+	at org.hibernate.impl.SessionImpl.list(SessionImpl.java:1121)
+	at org.hibernate.impl.QueryImpl.list(QueryImpl.java:79)
+	at com.renhenet.fw.dao.BaseHibernateDao$2.doInHibernate(BaseHibernateDao.java:153)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:367)
+	... 43 more
+Caused by: java.sql.SQLException: Table 'cardcenter.groups' doesn't exist
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:2975)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1600)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:1695)
+	at com.mysql.jdbc.Connection.execSQL(Connection.java:3004)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1128)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1222)
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeQuery(NewProxyPreparedStatement.java:76)
+	at org.hibernate.jdbc.AbstractBatcher.getResultSet(AbstractBatcher.java:186)
+	at org.hibernate.loader.Loader.getResultSet(Loader.java:1778)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:662)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:224)
+	at org.hibernate.loader.Loader.doList(Loader.java:2211)
+	... 52 more
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 15:11:15] com.caucho.server.http.FileServlet: init
+[2011/05/11 15:11:15] com.caucho.server.http.DirectoryServlet: init
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+[2011/05/11 15:11:17]  Velocity  [error] ResourceManager : unable to find resource '/WEB-INF/pages/groups/list.vm' in any resource loader.
+[2011/05/11 15:11:17]  Velocity  [error] VelocityViewServlet: Exception processing the template: org.apache.velocity.exception.ResourceNotFoundException: Unable to find resource '/WEB-INF/pages/groups/list.vm'
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 15:17:54] No action config found for the specified url.
+org.apache.struts.chain.commands.InvalidPathException: No action config found for the specified url.
+	at org.apache.struts.chain.commands.AbstractSelectAction.execute(AbstractSelectAction.java:68)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:446)
+	at com.renhenet.fw.waf.BaseActionServlet.doGet(BaseActionServlet.java:22)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:126)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:171)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+[2011/05/11 15:40:17] com.renhenet.fw.waf.SpringLoaderServlet: init
+[2011/05/11 15:40:20] com.renhenet.fw.waf.BaseActionServlet: init
+[2011/05/11 15:40:21] org.apache.velocity.tools.view.servlet.VelocityViewServlet: init
+[2011/05/11 15:40:21]  Velocity   [info] VelocityViewServlet: Custom Properties File: /WEB-INF/conf/velocity.properties
+[2011/05/11 15:40:21]  Velocity  : *******************************************************************
+[2011/05/11 15:40:21]  Velocity  [debug] Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+[2011/05/11 15:40:21]  Velocity  : RuntimeInstance initializing.
+[2011/05/11 15:40:21]  Velocity  [debug] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+[2011/05/11 15:40:21]  Velocity  [debug] Trying to use logger class org.apache.velocity.tools.view.servlet.ServletLogger
+[2011/05/11 15:40:21]  Velocity   [info] LogSystem has been deprecated. Please use a LogChute implementation.
+[2011/05/11 15:40:21]  Velocity  [debug] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+[2011/05/11 15:40:21]  Velocity  [debug] ResourceLoader instantiated: org.apache.velocity.tools.view.servlet.WebappLoader
+[2011/05/11 15:40:21]  Velocity   [info] WebappLoader : initialization starting.
+[2011/05/11 15:40:21]  Velocity   [info] WebappLoader : initialization complete.
+[2011/05/11 15:40:21]  Velocity  [debug] ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+[2011/05/11 15:40:21]  Velocity  : Default ResourceManager initialization complete.
+[2011/05/11 15:40:21]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+[2011/05/11 15:40:21]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+[2011/05/11 15:40:21]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+[2011/05/11 15:40:21]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+[2011/05/11 15:40:21]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+[2011/05/11 15:40:21]  Velocity  [debug] Created '20' parsers.
+[2011/05/11 15:40:22]  Velocity  : Velocimacro : initialization starting.
+[2011/05/11 15:40:22]  Velocity  [debug] Velocimacro : adding VMs from VM library : /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #renheparse(  template ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #renhehead(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #renheheadSimple(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #renheMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #mainMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #renheend(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showFormSelect(  _resourctName _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showDate(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showDateSimple(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showHHMMTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showDateHuman(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showMenuClass(  _menuName ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showFormText(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showFormRadio(  _fieldName _fieldValue _defaultFieldValue _objValue _objShowValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showFormTextNumber(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showFormTextarea(  _fieldName _fieldValue _rows ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showFormDate(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showFormMonth(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showFormTime(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showResourceSelect(  resourceType selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showSimpleSelect(  selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showListPortSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showListDockSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showListBoatSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showListSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showSalesList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showCustomerServeList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showMemberName(  userId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showResourceValue(  resourceId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #isSelected(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #isChecked(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #isCheckedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #isSelectedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : added #showMustFill(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 15:40:22]  Velocity  : Velocimacro : VM library registration complete.
+[2011/05/11 15:40:22]  Velocity  [debug] Velocimacro : allowInline = true : VMs can be defined inline in templates
+[2011/05/11 15:40:22]  Velocity  [debug] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+[2011/05/11 15:40:22]  Velocity  [debug] Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+[2011/05/11 15:40:22]  Velocity   [info] Velocimacro : autoload on : VM system will automatically reload global library macros
+[2011/05/11 15:40:22]  Velocity  : Velocimacro : Velocimacro : initialization complete.
+[2011/05/11 15:40:22]  Velocity  : RuntimeInstance successfully initialized.
+[2011/05/11 15:40:22]  Velocity   [info] VelocityViewServlet: Default content-type is: text/html; charset=GBK
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+[2011/05/11 15:40:27] com.caucho.server.http.FileServlet: init
+[2011/05/11 15:40:27] com.caucho.server.http.DirectoryServlet: init
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+java.lang.NullPointerException
+	at org.apache.struts.config.FormBeanConfig.createActionForm(FormBeanConfig.java:286)
+	at org.apache.struts.config.FormBeanConfig.createActionForm(FormBeanConfig.java:350)
+	at org.apache.struts.chain.commands.CreateActionForm.execute(CreateActionForm.java:89)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:446)
+	at com.renhenet.fw.waf.BaseActionServlet.doGet(BaseActionServlet.java:22)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:126)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:171)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+[2011/05/11 16:02:05] null
+java.lang.NullPointerException
+	at org.apache.struts.config.FormBeanConfig.createActionForm(FormBeanConfig.java:286)
+	at org.apache.struts.config.FormBeanConfig.createActionForm(FormBeanConfig.java:350)
+	at org.apache.struts.chain.commands.CreateActionForm.execute(CreateActionForm.java:89)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:446)
+	at com.renhenet.fw.waf.BaseActionServlet.doGet(BaseActionServlet.java:22)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:126)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:171)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+[2011/05/11 16:03:32] com.renhenet.fw.waf.SpringLoaderServlet: init
+[2011/05/11 16:03:36] com.renhenet.fw.waf.BaseActionServlet: init
+[2011/05/11 16:03:37] org.apache.velocity.tools.view.servlet.VelocityViewServlet: init
+[2011/05/11 16:03:37]  Velocity   [info] VelocityViewServlet: Custom Properties File: /WEB-INF/conf/velocity.properties
+[2011/05/11 16:03:37]  Velocity  : *******************************************************************
+[2011/05/11 16:03:37]  Velocity  [debug] Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+[2011/05/11 16:03:37]  Velocity  : RuntimeInstance initializing.
+[2011/05/11 16:03:37]  Velocity  [debug] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+[2011/05/11 16:03:37]  Velocity  [debug] Trying to use logger class org.apache.velocity.tools.view.servlet.ServletLogger
+[2011/05/11 16:03:37]  Velocity   [info] LogSystem has been deprecated. Please use a LogChute implementation.
+[2011/05/11 16:03:37]  Velocity  [debug] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+[2011/05/11 16:03:37]  Velocity  [debug] ResourceLoader instantiated: org.apache.velocity.tools.view.servlet.WebappLoader
+[2011/05/11 16:03:37]  Velocity   [info] WebappLoader : initialization starting.
+[2011/05/11 16:03:37]  Velocity   [info] WebappLoader : initialization complete.
+[2011/05/11 16:03:37]  Velocity  [debug] ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+[2011/05/11 16:03:37]  Velocity  : Default ResourceManager initialization complete.
+[2011/05/11 16:03:37]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+[2011/05/11 16:03:37]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+[2011/05/11 16:03:37]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+[2011/05/11 16:03:37]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+[2011/05/11 16:03:37]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+[2011/05/11 16:03:37]  Velocity  [debug] Created '20' parsers.
+[2011/05/11 16:03:37]  Velocity  : Velocimacro : initialization starting.
+[2011/05/11 16:03:37]  Velocity  [debug] Velocimacro : adding VMs from VM library : /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #renheparse(  template ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #renhehead(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #renheheadSimple(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #renheMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #mainMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #renheend(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showFormSelect(  _resourctName _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showDate(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showDateSimple(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showHHMMTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showDateHuman(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showMenuClass(  _menuName ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showFormText(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showFormRadio(  _fieldName _fieldValue _defaultFieldValue _objValue _objShowValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showFormTextNumber(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showFormTextarea(  _fieldName _fieldValue _rows ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showFormDate(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showFormMonth(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showFormTime(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showResourceSelect(  resourceType selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showSimpleSelect(  selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showListPortSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showListDockSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showListBoatSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showListSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showSalesList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showCustomerServeList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showMemberName(  userId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showResourceValue(  resourceId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #isSelected(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #isChecked(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #isCheckedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #isSelectedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : added #showMustFill(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:03:37]  Velocity  : Velocimacro : VM library registration complete.
+[2011/05/11 16:03:37]  Velocity  [debug] Velocimacro : allowInline = true : VMs can be defined inline in templates
+[2011/05/11 16:03:37]  Velocity  [debug] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+[2011/05/11 16:03:37]  Velocity  [debug] Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+[2011/05/11 16:03:37]  Velocity   [info] Velocimacro : autoload on : VM system will automatically reload global library macros
+[2011/05/11 16:03:37]  Velocity  : Velocimacro : Velocimacro : initialization complete.
+[2011/05/11 16:03:37]  Velocity  : RuntimeInstance successfully initialized.
+[2011/05/11 16:03:37]  Velocity   [info] VelocityViewServlet: Default content-type is: text/html; charset=GBK
+java.lang.ClassNotFoundException: com.renhenet.web.member.RoleAction
+	at com.caucho.util.DynamicClassLoader.loadClass(DynamicClassLoader.java:538)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:251)
+	at org.apache.struts.chain.commands.util.ClassUtils.getApplicationClass(ClassUtils.java:49)
+	at org.apache.struts.chain.commands.util.ClassUtils.getApplicationInstance(ClassUtils.java:66)
+	at org.apache.struts.chain.commands.servlet.CreateAction.getAction(CreateAction.java:66)
+	at org.apache.struts.chain.commands.AbstractCreateAction.execute(AbstractCreateAction.java:82)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:446)
+	at com.renhenet.fw.waf.BaseActionServlet.doGet(BaseActionServlet.java:22)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:126)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:170)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+[2011/05/11 16:03:41] com.renhenet.web.member.RoleAction
+java.lang.ClassNotFoundException: com.renhenet.web.member.RoleAction
+	at com.caucho.util.DynamicClassLoader.loadClass(DynamicClassLoader.java:538)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:251)
+	at org.apache.struts.chain.commands.util.ClassUtils.getApplicationClass(ClassUtils.java:49)
+	at org.apache.struts.chain.commands.util.ClassUtils.getApplicationInstance(ClassUtils.java:66)
+	at org.apache.struts.chain.commands.servlet.CreateAction.getAction(CreateAction.java:66)
+	at org.apache.struts.chain.commands.AbstractCreateAction.execute(AbstractCreateAction.java:82)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:446)
+	at com.renhenet.fw.waf.BaseActionServlet.doGet(BaseActionServlet.java:22)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:126)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:170)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+[2011/05/11 16:09:10] com.renhenet.fw.waf.SpringLoaderServlet: init
+[2011/05/11 16:09:14] com.renhenet.fw.waf.BaseActionServlet: init
+[2011/05/11 16:09:15] org.apache.velocity.tools.view.servlet.VelocityViewServlet: init
+[2011/05/11 16:09:15]  Velocity   [info] VelocityViewServlet: Custom Properties File: /WEB-INF/conf/velocity.properties
+[2011/05/11 16:09:15]  Velocity  : *******************************************************************
+[2011/05/11 16:09:15]  Velocity  [debug] Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+[2011/05/11 16:09:15]  Velocity  : RuntimeInstance initializing.
+[2011/05/11 16:09:15]  Velocity  [debug] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+[2011/05/11 16:09:15]  Velocity  [debug] Trying to use logger class org.apache.velocity.tools.view.servlet.ServletLogger
+[2011/05/11 16:09:15]  Velocity   [info] LogSystem has been deprecated. Please use a LogChute implementation.
+[2011/05/11 16:09:15]  Velocity  [debug] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+[2011/05/11 16:09:15]  Velocity  [debug] ResourceLoader instantiated: org.apache.velocity.tools.view.servlet.WebappLoader
+[2011/05/11 16:09:15]  Velocity   [info] WebappLoader : initialization starting.
+[2011/05/11 16:09:15]  Velocity   [info] WebappLoader : initialization complete.
+[2011/05/11 16:09:15]  Velocity  [debug] ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+[2011/05/11 16:09:15]  Velocity  : Default ResourceManager initialization complete.
+[2011/05/11 16:09:15]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+[2011/05/11 16:09:15]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+[2011/05/11 16:09:15]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+[2011/05/11 16:09:15]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+[2011/05/11 16:09:15]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+[2011/05/11 16:09:15]  Velocity  [debug] Created '20' parsers.
+[2011/05/11 16:09:15]  Velocity  : Velocimacro : initialization starting.
+[2011/05/11 16:09:15]  Velocity  [debug] Velocimacro : adding VMs from VM library : /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #renheparse(  template ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #renhehead(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #renheheadSimple(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #renheMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #mainMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #renheend(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showFormSelect(  _resourctName _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showDate(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showDateSimple(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showHHMMTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showDateHuman(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showMenuClass(  _menuName ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showFormText(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showFormRadio(  _fieldName _fieldValue _defaultFieldValue _objValue _objShowValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showFormTextNumber(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showFormTextarea(  _fieldName _fieldValue _rows ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showFormDate(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showFormMonth(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showFormTime(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showResourceSelect(  resourceType selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showSimpleSelect(  selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showListPortSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showListDockSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showListBoatSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showListSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showSalesList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showCustomerServeList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showMemberName(  userId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showResourceValue(  resourceId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #isSelected(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #isChecked(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #isCheckedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #isSelectedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : added #showMustFill(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:09:15]  Velocity  : Velocimacro : VM library registration complete.
+[2011/05/11 16:09:15]  Velocity  [debug] Velocimacro : allowInline = true : VMs can be defined inline in templates
+[2011/05/11 16:09:15]  Velocity  [debug] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+[2011/05/11 16:09:15]  Velocity  [debug] Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+[2011/05/11 16:09:15]  Velocity   [info] Velocimacro : autoload on : VM system will automatically reload global library macros
+[2011/05/11 16:09:15]  Velocity  : Velocimacro : Velocimacro : initialization complete.
+[2011/05/11 16:09:15]  Velocity  : RuntimeInstance successfully initialized.
+[2011/05/11 16:09:15]  Velocity   [info] VelocityViewServlet: Default content-type is: text/html; charset=GBK
+[2011/05/11 16:09:19] com.caucho.server.http.FileServlet: init
+[2011/05/11 16:09:19] com.caucho.server.http.DirectoryServlet: init
+count query:>>> select count(*) from com.renhenet.po.Role as t 
+count query:>>> select count(*) from com.renhenet.po.Role as t 
+count query:>>> select count(*) from com.renhenet.po.Role as t 
+count query:>>> select count(*) from com.renhenet.po.Role as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Role as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Role as t 
+count query:>>> select count(*) from com.renhenet.po.Role as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Role as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Role as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Role as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+[2011/05/11 16:10:17] No action config found for the specified url.
+org.apache.struts.chain.commands.InvalidPathException: No action config found for the specified url.
+	at org.apache.struts.chain.commands.AbstractSelectAction.execute(AbstractSelectAction.java:68)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:446)
+	at com.renhenet.fw.waf.BaseActionServlet.doGet(BaseActionServlet.java:22)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:126)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:170)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 16:15:40]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 45, column 120]
+[2011/05/11 16:15:40]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 46, column 120]
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Role as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Role as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Role as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 16:17:34]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 45, column 120]
+[2011/05/11 16:17:34]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 46, column 120]
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+[2011/05/11 16:17:59]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 45, column 120]
+[2011/05/11 16:17:59]  Velocity  [error] Left side ($!bizObj.status) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. /WEB-INF/pages/member/form.vm [line 46, column 120]
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Role as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+[2011/05/11 16:20:48] com.renhenet.fw.waf.SpringLoaderServlet: init
+[2011/05/11 16:20:51] com.renhenet.fw.waf.BaseActionServlet: init
+[2011/05/11 16:20:52] org.apache.velocity.tools.view.servlet.VelocityViewServlet: init
+[2011/05/11 16:20:52]  Velocity   [info] VelocityViewServlet: Custom Properties File: /WEB-INF/conf/velocity.properties
+[2011/05/11 16:20:52]  Velocity  : *******************************************************************
+[2011/05/11 16:20:52]  Velocity  [debug] Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+[2011/05/11 16:20:52]  Velocity  : RuntimeInstance initializing.
+[2011/05/11 16:20:52]  Velocity  [debug] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+[2011/05/11 16:20:52]  Velocity  [debug] Trying to use logger class org.apache.velocity.tools.view.servlet.ServletLogger
+[2011/05/11 16:20:52]  Velocity   [info] LogSystem has been deprecated. Please use a LogChute implementation.
+[2011/05/11 16:20:52]  Velocity  [debug] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+[2011/05/11 16:20:52]  Velocity  [debug] ResourceLoader instantiated: org.apache.velocity.tools.view.servlet.WebappLoader
+[2011/05/11 16:20:52]  Velocity   [info] WebappLoader : initialization starting.
+[2011/05/11 16:20:52]  Velocity   [info] WebappLoader : initialization complete.
+[2011/05/11 16:20:52]  Velocity  [debug] ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+[2011/05/11 16:20:52]  Velocity  : Default ResourceManager initialization complete.
+[2011/05/11 16:20:52]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+[2011/05/11 16:20:52]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+[2011/05/11 16:20:52]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+[2011/05/11 16:20:52]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+[2011/05/11 16:20:52]  Velocity  [debug] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+[2011/05/11 16:20:52]  Velocity  [debug] Created '20' parsers.
+[2011/05/11 16:20:52]  Velocity  : Velocimacro : initialization starting.
+[2011/05/11 16:20:52]  Velocity  [debug] Velocimacro : adding VMs from VM library : /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #renheparse(  template ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #renhehead(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #renheheadSimple(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #renheMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #mainMenu(  memuModule ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #renheend(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showFormSelect(  _resourctName _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showDate(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showDateSimple(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showHHMMTime(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showDateHuman(  _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showMenuClass(  _menuName ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showFormText(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showFormRadio(  _fieldName _fieldValue _defaultFieldValue _objValue _objShowValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showFormTextNumber(  _fieldName _fieldValue _size ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showFormTextarea(  _fieldName _fieldValue _rows ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showFormDate(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showFormMonth(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showFormTime(  _fieldName _fieldValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showResourceSelect(  resourceType selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showSimpleSelect(  selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showListPortSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showListDockSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showListBoatSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showListSelect(  resourceTypes selectName selectValue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showSalesList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showCustomerServeList(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showMemberName(  userId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showResourceValue(  resourceId ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #isSelected(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #isChecked(  optionvalue value ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #isCheckedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #isSelectedEx(  optionvalue value defaultvalue ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : added #showMustFill(  ) : source = /WEB-INF/pages/VM_global_library.vm
+[2011/05/11 16:20:53]  Velocity  : Velocimacro : VM library registration complete.
+[2011/05/11 16:20:53]  Velocity  [debug] Velocimacro : allowInline = true : VMs can be defined inline in templates
+[2011/05/11 16:20:53]  Velocity  [debug] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+[2011/05/11 16:20:53]  Velocity  [debug] Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+[2011/05/11 16:20:53]  Velocity   [info] Velocimacro : autoload on : VM system will automatically reload global library macros
+[2011/05/11 16:20:53]  Velocity  : Velocimacro : Velocimacro : initialization complete.
+[2011/05/11 16:20:53]  Velocity  : RuntimeInstance successfully initialized.
+[2011/05/11 16:20:53]  Velocity   [info] VelocityViewServlet: Default content-type is: text/html; charset=GBK
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+[2011/05/11 16:22:24] com.caucho.server.http.FileServlet: init
+[2011/05/11 16:22:24] com.caucho.server.http.DirectoryServlet: init
+[2011/05/11 16:23:26]  Velocity  [error] ResourceManager : unable to find resource '/WEB-INF/pages/groups/form_insert2button.vm' in any resource loader.
+[2011/05/11 16:23:26]  Velocity  [error] #parse(): cannot find template '/WEB-INF/pages/groups/form_insert2button.vm', called from template /WEB-INF/pages/groups/form.vm at (33, 1)
+[2011/05/11 16:23:26]  Velocity  [error] VelocityViewServlet: Exception processing the template: org.apache.velocity.exception.ResourceNotFoundException: Unable to find resource '/WEB-INF/pages/groups/form_insert2button.vm'
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.renhenet.web.DispatchAdminAction.action(DispatchAdminAction.java:56)
+	at com.renhenet.web.DispatchAdminAction.insert(DispatchAdminAction.java:145)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.struts.actions.DispatchAction.dispatchMethod(DispatchAction.java:266)
+	at org.apache.struts.actions.DispatchAction.execute(DispatchAction.java:167)
+	at org.apache.struts.chain.commands.servlet.ExecuteAction.execute(ExecuteAction.java:53)
+	at org.apache.struts.chain.commands.AbstractExecuteAction.execute(AbstractExecuteAction.java:64)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doPost(ActionServlet.java:459)
+	at com.renhenet.fw.waf.BaseActionServlet.doPost(BaseActionServlet.java:32)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:165)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:171)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+Caused by: com.renhenet.fw.dao.DAOException: 
+	at com.renhenet.fw.dao.BaseHibernateDao.insert(BaseHibernateDao.java:226)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:108)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:97)
+	at com.renhenet.modules.CommonService$$FastClassByCGLIB$$f101f0a7.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)
+	at org.springframework.aop.framework.Cglib2AopProxy$CglibMethodInvocation.invokeJoinpoint(Cglib2AopProxy.java:675)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:154)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:107)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:176)
+	at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:616)
+	at com.renhenet.modules.member.MemberService$$EnhancerByCGLIB$$af3d9c55.insertObject(<generated>)
+	at com.renhenet.web.DispatchActions.insertProcess(DispatchActions.java:196)
+	at com.renhenet.web.member.MemberAction.insertProcess(MemberAction.java:54)
+	... 30 more
+Caused by: org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value: com.renhenet.po.Member.loginName; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value: com.renhenet.po.Member.loginName
+	at org.springframework.orm.hibernate3.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:639)
+	at org.springframework.orm.hibernate3.HibernateAccessor.convertHibernateAccessException(HibernateAccessor.java:407)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:372)
+	at org.springframework.orm.hibernate3.HibernateTemplate.save(HibernateTemplate.java:627)
+	at com.renhenet.fw.dao.BaseHibernateDao.insert(BaseHibernateDao.java:223)
+	... 42 more
+Caused by: org.hibernate.PropertyValueException: not-null property references a null or transient value: com.renhenet.po.Member.loginName
+	at org.hibernate.engine.Nullability.checkNullability(Nullability.java:72)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:284)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:180)
+	at org.hibernate.event.def.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:108)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:186)
+	at org.hibernate.event.def.DefaultSaveEventListener.saveWithGeneratedOrRequestedId(DefaultSaveEventListener.java:33)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:175)
+	at org.hibernate.event.def.DefaultSaveEventListener.performSaveOrUpdate(DefaultSaveEventListener.java:27)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:70)
+	at org.hibernate.impl.SessionImpl.fireSave(SessionImpl.java:535)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:523)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:519)
+	at org.springframework.orm.hibernate3.HibernateTemplate$12.doInHibernate(HibernateTemplate.java:630)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:367)
+	... 44 more
+[2011/05/11 16:23:37] null
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.renhenet.web.DispatchAdminAction.action(DispatchAdminAction.java:56)
+	at com.renhenet.web.DispatchAdminAction.insert(DispatchAdminAction.java:145)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.struts.actions.DispatchAction.dispatchMethod(DispatchAction.java:266)
+	at org.apache.struts.actions.DispatchAction.execute(DispatchAction.java:167)
+	at org.apache.struts.chain.commands.servlet.ExecuteAction.execute(ExecuteAction.java:53)
+	at org.apache.struts.chain.commands.AbstractExecuteAction.execute(AbstractExecuteAction.java:64)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doPost(ActionServlet.java:459)
+	at com.renhenet.fw.waf.BaseActionServlet.doPost(BaseActionServlet.java:32)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:165)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:171)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+Caused by: com.renhenet.fw.dao.DAOException: 
+	at com.renhenet.fw.dao.BaseHibernateDao.insert(BaseHibernateDao.java:226)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:108)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:97)
+	at com.renhenet.modules.CommonService$$FastClassByCGLIB$$f101f0a7.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)
+	at org.springframework.aop.framework.Cglib2AopProxy$CglibMethodInvocation.invokeJoinpoint(Cglib2AopProxy.java:675)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:154)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:107)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:176)
+	at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:616)
+	at com.renhenet.modules.member.MemberService$$EnhancerByCGLIB$$af3d9c55.insertObject(<generated>)
+	at com.renhenet.web.DispatchActions.insertProcess(DispatchActions.java:196)
+	at com.renhenet.web.member.MemberAction.insertProcess(MemberAction.java:54)
+	... 30 more
+Caused by: org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value: com.renhenet.po.Member.loginName; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value: com.renhenet.po.Member.loginName
+	at org.springframework.orm.hibernate3.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:639)
+	at org.springframework.orm.hibernate3.HibernateAccessor.convertHibernateAccessException(HibernateAccessor.java:407)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:372)
+	at org.springframework.orm.hibernate3.HibernateTemplate.save(HibernateTemplate.java:627)
+	at com.renhenet.fw.dao.BaseHibernateDao.insert(BaseHibernateDao.java:223)
+	... 42 more
+Caused by: org.hibernate.PropertyValueException: not-null property references a null or transient value: com.renhenet.po.Member.loginName
+	at org.hibernate.engine.Nullability.checkNullability(Nullability.java:72)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:284)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:180)
+	at org.hibernate.event.def.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:108)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:186)
+	at org.hibernate.event.def.DefaultSaveEventListener.saveWithGeneratedOrRequestedId(DefaultSaveEventListener.java:33)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:175)
+	at org.hibernate.event.def.DefaultSaveEventListener.performSaveOrUpdate(DefaultSaveEventListener.java:27)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:70)
+	at org.hibernate.impl.SessionImpl.fireSave(SessionImpl.java:535)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:523)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:519)
+	at org.springframework.orm.hibernate3.HibernateTemplate$12.doInHibernate(HibernateTemplate.java:630)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:367)
+	... 44 more
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Role as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Member as t 
+query:>>> select t from com.renhenet.po.Member as t  order by t.id desc
+count query:>>> select count(*) from com.renhenet.po.Role as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.renhenet.web.DispatchAdminAction.action(DispatchAdminAction.java:56)
+	at com.renhenet.web.DispatchAdminAction.insert(DispatchAdminAction.java:145)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.struts.actions.DispatchAction.dispatchMethod(DispatchAction.java:266)
+	at org.apache.struts.actions.DispatchAction.execute(DispatchAction.java:167)
+	at org.apache.struts.chain.commands.servlet.ExecuteAction.execute(ExecuteAction.java:53)
+	at org.apache.struts.chain.commands.AbstractExecuteAction.execute(AbstractExecuteAction.java:64)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doPost(ActionServlet.java:459)
+	at com.renhenet.fw.waf.BaseActionServlet.doPost(BaseActionServlet.java:32)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:165)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:170)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+Caused by: com.renhenet.fw.dao.DAOException: 
+	at com.renhenet.fw.dao.BaseHibernateDao.insert(BaseHibernateDao.java:226)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:108)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:97)
+	at com.renhenet.modules.CommonService$$FastClassByCGLIB$$f101f0a7.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)
+	at org.springframework.aop.framework.Cglib2AopProxy$CglibMethodInvocation.invokeJoinpoint(Cglib2AopProxy.java:675)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:154)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:107)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:176)
+	at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:616)
+	at com.renhenet.modules.member.MemberService$$EnhancerByCGLIB$$af3d9c55.insertObject(<generated>)
+	at com.renhenet.web.DispatchActions.insertProcess(DispatchActions.java:196)
+	at com.renhenet.web.member.MemberAction.insertProcess(MemberAction.java:54)
+	... 30 more
+Caused by: org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value: com.renhenet.po.Member.loginName; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value: com.renhenet.po.Member.loginName
+	at org.springframework.orm.hibernate3.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:639)
+	at org.springframework.orm.hibernate3.HibernateAccessor.convertHibernateAccessException(HibernateAccessor.java:407)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:372)
+	at org.springframework.orm.hibernate3.HibernateTemplate.save(HibernateTemplate.java:627)
+	at com.renhenet.fw.dao.BaseHibernateDao.insert(BaseHibernateDao.java:223)
+	... 42 more
+Caused by: org.hibernate.PropertyValueException: not-null property references a null or transient value: com.renhenet.po.Member.loginName
+	at org.hibernate.engine.Nullability.checkNullability(Nullability.java:72)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:284)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:180)
+	at org.hibernate.event.def.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:108)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:186)
+	at org.hibernate.event.def.DefaultSaveEventListener.saveWithGeneratedOrRequestedId(DefaultSaveEventListener.java:33)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:175)
+	at org.hibernate.event.def.DefaultSaveEventListener.performSaveOrUpdate(DefaultSaveEventListener.java:27)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:70)
+	at org.hibernate.impl.SessionImpl.fireSave(SessionImpl.java:535)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:523)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:519)
+	at org.springframework.orm.hibernate3.HibernateTemplate$12.doInHibernate(HibernateTemplate.java:630)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:367)
+	... 44 more
+[2011/05/11 16:30:09] null
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.renhenet.web.DispatchAdminAction.action(DispatchAdminAction.java:56)
+	at com.renhenet.web.DispatchAdminAction.insert(DispatchAdminAction.java:145)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.struts.actions.DispatchAction.dispatchMethod(DispatchAction.java:266)
+	at org.apache.struts.actions.DispatchAction.execute(DispatchAction.java:167)
+	at org.apache.struts.chain.commands.servlet.ExecuteAction.execute(ExecuteAction.java:53)
+	at org.apache.struts.chain.commands.AbstractExecuteAction.execute(AbstractExecuteAction.java:64)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doPost(ActionServlet.java:459)
+	at com.renhenet.fw.waf.BaseActionServlet.doPost(BaseActionServlet.java:32)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:165)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:170)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+Caused by: com.renhenet.fw.dao.DAOException: 
+	at com.renhenet.fw.dao.BaseHibernateDao.insert(BaseHibernateDao.java:226)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:108)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:97)
+	at com.renhenet.modules.CommonService$$FastClassByCGLIB$$f101f0a7.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)
+	at org.springframework.aop.framework.Cglib2AopProxy$CglibMethodInvocation.invokeJoinpoint(Cglib2AopProxy.java:675)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:154)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:107)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:176)
+	at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:616)
+	at com.renhenet.modules.member.MemberService$$EnhancerByCGLIB$$af3d9c55.insertObject(<generated>)
+	at com.renhenet.web.DispatchActions.insertProcess(DispatchActions.java:196)
+	at com.renhenet.web.member.MemberAction.insertProcess(MemberAction.java:54)
+	... 30 more
+Caused by: org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value: com.renhenet.po.Member.loginName; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value: com.renhenet.po.Member.loginName
+	at org.springframework.orm.hibernate3.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:639)
+	at org.springframework.orm.hibernate3.HibernateAccessor.convertHibernateAccessException(HibernateAccessor.java:407)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:372)
+	at org.springframework.orm.hibernate3.HibernateTemplate.save(HibernateTemplate.java:627)
+	at com.renhenet.fw.dao.BaseHibernateDao.insert(BaseHibernateDao.java:223)
+	... 42 more
+Caused by: org.hibernate.PropertyValueException: not-null property references a null or transient value: com.renhenet.po.Member.loginName
+	at org.hibernate.engine.Nullability.checkNullability(Nullability.java:72)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:284)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:180)
+	at org.hibernate.event.def.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:108)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:186)
+	at org.hibernate.event.def.DefaultSaveEventListener.saveWithGeneratedOrRequestedId(DefaultSaveEventListener.java:33)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:175)
+	at org.hibernate.event.def.DefaultSaveEventListener.performSaveOrUpdate(DefaultSaveEventListener.java:27)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:70)
+	at org.hibernate.impl.SessionImpl.fireSave(SessionImpl.java:535)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:523)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:519)
+	at org.springframework.orm.hibernate3.HibernateTemplate$12.doInHibernate(HibernateTemplate.java:630)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:367)
+	... 44 more
+java.lang.IllegalArgumentException: No origin bean specified
+	at org.apache.commons.beanutils.BeanUtilsBean.copyProperties(BeanUtilsBean.java:221)
+	at org.apache.commons.beanutils.BeanUtils.copyProperties(BeanUtils.java:114)
+	at com.renhenet.util.BeanUtils.copyProperties(BeanUtils.java:14)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:96)
+	at com.renhenet.modules.CommonService$$FastClassByCGLIB$$f101f0a7.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)
+	at org.springframework.aop.framework.Cglib2AopProxy$CglibMethodInvocation.invokeJoinpoint(Cglib2AopProxy.java:675)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:154)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:107)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:176)
+	at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:616)
+	at com.renhenet.modules.member.GroupsService$$EnhancerByCGLIB$$d2a2a6bb.insertObject(<generated>)
+	at com.renhenet.web.DispatchActions.insertProcess(DispatchActions.java:196)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.renhenet.web.DispatchAdminAction.action(DispatchAdminAction.java:56)
+	at com.renhenet.web.DispatchAdminAction.insert(DispatchAdminAction.java:145)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.struts.actions.DispatchAction.dispatchMethod(DispatchAction.java:266)
+	at org.apache.struts.actions.DispatchAction.execute(DispatchAction.java:167)
+	at org.apache.struts.chain.commands.servlet.ExecuteAction.execute(ExecuteAction.java:53)
+	at org.apache.struts.chain.commands.AbstractExecuteAction.execute(AbstractExecuteAction.java:64)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doPost(ActionServlet.java:459)
+	at com.renhenet.fw.waf.BaseActionServlet.doPost(BaseActionServlet.java:32)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:165)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:171)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.renhenet.web.DispatchAdminAction.action(DispatchAdminAction.java:56)
+	at com.renhenet.web.DispatchAdminAction.insert(DispatchAdminAction.java:145)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.struts.actions.DispatchAction.dispatchMethod(DispatchAction.java:266)
+	at org.apache.struts.actions.DispatchAction.execute(DispatchAction.java:167)
+	at org.apache.struts.chain.commands.servlet.ExecuteAction.execute(ExecuteAction.java:53)
+	at org.apache.struts.chain.commands.AbstractExecuteAction.execute(AbstractExecuteAction.java:64)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doPost(ActionServlet.java:459)
+	at com.renhenet.fw.waf.BaseActionServlet.doPost(BaseActionServlet.java:32)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:165)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:171)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+Caused by: com.renhenet.fw.dao.DAOException: 
+	at com.renhenet.fw.dao.BaseHibernateDao.insert(BaseHibernateDao.java:226)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:108)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:97)
+	at com.renhenet.modules.CommonService$$FastClassByCGLIB$$f101f0a7.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)
+	at org.springframework.aop.framework.Cglib2AopProxy$CglibMethodInvocation.invokeJoinpoint(Cglib2AopProxy.java:675)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:154)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:107)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:176)
+	at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:616)
+	at com.renhenet.modules.member.GroupsService$$EnhancerByCGLIB$$d2a2a6bb.insertObject(<generated>)
+	at com.renhenet.web.DispatchActions.insertProcess(DispatchActions.java:196)
+	... 30 more
+Caused by: org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value: com.renhenet.po.Groups.name; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value: com.renhenet.po.Groups.name
+	at org.springframework.orm.hibernate3.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:639)
+	at org.springframework.orm.hibernate3.HibernateAccessor.convertHibernateAccessException(HibernateAccessor.java:407)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:372)
+	at org.springframework.orm.hibernate3.HibernateTemplate.save(HibernateTemplate.java:627)
+	at com.renhenet.fw.dao.BaseHibernateDao.insert(BaseHibernateDao.java:223)
+	... 41 more
+Caused by: org.hibernate.PropertyValueException: not-null property references a null or transient value: com.renhenet.po.Groups.name
+	at org.hibernate.engine.Nullability.checkNullability(Nullability.java:72)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:284)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:180)
+	at org.hibernate.event.def.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:108)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:186)
+	at org.hibernate.event.def.DefaultSaveEventListener.saveWithGeneratedOrRequestedId(DefaultSaveEventListener.java:33)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:175)
+	at org.hibernate.event.def.DefaultSaveEventListener.performSaveOrUpdate(DefaultSaveEventListener.java:27)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:70)
+	at org.hibernate.impl.SessionImpl.fireSave(SessionImpl.java:535)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:523)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:519)
+	at org.springframework.orm.hibernate3.HibernateTemplate$12.doInHibernate(HibernateTemplate.java:630)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:367)
+	... 43 more
+[2011/05/11 16:30:57] null
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.renhenet.web.DispatchAdminAction.action(DispatchAdminAction.java:56)
+	at com.renhenet.web.DispatchAdminAction.insert(DispatchAdminAction.java:145)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.struts.actions.DispatchAction.dispatchMethod(DispatchAction.java:266)
+	at org.apache.struts.actions.DispatchAction.execute(DispatchAction.java:167)
+	at org.apache.struts.chain.commands.servlet.ExecuteAction.execute(ExecuteAction.java:53)
+	at org.apache.struts.chain.commands.AbstractExecuteAction.execute(AbstractExecuteAction.java:64)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doPost(ActionServlet.java:459)
+	at com.renhenet.fw.waf.BaseActionServlet.doPost(BaseActionServlet.java:32)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:165)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:171)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+Caused by: com.renhenet.fw.dao.DAOException: 
+	at com.renhenet.fw.dao.BaseHibernateDao.insert(BaseHibernateDao.java:226)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:108)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:97)
+	at com.renhenet.modules.CommonService$$FastClassByCGLIB$$f101f0a7.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)
+	at org.springframework.aop.framework.Cglib2AopProxy$CglibMethodInvocation.invokeJoinpoint(Cglib2AopProxy.java:675)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:154)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:107)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:176)
+	at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:616)
+	at com.renhenet.modules.member.GroupsService$$EnhancerByCGLIB$$d2a2a6bb.insertObject(<generated>)
+	at com.renhenet.web.DispatchActions.insertProcess(DispatchActions.java:196)
+	... 30 more
+Caused by: org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value: com.renhenet.po.Groups.name; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value: com.renhenet.po.Groups.name
+	at org.springframework.orm.hibernate3.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:639)
+	at org.springframework.orm.hibernate3.HibernateAccessor.convertHibernateAccessException(HibernateAccessor.java:407)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:372)
+	at org.springframework.orm.hibernate3.HibernateTemplate.save(HibernateTemplate.java:627)
+	at com.renhenet.fw.dao.BaseHibernateDao.insert(BaseHibernateDao.java:223)
+	... 41 more
+Caused by: org.hibernate.PropertyValueException: not-null property references a null or transient value: com.renhenet.po.Groups.name
+	at org.hibernate.engine.Nullability.checkNullability(Nullability.java:72)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:284)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:180)
+	at org.hibernate.event.def.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:108)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:186)
+	at org.hibernate.event.def.DefaultSaveEventListener.saveWithGeneratedOrRequestedId(DefaultSaveEventListener.java:33)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:175)
+	at org.hibernate.event.def.DefaultSaveEventListener.performSaveOrUpdate(DefaultSaveEventListener.java:27)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:70)
+	at org.hibernate.impl.SessionImpl.fireSave(SessionImpl.java:535)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:523)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:519)
+	at org.springframework.orm.hibernate3.HibernateTemplate$12.doInHibernate(HibernateTemplate.java:630)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:367)
+	... 43 more
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+count query:>>> select count(*) from com.renhenet.po.Groups as t 
+java.lang.IllegalArgumentException: No origin bean specified
+	at org.apache.commons.beanutils.BeanUtilsBean.copyProperties(BeanUtilsBean.java:221)
+	at org.apache.commons.beanutils.BeanUtils.copyProperties(BeanUtils.java:114)
+	at com.renhenet.util.BeanUtils.copyProperties(BeanUtils.java:14)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:96)
+	at com.renhenet.modules.CommonService$$FastClassByCGLIB$$f101f0a7.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)
+	at org.springframework.aop.framework.Cglib2AopProxy$CglibMethodInvocation.invokeJoinpoint(Cglib2AopProxy.java:675)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:154)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:107)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:176)
+	at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:616)
+	at com.renhenet.modules.member.GroupsService$$EnhancerByCGLIB$$d2a2a6bb.insertObject(<generated>)
+	at com.renhenet.web.DispatchActions.insertProcess(DispatchActions.java:196)
+	at sun.reflect.GeneratedMethodAccessor31.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.renhenet.web.DispatchAdminAction.action(DispatchAdminAction.java:56)
+	at com.renhenet.web.DispatchAdminAction.insert(DispatchAdminAction.java:145)
+	at sun.reflect.GeneratedMethodAccessor30.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.struts.actions.DispatchAction.dispatchMethod(DispatchAction.java:266)
+	at org.apache.struts.actions.DispatchAction.execute(DispatchAction.java:167)
+	at org.apache.struts.chain.commands.servlet.ExecuteAction.execute(ExecuteAction.java:53)
+	at org.apache.struts.chain.commands.AbstractExecuteAction.execute(AbstractExecuteAction.java:64)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doPost(ActionServlet.java:459)
+	at com.renhenet.fw.waf.BaseActionServlet.doPost(BaseActionServlet.java:32)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:165)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:170)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor31.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.renhenet.web.DispatchAdminAction.action(DispatchAdminAction.java:56)
+	at com.renhenet.web.DispatchAdminAction.insert(DispatchAdminAction.java:145)
+	at sun.reflect.GeneratedMethodAccessor30.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.struts.actions.DispatchAction.dispatchMethod(DispatchAction.java:266)
+	at org.apache.struts.actions.DispatchAction.execute(DispatchAction.java:167)
+	at org.apache.struts.chain.commands.servlet.ExecuteAction.execute(ExecuteAction.java:53)
+	at org.apache.struts.chain.commands.AbstractExecuteAction.execute(AbstractExecuteAction.java:64)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doPost(ActionServlet.java:459)
+	at com.renhenet.fw.waf.BaseActionServlet.doPost(BaseActionServlet.java:32)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:165)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:170)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+Caused by: com.renhenet.fw.dao.DAOException: 
+	at com.renhenet.fw.dao.BaseHibernateDao.insert(BaseHibernateDao.java:226)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:108)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:97)
+	at com.renhenet.modules.CommonService$$FastClassByCGLIB$$f101f0a7.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)
+	at org.springframework.aop.framework.Cglib2AopProxy$CglibMethodInvocation.invokeJoinpoint(Cglib2AopProxy.java:675)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:154)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:107)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:176)
+	at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:616)
+	at com.renhenet.modules.member.GroupsService$$EnhancerByCGLIB$$d2a2a6bb.insertObject(<generated>)
+	at com.renhenet.web.DispatchActions.insertProcess(DispatchActions.java:196)
+	... 28 more
+Caused by: org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value: com.renhenet.po.Groups.name; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value: com.renhenet.po.Groups.name
+	at org.springframework.orm.hibernate3.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:639)
+	at org.springframework.orm.hibernate3.HibernateAccessor.convertHibernateAccessException(HibernateAccessor.java:407)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:372)
+	at org.springframework.orm.hibernate3.HibernateTemplate.save(HibernateTemplate.java:627)
+	at com.renhenet.fw.dao.BaseHibernateDao.insert(BaseHibernateDao.java:223)
+	... 39 more
+Caused by: org.hibernate.PropertyValueException: not-null property references a null or transient value: com.renhenet.po.Groups.name
+	at org.hibernate.engine.Nullability.checkNullability(Nullability.java:72)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:284)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:180)
+	at org.hibernate.event.def.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:108)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:186)
+	at org.hibernate.event.def.DefaultSaveEventListener.saveWithGeneratedOrRequestedId(DefaultSaveEventListener.java:33)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:175)
+	at org.hibernate.event.def.DefaultSaveEventListener.performSaveOrUpdate(DefaultSaveEventListener.java:27)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:70)
+	at org.hibernate.impl.SessionImpl.fireSave(SessionImpl.java:535)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:523)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:519)
+	at org.springframework.orm.hibernate3.HibernateTemplate$12.doInHibernate(HibernateTemplate.java:630)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:367)
+	... 41 more
+[2011/05/11 16:35:08] null
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor31.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.renhenet.web.DispatchAdminAction.action(DispatchAdminAction.java:56)
+	at com.renhenet.web.DispatchAdminAction.insert(DispatchAdminAction.java:145)
+	at sun.reflect.GeneratedMethodAccessor30.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.struts.actions.DispatchAction.dispatchMethod(DispatchAction.java:266)
+	at org.apache.struts.actions.DispatchAction.execute(DispatchAction.java:167)
+	at org.apache.struts.chain.commands.servlet.ExecuteAction.execute(ExecuteAction.java:53)
+	at org.apache.struts.chain.commands.AbstractExecuteAction.execute(AbstractExecuteAction.java:64)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:48)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:280)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1858)
+	at org.apache.struts.action.ActionServlet.doPost(ActionServlet.java:459)
+	at com.renhenet.fw.waf.BaseActionServlet.doPost(BaseActionServlet.java:32)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:165)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:103)
+	at com.caucho.server.http.FilterChainServlet.doFilter(FilterChainServlet.java:96)
+	at com.caucho.server.http.Invocation.service(Invocation.java:315)
+	at com.caucho.server.http.HttpRequest.handleRequest(HttpRequest.java:253)
+	at com.caucho.server.http.HttpRequest.handleConnection(HttpRequest.java:170)
+	at com.caucho.server.TcpConnection.run(TcpConnection.java:139)
+	at java.lang.Thread.run(Thread.java:619)
+Caused by: com.renhenet.fw.dao.DAOException: 
+	at com.renhenet.fw.dao.BaseHibernateDao.insert(BaseHibernateDao.java:226)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:108)
+	at com.renhenet.modules.CommonService.insertObject(CommonService.java:97)
+	at com.renhenet.modules.CommonService$$FastClassByCGLIB$$f101f0a7.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)
+	at org.springframework.aop.framework.Cglib2AopProxy$CglibMethodInvocation.invokeJoinpoint(Cglib2AopProxy.java:675)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:154)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:107)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:176)
+	at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:616)
+	at com.renhenet.modules.member.GroupsService$$EnhancerByCGLIB$$d2a2a6bb.insertObject(<generated>)
+	at com.renhenet.web.DispatchActions.insertProcess(DispatchActions.java:196)
+	... 28 more
+Caused by: org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value: com.renhenet.po.Groups.name; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value: com.renhenet.po.Groups.name
+	at org.springframework.orm.hibernate3.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:639)
+	at org.springframework.orm.hibernate3.HibernateAccessor.convertHibernateAccessException(HibernateAccessor.java:407)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:372)
+	at org.springframework.orm.hibernate3.HibernateTemplate.save(HibernateTemplate.java:627)
+	at com.renhenet.fw.dao.BaseHibernateDao.insert(BaseHibernateDao.java:223)
+	... 39 more
+Caused by: org.hibernate.PropertyValueException: not-null property references a null or transient value: com.renhenet.po.Groups.name
+	at org.hibernate.engine.Nullability.checkNullability(Nullability.java:72)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:284)
+	at org.hibernate.event.def.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:180)
+	at org.hibernate.event.def.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:108)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:186)
+	at org.hibernate.event.def.DefaultSaveEventListener.saveWithGeneratedOrRequestedId(DefaultSaveEventListener.java:33)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:175)
+	at org.hibernate.event.def.DefaultSaveEventListener.performSaveOrUpdate(DefaultSaveEventListener.java:27)
+	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:70)
+	at org.hibernate.impl.SessionImpl.fireSave(SessionImpl.java:535)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:523)
+	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:519)
+	at org.springframework.orm.hibernate3.HibernateTemplate$12.doInHibernate(HibernateTemplate.java:630)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:367)
+	... 41 more

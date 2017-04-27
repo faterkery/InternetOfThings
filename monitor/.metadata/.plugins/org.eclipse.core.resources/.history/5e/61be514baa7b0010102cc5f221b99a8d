@@ -1,0 +1,14 @@
+package com.renhenet.modules.member;
+
+import com.renhenet.modules.CommonService;
+import com.renhenet.po.RoleModule;
+
+public class RoleModuleService extends CommonService {
+
+	public RoleModule getRoleModule(int roleId, int moduleId) {
+		String hql = "from RoleModule as t where t.roleId = ? and t.moduleId = ?";
+		return (RoleModule) dao.findSingle(hql,
+				new Object[] { roleId, moduleId });
+	}
+
+}

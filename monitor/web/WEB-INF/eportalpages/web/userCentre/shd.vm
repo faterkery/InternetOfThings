@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>送货单</title>
+<style type="text/css">
+*{margin:0; padding:0;}
+body{font:normal 20px tahoma, arial, "宋体";color:#000;}
+ul,li{list-style:none;margin:0; padding:0;}
+#main{width:800px;margin:0 auto;overflow:hidden;}
+.title{width:100%;text-align:center; float:left; position:relative; padding:20px 0;}
+.title h1{letter-spacing:5px; font-size:35px;display:block; padding-bottom:10px;}
+.title h2{letter-spacing:15px; font-size:28px;display:block;}
+.content{width:100%; float:left; position:relative;}
+.content ul{width:100%;float:left; position:relative;}
+.content ul li{padding:10px 0;float:left; position:relative;}
+.content ul li.left{width:60%; text-align:left;}
+.content ul li.right{width:40%; text-align:right;}
+.content span{border-bottom:1px solid #666; padding:1px 3px;}
+.content td p{display:block;float:left; position:relative;}
+table{border:1px solid #666;border-collapse:collapse; float:left; position:relative; line-height:30px;}
+.content .name{text-align:center; font-size:18px;}
+td{padding:2px 5px; font-size:16px;}
+input{cursor:pointer; padding:0; border:0;}
+.print_btn{width:80px; height:35px; line-height:35px; text-align:center; background:#ff9c00; color:#fff;;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px; font-size:16px; font-weight:600; float:left; position:relative; margin-left:45%; margin-top:20px;}
+</style>
+<script type="text/javascript" src="$!base/eportalstyle/js/jquery 1.7.1.js"></script>
+<script type="text/javascript"> 
+$(document).ready(function(){ 
+  $(".print_btn").click(function(){
+    window.print();
+  }); 
+}) 
+</script>
+
+</head>
+
+<body>
+<div id="main">
+  <div class="title">
+    <h1>舟山市网加科技有限公司</h1>
+    <h2>送货单</h2>
+  </div>
+  <div class="content">
+    <ul>
+      <li class="left">收货单位：$!biz.receiveName</li>
+      <li class="right">送货日期：$!vMUtils.dateFormateSimple($today)</li>
+    </ul>
+    <table width="798" border="1">
+      <tr>
+        <td width="20%" rowspan="2" class="name">货物名称</td>
+        <td width="13%" rowspan="2" class="name">产地</td>
+        <td width="12%" rowspan="2" class="name">规格</td>
+        <td colspan="2" class="name">发货数量</td>
+        <td width="10%" rowspan="2" class="name">单价</td>
+        <td width="10%" rowspan="2" class="name">金额</td>
+        <td width="11%" rowspan="2" class="name">备注</td>
+      </tr>
+      <tr>
+        <td width="12%" class="name">支（件）</td>
+        <td width="12%" class="name">重量/数量</td>
+      </tr>
+	  #set($indexNum=0)
+	  #foreach($obj in $itemShowList)
+		<tr>
+        <td>
+		#if($obj.type==1)
+							<!--原料 -->
+							 $!vMUtils.getResourceValue($!obj.goods.nameId)
+						 #else
+							$!obj.goods.name
+						 #end
+		</td>
+        <td>&nbsp;
+		$!vMUtils.getResourceValue($!obj.goods.factoryId)
+		</td>
+        <td>&nbsp;
+			#if($obj.type==1)
+				Φ$!vMUtils.getResourceValue($!obj.goods.specId)
+			#else
+				$!obj.goods.spec
+			#end
+		
+		</td>
+        <td style="text-align:center;">
+			#if($obj.type==1)
+			    $!obj.cart.zhinum &nbsp;($!obj.cart.jiannum)
+			#else
+				——
+			#end
+		</td>
+        <td style="text-align:center;">
+			#if($obj.type==1)
+			    &nbsp;$!vMUtils.double2int($!obj.cart.num) 吨
+			#else
+				&nbsp;$!vMUtils.double2int($!obj.cart.num)
+			#end
+		</td>
+        <td>&nbsp;$!obj.goods.price</td>
+        <td>&nbsp;$!obj.xiaoji</td>
+		<td>&nbsp;$!obj.cart.remarks </td>
+		
+		
+      </tr>
+	  #set($indexNum=$indexNum+1)
+	  #end
+      #if($indexNum<6)
+		    #set($indexNum=6-$indexNum)
+		      #foreach($foo in [1..$indexNum])
+		           <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>     
+		      #end
+	  #end
+       <tr>
+        <td colspan="8">订单备注： $!zbz</td>
+      </tr>
+      <tr>
+        <td colspan="8">合计金额（大写）：$!bigRbm  <p style="float:right;">RMB:$!total</p></td>
+      </tr>
+      <tr>
+        <td colspan="3">送货单位盖章：</td>
+        <td colspan="5"><p>收货单位盖章签收：</p><p style="float:right;">$!vMUtils.dateFormateSimple($today) </p>
+        </td>
+      </tr>
+    </table>
+    <ul>
+      <li class="left">送货人：</li>
+      <li class="right">制单：网加科技</li>
+      <li>电话：0580-8688000</li>
+      <li style=" margin:0 15%;">传真：0580-8688111</li>
+      <li>手机：13505805502</li>
+      <li>地址：舟山金塘大桥展览馆一楼右侧</li>
+    </ul>
+    <input name="" type="button" value="打印"  class="print_btn"/>
+  </div>
+</div>
+</body>
+</html>

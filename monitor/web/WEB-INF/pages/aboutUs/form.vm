@@ -1,0 +1,74 @@
+<link href="$base/branding/default/style/business.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="$base/eportalstyle/kindeditor-4.1.10/themes/default/default.css" />
+<link rel="stylesheet" href="$base/eportalstyle/kindeditor-4.1.10/plugins/code/prettify.css" />
+<script charset="utf-8" src="$base/eportalstyle/kindeditor-4.1.10/kindeditor-all.js"></script>
+<script charset="utf-8" src="$base/eportalstyle/kindeditor-4.1.10/lang/zh-CN.js"></script>
+<script charset="utf-8" src="$base/eportalstyle/kindeditor-4.1.10/plugins/code/prettify.js"></script>
+<script>
+    myroot = '$!base/getpic.html?path=';
+	var editor1;
+	var editor2;
+	KindEditor.ready(function(K) {
+	editor1 = K.create('textarea[name="content"]', {
+			cssPath : '$base/eportalstyle/kindeditor-4.1.10/plugins/code/prettify.css',
+			uploadJson : '$base/kindeditorUpload.html',
+			fileManagerJson : '$base/eportalstyle/kindeditor-4.1.10/jsp/file_manager_json.jsp',
+			allowFileManager : true,
+			afterCreate : function() {
+				var self = this;
+				K.ctrl(document, 13, function() {
+					self.sync();
+					document.forms['aboutUsForm'].submit();
+				});
+				K.ctrl(self.edit.doc, 13, function() {
+					self.sync();
+					document.forms['aboutUsForm'].submit();
+				});
+			}
+		});
+	var editor = K.editor({
+		cssPath : '$base/eportalstyle/kindeditor-master/plugins/code/prettify.css',
+		uploadJson : '$base/kindeditorUpload.html',
+		fileManagerJson : '$base/eportalstyle/kindeditor-master/jsp/file_manager_json.jsp',
+		allowFileManager : true
+	});
+		prettyPrint();
+	});		
+</script>
+
+<form id="aboutUsForm" name="aboutUsForm" method="post" action="$!actionUrl">
+<input type=hidden name=id value=$!bizObj.id>
+<div class="maincon">
+      <div class="frminfo org">
+         <ul>
+            <li>
+              <span class="ft">标题：</span>
+              <dd>#showFormText("title" "$!bizObj.title" 50)#showMustFill()</dd>
+            </li>
+            <li>
+              <span class="ft">内容：</span>
+			  <dd>#showFormTextarea("content" "$!bizObj.content" 3)</dd>
+            </li>
+            <li class="bot">
+              #if($!action != "detail")
+              <input name="insert" type="button" class="btn_save mrg_y20" value="确 定" onclick="toSubmit();" />
+              #end
+              <input type="button" class="btn_cancel" value="返回" onclick="window.location='$base/aboutUs/actions.html?method=list&menuname=$menuname'"/>
+            </li>
+         </ul>
+         <div class="clear"></div>
+      </div>
+   </div>
+</form>
+
+<script>
+	function toSubmit(){
+	   var title = document.getElementById("title").value;
+	   if(title==""){
+	      alert("请输入标题");
+	      return;
+	   }
+	   document.getElementById("content").value=editor1.html();   	   
+	   document.getElementById("aboutUsForm").submit();
+	}
+</script>

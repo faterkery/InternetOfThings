@@ -1,0 +1,7 @@
+#if($searchNoResult)
+<div class="no_content">
+  <ul class="content_in">无内容</ul>
+</div>
+#else
+
+#end

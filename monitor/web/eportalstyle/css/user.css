@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{background:#FFF;}
+.loginpage #header{}
+.loginpage #servicetel{margin:40px 0 0 25px; float:left;}
+
+.topenter{width:300px; float:right; margin-top:50px;}
+.topenter a{float:right; margin-left:15px; display:inline-block; width:120px; height:40px; border:1px solid #66b4e5; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; text-align:center; line-height:40px; font-size:18px; color:#3b8de3;}
+.topenter .on,.topenter a:hover{ background:#66b4e5; color:#FFF;}
+
+.banner{width:100%; height:550px; background:url(../images/loginbanner.jpg) no-repeat center; float:left;}
+.loginbox{width:100%; float:left; position:relative;}
+.loginbox .advword{position:absolute; left:200px; top:150px; width:422px; height:163px; background:url(../images/login_advword.png) no-repeat;}
+.loginbox .frmbox{width:360px; position:absolute; right:0; top:80px; padding:15px 30px; background:#FFF;}
+.loginbox h1{font-size:24px; color:#444; line-height:30px; margin-bottom:15px;}
+.loginbox h1 span{float:right;}
+.loginbox h1 span a{color:#3b8de3; font-size:16px;}
+.loginbox .conbox{position:relative; overflow:hidden;}
+.loginbox .conbox li{padding:8px 0; font-size:16px; color:#666; width:100%; float:left; position:relative;}
+.loginbox .conbox li .putbox{width:340px; height:30px; border:1px solid #dadada; padding:9px 9px;}
+.loginbox .conbox li .putbox em{width:40px; height:30px; background:url(../images/loginicon.png) no-repeat; float:left; border-right:1px solid #e1e1e1; margin-right:15px;}
+.loginbox .conbox li.psw em{background-position:0 -30px;}
+.loginbox .conbox li.phone em{background-position:0 -60px;}
+.loginbox .conbox li .putbox .input1{float:left; width:280px; height:30px; line-height:30px; border:0; font-size:16px; color:#666;}
+.loginbox .conbox li input[type=checkbox]{width:16px; height:16px; vertical-align:middle;}
+.loginbox .conbox li.yzm .putbox{width:224px; float:left;}
+.loginbox .conbox li.yzm .putbox .input1{width:160px; float:left;}
+.loginbox .conbox li.yzm .yzpic{float:left; width:106px; height:50px; float:left; overflow:hidden; padding-left:10px;}
+.loginbox .conbox li.btnline{padding:20px 0 20px 0;}
+.loginbox .conbox .btnbox{background:#3b8de3; width:360px; height:50px; line-height:50px; text-align:center; font-size:24px; color:#FFF; letter-spacing:0.5em;}
+.loginbox .conbox .btnbox:hover{background:#4399f3}
+.loginbox .conbox li.btnline.reg{padding-top:8px;}
+.loginbox .conbox li.btnline.reg .btnbox{letter-spacing:0;}
+.loginbox .conbox .tip{position:absolute; bottom:0px; left:0; width:100%; text-align:center; color:#f00; font-size:14px;}
+

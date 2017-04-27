@@ -1,0 +1,49 @@
+#set($urlPre = "$!base/show2.html?method=list")
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<style type="text/css">
+#container{width:100%; margin:0 auto;}
+.top{width:100%; height:250px;background:url($!base/eportalstyle/images/headbg.jpg) no-repeat;}
+.top .txbox{width:180px; height:180px;border-radius:100px; overflow:hidden; position:absolute; left:20%; top:40px;}
+.top .txbox img{width:180px; height:180px;}
+.top .text,.top .cnt{position:absolute; left:35%; top:90px;font-size:2em;font-weight:500;margin-bottom:1em;color:#fff;}
+.top .text span{font-size:20px;color:#eee; padding-left:10px;}
+.top .cnt{top:140px;font-size:18px;}
+.main{width:1000px; margin:0 auto;}
+.main ul{ position:absolute;left:70px;}
+.main ul.group{min-height:300px; border-right:1px solid #dfdfdf; float:left; position:relative; margin-top:50px; padding-right:40px;}
+.main ul.group li{width:100%; float:left; position:relative; margin-bottom:50px;}
+.main ul.group li h1{padding-bottom:10px; font-size:25px; color:#4289c0; font-weight:500}
+.main ul.group li p{font-size:16px; line-height:30px; color:#4b4b4b;}
+</style>
+<body>
+<div id="container">
+  <div class="top">
+    #foreach($biz in $!personnellist)
+    <div class="txbox"><img src="$!base$!biz.img"></div>
+    <div class="text">$!biz.name<span>$!biz.sex/$!biz.age岁</span></div>
+    <div class="cnt">联系方式：$!biz.phone</div>
+    #end
+  </div>
+  <div class="main">
+    #foreach($biz in $!personnellist)
+    <ul class="group" style="width:200px;">
+      <li>
+      <h1>求职意向</h1>
+      <p>$!biz.objective</p>
+      </li>
+      <li>
+      <h1>期望薪资</h1>
+      <p>$!biz.salary</p>
+      </li>
+    </ul>
+    <ul class="group" style="width:600px; margin-left:60px; border:none;">
+      <li>
+      <h1>详细信息</h1>
+      <p>$!biz.content</p>
+      </li> 
+    </ul>
+    #end
+  </div>
+</div>
+</body>
+</html>

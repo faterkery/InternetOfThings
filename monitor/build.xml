@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="gbk"?>
+
+<project name="wasu" default="compile">
+
+
+	
+	<!-- 读入配置文件 -->
+    <property name="build.properties" value="build.properties"/>
+    <property file="${build.properties}"/>
+
+  
+        <patternset id="jarfiles">
+            <include name="*.jar"/>
+            <include name="*.zip"/>
+        </patternset>
+        <path id="classpath">
+            <fileset dir="${lib}/ext">
+                <patternset refid="jarfiles"/>
+            </fileset>
+        </path>
+        <path id="conf">
+            <fileset dir="conf">
+            </fileset>
+        </path>
+        
+        <path id="allclasspath">
+            <path refid="classpath"/>
+            <path refid="conf"/>
+        </path>
+	<taskdef resource="axis-tasks.properties"  classpathref="classpath" />
+
+	<target name="compile">
+		<mkdir dir="${build}"/>
+		<javac srcdir="${src}"
+			encoding="GBK"
+			destdir="${build}"
+			deprecation="yes"
+			debug="yes"
+	     >
+         <classpath refid="classpath"/>
+		</javac>
+	</target>
+
+	<target name="build" depends="compile">
+		<delete file="${mainJar}"/>
+		<delete dir="${build}/package cache"/>
+		<jar jarfile="${mainJar}"
+			compress="yes">
+			<fileset dir="${build}"/>
+		</jar>
+	</target>
+
+	<target name="clean">
+		<delete file="${mainJar}"/>
+		<delete dir="${build}"/>
+	</target>
+
+	<target name="axis-admin">
+		<axis-admin
+		    port="${webservicePort}"
+		    hostname="${webserviceHost}"
+		    failonerror="true"
+		    servletpath="/webservices/AdminService"
+		    debug="true"
+		    xmlfile="conf/deploy.wsdd"
+		    />
+	</target>
+	
+	<target name="axis-j2w">
+		<axis-java2wsdl 
+			output="test.wsdl"
+			location="http://localhost/axis/services/TestService"
+			classname="com.tyloo.modules.member.webservice.TestServer"
+			>		
+			<classpath refid="allclasspath"/>
+		</axis-java2wsdl>
+	</target>
+	
+	<target name="axis-wsdl2java">
+	<axis-wsdl2java
+	  output="${src}"
+	  testcase="true"
+	  verbose="true"
+	  url="search.wsdl" >
+	    <mapping
+	      namespace="http://222.46.18.49:8080/webservices/searchwebservice"
+	      package="com.tyloo.search" />
+  	</axis-wsdl2java>
+  	</target>
+
+</project>

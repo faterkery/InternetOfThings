@@ -1,0 +1,19 @@
+<div class="member_nav box1 fl">
+  <ul class="menu"><h1>用户中心</h1></ul>
+  <ul class="nav_list">
+    <li class="menu2">我的E螺杆</li>
+    <li #if("account" == $action) class="on" #end><a href="$!base/centre/account.html" title="账户信息">账户信息</a></li>
+    <li #if("pwdmodify" == $action) class="on" #end><a href="$!base/centre/pwdmodify.html" title="密码修改">密码修改</a></li>
+    <li #if("address" == $action) class="on" #end ><a href="$!base/address.html?method=list" title="配送地址">配送地址</a></li>
+    <li #if("myorder" == $action) class="on" #end ><a href="$!base/centre/orderlist.html" title="我的订单">我的订单</a></li>
+    <li class="menu2">库存管理</li>
+	<li #if("material" == $action) class="on" #end><a href="$!base/centre/materlist.html?method=list" title="库存管理">库存管理</a></li>
+	<li class="menu2">闲旧处理</li>
+	<li #if("oldmanges" == $action) class="on" #end><a href="$!base/centre/oldlist.html?method=list" title="闲旧处理">闲旧处理</a></li>
+	<li class="menu2">发布信息</li>
+	<li #if("personnel" == $action) class="on" #end><a href="$!base/centre/perlist.html?method=list" title="招聘信息">招聘信息</a></li>
+  ##<li #if("collection" == $action) class="on" #end ><a href="$!base/centre/collect.html" title="我的收藏">我的收藏</a></li>
+  </ul>
+</div>
+         
+         

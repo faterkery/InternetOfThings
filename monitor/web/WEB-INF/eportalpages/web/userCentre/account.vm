@@ -1,0 +1,113 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<link rel="stylesheet" href="$base/eportalstyle/kindeditor-4.1.10/themes/default/default.css" />
+<link rel="stylesheet" href="$base/eportalstyle/kindeditor-4.1.10/plugins/code/prettify.css" />
+<script charset="utf-8" src="$base/eportalstyle/kindeditor-4.1.10/kindeditor-all.js"></script>
+<script charset="utf-8" src="$base/eportalstyle/kindeditor-4.1.10/lang/zh-CN.js"></script>
+<script charset="utf-8" src="$base/eportalstyle/kindeditor-4.1.10/plugins/code/prettify.js"></script>
+<script type="text/javascript">
+KindEditor.ready(function(K) {
+	var uploadbutton = K.uploadbutton({
+		button : K('#imgbtn')[0],
+		fieldName : 'imgFile',
+		url : '$base/kindeditorUpload.html',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = K.formatUrl(data.url, 'absolute');
+				K('#img').val(url);
+				$("#tximg").attr("src", '$!base'+url)
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('自定义错误信息: ' + str);
+		}
+	});
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+});
+</script>
+<body>
+<div id="container"> 
+  <!--site-nav开始-->
+  #parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+
+  <!--header开始-->
+  #parse( "/WEB-INF/eportalpages/common/header.vm" )
+  <!--header结束--> 
+
+
+<div id="main_member">
+    <div class="layout">
+      #parse( "/WEB-INF/eportalpages/common/centre_menu.vm" )
+      
+      <div class="member_bd box1 fr">
+        <ul class="menu"><h1>账户信息</h1></ul>
+        
+        <form name="accountForm" id="accountForm" action="$!base/centre/account.html" method="post" >
+		<input type="hidden" name="insert" value="INSERT" />
+        <div class="form_bd">
+          <ul>
+            <li>
+              <label>当前头像：</label>
+			  <input type="hidden" name="img" id="img" value="$!shopUser.img" />
+              <div class="user_pic box1 fl"><img id="tximg" src="#if($shopUser.img!="")$!base$!shopUser.img #else $!base/eportalstyle/images/user_pic.jpg #end" width="80" height="80" /></div>
+              <input name="imgbtn" id="imgbtn" type="button" value="更换头像" class="replace" />
+            </li>
+            <li><label>手机号码：</label><span>$!user.mtel</span><!-- <a href="#">更换号码</a> --></li>
+            <li><label>姓 名：</label><input class="text text3" type="text" name="trueName" id="trueName" value="$!user.trueName" maxlength="6" /></li>
+            <li>
+              <label>性 别：</label>
+              <label class="radio"><input type="radio" name="sex" value="-1" #if($!user.sex==-1) checked #end />&nbsp;保密</label>
+              <label class="radio"><input type="radio" name="sex" value="1"  #if($!user.sex== 1) checked #end />&nbsp;男</label>
+              <label class="radio"><input type="radio" name="sex" value="0"  #if($!user.sex== 0) checked #end />&nbsp;女</label>
+            </li>
+            <li><label>公司名称：</label><input class="text text3" type="text" name="companyName" id="companyName"  value="$!user.companyName"/></li>
+            <li><label>邮箱：</label>
+            #if($!user.email == '')
+              <span>（未绑定）</span>
+              <a href="$!base/centre/emailinit.html" title="立即绑定">立即绑定</a>
+            #else 
+              <span>$!user.email</span>
+            #end      
+            </li>
+            <li><label>QQ：</label><input class="text text3" type="text" name="qq" id="qq" value="$!user.qq" /></li> 
+            <li><label>&nbsp;</label><input name="" type="submit" value="保存" class="submit_btn" onclick="tosubmit()" /></li>
+            <li>
+              <label>&nbsp;</label>
+              #if($updated)
+				<font color="red">修改成功</font>
+			  #end
+			</li>
+          </ul>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+  
+  <!--con_side开始-->
+  #parse( "/WEB-INF/eportalpages/common/con_side.vm" )
+  <!--con_side结束--> 
+  
+	<script type="text/javascript">
+	function tosubmit()
+	{
+	    $("#accountForm").submit();
+	}
+	</script>
+  
+  </div>
+</body>
+</html>  
+  

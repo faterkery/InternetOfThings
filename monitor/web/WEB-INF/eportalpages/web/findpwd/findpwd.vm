@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>中国螺杆产业公共服务平台</title>
+<link href="$!base/eportalstyle/css/global.css" rel="stylesheet" type="text/css" />
+<link href="$!base/eportalstyle/css/login.css"  rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$base/eportalstyle/js/jquery 1.7.1.js"></script>
+</head>
+
+<body style="background-color:#F8F8F8;">
+<div id="container"> 
+  <div class="header">
+    <a href="$!base/index.html" title="E螺杆——中国螺杆产业功能服务平台"><img src="$!base/eportalstyle/images/logo.png" width="387" height="88" /></a>
+    <h1>找回密码</h1>
+  </div>
+  <div class="register_box box1">
+    <div class="reg_from fl">
+      <ul class="menu"><h2>请输入你需要找回登录密码的手机号码</h2></ul>
+      
+      <form name="findpwdform" id="findpwdform" method="post" action="$!base/findpwd.html" >
+	  <input type="hidden" name="insert" value="insert" />
+      <ul class="form">
+        <li><label><span>*</span>手机号码：</label><input name="mtel" id="mtel" type="text" class="text text1" /><i></i></li>
+        <li><label><span>*</span>校验码：</label><input name="code" id="code" type="text" class="text text2" /><a class="code" href="javascript:getsms(this)" id="smsbtn">获取校验码</a><i></i></li>
+        <li class="last"><label>&nbsp;</label><input name="" id="sub_btn" type="button" value="验 证 账 户" class="btn" onclick="tosubmit()" /></li>
+        <li style="margin-bottom:0px;"><label>&nbsp;</label><font id="errinfo" style="color:#f00; font-size:14px;">#if($info == "-1")验证码错误#end</font></li>
+      </ul>
+      </form>
+      
+    </div> 
+  </div>
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+</div>
+</body>
+
+<script type="text/javascript">
+var mtelReg = /^0?1[3|4|5|8][0-9]\d{8}$/;
+var regChinese =  /^[^\u4e00-\u9fa5]{0,}$/; 
+function tosubmit()
+{
+    var mtel = $("#mtel");
+	var code = $("#code");	
+	
+	//手机号码
+	if(jQuery.trim(mtel.val()) == "")
+	{
+		mtel.next().html("请输入手机号码");
+		return;
+	}
+	else{
+		if(!mtelReg.test(mtel.val()))
+		{
+			    $("#mtel").next().html("填写账户注册时的手机号码");
+			    return;
+		}
+	else{
+		mtel.next().empty();
+		}
+	}
+	
+	//校验码
+	if(jQuery.trim(code.val()) == "")
+	{
+	    code.next().next().html("请输入校验码");
+		return;
+	}
+	else
+	{
+	    $('#sub_btn').removeAttr("onclick");
+	    jQuery.ajax({
+                        type: 'post',
+                        url: '$!base/checkRegSms.html',
+                        data: {mtel:mtel.val(), smscode: code.val()},
+                        dataType: 'json',
+                        success: function (json) {
+                            if (json != null) 
+							{
+                                if (json.result == "success") 
+								{
+                                    //提交表单
+									$("#findpwdform").submit();
+                                }
+                                else 
+								{
+									$("#code").next().next().html(json.message);
+									$('#sub_btn').attr('onclick','').click(function(){
+										tosubmit();
+                                    }); 
+                                }
+                            }
+                            else
+							{
+                                $("#code").next().next().html("验证码验证失败");
+								$('#sub_btn').attr('onclick','').click(function(){
+									tosubmit();
+                                }); 
+								return;
+                            }
+                        },
+                        error: function (xmlHttpRequest, textStatus, errorThrown) {
+						    $('#sub_btn').attr('onclick','').click(function(){
+								tosubmit();
+                            }); 
+                            alert('调用接口失败，原因如下: ' + errorThrown);
+                        }
+                    });
+	}	
+	return;
+}
+
+function getsms(obj)
+{
+    var mtel = $("#mtel").val();
+	if(!mtelReg.test(mtel))
+	{
+		    $("#mtel").next().html("填写账户注册时的手机号码");
+		    return;
+	}
+	
+		jQuery.ajax({
+                        type: 'post',
+                        url: '$!base/sms.html',
+                        data: {phone: mtel},
+                        dataType: 'json',
+                        success: function (json) {
+                            if (json != null) 
+							{
+                                if (json.result == "success") 
+								{
+                                	mbtime(obj);
+									$("#code").next().next().html(json.message);
+									
+                                }
+                                else 
+								{
+                                    $("#code").next().next().html(json.message);
+                                }
+                            }
+                            else
+							{
+                                $("#code").next().next().html("获得验证码失败");
+								return;
+                            }
+                        },
+                        error: function (xmlHttpRequest, textStatus, errorThrown) {
+                            alert('调用接口失败，原因如下: ' + errorThrown);
+                        }
+                    });
+}
+
+var wait=300;
+function mbtime(o) {
+    var jObj = $("#smsbtn");
+    if (wait == 0) {
+        jObj.attr("href", "javascript:getsms(this)")
+        jObj.html("获取校验码");
+        wait = 60;
+    } else {
+		jObj.removeAttr('href');
+		jObj.removeAttr('onclick');
+        jObj.text("重新发送(" + wait + ")");
+        wait--;
+        setTimeout(function() {mbtime(o)},1000)
+    }
+}
+</script>
+</html>

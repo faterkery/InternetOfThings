@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/jdbc.properties</value>
+				<value>/smtp.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="mappingResources">
+			<list>
+				<value>hibernate/Member.hbm.xml</value>
+				<value>hibernate/Resources.hbm.xml</value> 
+				<value>hibernate/Groups.hbm.xml</value> 
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.connection.driver_class">
+					${jdbc.driver}
+				</prop>
+				<prop key="hibernate.connection.url">${jdbc.url}</prop>
+				<prop key="hibernate.connection.username">
+					${jdbc.user}
+				</prop>
+				<prop key="hibernate.connection.password">
+					${jdbc.pwd}
+				</prop>
+				<prop key="hibernate.c3p0.min_size">5</prop>
+				<prop key="hibernate.c3p0.max_size">10</prop>
+				<prop key="hibernate.c3p0.timeout">10</prop>
+				<prop key="hibernate.c3p0.acquireRetryAttempts">
+					30
+				</prop>
+				<prop key="hibernate.c3p0.acquireIncrement">2</prop>
+				<prop key="hibernate.c3p0.idleConnectionTestPeriod">
+					300
+				</prop>
+				<prop key="hibernate.c3p0.initialPoolSize">5</prop>
+				<prop key="hibernate.c3p0.maxPoolSize">10</prop>
+				<prop key="hibernate.c3p0.maxIdleTime">300</prop>
+				<prop key="hibernate.c3p0.maxStatements">50</prop>
+				<prop key="hibernate.c3p0.minPoolSize">5</prop>
+				<prop key="hibernate.jdbc.fetch_size">50</prop>
+				<prop key="hibernate.jdbc.batch_size">10</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.cache.provider_class">
+					org.hibernate.cache.HashtableCacheProvider
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="baseTransactionProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		abstract="true">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="proxyTargetClass">
+			<value>true</value>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED</prop>
+				<prop key="del*">PROPAGATION_REQUIRED</prop>
+				<prop key="get*">readOnly</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

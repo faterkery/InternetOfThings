@@ -1,0 +1,130 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<body>
+<div id="container"> 
+  <!--site-nav开始-->
+  #parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+
+  <!--header开始-->
+  #parse( "/WEB-INF/eportalpages/common/header.vm" )
+  <!--header结束--> 
+
+<div id="main_member">
+    <div class="layout">
+      #parse( "/WEB-INF/eportalpages/common/centre_menu.vm" )
+  
+      <div class="member_bd box1 fr">
+        <ul class="menu"><h1>我的订单</h1></ul>
+        <div class="form_bd" style="padding:20px 0 15px;">
+          <table class="address_infor box1" width="100%" border="1" cellspacing="0" cellpadding="0" >
+            <tr>
+			  <th scope="col" class="center">订单号</th>
+              <th scope="col" class="center">订单金额（元）</th>
+              <th scope="col" class="center">下单时间</th>
+			  <th scope="col" class="center">状态</th>
+              <th class="center" scope="col"></th>
+            </tr>
+            #foreach($obj in $bizObjList)
+            <tr>
+			  <td class="center">$obj.orderCode</td>
+              <td class="center">$obj.money</td>
+			  <td class="center">$!vMUtils.dateTimeFormateSimple($obj.timeCreate)</td>
+			   <td class="center" id="co_$!vMUtils.encrypt($obj.id)">
+			    #if($!obj.orderState == 0 )等待确认 #end
+		        #if($!obj.orderState == 1 )等待付款 #end
+                #if($!obj.orderState == 2 )已付款  #end
+                #if($!obj.orderState == 3 )已发货 #end
+                #if($!obj.orderState == 4 )交易完成#end
+                #if($!obj.orderState == 5 )退/换货中#end
+                #if($!obj.orderState == 6 )订单关闭 #end
+			  </td>
+              <td class="center">
+			    <a href="$!base/order/view.html?sid=$!vMUtils.encrypt($obj.id)" title="详细" target="_blank">详细</a> 
+				#if($obj.orderState == 3 )
+				   <a href="javascript:orderdone('$!vMUtils.encrypt($obj.id)')" class="fblue1" id="q_$!vMUtils.encrypt($obj.id)">确认收货</a>
+				#end
+				#if($obj.orderState == 1 || $obj.orderState == 0 )
+                   <a href="javascript:cancelOrder('$!vMUtils.encrypt($obj.id)')" class="fblue1" id="cancel_$!vMUtils.encrypt($obj.id)" >取消订单</a>
+				#end
+              </td>
+            </tr>
+            #end
+          </table>
+		  #parse( "/WEB-INF/eportalpages/common/eportal_page.vm" )
+        </div>
+      </div>
+      <div id="dialog" title="删除确认" style="display:none; text-align:center; padding-top:20px;">确定要删除这个商品吗？</div>
+    </div>
+  </div>
+  
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+  
+  <!--con_side开始-->
+  #parse( "/WEB-INF/eportalpages/common/con_side.vm" )
+  <!--con_side结束--> 
+  
+<script type="text/javascript">
+//取消订单
+function cancelOrder(sid)
+{
+ if(!confirm("确定取消订单吗"))
+ {
+     return;
+ }
+jQuery.ajax({ url: '$!base/order/cancel.html',
+    　　data: { sid: sid },
+    　　type: 'post',
+    　　dataType: 'json',
+    　　success: function(data) {
+	    if(data.result == "success")
+		{
+		   $("#co_"+sid).html("订单关闭");
+		   $("#cancel_"+sid).remove();
+		   return;
+		}
+		return;
+			
+    },
+    　　error: function() {
+        alert("异常！");
+    }
+});
+}
+
+//订单完成
+function orderdone(sid)
+{
+     if(!confirm("确认收货吗"))
+     {
+         return;
+     }
+    jQuery.ajax({ url: '$!base/order/done.html',
+        　　data: { sid: sid },
+        　　type: 'post',
+        　　dataType: 'json',
+        　　success: function(data) {
+    	    if(data.result == "success")
+    		{
+    		   $("#co_"+sid).html("订单完成");
+    		   $("#q_"+sid).remove();
+    		   return;
+    		}
+    		return;
+    			
+        },
+        　　error: function() {
+		   alert("data.result=" + data.result);
+           alert("系统异常！");
+        }
+    });
+}
+</script>
+  </div>
+</body>
+</html>  

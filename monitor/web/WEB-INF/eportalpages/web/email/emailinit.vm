@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>中国螺杆产业公共服务平台</title>
+<link href="$!base/eportalstyle/css/global.css" rel="stylesheet" type="text/css" />
+<link href="$!base/eportalstyle/css/login.css"  rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$base/eportalstyle/js/jquery 1.7.1.js"></script>
+</head>
+
+<body style="background-color:#F8F8F8;">
+<div id="container"> 
+  <div class="header">
+    <a href="$!base/index.html" title="E螺杆——中国螺杆产业功能服务平台"><img src="$!base/eportalstyle/images/logo.png" width="387" height="88" /></a>
+    <h1>邮箱绑定</h1>
+  </div>
+  
+  <div class="register_box box1">
+    <div class="reg_from fl">
+      <ul class="menu"><h2>请输入您需要绑定的邮箱地址</h2></ul>
+      <form name="emailinitform" id="emailinitform" method="post" action="$!base/centre/emailbind.html" >
+	  <input type="hidden" name="insert" value="insert" />
+      <ul class="form">
+        <li><label>手机号码：</label><span>$!user.mtel</span></li>
+        <li><label><span>*</span>邮箱地址：</label><input name="email" id="email" type="text" class="text text1" /><i></i></li>
+        <li class="last"><label>&nbsp;</label><input name="" type="button" value="提 交" class="btn" onclick="tosubmit()" /></li> 
+      </ul>
+      </form>
+    </div> 
+  </div>
+
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+</div>
+</body>
+
+<script type="text/javascript">
+var emailRegular = /^(([0-9a-zA-Z]+)|([0-9a-zA-Z]+[_.0-9a-zA-Z-]*[0-9a-zA-Z]+))@([a-zA-Z0-9-]+[.])+([a-zA-Z]{2}|net|NET|com|COM|gov|GOV|mil|MIL|org|ORG|edu|EDU|int|INT)$/;
+
+function tosubmit()
+{
+	var email = document.getElementById("email");
+    if(!emailRegular.exec(email.value))
+    {
+    	$("#email").next().html("邮箱为空或格式不正确");
+        return;
+    }
+    else
+    {
+    	$("#email").next().empty();
+    }
+    $("#emailinitform").submit();
+}
+</script>
+</html>

@@ -1,0 +1,457 @@
+ #if($cartList.size() ==0)
+	<div class="cart_no box1">
+        <img src="$!base/eportalstyle/images/cart.png" width="219" height="249" /> 
+        <h1>您的购物车是空的，赶紧去购物吧！</h1>
+        <input name="" type="button" class="return-login" value="马上去购物" title="马上去购物" onClick="window.location='$!base/index.html'"/>
+      </div>
+#else
+ <div class="shopping_list">
+        <ul class="menu5"><h1>购物车<span>（我已选购的商品）</span></h1></ul>
+        <div class="cart_box0 box1">
+          <table width="100%" cellpadding="0" cellspacing="0">
+              <tr class="cart_head">
+                <th width="4%" align="center"><input type="checkbox" name="chk_all" /></th>
+                <th width="9%" align="center">品名</th>
+                <th width="9%" align="center">品牌</th>
+                <th width="15%" align="center">厂家</th>
+                <th width="8%" align="center">工艺</th>
+                <th width="5%" align="center">规格</th>
+                <th width="5%" align="center">长度</th>
+                <th width="5%" align="center">价格</th>
+                <th width="8%" align="center">购买长度</th>
+				<th width="4%" align="center">件</th>
+				<th width="5%" align="center">支</th>
+                <th width="8%" align="center">数量/预发重量</th>
+				<th width="10%" align="center">小计</th>
+                <th width="5%" align="center">操作</th>
+              </tr>
+              <tbody>
+                #foreach($item in $cartList)
+                  #if($item.type == 2)					
+					#set($shopitem = $!vMUtils.getSuppliesById($item.cid))
+				  #else
+				    #set($shopitem = $!vMUtils.getMaterialById($item.cid))
+				  #end
+				  <tr class="cart_item #if($shopitem.isPublished==0) tmd1 #end" >
+                    <td align="center">
+    				  #if($shopitem.isPublished==1)
+    			        <input type="checkbox" name="guigeid" value="$!item.id" />
+    				  #else
+    				          失效
+    				  #end
+					</td>
+					<td align="center">
+					  #if($item.type == 2)
+					    $!shopitem.name
+					  #else
+					    $!vMUtils.getResourceValue($!shopitem.nameId)
+					  #end
+					</td>
+					<td align="center">
+					  $!vMUtils.getResourceValue($!shopitem.brandId)
+					</td>   
+					<td align="center">
+					  $!vMUtils.getResourceValue($!shopitem.factoryId)
+					</td>   
+					<td align="center">
+					  $!vMUtils.getResourceValue($!shopitem.craftsId)
+					</td>  
+					<td align="center">
+					  #if($item.type == 2)
+					    $!shopitem.spec
+					  #else
+					    $!vMUtils.getResourceValue($!shopitem.specId)
+					  #end  
+					</td> 
+					<td align="center">
+					  #if($item.type == 1)
+						$!shopitem.length
+					  #end 
+					</td>
+					<td align="center">
+					  $!shopitem.price
+					</td>
+					<td align="center">
+					  #if($item.type == 1 && $shopitem.craftsId == 10766 )
+                        <input type="text" name="lengthBuy" id="item_$!item.id"  datacid="$vMUtils.encrypt($!item.id)" value="$!item.lengthBuy" maxlength="4" style="width:44px;height:28px;line-height:28px;text-align:center" />&nbsp;米
+				      #end
+					</td>
+					<td align="center">
+					  #if($shopitem.isPublished==1 && $shopitem.craftsId != 10766 )
+    				    #if($item.type == 1)
+                          <input type="text" name="jiannum" id="item_$!item.id" datacid="$vMUtils.encrypt($!item.id)" value="$!item.jiannum" maxlength="4" style="width:44px;height:28px;line-height:28px;text-align:center" />
+    					#end
+					  #end
+					</td>
+					<td align="center">
+					  #if($shopitem.isPublished==1)
+					    #if($item.type == 1)
+                          <input type="text" name="zhinum" id="item_$!item.id"  datacid="$vMUtils.encrypt($!item.id)" value="$!item.zhinum" maxlength="4" style="width:44px;height:28px;line-height:28px;text-align:center" />
+						#end
+					  #end
+					</td>
+					<td align="center">
+					  #if($shopitem.isPublished==1)
+					    #if($item.type == 1)
+                          <input type="text" name="num" id="item_$!item.id" value="$!vMUtils.changeBigNumber2String($!item.num)" maxlength="4" style="width:50px;height:28px;line-height:28px;text-align:center" />&nbsp;吨
+						#else
+                          <div class="amount-widget">
+                            <label class="zs-decrease" id="de_$!item.id"></label>
+                            <input name="zp-goods-number" id="item_$!item.id" type="text" title="请输入购买量" value="$!vMUtils.double2int($!item.num)" class="zs-goods-number" fn="zp-goods-number" maxlength="4">
+                            <label class="zs-increase" id="in_$!item.id"></label>
+                          </div>
+						#end
+					  #end
+					</td>
+					<td align="center" class="price" id="xiaoji_$item.id">
+					  $vMUtils.getTotalMoney($item)
+				    </td>
+                    <td align="center">
+                      <a class="g_delete" href="javascript:delGoods('$vMUtils.encrypt($!item.id)')" >删除</a>
+                    </td>
+			      </tr>
+                  #end
+                  <tr class="cart_item" style="border-bottom:none;">
+                    <td align="center"><input type="checkbox" name="chk_all" /></td>
+                    <td>全选<a class="g_delete" style="margin-left:20px;" href="javascript:deleteAll();" >删除</a></td>
+                    <td colspan="12" style="padding:10px 20px;">
+                      <div class="total fr">
+                        <div class="num">参考金额：<span class="price"><label class="sm">￥</label>0.0</span></div>
+                        <div class="gopay"><a href="javascript:tobuy()" class="btnpay">下订单</a></div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>    
+          </div>
+          
+<div id="dialog" title="删除确认" style="display:none;text-align:center;padding-top:20px;">确定要删除这个商品吗？</div>
+<div id="noGoodsDialog" title="错误" style="display:none;text-align:center;padding-top:20px;">请至少选中一件商品</div>
+#end
+<script type="text/javascript">
+function tobuy()
+{
+    if($('input[name="guigeid"]:checked').length == 0)
+	{
+    	     $("#noGoodsDialog").dialog({
+                	modal: true,
+                	width: 250,
+                	height: 150,
+                	buttons: {确定: function(){$(this).dialog("close");}
+				 }
+            });
+		return ;
+	}
+	
+	$("#cartform").submit();
+}
+
+function changNum(span_id, num)
+{
+            var id = span_id.split("_");
+	        var chboxs = document.getElementsByName("guigeid");
+        	var ids = "";
+        	for(var i=0; i<chboxs.length; i++)
+        	{
+        	    if(chboxs[i].checked)
+        		{
+        		ids = ids +chboxs[i].value + ";";
+        		}
+        	}
+           	jQuery.ajax({ url:'$!base/cart/calc.html',
+        	    data: {type: "chnum", ids: ids, cartid:id[1], num:num},
+        	    type: 'post',
+        	    dataType: 'json',
+        	    success: function(data) {
+					//$(".num").html("<div class=\"num\">共有"+data.num+"件商品，总计：<span class=\"price\"><label class=\"sm\">￥</label>"+data.sum+"</span></div>");
+					$(".num").html("<div class=\"num\">参考金额：<span class=\"price\"><label class=\"sm\">￥</label>"+data.sum+"</span></div>");
+					$("#xiaoji_"+id[1]).html(data.xiaoji);
+        	    },
+        	    error: function(data) {
+        	        alert("异常！");
+        	    }
+        	});
+}
+
+         $(document).ready(function(){
+             //填写件触发金额计算——件数
+             $(document).on("keyup","input[name=jiannum]",function(event, value){
+			     var jiannum = $(this).val();
+				 var crtid = $(this).attr("id");
+				 var trObj = $(this).parents("tr");
+				 var zhinum = trObj.find("input[name=zhinum]").val();
+				 var reg = /^\+?[0-9]\d*$/;
+				 if(!reg.exec(jiannum))
+				 {
+				    jiannum = 1;
+				    $(this).val(jiannum);
+				 }
+				 if(!reg.exec(zhinum))
+				 {
+				    zhinum = 0;
+				    trObj.find("input[name=zhinum]").val(zhinum);
+				 }
+				 var cid = $(this).attr("datacid");
+				    jQuery.ajax({ url:'$!base/cart/calct.html',
+                	    data: {jiannum: jiannum, zhinum: zhinum, cid: cid},
+                	    type: 'post',
+                	    dataType: 'json',
+                	    success: function(data) {
+                	        if(data.result=="success")
+							{
+							    trObj.find("input[name=num]").val(data.obj);
+								changNum(crtid, data.obj);
+							}
+                	    },
+                	    error: function(data) {
+                	        alert("异常！");
+                	    }
+                	});
+             });
+			 
+			 //填写只触发金额计算——支数
+             $(document).on("keyup","input[name=zhinum]",function(event, value){
+			     var zhinum = $(this).val();
+				 var crtid = $(this).attr("id");
+				 var trObj = $(this).parents("tr");
+				 var jiannum = trObj.find("input[name=jiannum]").val();
+				 var lengthBuy = trObj.find("input[name=lengthBuy]").val();
+				 var reg = /^\+?[0-9]\d*$/;
+				 
+				 if(!reg.exec(jiannum))
+				 {
+				    jiannum = 0;
+				    trObj.find("input[name=jiannum]").val(jiannum);
+				 }
+				 if(!reg.exec(zhinum))
+				 {
+				    zhinum = 1;
+				    $(this).val(zhinum);
+				 }
+				 var cid = $(this).attr("datacid");
+				    jQuery.ajax({ url:'$!base/cart/calct.html',
+                	    data: {jiannum: jiannum, zhinum: zhinum, lengthBuy: lengthBuy, cid: cid},
+                	    type: 'post',
+                	    dataType: 'json',
+                	    success: function(data) {
+                	        if(data.result=="success")
+							{
+							    trObj.find("input[name=num]").val(data.obj);
+								changNum(crtid, data.obj);
+							}
+                	    },
+                	    error: function(data) {
+                	        alert("异常！");
+                	    }
+                	});
+            		
+             });
+			 
+           //填写件触发金额计算——购买长度
+             $(document).on("keyup","input[name=lengthBuy]",function(event, value){
+           	     var lengthBuy = $(this).val();
+           		 var crtid = $(this).attr("id");
+           		 var trObj = $(this).parents("tr");
+           		 var zhinum = trObj.find("input[name=zhinum]").val();
+           		 var reg = /^\+?[1-9]\d*$/;
+           		 
+           		 if(!reg.exec(zhinum))
+           		 {
+           		    zhinum = 1;
+           		    trObj.find("input[name=zhinum]").val(1);
+           		 }
+
+           		 var cid = $(this).attr("datacid");
+           		    jQuery.ajax({ url:'$!base/cart/calct.html',
+                	    data: {lengthBuy: lengthBuy, zhinum: zhinum, cid: cid},
+                	    type: 'post',
+                	    dataType: 'json',
+                	    success: function(data) {
+                	        if(data.result=="success")
+           					{
+           					    trObj.find("input[name=num]").val(data.obj);
+           					    changNum(crtid, data.obj);
+           					}
+                	    },
+                	    error: function(data) {
+                	        alert("异常！");
+                	    }
+                	});
+             });
+
+            //手动填写改金额
+            $(document).ready(function(){
+                  $("input[name=num]").keyup(function(){
+                   changNum($(this).attr("id"), $(this).val());
+                  });
+            });
+
+			//加的效果
+			$(".zs-increase").click(function(){
+			var n=$(this).prev().val();
+			var num=parseInt(n)+1;
+			if(num==0){ return;}
+			if(num >= 100){ return;}
+			$(this).prev().val(num);
+			changNum($(this).attr("id"), num);
+			});
+			
+			//减的效果
+			$(".zs-decrease").click(function(){
+			var n=$(this).next().val();
+			var num=parseInt(n)-1;
+			if(num==0){ return}
+			$(this).next().val(num);
+			changNum($(this).attr("id"), num);
+			});
+			
+        	$(".side ul li").hover(function(){
+        		$(this).find(".sidebox").stop().animate({"width":"124px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#19a7e2"})	
+        	},function(){
+        		$(this).find(".sidebox").stop().animate({"width":"54px"},200).css({"opacity":"0.8","filter":"Alpha(opacity=80)","background":"#888888"})	
+        	});
+			
+          //全选/取消
+          $("input[name='chk_all']").click(function(){
+                $("input[name='guigeid']").attr("checked",$(this).prop("checked"));
+        		$("input[name='chk_all']").attr("checked",$(this).prop("checked"));
+          }
+          );
+          //单个取消/选中
+          $("input[name='guigeid']").click(function(){
+                if(!$(this).prop("checked"))
+        		{
+        		    $("input[name='chk_all']").attr("checked",$(this).prop("checked"));
+        		}
+        		
+        		if($('input[name="guigeid"]:checked').length == $('input[name="guigeid"]').length)
+        		{
+        		   $("input[name='chk_all']").attr("checked",$(this).prop("checked"));
+        		}
+          }
+          );
+		  
+                		  $('input[name="chk_all"]').click(function(){
+                            var ids = "";
+                            if($(this).prop("checked"))
+                			{
+                			        var chboxs = document.getElementsByName("guigeid");
+                                	for(var i=0; i<chboxs.length; i++)
+                                	{
+                                		ids = ids +chboxs[i].value + ";";
+                                	}
+                			}
+                           	jQuery.ajax({ url:'$!base/cart/calc.html',
+                        	    data: {type: "update",ids: ids},
+                        	    type: 'post',
+                        	    dataType: 'json',
+                        	    success: function(data) {
+									$(".num").html("<div class=\"num\">参考金额：<span class=\"price\"><label class=\"sm\">￥</label>"+data.sum+"</span></div>");
+                        	    },
+                        	    error: function(data) {
+                        	        alert("异常！");
+                        	    }
+                        	});
+                		
+                  }
+                  );
+                  
+                  $('input[name="guigeid"]').click(function(){
+                            var chboxs = document.getElementsByName("guigeid");
+                        	var ids = "";
+                        	for(var i=0; i<chboxs.length; i++)
+                        	{
+                        	    if(chboxs[i].checked)
+                        		{
+                        		ids = ids +chboxs[i].value + ";";
+                        		}
+                        	}
+                           	jQuery.ajax({ url:'$!base/cart/calc.html',
+                        	    data: {type: "update",ids: ids},
+                        	    type: 'post',
+                        	    dataType: 'json',
+                        	    success: function(data) {
+                        	       $(".num").html("<div class=\"num\">参考金额：<span class=\"price\"><label class=\"sm\">￥</label>"+data.sum+"</span></div>");
+                        	    },
+                        	    error: function(data) {
+                        	        alert("异常！");
+                        	    }
+                        	});
+                		
+                  }
+                  );
+				  
+				  //只能是正整数
+				   var reg = /^[1-9]\d*$/;   
+				  $(".zs-goods-number").blur(function(){
+						   if(!reg.test($(this).val()))
+						   {
+						       alert("只能是正整数");
+						       $(this).val(1);
+							   return;
+						   }
+                  });
+			
+		})
+		
+		
+//删除购物车清单
+function delGoods(sid)
+{
+$( "#dialog" ).dialog({
+					modal: true,
+					width: 250,
+					height: 150,
+					buttons: {
+						确定: function(){			
+    							jQuery.ajax({ url:'$!base/cartfull.html',
+                            	    data: {op: "del",sid: sid},
+                            	    type: 'post',
+                            	    dataType: 'html',
+                            	    success: function(data) {
+                            	        $("#cartdiv").html(data);
+                            	    },
+                            	    error: function(data) {
+                            	        alert("异常！");
+                            	    }
+                            	});
+							 $(this).dialog("close");
+							
+						},
+						取消: function(){
+							$(this).dialog("close");
+						}
+					}
+				});
+}
+
+function deleteAll()
+{
+    if($('input[name="guigeid"]:checked').length == 0)
+	{
+	    alert("至少选择一种商品");
+		return ;
+	}
+	
+	if(!confirm("确定删除？"))
+	{
+	    return;
+	}
+   var ids = ";";
+   $('input[name="guigeid"]:checked').each(function(){
+        ids = ids + $(this).val() +";";
+   });
+   jQuery.ajax({ url:'$!base/cartfull.html',
+	    data: {op: "delall",sid: ids},
+	    type: 'post',
+	    dataType: 'html',
+	    success: function(data) {
+	        $("#cartdiv").html(data);
+	    },
+	    error: function(data) {
+	        alert("异常！");
+	    }
+	});
+}
+</script>

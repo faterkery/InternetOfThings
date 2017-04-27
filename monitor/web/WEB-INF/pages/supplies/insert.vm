@@ -1,0 +1,7 @@
+#set($actionUrl="$base/supplies/actions.html?method=insert&insert=y&menuname=$menuname")
+<div id="main" class="w100 bgmain">
+   <div class="maintopmenu">
+      <ul class="tit">螺杆耗材 >添加</ul>      
+   </div>
+   #parse( "/WEB-INF/pages/supplies/form.vm" )
+</div>

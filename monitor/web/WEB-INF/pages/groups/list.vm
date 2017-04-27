@@ -1,0 +1,50 @@
+#renhehead()
+<div id="main" class="w100 bgmain">
+   <div class="maintopmenu">
+      <ul class="tit">部门管理 >列表</ul>      
+      <div class="btnpz"><a href="#" class="btn_add" onclick="window.location='$base/groups/actions.html?method=insert&menuname=$menuname'">添加部门</a></div>
+   </div>
+   
+   <form name="searchForm" method="post" action="$base/groups/actions.html?method=list&menuname=$!menuname"> 
+     <input type = hidden name="searchAction" value=y>
+	   <div class="ToolSearch">
+	   <div class="ToolSearchBar">
+	    部门:&nbsp;&nbsp;<input name="name" id="name" type="text" size="20" class="input1" value="$!name"/>
+	  <input type=submit name="search" title="搜 索" value="搜 索 " class="btn_pic" />
+	  </div>
+	  </div>
+	</form> 
+
+   <div class="maincon">
+      <table width="100%" border="0" cellpadding="0" cellspacing="1" class="tb1" onmouseover="changeto()" onmouseout="changeback()">
+        <tr>
+          <td width="10%" class="cell1">部门名称</td>
+          <td width="20%" class="cell1">描述</td>
+          <td width="15%" class="cell1">创建时间</td>
+          <td width="15%" class="cell1">操作</td>
+        </tr>
+        #set($indexNum=0)
+		#foreach($biz in $bizObjList)
+        <tr #if($indexNum%2==0)class="cell2" #else class="cell3" #end>
+          <td title="$!biz.name">$!biz.name</td>
+          <td title="$!biz.memo">$!biz.memo</td>
+          <td title="$!vMUtils.dateTimeFormateSimple($!biz.timeCreate)">$!vMUtils.dateTimeFormateSimple($!biz.timeCreate)</td>
+          <td >
+		    <a href="$base/groups/actions.html?method=update&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname" class="fblue1 mrg_zy5">编辑</a>
+			<a href="$base/groups/actions.html?method=detail&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname" class="fblue1 mrg_zy5">详细</a>
+			<a href="$base/groups/actions.html?method=delete&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname" class="fblue1 mrg_zy5" onclick="return confirm('确定删除吗？');">刪除</a>
+		  </td>
+        </tr>
+        #set($indexNum=$indexNum+1)
+		  #end
+		  #if($indexNum<10)
+		    #set($indexNum=10-$indexNum)
+		      #foreach($foo in [1..$indexNum])
+		<tr #if($foo%2==0)class="cell3" #else class="cell2" #end><td colspan="4">&nbsp;</td></tr>
+		      #end
+		    #end
+      </table>
+      #parse( "/WEB-INF/pages/common/page.vm" )
+   </div>
+</div>
+#renheend()

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>舟山E螺杆网站管理系统登录 </title>
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link href="$base/branding/default/style/base.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="$base/branding/default/js/validator.js"></script>
+<script type="text/javascript" src="$base/eportalstyle/js/jquery 1.7.1.js"></script>
+<style type="text/css">
+.input1{height:28px; border:1px solid #8DBBDE; font-size:12px; line-height:28px; padding:0 5px;}
+#container{width:100%; height:100%; overflow:hidden; position:absolute; left:0; top:0; background:url($base/branding/default/images/login/loginbg.jpg) no-repeat center center;}
+#content{width:804px; margin:80px auto 0; height:90%; position:relative; background:url($base/branding/default/images/login/title.png) no-repeat center top;}
+#content .login{width:284px; height:348px; background:url($base/branding/default/images/login/loginbox.png) no-repeat; padding:20px 30px 0 30px; position:absolute; top:200px; right:0px; font-size:14px;}
+#content .login .title{background:url($base/branding/default/images/login/lock.png) no-repeat; padding-left:60px; line-height:50px; font-size:30px; margin-bottom:
+10px;}
+#content .login li{width:90%; float:left; padding:10px 5%; font-size:14px; line-height:30px;}
+#content .login .btnline{width:100%; clear:both; padding:20px 0 0 0; text-align:center;}
+#content .login .btnline input{width:88px; height:32px; background:url($base/branding/default/images/login/btnbg.png) no-repeat; text-align:center; line-height:32px; color:#FFF; font-size:14px; border:0; cursor:pointer; margin:0 10px;}
+#content .login .btnline input.btn_reset{background-position:-88px 0; color:#34607D;}
+#bottom{width:100%; position:absolute; bottom:0; left:0; height:50px; line-height:50px; background:url($base/branding/default/images/login/botbg.png) no-repeat center; text-align:center; color:#fff; float:left; clear:both;}
+</style>
+<script language="javascript" type="text/javascript">
+    $(function(){
+        $('#password').bind('keypress',function(event){
+            if(event.keyCode == "13")    
+            {
+                doSubmit();
+            }
+        });
+    });
+</script>
+</head>
+
+<body>
+<div id="container">
+   <div id="content">
+      <div class="main">
+      <form name="loginForm" id="loginForm" method="post" action="login.html?login=login" >
+         <div class="login">
+            <ul class="title">用户登录</ul>
+            <ul>
+               <li>用户名： <input name="loginName" type="text" class="input1" size="24" onkeypress="if(event.keyCode==13){$('password').focus()}"  dataType="Require" msg="用户名不能为空" id="loginName" value="" /></li>
+               <li>密　码： <input name="password" type="password" class="input1" size="24" onkeypress="if(event.keyCode==13){$('loginForm').submit()}" dataType="Require" msg="密码不能为空" id="password" value="" /></li>
+            </ul>
+            <ul class="btnline"><input name="" type="button" value="登 录" onClick="doSubmit()"/><input name="" type="reset" value="重　置" class="btn_reset"/></ul>
+            <ul class="tip #if(!$!logerror) none #end" style="color:#f00; text-align:center; padding:5px 0;">用户名或密码错误</ul>
+         </div>
+         </form>
+      </div>
+   </div>
+   <div id="bottom">Copyright&copy;2016 舟山市网加科技有限公司&nbsp;&nbsp;电话:0580-8688111&nbsp;&nbsp;传真:0580-8688111</div>
+</div>
+</body>
+<script type="text/javascript">
+  function doSubmit(){
+  var form  = document.getElementById("loginForm");
+  if(Validator.Validate(form,3))
+	{
+	  form.submit();
+	 }
+  }
+</script>
+</html>

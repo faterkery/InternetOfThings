@@ -1,0 +1,63 @@
+#renhehead()
+<div  class="w100 bgmain">
+  <div class="maintopmenu">
+    <ul class="tit">密码设置</ul>
+  </div>
+   
+  <div class="Main_handleBar check_pass"  #if(!$!updated)style="display:none"#end>
+    <p>
+    #if($!updated)
+           修改成功
+    #end
+    </p>
+  </div>
+
+  <div class="maincon">
+    <form id="changePwdForm" name="changePwdForm" method="post" action="$!base/changepwd.html">
+    <input type=hidden name=id value=$!bizObj.id>
+    <input type="hidden" name="insert" value="y" />
+    <div class="frminfo org">
+      <ul>
+        <li>
+          <span class="ft">旧密码:</span>
+          <input name="oldPassword" type="password" size="40" class="input1" value="$!bizObj.oldPassword">
+        </li>
+        <li><span class="ft">新密码:</span><input id="newPassword" name="newPassword" type="password" size="40" class="input1" value="$!bizObj.newPassword"></li>
+        <li><span class="ft">再次确认新密码:</span><input id="repeatPassword" name="repeatPassword" type="password" size="40" class="input1" value="$!bizObj.repeatPassword"></li>
+        <li class="bot">
+          <input name="insert" type="button" class="btn_save mrg_y20" value="确认修改" onclick="toSubmit();" />
+          <input type="reset" class="btn_cancel" value="取 消" />
+        </li>
+      </ul>
+    </div>
+    </form>
+  </div>
+</div>
+
+<script>
+	function toSubmit(){
+		var oldPassword =document.changePwdForm["oldPassword"].value;
+		var newPassword =document.changePwdForm["newPassword"].value;
+		var repeatPassword =document.changePwdForm["repeatPassword"].value;
+		
+			if(oldPassword==""){
+				alert("请填写旧密码！");
+				return;
+			}
+			if(newPassword==""){
+				alert("请填写新密码！");
+				return;
+			}
+			if(repeatPassword==""){
+				alert("请确认新密码！");
+				return;
+			}
+			if(newPassword!=repeatPassword){
+				alert("两次密码不一致！");
+				return;
+			}
+
+		document.getElementById("changePwdForm").submit();
+	}
+</script>
+#renheend()

@@ -1,0 +1,90 @@
+#renhehead()
+#set($urlPre = "$base/resources/actions.html?method=list&menuname=$menuname&type=$type")
+<script>
+function toinsert()
+{ 
+	var pm = $("#value").val();
+	if(pm=="")
+	{
+	    alert("请填写选项");	
+	    return;
+	}
+	if("$type"=="gg")
+	{
+	if(!isNaN(pm)){
+	  if(parseInt(pm)==pm)
+      {
+       }else{
+       alert("请填写整数");
+      return;
+      }
+         }else{
+      alert("请填写数字");
+      return;
+       }
+	}
+	$("#addForm").submit();
+}
+</script>
+<div id="main" class="w100 bgmain">
+  <form name="addForm" id="addForm" method="post" action="$base/resources/actions.html?method=insert&insert=y&menuname=$!menuname"> 
+  <div class="maintopmenu">
+    <ul class="tit">
+       #if($type=="hfl") 类别管理 #end
+       #if($type=="hpp") 品牌管理 #end
+       #if($type=="hcj") 厂家管理 #end
+       #if($type=="pm") 品名管理 #end
+       #if($type=="cj") 厂家管理 #end
+       #if($type=="gy") 工艺管理 #end
+       #if($type=="gg") 规格管理 #end
+       #if($type=="faq") 问题咨询类别 #end
+    </ul>
+    <div class="btnpz">
+      <input name="value" id="value" type="text" size="20" class="input1 left" style="margin-top:2px; margin-right:5px;" value="$!value"/>
+      <input type="hidden" name="type" value="$!type" />
+      <a href="javascript:toinsert()" class="btn_add left" >添加选项</a>
+    </div>
+  </div>
+  </form>
+   
+   <form name="searchForm" method="post" action="$urlPre"> 
+     <input type = hidden name="searchAction" value=y>
+	   <div class="ToolSearch">
+	   <div class="ToolSearchBar">
+	       名称:
+	   <input name="searchvalue" id="searchvalue" type="text" size="20" class="input1" style="margin-left:5px;" value="$!searchvalue"/>
+	   <input type=submit name="search" title="搜 索" value="搜 索 " class="btn_pic" />
+	   </div>
+	  </div>
+	</form> 
+
+   <div class="maincon">
+      <table width="100%" border="0" cellpadding="0" cellspacing="1" class="tb1" onmouseover="changeto()" onmouseout="changeback()">
+        <tr>
+          <td width="20%" class="cell1">名称</td>
+          <td width="20%" class="cell1">创建时间</td>
+          <td width="20%" class="cell1">操作</td>
+        </tr>
+        #set($indexNum=0)
+		#foreach($biz in $bizObjList)
+        <tr #if($indexNum%2==0)class="cell2" #else class="cell3" #end>
+          <td title="$!biz.value">$!biz.value</td>
+          <td title="$!vMUtils.dateTimeFormateSimple($!biz.createdDate)">$!vMUtils.dateTimeFormateSimple($!biz.createdDate)</td>
+          <td>
+		    <a href="$base/resources/actions.html?method=update&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname&type=$type" class="fblue1 mrg_zy5">编辑</a>
+			<a href="$base/resources/actions.html?method=delete&sid=$vMUtils.encrypt($biz.id)&menuname=$menuname&type=$type" class="fblue1 mrg_zy5" onclick="return confirm('确定删除吗？');">刪除</a>
+		  </td>
+        </tr>
+        #set($indexNum=$indexNum+1)
+		  #end
+		  #if($indexNum<10)
+		    #set($indexNum=10-$indexNum)
+		      #foreach($foo in [1..$indexNum])
+		<tr #if($foo%2==0)class="cell3" #else class="cell2" #end><td colspan="3">&nbsp;</td></tr>
+		      #end
+		    #end
+      </table>
+      #parse( "/WEB-INF/pages/common/page.vm" )
+   </div>
+</div>
+#renheend()

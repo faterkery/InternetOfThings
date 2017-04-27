@@ -1,0 +1,33 @@
+#set($urlPre = "$!base/show3.html?method=list")
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<style type="text/css">
+body{background:url($!base/eportalstyle/images/bg.png) repeat;}
+#container{width:830px; min-height:800px; margin:70px auto 0px; background:#fff;}
+.title{ width:100%; border-left:50px solid #000; height:15px; line-height:15px; padding-left:15px; font-size:18px;font-weight:600; color:#4b4b4b; float:left; position:relative; margin-top:50px; margin-bottom:30px;}
+.cnt{width:710px; float:left; position:relative; padding-left:60px; padding-right:60px; color:#606060;}
+.cnt p{line-height:30px; font-size:16px;}
+.txbox{width:180px; height:180px; border:1px solid #ededed;padding:8px; float:left; position:relative; margin-top:30px;}
+.txbox img{width:180px; height:180px;}
+.perinfo{width:350px; height:90px; font-size:16px; line-height:30px; float:left; position:relative; padding-left:45px; margin-top:100px;}
+</style>
+<body>
+<div id="container">
+  <div class="title">个人简介&nbsp;Personal introduction</div>
+  #foreach($biz in $!personnellist)
+  <div class="cnt">
+    <div class="txbox"><img src="$!base$!biz.img"></div> 
+    <div class="perinfo">
+             姓名：$!biz.name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别：$!biz.sex</br>
+            年龄：$!biz.age岁&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 手机：$!biz.phone</br>
+            求职意向：$!biz.objective</br>
+            期望薪资：$!biz.salary元
+    </div>
+  </div> 
+  <div class="title">详细信息&nbsp;Detailed information</div>
+  <div class="cnt">
+    <p>$!biz.content</p>
+  </div>
+  #end
+</div>
+</body>
+</html>

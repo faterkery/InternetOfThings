@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>中国螺杆产业公共服务平台</title>
+<link href="$!base/eportalstyle/css/global.css" rel="stylesheet" type="text/css" />
+<link href="$!base/eportalstyle/css/login.css"  rel="stylesheet" type="text/css" />
+</head>
+
+<body style="background-color:#F8F8F8;">
+<div id="container"> 
+  <div class="header">
+    <a href="$!base/index.html" title="E螺杆——中国螺杆产业公共服务平台"><img src="$!base/eportalstyle/images/logo.png" width="387" height="88" /></a>
+    <h1>帐号注册</h1>
+  </div>
+  
+  <div class="register_box box1 error">
+    <img src="$!base/eportalstyle/images/register_ok.png" width="124" height="125" />
+    <h1>尊敬的 $!name 您好：</h1>
+    <P>您的帐户已注册成功！<br />为了保障您的账户安全，请保管好并定期更改密码。<br />如有任何疑问，请发邮件至：service@zs.com 或致电：400-000-5466</P>
+    <input name="" type="button" class="return-login" value="登录" title="登录" onclick="window.location='$base/shopuser/login.html'" />
+	<input name="" type="button" class="return-button" value="返回首页" title="返回首页" onclick="window.location='$base/index.html'"/>
+  </div>
+  
+  <!--footer开始-->
+#parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+</div>
+</body>
+</html>

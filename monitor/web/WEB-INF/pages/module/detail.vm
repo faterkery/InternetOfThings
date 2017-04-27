@@ -1,0 +1,10 @@
+#renhehead()
+#renheMenu("systemPri")
+#set($actionUrl="$base/module/actions.html?method=insert&insert=y&menuname=$menuname")
+	<div class="Main_Right" >
+		<div class="Main_Right_Top"><span></span></div>
+		<div class="Main_Right_Content" id="Main_Right_Content">
+			<div class="Main_Right_Title">当前位置：管理员 --> 模块管理</div>
+            <!-- Main_information begin -->
+	#parse( "/WEB-INF/pages/module/form.vm" )
+#renheend()	

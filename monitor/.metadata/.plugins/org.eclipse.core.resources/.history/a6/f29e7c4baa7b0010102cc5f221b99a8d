@@ -1,0 +1,11 @@
+package com.renhenet.modules.member;
+
+import com.renhenet.modules.CommonService;
+import com.renhenet.po.Groups;
+
+public class GroupsService extends CommonService {
+
+	public Groups getCrmSalesGroup(int id) {
+		return (Groups) this.getObjectById(Groups.class, id);
+	}
+}

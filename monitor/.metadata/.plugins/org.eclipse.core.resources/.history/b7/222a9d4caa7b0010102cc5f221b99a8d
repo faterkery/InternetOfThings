@@ -1,0 +1,38 @@
+package com.renhenet.web.member;
+
+import javax.servlet.ServletException;
+
+import com.renhenet.fw.ServiceLocator;
+import com.renhenet.fw.waf.WebContext;
+import com.renhenet.modules.member.MemberService;
+import com.renhenet.web.AdminAction;
+import com.renhenet.web.WebHelper;
+
+public class ChangePwdAction extends AdminAction {
+
+	private static MemberService memberService = (MemberService) ServiceLocator
+			.getService("memberService");
+
+	@Override
+	public String adminProcess(WebContext context) throws ServletException {
+		if (context.getParameter("insert") != null
+				|| context.getParameter("insert2") != null) {
+			String name = WebHelper.getUserContext(context);
+			// User user = memberService.getUserByName(name);
+			// if (user != null) {
+			// ChangePwdForm form = (ChangePwdForm) context.getForm();
+			// String oldpass = form.getOldPassword();
+			//
+			// if (user != null) {
+			// if (!user.getPassword().equals(oldpass)) {
+			// context.put("passError", true);
+			// return DEFAULT_FORWARD;
+			// }
+			// }
+			// user.setPassword(form.getNewPassword());
+			// context.put("success", true);
+			// }
+		}
+		return DEFAULT_FORWARD;
+	}
+}

@@ -1,0 +1,19 @@
+package com.renhenet.modules.member;
+
+import com.renhenet.modules.CommonService;
+import com.renhenet.po.Module;
+import com.renhenet.po.RoleModule;
+
+public class ModuleService extends CommonService {
+
+	public Module getModuleByName(String name) {
+		String hql = "from Module as t where t.name = ?";
+		return (Module) dao.findSingle(hql, new Object[] { name });
+	}
+
+	public void delObject(int id) {
+		String sql = "delete from role_module where module_id = ?";
+		dao.executeBySQL(sql, new Object[] { id });
+		super.delObject(RoleModule.class, id);
+	}
+}

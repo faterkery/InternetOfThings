@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 2.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-2.0.dtd">
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<hibernate-configuration>
+
+    <session-factory>
+        <!-- properties -->
+        <property name="connection.username"></property>
+        <property name="connection.url"></property>
+        <property name="dialect">net.sf.hibernate.dialect.Oracle9Dialect</property>
+        <property name="connection.password"></property>
+        <property name="connection.driver_class"></property>
+
+        <!-- mapping files -->
+        <mapping resource="com/wasu/po/News.hbm.xml"/>
+        <mapping resource="com/wasu/po/NewsCategory.hbm.xml"/>
+        <mapping resource="com/wasu/po/Member.hbm.xml"/>
+
+    </session-factory>
+
+</hibernate-configuration>

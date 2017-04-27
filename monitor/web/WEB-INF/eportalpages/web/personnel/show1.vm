@@ -1,0 +1,61 @@
+#set($urlPre = "$!base/show1.html?method=list")
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<style type="text/css">
+/*-- 简历模板1 --*/
+body{background:#f8f8f8;}
+#container{width:1000px; margin:0 auto; border:1px solid #fefefe;}
+/*-- left --*/
+.sidebar{background:#6ecadc;padding:2em 30px; width:215px; min-height:900px; float:left; position:relative;}
+.sidebar h1{font-size:2em;font-weight:500;margin-bottom:1em;color:#fff;}
+.sidebar img{border:1px solid #fff;padding:1em;width:180px; height:180px;}
+.details{width:215px; float:left; position:relative;}
+.details ul,.details ul li{ width:100%; float:left; position:relative;}
+.details ul li.title{color:#fff;font-size:20px;float:left; position:relative; width:100%; padding:10px 0; font-weight:500;}
+.details ul li.text{ width:100%;font-size:16px; color:#333; padding-bottom:10px; line-height:22px;} 
+/*-- main --*/
+.main{width:719px;min-height:900px;float:left; position:relative; padding-top:50px; border-right:1px solid #d8d8d8; color:#333;background:#fff;border-top:1px solid #d8d8d8;}
+.info{width:100%;float:left; position:relative;}
+.info span{width:250px; height:38px; line-height:38px; display:block; padding-left:30px; font-size:20px; font-weight:600px; color:#fff;}
+.info span.qz{background:#6ecadc;}
+.info span.xz{background:#eea72a;}
+.info span.xx{background:#17bc88;}
+.info p{padding:20px 30px; line-height:30px; font-size:16px; margin-bottom:20px;}
+</style>
+<body>
+<div id="container">
+<div class="sidebar">
+  <div class="sidebar_top">
+    #foreach($biz in $!personnellist)
+    <h1>$!biz.name</h1> 
+	<img src="$!base$!biz.img" />
+	#end
+  </div>
+  <div class="details">
+    #foreach($biz in $!personnellist)
+    <ul>
+      <li class="title">基本信息</li>
+      <li class="text" style="width:50%">性别：$!biz.sex</li>
+      <li class="text" style="width:50%">年龄：$!biz.age</li>
+    </ul>
+    <ul>
+      <li class="title">联系方式</li>
+      <li class="text">手机：$!biz.phone</li>
+    </ul>
+    #end
+  </div>
+</div>
+<div class="main">
+  <div class="info">
+    #foreach($biz in $!personnellist)
+    <span class="qz">求职意向</span>
+    <p>$!biz.objective</p>
+    <span class="xz">期望薪资</span>
+    <p>$!biz.salary</p>
+    <span class="xx">详细信息</span>
+    <p>$!biz.content</p>
+    #end
+  </div>
+</div>
+</div>
+</body>
+</html>

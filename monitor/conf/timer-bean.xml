@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- 第一步: 配置好要定时调用的业务类 -->
+	<bean id="getCaipiao" class="com.tyloo.web.util.InfoGetTimer" />
+
+
+	<!-- 第二步: 定义好具体要使用类的哪一个业务方法 -->
+
+	<bean id="workCaipiao"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="getCaipiao" />
+		<property name="targetMethod" value="getCaiPiaoInfo" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+
+
+	<!-- 第三步: 定义好调用模式: 如每隔1秒钟调用一次或每天的哪个时间调用一次等 -->
+	<bean id="triggerCaqipiao1" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="workCaipiao" />
+		<property name="cronExpression" value="0 30 21 * * ?" />
+	</bean>
+	
+
+
+	<!--第四步 把定义好的任务放到调度（Scheduler）工厂里面,注意这里的ref bean -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="triggerCaqipiao1" />
+			</list>
+		</property>
+	</bean>
+</beans>

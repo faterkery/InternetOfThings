@@ -1,0 +1,386 @@
+#set($urlPre="$!base/centre/materlist.html?method=list")
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<style>
+.select{float:left;}
+</style>
+<body>
+<div id="container"> 
+  <!--site-nav开始-->
+  #parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+
+  <!--header开始-->
+  #parse( "/WEB-INF/eportalpages/common/header.vm" )
+  <!--header结束--> 
+
+
+<div id="main_member">
+    <div class="layout">
+      #parse( "/WEB-INF/eportalpages/common/centre_menu.vm" )
+  
+       <div class="member_bd box1 fr">
+        <ul class="menu"><h1>库存管理</h1></ul>
+        <div class="form_bd" style="padding:20px 0;">
+          <div class="buy_stock box1">
+          #if($update)
+				<form name="materform" id="materform" method="post" action="$!base/centre/materlist.html?method=update&insert=y" >
+					<input name="id" id="id" type="hidden" value="$bizObj.id" />
+					<input name="memberId" id="memberId" type="hidden" value="$bizObj.memberId" />
+			#else
+		        <form name="materform" id="materform" method="post" action="$!base/centre/materlist.html?method=insert&insert=y" >
+			#end
+            <ul class="menu3"><h1>发布库存单</h1></ul>
+            <ul class="buy_order_bd">
+              <li>
+              #if($update)
+              <dd>
+              <label><span class="red">*</span>品名：</label>
+              <select name="nameId" id = "nameId" class="select">
+                 <option value="$!bizObj.nameId">$vMUtils.getResourceValue($!bizObj.nameId)</option>
+                 #foreach($obj in $ylTypeList)
+                    <option value="$!obj.id">$!obj.value</option>
+                    #end
+                  </select>
+                  <i id="namesId"></i>
+                  </dd>
+              #else
+                <dd>
+                  <label><span class="red">*</span>品名：</label>
+                 <select name="nameId" id = "nameId" class="select">
+                 <option value="">请选择</option>
+                 #foreach($obj in $ylTypeList)
+                    <option value="$!obj.id">$!obj.value</option>
+                    #end
+                  </select>
+                  <i id="namesId"></i>
+                </dd>
+                #end
+                <dd>
+                  <label><span class="red">*</span>厂家：</label>
+                   #if($update)
+                    <select name="factoryId" id="factoryId" class="select">
+                   <option value="$!bizObj.factoryId">$vMUtils.getResourceValue($!bizObj.factoryId)</option>
+                   #foreach($obj in $ylcjList)
+			        <option value="$!obj.id">$!obj.value</option>
+                #end
+                   </select>
+                   #else
+                  <select name="factoryId" id="factoryId" class="select">
+                   <option value="">请选择</option>
+                    #foreach($obj in $ylcjList)
+			        <option value="$!obj.id">$!obj.value</option>
+                #end
+                  </select>
+                  #end
+                  <i id="factorysId"></i>
+                </dd>
+              </li>
+              <li>
+           <!-- <dd>
+                  <label>炉号：</label>
+                  <input value="$!bizObj.furnace" id="furnace" name="furnace" type="text" class="text text4" />
+                   <i id="furnaces"></i>
+                </dd> -->
+                <dd>
+                  <label><span class="red">*</span>工艺：</label>
+                   #if($update)
+                   <select name="craftsId" id="craftsId" class="select">
+                   <option value="$!bizObj.craftsId">$vMUtils.getResourceValue($!bizObj.craftsId)</option>
+                    #foreach($obj in $ylgyList)
+			        <option value="$!obj.id">$!obj.value</option>
+                    #end
+                   </select>
+                   #else
+                  <select name="craftsId" id="craftsId" class="select">
+                  <option value="">请选择</option>
+                    #foreach($obj in $ylgyList)
+                    <option value="$!obj.id">$!obj.value</option>
+                    #end
+                  </select>
+                  #end
+                  <i id="craftssId"></i>
+                </dd>
+                <dd>
+                  <label><span class="red">*</span>规格：</label>
+                  #if($update)
+                    <select name="specId" id="specId" class="select">
+                   <option value="$!bizObj.specId">$vMUtils.getResourceValue($!bizObj.specId)</option>
+                   #foreach($obj in $ylggList)
+			        <option value="$!obj.id">$!obj.value</option>
+                #end
+                   </select>
+                   #else
+                  <select name="specId" id="specId" class="select">
+                    <option value="">请选择</option>
+                    #foreach($obj in $ylggList)
+                    <option value="$!obj.id">$!obj.value</option>
+                    #end
+                  </select>
+                  #end
+                  <i id="specsId"></i>
+                </dd>
+              </li>
+              <li>
+                <dd>
+                  <label><span class="red">*</span>长度：</label>
+                   <input value="$!bizObj.length" id="length" name="length" type="text" class="text text4" />
+                   <i id="lengths"></i>
+                </dd>
+                <dd>
+                  <label>件：</label>
+                   <input value="$!bizObj.piece" id="piece" name="piece" type="text" class="text text4" />
+                   <i id="pieces"></i>
+                </dd>
+              </li>
+              <li>
+                <dd>
+                  <label>支：</label>
+                   <input value="$!bizObj.zu" id="zu" name="zu" type="text" class="text text4" />
+                   <i id="zus"></i>
+                </dd>
+                <dd>
+                  <label><span class="red">*</span>库存重量：</label>
+                  <input value="$!bizObj.weight" id="weight" name="weight" type="text" class="text text4" />
+                  <i id="weights"></i>
+                </dd>
+              </li>
+              <li>
+                <label>&nbsp;</label>
+                <input name="" type="button" value="#if($update)保存#else添加#end" class="submit_btn" onClick="to_submit()">
+                <input name="" type="button" value="我要买" title="我要买" class="b_btn fr" style="margin-right:125px;" onClick="window.location = '$base/material.html?method=list'" />
+              </li>
+            </ul>
+          </div>
+          </form>
+          <form name="searchForm1" id="searchForm1" method="post" action="$!base/centre/materlist.html?method=list">
+          <div class="stock_search fl box1">
+            <div class="nice-select" name="nice-select">     
+              <input type="text" value="#if($nameIdshow)$!nameIdshow #else 品名 #end" name="nameIdshow" readonly>
+			  <input type="hidden" name="nameId" id="nameId" value="$!nameId" />
+              <ul>
+				<li data-value="">品名</li>
+                #foreach($obj in $ylTypeList)
+		        <li data-value="$!obj.id" #isSelected("$!obj.id" $nameId)>$!obj.value</li>
+                #end
+              </ul>
+            </div>
+            <div class="nice-select" name="nice-select">     
+              <input type="text" value="#if($factoryIdshow)$!factoryIdshow #else 厂家 #end" name="factoryIdshow" readonly>
+			  <input type="hidden" name="factoryId" id="factoryId" value="$!factoryId" />
+              <ul>
+				<li data-value="">厂家</li>
+                #foreach($obj in $ylcjList)
+			    <li data-value="$!obj.id" #isSelected("$!obj.id" $factoryId)>$!obj.value</li>
+                #end
+              </ul>
+            </div>
+            <div class="nice-select" name="nice-select">     
+              <input type="text" value="#if($craftsIdshow)$!craftsIdshow #else 工艺 #end" name="craftsIdshow" readonly>
+			  <input type="hidden" name="craftsId" id="craftsId" value="$!craftsId" />
+              <ul>
+				<li data-value="">工艺</li>
+                #foreach($obj in $ylgyList)
+			    <li data-value="$!obj.id" #isSelected("$!obj.id" $craftsId)>$!obj.value</li>
+                #end
+              </ul>
+            </div>        
+            <div class="nice-select" name="nice-select">     
+              <input type="text" value="#if($specIdshow)$!specIdshow #else 规格 #end" name="specIdshow" readonly>
+				<input type="hidden" name="specId" id="specId" value="$!specId" />
+              <ul>
+				<li data-value="">规格</li>
+                #foreach($obj in $ylggList)
+			    <li data-value="$!obj.id" #isSelected("$!obj.id" $specId)>$!obj.value</li>
+                #end
+              </ul>
+            </div>
+            <label>长度</label> 
+            <input class="inp_srh1" name="lengthmin"  value="$!lengthmin" ><span>-</span><input class="inp_srh1" name="lengthmax"  value="$!lengthmax" >
+            <input class="buttonSearch" type="submit" name="submit" value="搜索">
+          </div>
+          </form>
+          <table class="address_infor box1" width="100%" border="1" cellspacing="0" cellpadding="0" >
+            <tr>
+              <th width="10%" scope="col" class="center">品名</th>
+              <th width="10%" scope="col" class="center">厂家</th>
+          <!--<th width="10%" scope="col" class="center">炉号</th>-->
+              <th width="10%" class="center" scope="col">工艺</th>
+              <th width="10%" scope="col" class="center">规格</th>
+              <th width="10%" class="center" scope="col">长度(米)</th>
+              <th width="10%" class="center" scope="col">件</th>
+              <th width="10%" class="center" scope="col">支</th>
+              <th width="10%" class="center" scope="col">库存重量(吨)</th>
+              <th width="10%" class="center" scope="col">操作</th>
+            </tr>
+            #foreach($obj in $bizObjList)
+            <tr>
+              <td class="center" title="$vMUtils.getResourceValue($!obj.nameId)">$vMUtils.getResourceValue($!obj.nameId)</td>
+              <td class="center" title="$vMUtils.getResourceValue($!obj.factoryId)">$vMUtils.getResourceValue($!obj.factoryId)</td>
+          <!--<td class="center">$!obj.furnace</td>-->
+              <td class="center" title="$vMUtils.getResourceValue($!obj.craftsId)">$vMUtils.getResourceValue($!obj.craftsId)</td>
+              <td class="center" title="$vMUtils.getResourceValue($!obj.specId)">$vMUtils.getResourceValue($!obj.specId)</td>
+              <td class="center">$!obj.length</td>
+              <td class="center">$!obj.piece</td>
+              <td class="center">$!obj.zu</td>
+              <td class="center">$!obj.weight</td>
+             ## <td class="center"><input name="" type="text" class="text text1" /></td>
+              <td class="center">
+              <a href="$!base/centre/materlist.html?method=update&sid=$!vMUtils.encrypt($obj.id)" title="修改">修改</a>
+              <a href="javascript:delRecod('$!vMUtils.encrypt($obj.id)')"  title="删除">删除</a>
+              </td>
+            </tr>
+            #end
+          </table>
+          #parse( "/WEB-INF/eportalpages/common/eportal_page.vm" )
+        </div>
+      </div>
+    </div>
+    <div id="dialog" title="删除确认" style="display:none;text-align:center;padding-top:20px;">确定要删除吗？</div>
+  </div>
+  
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+  
+  <!--con_side开始-->
+  #parse( "/WEB-INF/eportalpages/common/con_side.vm" )
+  <!--con_side结束--> 
+  
+
+
+<script type="text/javascript">
+function to_submit()
+{
+    var nameId = $("#nameId");
+    var factoryId = $("#factoryId");
+	var craftsId = $("#craftsId");
+	var specId = $("#specId");
+	var piece = $("#piece");
+	var zu = $("#zu");
+	var length = $("#length");
+	var weight = $("#weight");
+	if(jQuery.trim(nameId.val())== "")
+	{
+	   $("#namesId").html("请输入品名");
+	   return;
+	}
+	else
+	{
+		$("#namesId").remove();
+	}
+	
+	if(jQuery.trim(factoryId.val())== "")
+	{
+		$("#factorysId").html("请输入厂家");
+	   return;
+	}
+	else
+	{
+		$("#factorysId").remove();
+	}
+	if(jQuery.trim(craftsId.val())== "")
+	{
+		$("#craftssId").html("请输入工艺");
+	   return;
+	}
+	else
+	{
+		$("#craftssId").remove();
+	}
+	
+	if(jQuery.trim(specId.val())== "")
+	{
+		$("#specsId").html("请输入规格");
+	   return;
+	}
+	else
+	{
+		$("#specsId").remove();
+	}
+	
+	if(jQuery.trim(length.val())== "")
+	{
+		$("#lengths").html("请输入长度");
+	   return;
+	}
+	else
+	{
+		if(isNaN(jQuery.trim(length.val()))){
+	   $("#lengths").html("长度必须是数字");
+	     return;
+	}else{
+	   $("#lengths").remove();
+	}
+	}
+	
+	if(jQuery.trim(piece.val())== ""){
+	var a = jQuery.trim(piece.val());
+	 a=0;
+	}else{
+    if(parseInt(jQuery.trim(piece.val()))==jQuery.trim(piece.val())){
+	  $("#pieces").remove();
+	}else{
+	$("#pieces").html("件数必须是整数");
+	   return;
+	}
+	}
+	
+	if(jQuery.trim(zu.val())== ""){
+	var a = jQuery.trim(zu.val());
+	 a=0;
+	}else{
+    if(parseInt(jQuery.trim(zu.val()))==jQuery.trim(zu.val())){
+	  $("#zus").remove();
+	}else{
+	$("#zus").html("支数必须是整数");
+	   return;
+	}
+	}
+	
+	
+	if(jQuery.trim(weight.val())== "")
+	{
+		$("#weights").html("请输入库存重量");
+	   return;
+	}
+	else
+	{
+		if(isNaN(jQuery.trim(weight.val()))){
+	   $("#weights").html("库存重量必须是数字");
+	     return;
+	}else{
+	   $("#weights").remove();
+	}
+	}
+	$("#materform").submit();
+	
+}
+
+function delRecod(sid)
+{
+$( "#dialog" ).dialog({
+					modal: true,
+					width: 250,
+					height: 150,
+					buttons: {
+						确定: function(){			
+    						 window.location="$!base/centre/materlist.html?method=delete&sid="+sid;
+							 $(this).dialog("close");
+							
+						},
+						取消: function(){
+							$(this).dialog("close");
+						}
+					}
+				});
+}
+</script>
+
+
+  </div>
+</body>
+</html>  

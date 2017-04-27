@@ -1,0 +1,221 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<body>
+<div id="container"> 
+  <!--site-nav开始-->
+  #parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+
+  <!--header开始-->
+  #parse( "/WEB-INF/eportalpages/common/header.vm" )
+  <!--header结束--> 
+
+
+<div id="main_member">
+    <div class="layout">
+      #parse( "/WEB-INF/eportalpages/common/centre_menu.vm" )
+  
+      <div class="member_bd box1 fr">
+        <ul class="menu"><h1>招聘信息</h1></ul>
+        <input name="" type="button" value="发布招聘" class="addbtn" style="width:80px;" title="发布招聘" onClick= "location.href='$!base/personnel.html?method=insert'" />
+        <style type="text/css">
+		.addbtn{ width:55px; height:25px; line-height:25px; text-align:center; background:#ff9c00; color:#fff;;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;float:right; position:relative; margin-top:-40px;}
+        </style>
+        
+        <div class="form_bd" style="padding:20px 0 15px;">
+          <table class="address_infor box1" width="100%" border="1" cellspacing="0" cellpadding="0" >
+            <tr>
+              <th width="25%" class="center" scope="col">招聘标题</th>
+              <th width="25%" scope="col" class="center">日期</th>
+              <th width="25%" scope="col" class="center">状态</th>
+              <th width="25%" class="center" scope="col">操作</th>
+            </tr>
+            #foreach($obj in $bizObjList)
+            <tr>
+              <td class="center">
+              $!obj.name
+			  </td>
+              <td class="center">
+               $!vMUtils.dateTimeFormateSimple($obj.timeModified)
+              </td>
+              <td class="center">
+              #if($!obj.isPublished==1) 
+	                             通过
+	          #elseif($!obj.isPublished==2) 
+	                             不通过
+	          #elseif($!obj.isPublished==0) 
+	                             未审核
+	          #end
+              </td>
+              <td class="center">
+                <a href="$!base/personnel.html?method=update&sid=$vMUtils.encrypt($obj.id)&menuname=$menuname" class="fblue1 mrg_zy5">编辑</a>
+			    <a href="$!base/personnel.html?method=detail&sid=$!obj.id"  target="_Blank">详细</a>
+			    <a href="$!base/personnel.html?method=delete&sid=$vMUtils.encrypt($obj.id)&menuname=$menuname" class="fblue1 mrg_zy5" onclick="return confirm('确定删除吗？');">刪除</a>		 
+              </td>
+            </tr>
+            #end
+          </table>
+          #parse( "/WEB-INF/eportalpages/common/eportal_page.vm" )
+        </div>
+      </div>
+      
+      <div id="dialog" title="删除确认" style="display:none; text-align:center; padding-top:20px;">确定要删除这个商品吗？</div>
+      
+    </div>
+  </div>
+  
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+  
+  <!--con_side开始-->
+  #parse( "/WEB-INF/eportalpages/common/con_side.vm" )
+  <!--con_side结束--> 
+  
+
+
+<script type="text/javascript">
+//加入购物车
+function addcart(sid)
+{ 
+window.location = "$!base/cartadd.html?type=2&sid="+sid;
+}
+
+
+
+function changNum(span_id, num)
+{
+	var id = span_id.split("_");
+	var chboxs = document.getElementsByName("guigeid");
+	var ids = "";
+	for(var i=0; i<chboxs.length; i++)
+	{
+	    if(chboxs[i].checked)
+		{
+		ids = ids +chboxs[i].value + ";";
+		}
+	}
+           	
+}
+
+$(document).ready(function(){
+          //全选/取消
+          $("input[name='chk_all']").click(function(){
+                $("input[name='guigeid']").attr("checked",$(this).prop("checked"));
+        		$("input[name='chk_all']").attr("checked",$(this).prop("checked"));
+          }
+          );
+          //单个取消/选中
+          $("input[name='guigeid']").click(function(){
+                if(!$(this).prop("checked"))
+        		{
+        		    $("input[name='chk_all']").attr("checked",$(this).prop("checked"));
+        		}
+        		
+        		if($('input[name="guigeid"]:checked').length =='$!cartList.size()')
+        		{
+        		   $("input[name='chk_all']").attr("checked",$(this).prop("checked"));
+        		}
+          }
+          );
+	
+		  $('input[name="chk_all"]').click(function(){
+	           var ids = "";
+	           if($(this).prop("checked"))
+			{
+			        var chboxs = document.getElementsByName("guigeid");
+	               	for(var i=0; i<chboxs.length; i++)
+	               	{
+	               		ids = ids +chboxs[i].value + ";";
+	               	}
+			}
+	          	
+          		
+            }
+            );
+            
+	          $('input[name="guigeid"]').click(function(){
+	                    var chboxs = document.getElementsByName("guigeid");
+	                	var ids = "";
+	                	for(var i=0; i<chboxs.length; i++)
+	                	{
+	                	    if(chboxs[i].checked)
+	                		{
+	                		ids = ids +chboxs[i].value + ";";
+	                		}
+	                	}
+	                   	
+	        		
+	          }
+	          );
+				  
+		})
+		
+		
+//删除收藏清单
+function delGoods(sid)
+{
+$( "#dialog" ).dialog({
+					modal: true,
+					width: 250,
+					height: 150,
+					buttons: {
+						确定: function(){			
+    							jQuery.ajax({ url:'$!base/centre/collect.html',
+                            	    data: {op: "del",sid: sid},
+                            	    type: 'post',
+                            	    dataType: 'html',
+                            	    success: function(data) {
+                            	        $("#cartdiv").html(data);
+                            	    },
+                            	    error: function(data) {
+                            	        alert("异常！");
+                            	    }
+                            	});
+							 $(this).dialog("close");
+							
+						},
+						取消: function(){
+							$(this).dialog("close");
+						}
+					}
+				});
+}
+
+function deleteAll()
+{
+    if($('input[name="guigeid"]:checked').length == 0)
+	{
+	    alert("至少选择一种商品");
+		return ;
+	}
+	
+	if(!confirm("确定删除？"))
+	{
+	    return;
+	}
+   var ids = ";";
+   $('input[name="guigeid"]:checked').each(function(){
+        ids = ids + $(this).val() +";";
+   });
+   jQuery.ajax({ url:'$!base/centre/collect.html',
+	    data: {op: "delall",sid: ids},
+	    type: 'post',
+	    dataType: 'html',
+	    success: function(data) {
+	        $("#cartdiv").html(data);
+	    },
+	    error: function(data) {
+	        alert("异常！");
+	    }
+	});
+}
+</script>
+
+
+  </div>
+</body>
+</html>  

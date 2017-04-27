@@ -1,0 +1,538 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<script type="text/javascript" src="$base/eportalstyle/js/index.js"></script>
+<script type="text/javascript" src="$base/eportalstyle/js/slider.js"></script><!--产品推荐轮播-->
+<script type="text/javascript" src="$base/eportalstyle/js/jquery.blockUI.js"></script><!--blockui-->
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#pwdshow").focus(function(){
+      $(this).hide();
+	  $("#pwd").show();
+	  $("#pwd").focus();
+  });
+  
+  $("#pwd").blur(function(){
+      if(jQuery.trim($(this).val()) =="")
+      {
+          $(this).hide();
+    	  $("#pwdshow").show();
+      }
+      
+  });
+
+  
+//填写件触发金额计算——件数
+  $(document).on("keyup","input[name=jiannum]",function(event, value){
+	     var jiannum = $(this).val();
+		 var trObj = $(this).parents("tr");
+		 var zhinum = trObj.find("input[name=zhinum]").val();
+		 var reg = /^\+?[0-9]\d*$/;
+		 if(!reg.exec(jiannum))
+		 {
+		    jiannum = 1;
+		    $(this).val(jiannum);
+		 }
+		 if(!reg.exec(zhinum))
+		 {
+		    zhinum = 0;
+		    trObj.find("input[name=zhinum]").val(zhinum);
+		 }
+		 var cid = $(this).attr("datacid");
+		    jQuery.ajax({ url:'$!base/list/calct.html',
+     	    data: {jiannum: jiannum, zhinum: zhinum, cid: cid},
+     	    type: 'post',
+     	    dataType: 'json',
+     	    success: function(data) {
+     	        if(data.result=="success")
+					{
+					    trObj.find("input[name=weightadv]").val(data.obj);
+						
+					}
+     	    },
+     	    error: function(data) {
+     	        alert("异常！");
+     	    }
+     	});
+  });
+  
+//填写只触发金额计算——支数
+  $(document).on("keyup","input[name=zhinum]",function(event, value){
+	     var zhinum = $(this).val();
+		 var trObj = $(this).parents("tr");
+		 var jiannum = trObj.find("input[name=jiannum]").val();
+		 var lengthBuy = trObj.find("input[name=lengthBuy]").val();
+		 var reg = /^\+?[0-9]\d*$/;
+		 if(!reg.exec(zhinum))
+		 {
+		    zhinum = 1;
+		    $(this).val(zhinum);
+		 }
+		 
+		 if(!reg.exec(jiannum))
+		 {
+		    jiannum = 0;
+		    trObj.find("input[name=jiannum]").val(jiannum);
+		 }
+		 
+		 var cid = $(this).attr("datacid");
+		    jQuery.ajax({ url:'$!base/list/calct.html',
+     	    data: {jiannum: jiannum, lengthBuy: lengthBuy, zhinum: zhinum, cid: cid},
+     	    type: 'post',
+     	    dataType: 'json',
+     	    success: function(data) {
+     	        if(data.result=="success")
+					{
+					    trObj.find("input[name=weightadv]").val(data.obj);
+					}
+     	    },
+     	    error: function(data) {
+     	        alert("异常！");
+     	    }
+     	});
+ 		
+  });
+	 
+//填写件触发金额计算——购买长度
+  $(document).on("keyup","input[name=lengthBuy]",function(event, value){
+	     var lengthBuy = $(this).val();
+		 var trObj = $(this).parents("tr");
+		 var zhinum = trObj.find("input[name=zhinum]").val();
+		 var reg = /^\+?[1-9]\d*$/;
+		 
+		 if(!reg.exec(zhinum))
+		 {
+		    zhinum = 1;
+		    trObj.find("input[name=zhinum]").val(1);
+		 }
+		 
+		 var cid = $(this).attr("datacid");
+		    jQuery.ajax({ url:'$!base/list/calct.html',
+     	    data: {lengthBuy: lengthBuy, zhinum: zhinum, cid: cid},
+     	    type: 'post',
+     	    dataType: 'json',
+     	    success: function(data) {
+     	        if(data.result=="success")
+					{
+					    trObj.find("input[name=weightadv]").val(data.obj);
+						
+					}
+     	    },
+     	    error: function(data) {
+     	        alert("异常！");
+     	    }
+     	});
+  });
+
+ 
+  
+  
+  
+$(function(){
+	//默认状态下左右滚动
+	$("#s2").xslider({
+		unitdisplayed:7,
+		movelength:1,
+		unitlen:166,
+		autoscroll:2000
+	});	
+})
+
+    //ajajx loading效果
+	$(document).ajaxStart(function(){
+		jQuery.blockUI({
+	    	message: '<img src="$base/eportalstyle/images/loading11.gif" style="text-align:center; border:none;margin:0px;" />',
+			css:{padding:'20px 0',
+		        margin:0,
+		        width:'150px', 
+		        top:'40%', 
+		        left:'40%', 
+		        textAlign:'center', 
+		        color:'#000', 
+		        border:'1px solid #F9F9F9',
+		        backgroundColor:'#fff',
+		        borderRadius:'10px'
+		       
+	            },
+	    	overlayCSS: {
+	                        backgroundColor: "#fff",
+	                        opacity:"0.1"
+	                    }
+	    });
+		
+	  });
+	  $(document).ajaxStop(function(){
+		jQuery.unblockUI();
+	  });
+	  
+	  $(document).ajaxSuccess(function(){
+		jQuery.unblockUI();
+	  });
+
+	  
+	  //展开列表
+  $(".item1").click(function(){
+     if($(this).next().find(".bb").length>0)
+	 {
+	    var trObj =  $(this).next();
+		trObj.fadeOut("slow");
+		trObj.fadeTo("slow", 0.02, function(){
+			trObj.slideUp("slow", function() {
+			  trObj.remove();
+			});
+	    });
+	    
+	 }
+	 else
+	 {
+	 
+	    $(".bb").parent().remove();
+    	 var temp = $("<tr class=\"move item\"><td class=\"bb\">1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td><input type=\"button\" value=\"加入购物车\" class=\"btnbox\" title=\"加入购物车\" /></td></tr>").fadeIn("slow");
+    	 $(this).after(temp);
+	 }
+     
+  });
+	  
+});
+</script>
+<body>
+#set($urlPre = "$!base/material.html?method=list")
+<div id="container"> 
+  <!--site-nav开始-->
+  #parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+
+  <!--header开始-->
+  #parse( "/WEB-INF/eportalpages/common/header.vm" )
+  <!--header结束--> 
+
+  <!--mainnav开始-->
+  #parse( "/WEB-INF/eportalpages/common/main_nav.vm" )
+  <!--mainnav结束--> 
+   
+  <!--main开始-->
+  <div id="main" class="layout">
+    <div class="newpage mrg_t15 mrg_b15 fl">当前所在位置：<a href="$!base/index.html" title="首页">首页</a> > 原料供应</div>
+    <div class="supplier_list fl" id="s2">
+		<a class="abtn aleft" href="#left" title="左移"></a>
+		<div class="imglist_w">
+		  <ul class="imglist">
+		    #foreach($biz in $!enterpriseList)
+			<li>
+			  <a href="$!base/enterpriseShow/actions.html?method=detail&sid=$!vMUtils.encrypt($biz.id)" title="$!biz.title">
+				<img src="$!base$!biz.logoPic" width="154" height="103" />
+			  </a>
+			</li>
+            #end
+	      </ul>
+		</div>
+		<a class="abtn aright" href="#right" title="右移"></a>
+	  </div>
+	  <div class="shopping_step mrg_t15 fl"><img src="$base/eportalstyle/images/shopping_step2.jpg" width="1200" height="103" /></div>
+      <form name="searchForm1" id="searchForm1" method="post" action="$!base/material.html?method=list">
+      <div class="toolbar box1 fl mrg_t15">
+        <div class="searchbox">
+          <div class="search pro">
+            <div class="nice-select" name="nice-select">     
+              <input type="text" value="#if($nameIdshow)$!nameIdshow #else 品名 #end" name="nameIdshow" readonly>
+			  <input type="hidden" name="nameId" id="nameId" value="$!nameId" />
+              <ul>
+				<li data-value="">品名</li>
+                #foreach($obj in $ylTypeList)
+		        <li data-value="$!obj.id" #isSelected("$!obj.id" $nameId)>$!obj.value</li>
+                #end
+              </ul>
+            </div>
+            <div class="nice-select" name="nice-select">     
+              <input type="text" value="#if($factoryIdshow)$!factoryIdshow #else 厂家 #end" name="factoryIdshow" readonly>
+			  <input type="hidden" name="factoryId" id="factoryId" value="$!factoryId" />
+              <ul>
+				<li data-value="">厂家</li>
+                #foreach($obj in $ylcjList)
+			    <li data-value="$!obj.id" #isSelected("$!obj.id" $factoryId)>$!obj.value</li>
+                #end
+              </ul>
+            </div>
+            <div class="nice-select" name="nice-select">     
+              <input type="text" value="#if($craftsIdshow)$!craftsIdshow #else 工艺 #end" name="craftsIdshow" readonly>
+			  <input type="hidden" name="craftsId" id="craftsId" value="$!craftsId" />
+              <ul>
+				<li data-value="">工艺</li>
+                #foreach($obj in $ylgyList)
+			    <li data-value="$!obj.id" #isSelected("$!obj.id" $craftsId)>$!obj.value</li>
+                #end
+              </ul>
+            </div> 
+            <div class="nice-select" name="nice-select">     
+              <input type="text" value="#if($specIdshow)$!specIdshow #else 规格 #end" name="specIdshow" readonly>
+				<input type="hidden" name="specId" id="specId" value="$!specId" />
+              <ul>
+				<li data-value="">规格</li>
+                #foreach($obj in $ylggList)
+			    <li data-value="$!obj.id" #isSelected("$!obj.id" $specId)>$!obj.value</li>
+                #end
+              </ul>
+            </div>
+            <label>长度</label> 
+            <input class="inp_srh1" name="lengthmin"  value="$!lengthmin" ><span>-</span><input class="inp_srh1" name="lengthmax"  value="$!lengthmax" >
+            <input class="buttonSearch" type="submit" name="submit" value="搜索">
+          </div>
+        </div>
+      </div>
+      </form>
+      
+      <div class="product box2 fl mrg_t15">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="product_list box3">
+	      <tr>
+	        <th width="13%" scope="col">品名</th>
+	        <th width="15%" scope="col">厂家</th>
+	        <th width="15%" scope="col">工艺</th>
+	        <th width="10%" scope="col">规格</th>
+	        <th width="15%" scope="col">价格<i>(元/吨)</i></th>
+	        <th width="17%" scope="col">长度<i>（米）</i></th>
+	        <th width="15%" scope="col">操作</th>
+	      </tr>
+	    </table>
+	    <div id="accordion" class="accordion">
+	      #foreach($biz in $!materialList)
+	      <li>
+	        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="product_list link">
+	          <tr #if($indexNum%2==0) class="item" #else class="item alt" #end>
+	            <td width="13%">$!vMUtils.getResourceValue($!biz.nameId)</td>
+	            <td width="15%">$!vMUtils.getResourceValue($!biz.factoryId)</td>
+	            <td width="15%">$!vMUtils.getResourceValue($!biz.craftsId)</td>
+	            <td width="10%">$!vMUtils.getResourceValue($!biz.specId)</td>
+	            <td width="15%" class="red">$!biz.price</td>
+	            <td width="17%">$!vMUtils.changeBigNumber2String($!biz.length)</td>
+	            <td width="15%"><input name="" type="button" value="采购" class="buy" title="采购" /></td>
+	          </tr>
+	        </table>
+	        <ul class="submenu">
+	          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="product_list">
+	            <tr class="item" style="background:#fefef4;">
+	              <td width="13%">$!vMUtils.getResourceValue($!biz.nameId)</td>
+	              <td width="15%">$!vMUtils.getResourceValue($!biz.factoryId)</td>
+	              <td width="15%">$!vMUtils.getResourceValue($!biz.craftsId)</td>
+	              <td width="10%">$!vMUtils.getResourceValue($!biz.specId)</td>
+	              <td width="15%" class="red">$!biz.price</td>
+	              #if($!biz.craftsId == 10766)
+	              <td width="5%"><b>购买长度</b><br/><input type="text" name="lengthBuy" id="lengthBuy" datacid="$vMUtils.encrypt($!biz.id)" value="$!vMUtils.changeBigNumber2String($!biz.lengthlengthBuy)" maxlength="4" class="input_cart" size="5"/></td>
+	              #else
+	              <td width="5%"><b>件</b><br/><input type="text" name="jiannum" id="jiannum" datacid="$vMUtils.encrypt($!biz.id)" value="$!vMUtils.changeBigNumber2String($!biz.jiannum)" maxlength="4" class="input_cart" size="5"/></td>
+	              #end
+	              <td width="5%"><b>支</b><br/><input type="text" name="zhinum" id="zhinum" datacid="$vMUtils.encrypt($!biz.id)" value="$!vMUtils.changeBigNumber2String($!biz.zhinum)" maxlength="4" class="input_cart" size="5"/></td>
+	              <td width="7%"><b>预发重量(吨)</b><br/><input type="text" name="weightadv" id="weightadv" datacid="$vMUtils.encrypt($!biz.id)" maxlength="4" class="input_cart" size="7"/></td>
+	              <td width="15%"><input name="" type="button" value="加入购物车" class="btnbox" title="加入购物车" onClick="addcart(this, '$!vMUtils.encrypt($biz.id)')" /></td>
+	            </tr>
+	          </table>
+		    </ul>
+	      </li>
+	      #end
+	    </div>
+        #parse( "/WEB-INF/eportalpages/common/eportal_page.vm" )
+      </div>
+    <div class="bottom_banner mrg_t15 fl"><img src="$base/eportalstyle/images/bottom_banner1.jpg" width="1200" height="154" /></div>
+  </div>
+  <!--main结束-->
+  
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+  
+  <!--con_side开始-->
+  #parse( "/WEB-INF/eportalpages/common/con_side.vm" )
+  <!--con_side结束--> 
+</div>
+
+ <div id="login_dialog" title="登录" style="display:none;">
+      <div class="frmbox">
+          <ul class="conbox">
+            <li>
+              <div class="putbox">
+                <em></em>
+                <input name="username" id="username" type="text" class="input1" value="手机号" onfocus="if(this.value=='手机号') {this.value='';}" onblur="if(this.value=='') {this.value='手机号';}"/>
+              </div>
+            </li>
+            <li class="psw">
+              <div class="putbox">
+                <em></em>
+                <input name="" id="pwdshow" type="text" class="input1" value="密码"  />
+				<input name="pwd" id="pwd" type="password" class="input1" value=""  style="display:none;"/>
+              </div>
+            </li>
+            <li>
+              <span class="fl"><input name="autologin" id="autologin" type="checkbox" value="1" />&nbsp;自动登录</span>
+              <span class="fr"><a href="findpsw.html" title="忘记密码">忘记密码</a>&nbsp; | &nbsp;<a href="$!base/register.html" title="免费注册">免费注册</a></span>
+            </li>
+            <li class="btnline"><input name="" type="button" class="btnbox" value="立即登录" onclick="ajaxlogin()"/></li>
+            <li class="tip none">手机号码或密码错误</li>
+          </ul>            
+        </div>
+  </div>
+  
+</body>
+<script type="text/javascript" >
+var tempAction = "";
+var loginsid = "";
+var btnboxid = "";
+
+//加入购物车
+function addcart(obj, sid)
+{   
+	var trObj = $(obj).parents("tr");
+	var lengthBuy = trObj.find("input[name=lengthBuy]").val();
+	var jiannum = trObj.find("input[name=jiannum]").val();
+	var zhinum = trObj.find("input[name=zhinum]").val();
+	var weightadv = trObj.find("input[name=weightadv]").val();
+	if( lengthBuy == 0){
+		trObj.find("input[name=lengthBuy]").attr("style","border-color:red");
+		return;
+	}
+	else{
+		trObj.find("input[name=lengthBuy]").attr("style","border-color:''");
+	} 
+	
+	if( weightadv == 0){
+		trObj.find("input[name=weightadv]").attr("style","border-color:red");
+		return;
+	}
+	else{
+		trObj.find("input[name=weightadv]").attr("style","border-color:''");
+	}
+	
+
+    tempAction = "btnbox";
+	loginsid = sid;
+	btnboxid = obj;
+	
+    jQuery.ajax({ url: '$!base/ajaxlogin.html',
+        　　data: { mtel: $("#username").val(),pwd:$("#pwd").val(), action:'checklogin'},
+        　　type: 'post',
+        　　dataType: 'json',
+        　　success: function(data) {
+            	if(data.result == 'success')
+            	{
+            	    //加入购物车
+	                jQuery.ajax({ url: '$!base/cartaddajax.html',
+                                                　　data: { sid: sid, lengthBuy: lengthBuy, jiannum: jiannum, zhinum: zhinum, weightadv: weightadv},
+                                                　　type: 'post',
+                                                　　dataType: 'json',
+                                                　　success: function(data) {
+                                           if(data.result == "success")
+                                        	{
+                                			    $("#msg").show().animate({width: '250px'}, 200).fadeOut(1000, function(){$("#msg").css("width","0px")});
+                                        	    jQuery.ajax({
+                                                    type: 'post',
+                                                    url: '$!base/cartnum/calc.html',
+                                                    dataType: 'json',
+                                                    success: function (json) {
+                                                        if (json != null) 
+                                                		{
+                                                            if (json.result == "success") 
+                                                			{
+                                                			    $(".shoppingcart_but").text("购物车("+json.obj+")");
+                                            					$(".sidebox:first").find("span").html(json.obj);
+                                                			}
+                                                        }
+                                                        else
+                                                		{
+                                                        }
+                                                    },
+                                                    error: function (xmlHttpRequest, textStatus, errorThrown) {
+                                                        //alert('调用接口失败，原因如下: ' + errorThrown);
+                                                    }
+                                                });
+											}
+    					},
+                                                　　error: function() {alert("异常！");}
+                    });
+            	}
+            	else
+    			{
+            	    //未登录
+					$( "#login_dialog" ).dialog({
+					modal: true,
+					width: 280,
+					height: 300,
+					buttons: {}
+				});
+            	}
+    			
+        },
+        　　error: function() {
+            alert("异常！");
+        }
+    });
+    
+
+
+}
+
+//登录
+function ajaxlogin()
+{
+    var name = $("#username");
+	if(jQuery.trim(name.val())=="" || jQuery.trim(name.val())=="手机号")
+	{
+	    $(".tip").attr("class", "tip");
+	    $(".tip").html("手机号不能为空");
+		return;
+	}
+	else
+	{
+	    $(".tip").attr("class", "tip none");
+		$(".tip").empty();
+	}
+	
+	var pwd =  $("#pwd");
+	if(jQuery.trim(pwd.val())=="")
+	{
+	    $(".tip").attr("class", "tip");
+	    $(".tip").html("密码不能为空");
+		return;
+	}
+	else
+	{
+	    $(".tip").attr("class", "tip none");
+		$(".tip").empty();
+	}
+	var autologin = 0;
+	if($("#autologin").prop("checked"))
+	{
+	    autologin = 1;
+	}
+ jQuery.ajax({ url: '$!base/ajaxlogin.html',
+    　　data: { mtel: $("#username").val(),pwd:$("#pwd").val(),action:'login', autologin:autologin},
+    　　type: 'post',
+    　　dataType: 'json',
+    　　success: function(data) {
+        	if(data.result == "success")
+        	{
+			    $("div.site-nav_left").html("");
+			    $("div.site-nav_left").append("<li><span>"+data.obj+" <a href=\"$!base/shopuser/login.html?logout=y\" title=\"退出\" class=\"fblue1\">退出</a>  您好，欢迎来到中国螺杆产业公共服务平台！客服热线：400-580-1234 </span></li>");
+        		$(".tip").html("<div class=\"tip\">登录成功</div>");
+				$(".tip").attr("class","tip");
+				$("#login_dialog").dialog("close");
+				if(tempAction == "btnbox")
+				{
+				    addcart(btnboxid, loginsid);
+				}
+        		return;
+        	}
+        	else
+			{
+				$(".tip").attr("class", "tip");
+	            $(".tip").html("手机号码或密码错误");
+        		return;
+        	}
+			
+    },
+    　　error: function() {
+        alert("异常！");
+    }
+});
+}
+</script>
+</html>

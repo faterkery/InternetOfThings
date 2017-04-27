@@ -1,0 +1,5 @@
+<link href="$base/branding/default/style/business.css" rel="stylesheet" type="text/css" />
+
+<div id="main" class="w100 bgmain">
+ <font color="red">你浏览的网页错误，请联系管理员！</font>
+</div> 

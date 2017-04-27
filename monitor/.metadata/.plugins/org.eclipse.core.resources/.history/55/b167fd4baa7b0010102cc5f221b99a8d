@@ -1,0 +1,14 @@
+package com.renhenet.vo;
+
+public class StrDb {
+	private String strDb;
+
+	public String getStrDb() {
+		return strDb;
+	}
+
+	public void setStrDb(String strDb) {
+		this.strDb = strDb;
+	}
+
+}

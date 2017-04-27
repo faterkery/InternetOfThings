@@ -1,0 +1,139 @@
+  <div id="header">
+    <div class="layout">
+      <div id="logo"><a href="$!base/index.html" title="E螺杆——中国螺杆产业功能服务平台"><img src="$base/eportalstyle/images/logo.png" width="387" height="88" /></a></div>
+      <div id="search-bd">
+		<form name="topSearchForm" id="topSearchForm" method="post" action="" >
+        <div class="search">
+           <div class="nice-select" name="nice-select" >
+               <input class="" type="text" name="showtext" value="$!showtext" readonly>
+               <input type="hidden" name="topSearch" id="topSearch" value="$!topSearch" readonly>
+               <ul>
+                  <li data-value="1">原料</li>
+                  <li data-value="2">耗材</li>
+               </ul>
+            </div>
+          <input type="text" class="inp_srh" name="kword" id="kword"  placeholder="请输入关键词" value="$!kword">
+          <input class="btn_srh" type="button" value="搜索" onClick="toSearch()">
+        </div>
+		</form>
+      </div>
+      <div class="shoppingcart_area"><a class="shoppingcart_but" href="$!base/cartfull.html">购物车(0)</a></div>
+    </div>
+  </div>
+  
+<script type="text/javascript">
+//刷新购物车
+$(document).ready(function(){
+    function reflushCart()
+    {
+        jQuery.ajax({
+            type: 'post',
+            url: '$!base/cartnum/calc.html',
+            dataType: 'json',
+            success: function (json) {
+                if (json != null) 
+        		{
+                    if (json.result == "success") 
+        			{
+        			    $(".shoppingcart_but").text("购物车("+json.obj+")");
+    					$(".sidebox:first").find("span").html(json.obj);
+        			}
+                }
+                else
+        		{
+                }
+            },
+            error: function (xmlHttpRequest, textStatus, errorThrown) {
+                //alert('调用接口失败，原因如下: ' + errorThrown);
+            }
+        });
+    }
+    reflushCart();
+});
+
+$(document).ready(function(){
+	$('[name="nice-select"]').click(function(e){
+		$('[name="nice-select"]').find('ul').hide();
+		$(this).find('ul').show();
+		e.stopPropagation();
+	});
+
+	$('[name="nice-select"] li').hover(function(e){
+		$(this).toggleClass('on');
+		e.stopPropagation();
+	});
+	
+	$('[name="nice-select"] li').click(function(e){
+    	var val = $(this).text();
+    	var dataVal = $(this).attr("data-value");
+    	$(this).parents('[name="nice-select"]').find('input').val(val);
+    	$(this).parents('[name="nice-select"]').find('input:hidden').val(dataVal);
+    	$('[name="nice-select"] ul').hide();
+    	e.stopPropagation();
+    });
+
+	$(document).click(function(){
+		$('[name="nice-select"] ul').hide();
+	});
+});
+
+
+function toSearch()
+{
+    var action="";
+    var type = $("#topSearch").val();
+    if(type == 1)
+	{
+	   action = "$!base/material.html?method=list";
+	   
+	}else if(type == 2)
+	{
+	   action = "$!base/suppliesShow.html?method=list";
+	}
+	
+	$("#topSearchForm").attr("action", action)
+	$("#topSearchForm").submit();
+}
+
+
+//placeholder IE8
+var _placeholderSupport = function() {
+    var t = document.createElement("input");
+    t.type = "text";
+    return (typeof t.placeholder !== "undefined");
+}();
+
+
+window.onload = function() {
+    var arrInputs = document.getElementsByTagName("input");
+    for (var i = 0; i < arrInputs.length; i++) {
+        var curInput = arrInputs[i];
+        if (!curInput.type || curInput.type == "" || curInput.type == "text")
+            HandlePlaceholder(curInput);
+    }
+};
+ 
+function HandlePlaceholder(oTextbox) {
+/**
+    if (!_placeholderSupport) {
+        var curPlaceholder = oTextbox.getAttribute("placeholder");
+        if (curPlaceholder && curPlaceholder.length > 0) {
+            oTextbox.value = curPlaceholder;
+            oTextbox.setAttribute("old_color", oTextbox.style.color);
+            oTextbox.style.color = "#c0c0c0";
+            oTextbox.onfocus = function() {
+                this.style.color = this.getAttribute("old_color");
+                if (this.value === curPlaceholder)
+                    this.value = "";
+            };
+            oTextbox.onblur = function() {
+                if (this.value === "") {
+                    this.style.color = "#c0c0c0";
+                    this.value = curPlaceholder;
+                }
+            }
+        }
+    }
+	**/
+}
+</script>

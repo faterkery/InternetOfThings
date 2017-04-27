@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+
+	<bean id="commonDao" class="com.renhenet.fw.dao.CommonDao">
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+	</bean>	
+	
+ 	<bean id="vMUtils" class="com.renhenet.web.VMUtils" singleton="true">  
+ 		<property name="resourcesService"><ref bean="resourcesService"/></property>	
+ 		<property name="memberService"><ref bean="memberService"/></property>
+	</bean> 
+	
+	<bean id="memberService" parent="baseTransactionProxy" >
+		<property name="target">
+			<bean  class="com.renhenet.modules.member.MemberService">
+		        <property name="dao"><ref bean="commonDao"/></property> 
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="resourcesService" parent="baseTransactionProxy" >
+		<property name="target">
+			<bean  class="com.renhenet.modules.member.ResourcesService">
+		        <property name="dao"><ref bean="commonDao"/></property> 
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="groupsService" parent="baseTransactionProxy" >
+		<property name="target">
+			<bean  class="com.renhenet.modules.member.GroupsService">
+		        <property name="dao"><ref bean="commonDao"/></property> 
+			</bean>
+		</property>
+	</bean>
+	
+		<bean id="roleModuleService" parent="baseTransactionProxy" >
+		<property name="target">
+			<bean  class="com.renhenet.modules.member.RoleModuleService">
+		        <property name="dao"><ref bean="commonDao"/></property> 
+			</bean>
+		</property>
+	</bean> 
+	
+	<bean id="roleService" parent="baseTransactionProxy" >
+		<property name="target">
+			<bean  class="com.renhenet.modules.member.RoleService">
+		        <property name="dao"><ref bean="commonDao"/></property> 
+			</bean>
+		</property>
+	</bean> 
+	
+	
+	
+</beans>

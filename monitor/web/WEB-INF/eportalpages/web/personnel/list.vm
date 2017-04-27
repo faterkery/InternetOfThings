@@ -1,0 +1,66 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<body>
+#set($urlPre = "$!base/personnel.html?method=list")
+<div id="container"> 
+  <!--site-nav开始-->
+  #parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+
+  <!--header开始-->
+  #parse( "/WEB-INF/eportalpages/common/header.vm" )
+  <!--header结束--> 
+
+  <!--mainnav开始-->
+  #parse( "/WEB-INF/eportalpages/common/main_nav.vm" )
+  <!--mainnav结束--> 
+   
+  <!--main开始-->
+  <div id="main" class="layout">
+    <div class="newpage mrg_t15 mrg_b15 fl">当前所在位置：<a href="$!base/index.html" title="首页">首页</a> > 企业招聘</div>
+    <form name="search1Form" id="search1Form" method="post" action="$!base/personnel.html?method=list">
+    <div class="toolbar box1 fl">
+      <div class="searchbox">
+        <div class="search pro">
+          <label>目标职位</label>
+          <input class="inp_srh" name="keyboard" style="width:200px" >
+          <input type=submit name="search" title="搜 索" value="搜 索 " class="buttonSearch" />
+          <input class="buttonSearch buttonOrange" type="button" name="submit" value="发布招聘" onClick= "window.location='$!base/centre/perlist.html?method=list'" >
+        </div>
+      </div>  
+    </div>
+    </form>
+    <div class="product box2 fl mrg_t15">
+      <ul>
+        #foreach($biz in $!personnellist)
+        <li>
+          <div class="product_box">
+            <a href="$!base/personnel.html?method=detail&sid=$!biz.id"  target="_Blank">
+              <img src="$!base$!biz.img">
+            </a>  
+            <div class="bit" style="height:45px; line-height:25px; padding:10px 8px; text-align:center;">
+              <a href="$!base/personnel.html?method=detail&sid=$!biz.id" target="_Blank" title="$!biz.name">$!biz.name</a>
+            </div>
+          </div>
+        </li>
+        #end
+      </ul>
+      #parse( "/WEB-INF/eportalpages/common/eportal_page.vm" )
+    </div>
+    <div class="bottom_banner mrg_t15 fl"><img src="$!base/eportalstyle/images/bottom_banner1.jpg" width="1200" height="154" /></div>
+  </div>
+  <!--main结束-->
+  
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+  
+  <!--con_side开始-->
+  #parse( "/WEB-INF/eportalpages/common/con_side.vm" )
+  <!--con_side结束--> 
+</div>
+</body>
+</html>

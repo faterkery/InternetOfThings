@@ -1,0 +1,52 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+
+#set($urlPre = "$!base/faqgenre.html?method=list")
+<body>
+<div id="container"> 
+<!--site-nav开始-->
+#parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+<!--site-nav结束--> 
+
+<!--header开始-->
+#parse( "/WEB-INF/eportalpages/common/header.vm" )
+<!--header结束--> 
+
+<!--mainnav开始-->
+#parse( "/WEB-INF/eportalpages/common/main_nav.vm" )
+<!--mainnav结束--> 
+  
+<!--main开始-->
+<div id="main" class="layout">
+    <div class="newpage mrg_t15 mrg_b15 fl">当前所在位置：<a href="#" title="首页">首页</a> > FAQ</div>
+    <div class="member_nav box1 fl">
+      <ul class="menu"><h1>FAQ</h1></ul>
+      <ul class="about_list">
+        #foreach($biz in $!resourcesList)
+        <li #if($!faq.faqId == $biz.id) class="on" #end><a href="#if($typeId == $biz.id)javascript:void(0)#else $!base/faqgenre.html?sid=$!vMUtils.encrypt($!biz.id) #end" title="$!biz.value">$!biz.value</a></li>
+        #end
+      </ul>
+    </div>
+    <div class="member_bd box1 fr">
+      <ul class="menu"><h1>$!faq.title</h1></ul>
+      <div class="about_bd">
+        <ul class="survey_wz fl">
+          $!faq.content
+        </ul> 
+      </div>
+    </div>
+  </div>
+<!--main结束-->
+
+<!--service开始-->
+#parse( "/WEB-INF/eportalpages/common/service.vm" )
+<!--service结束-->
+
+<!--footer开始-->
+#parse( "/WEB-INF/eportalpages/common/footer.vm" )
+<!--footer结束-->
+
+<!--con_side开始-->
+#parse( "/WEB-INF/eportalpages/common/con_side.vm" )
+<!--con_side结束--> 
+</div>
+</body>

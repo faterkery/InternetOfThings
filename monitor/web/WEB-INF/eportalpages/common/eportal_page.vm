@@ -1,0 +1,71 @@
+#if($searchNoResult)
+<div class="no_content">
+  <ul class="content_in">无内容</ul>
+</div>
+#else
+<div class="page pad_t15 pad_b15" id="eportalpage">
+<!-- prePage -->
+#if($pagination.currentPageNum == 1)
+    <span class="disabled"> 上一页 </span>
+#else
+    #set($preStart = $pagination.startRowNum - $pagination.pageSize)
+    <a href="javascript:turnToAppointedPage($!preStart,$!pagination.pageSize)"> 上一页 
+#end
+
+<!-- midddle page -->
+#foreach($page in $pagination.pages )
+    #if($page==$pagination.currentPageNum)
+        <span class="current">$!page</span>
+    #else
+    #set($start = ($pagination.pageSize*$page - $pagination.pageSize))
+        <a href="javascript:turnToAppointedPage($!start,$!pagination.pageSize)">$!page</a>
+    #end
+#end
+
+<!-- next page-->
+    #set($nstart = $pagination.pageSize*$pagination.currentPageNum)
+#if($pagination.currentPageNum == $pagination.totalPageNum)
+    <span class="disabled">下一页  </span>
+#else
+    <a href="javascript:turnToAppointedPage($!nstart,$!pagination.pageSize)">下一页 
+#end
+</a><span class="skip"></span>
+</div>
+<!-- total page -->
+<!--
+共$!pagination.totalPageNum页 到第 <input type="text" id="topage" class="input3" value="$!pagination.currentPageNum"/> 页
+<input type="button" class="btn3" value="确定" onClick="turnToAppointedPage(-1,$!pagination.pageSize)"/></div>
+-->
+<script lanuage="javascript">
+//turn to the page
+function turnToAppointedPage(startRow, pageSize)
+{
+   if(startRow==-1)
+   {   
+    var num = document.getElementById("topage").value;
+    if(num>$!pagination.totalPageNum)
+    {
+        num = $!pagination.totalPageNum;
+    }
+    startRow = (num-1)*$!pagination.pageSize;
+   }
+   
+    var split_flag = "&";
+    if("$!urlPre".indexOf("?")<0)
+    {
+        split_flag = "?";
+    }
+    
+    var searchForm = document.getElementById("searchForm");
+    var eportalpage = document.getElementById("eportalpage");
+    if(searchForm==null)
+    {
+    searchForm = document.createElement("form");
+　     searchForm.method="post";
+    document.body.appendChild(searchForm);
+    }
+    searchForm.action="$!urlPre"+split_flag+"start="+startRow+"&pageSize=$!pagination.pageSize";
+    searchForm.submit();
+}
+</script>
+#end

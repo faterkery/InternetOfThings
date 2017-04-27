@@ -1,0 +1,116 @@
+  <div class="mainnav"> 
+    <div class="layout1">
+        <div class="productnav #if($action=='index') navhover #end">
+          <div class="hd"><h2>全部商品分类</h2><i></i></div>
+          <div class="catenav">
+            <div class="cateitembox cate_1">
+              <div class="cate_item">
+                <h3><em class="yl"></em>原料</h3>
+                <p>
+                  #set($hlTypeList = $vMUtils.getResourceByType("pm"))
+                  #foreach($obj in $hlTypeList)
+                  <a href="$!base/material.html?method=list&nameId=$obj.id&nameIdshow=$!obj.value" title="$!obj.value">$!obj.value</a>
+                  #end
+                </p>
+              </div>
+              <div class="subcatebox clearfix">
+                <ul class="subcate">
+                  #foreach($obj in $hlTypeList)
+                  <li><p><a href="$!base/material.html?method=list&nameId=$obj.id&nameIdshow=$!obj.value" title="$!obj.value">$!obj.value</a></p></li>
+                  #end
+                </ul>
+              </div>
+            </div>
+            <div class="cateitembox cate_2">
+              <div class="cate_item">
+               <h3><em class="hc"></em>耗材</h3>
+               <p>
+                 #set($hcTypeList = $vMUtils.getResourceByType("hfl"))
+                 #foreach($obj in $hcTypeList)
+		         <a href="$!base/suppliesShow.html?method=list&classId=$!obj.id" title="$!obj.value">$!obj.value</a>
+		         #end
+		       </p>
+             </div>
+             <div class="subcatebox clearfix">
+               <ul class="subcate">
+                 #foreach($obj in $hcTypeList)
+                 <li><p><a href="$!base/suppliesShow.html?method=list&classId=$!obj.id" title="$!obj.value">$!obj.value</a></p></li>
+	             #end
+                </ul>
+              </div>
+            </div>
+	        <div class="cateitembox cate_3">
+	          <div class="cate_item">
+	            <h3><em class="fw"></em>服务</h3>
+	            <p>
+	              #set($faqList = $vMUtils.getResourceByType("faq"))
+                  #foreach($obj in $faqList)
+	              <a href="$!base/faqgenre.html?method=detail&sid=$!vMUtils.encrypt($!obj.id)" title="$!obj.value">$!obj.value</a>
+	              #end
+	            </p>
+	          </div>
+	          <div class="subcatebox clearfix">
+	            <ul class="subcate">
+                  #foreach($obj in $faqList)
+	              <li><p><a href="$!base/faqgenre.html?method=detail&sid=$!vMUtils.encrypt($!obj.id)" title="$!obj.value">$!obj.value</a></p></li>
+	              #end
+	            </ul>
+	          </div>
+	        </div>
+            <div class="cateitembox cate_4">
+              <div class="cate_item">
+                <h3><em class="cj"></em>推荐企业</h3>
+                <p>
+                  #set($enterpriseList = $!vMUtils.getEnterpriseList())
+                  #foreach($obj in $enterpriseList)
+                  <a href="$!base/enterpriseShow/actions.html?method=detail&sid=$!vMUtils.encrypt($obj.id)" title="$!obj.smallTitle">$!obj.smallTitle</a>
+                  #end
+                </p>
+              </div>
+              <div class="subcatebox clearfix">
+                <ul class="subcate">
+                  #foreach($obj in $enterpriseList)
+                  <li><p><a href="$!base/enterpriseShow/actions.html?method=detail&sid=$!vMUtils.encrypt($obj.id)" title="$!obj.smallTitle">$!obj.smallTitle</a></p></li>
+                  #end
+                </ul>
+              </div>
+            </div> 
+            <div class="side_bottom">
+              <h3><em class="cj"></em>正品保证   放心售后</h3>   
+            </div>
+          </div>
+        </div>
+      <script type="text/javascript">
+			$(function(){
+			// 全部商品分类
+			#if($action !='index')
+			$(".productnav").hover(
+			function(){
+				$(this).addClass("navhover");
+			},
+			function(){
+				$(this).removeClass("navhover");
+			})
+			#end
+			// 子类
+			$(".cateitembox").hover(function(){
+				$(this).addClass("cateitembox_hover");
+			},
+			function(){
+				$(this).removeClass("cateitembox_hover");
+			})
+			})
+      </script>
+
+      <ul class="nav">
+        <li #if("index" == $action) class="cur" #end ><a href="$!base/index.html" title="首 页">首 页</a></li>
+        <li #if("material" == $action) class="cur" #end ><a href="$!base/material.html?method=list" title="原料供应">原料供应</a><i class="ico-hot"></i></li>
+        <li #if("supplies" == $action) class="cur" #end ><a href="$!base/suppliesShow.html?method=list" title="耗材供应">耗材供应</a></li>
+        <li #if("oldmanges" == $action) class="cur" #end ><a href="$!base/oldmanges.html?method=list" title="闲旧处理">闲旧处理</a></li>
+        <li #if("finance" == $action) class="cur" #end ><a href="$!base/finance.html" title="金融服务">金融服务</a></li>
+        <li #if("personnel" == $action) class="cur" #end ><a href="$!base/personnel.html?method=list" title="企业招聘">企业招聘</a></li>
+        <li #if("mall" == $action) class="cur" #end ><a href="$!base/mall.html" title="螺杆商城">螺杆商城</a></li>
+        <li #if("aboutus" == $action) class="cur" #end ><a href="$!base/aboutUs.html" title="关于网加">关于网加</a></li>
+      </ul>
+    </div>
+  </div>

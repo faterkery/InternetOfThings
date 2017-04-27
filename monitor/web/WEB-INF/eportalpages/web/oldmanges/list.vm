@@ -1,0 +1,65 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<body>
+#set($urlPre = "$!base/oldmanges.html?method=list")
+<div id="container"> 
+  <!--site-nav开始-->
+  #parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+
+  <!--header开始-->
+  #parse( "/WEB-INF/eportalpages/common/header.vm" )
+  <!--header结束--> 
+
+  <!--mainnav开始-->
+  #parse( "/WEB-INF/eportalpages/common/main_nav.vm" )
+  <!--mainnav结束--> 
+   
+  <!--main开始-->
+  <div id="main" class="layout">
+    <div class="newpage mrg_t15 mrg_b15 fl">当前所在位置：<a href="$!base/index.html" title="首页">首页</a> > 闲旧处理</div>
+    <form name="search1Form" id="search1Form" method="post" action="$!base/oldmanges.html?method=list">
+    <div class="toolbar box1 fl">
+      <div class="searchbox">
+        <div class="search pro">
+          <label>货物名称</label>
+          <input class="inp_srh" name="keyboard" style="width:200px" >
+          <input type=submit name="search" title="搜 索" value="搜 索 " class="buttonSearch" />
+          <input class="buttonSearch buttonOrange" type="button" name="submit" value="增加物品"  onClick= "window.location='$!base/centre/oldlist.html?method=list'" >
+        </div>
+      </div>  
+    </div>
+    </form>
+      <div class="product_list box1 fl mrg_t15">
+        #foreach($biz in $!old_list)
+        <ul class="old_list">
+          <li class="info_pic fl"><img src="$!base$!biz.img" /></li>
+          <li class="info_mid">
+            <dt>$!biz.objname</dt>
+            <dd>$!biz.content</dd>
+          </li>
+          <li class="info_right fr">
+            <dd class="price">¥<font>$!biz.price</font>/件</dd>
+            <dd class="contact">$!biz.name：$!biz.phone</dd>
+          </li>
+        </ul> 
+        #end
+       #parse( "/WEB-INF/eportalpages/common/eportal_page.vm" )
+    </div>
+    <div class="bottom_banner mrg_t15 fl"><img src="$!base/eportalstyle/images/bottom_banner1.jpg" width="1200" height="154" /></div>
+  </div>
+  <!--main结束-->
+  
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+  
+  <!--con_side开始-->
+  #parse( "/WEB-INF/eportalpages/common/con_side.vm" )
+  <!--con_side结束--> 
+  </div>
+</body>
+</html>

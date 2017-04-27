@@ -1,0 +1,74 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<body>
+#set($urlPre = "$!base/eNewsShow/actions.html?method=list")
+<div id="container"> 
+  <!--site-nav开始-->
+  #parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+
+  <!--header开始-->
+  #parse( "/WEB-INF/eportalpages/common/header.vm" )
+  <!--header结束--> 
+
+  <!--mainnav开始-->
+  #parse( "/WEB-INF/eportalpages/common/main_nav.vm" )
+  <!--mainnav结束--> 
+   
+  <!--main开始-->
+  <div id="main" class="layout">
+    <div class="newpage mrg_t15 mrg_b15 fl">当前所在位置：<a href="$!base/index.html" title="首页">首页</a> > 新闻资讯 > #if($!type == 1)网加动态#elseif($!type == 2) 行业新闻#else 会展信息 #end</div>
+    <div class="news_in box1 fl">
+      <ul class="menu4"><h1>#if($!type == 1)网加动态#elseif($!type == 2)行业新闻#else会展信息 #end</h1></ul>
+      <ul class="news_list">
+	    #foreach($biz in $!bizObjList)
+        <li>
+          <a href="$!base/eNewsShow/actions.html?method=detail&sid=$!vMUtils.encrypt($biz.id)" title="$!biz.title">
+            <dd class="news_pic box1 fl"><img src="$!biz.smallPic" width="240" height="180" /></dd>
+            <dd class="news_infor fr">
+              <dl>$!biz.title</dl>
+              <div>$!biz.contentVal</div>
+              <span>更新时间：$!vMUtils.dateTimeFormateSimple($!biz.timeCreate)</span>
+            </dd>
+          </a>
+        </li> 
+	    #end
+      </ul>
+      #parse( "/WEB-INF/eportalpages/common/eportal_page.vm" )
+    </div>
+      	
+    <div class="news_right fr">
+      <div class="news_dynamic box1 fl">
+        <ul class="menu1"><h1>#if($!type1 == 1)网加动态#elseif($!type1 == 2)行业新闻#else会展信息 #end</h1><span><a href="$!base/eNewsShow/actions.html?method=list&type=$!type1">更多>></a></span></ul>
+        <ul class="news_dynamic_list">
+          #foreach($biz in $!list1)
+          <li><a href="$!base/eNewsShow/actions.html?method=detail&sid=$!vMUtils.encrypt($biz.id)" title="$!biz.title">$!biz.title</a></li>
+          #end
+        </ul>
+      </div>
+      <div class="news_banner fl"><img src="$base/eportalstyle/images/news_banner.jpg" width="290" height="75" /></div> 
+      <div class="news_dynamic box1 fl">
+        <ul class="menu1"><h1>#if($!type2 == 1)网加动态#elseif($!type2 == 2)行业新闻#else会展信息 #end</h1><span><a href="$!base/eNewsShow/actions.html?method=list&type=$!type2">更多>></a></span></ul>
+        <ul class="news_dynamic_list">
+          #foreach($biz in $!list2)
+          <li><a href="$!base/eNewsShow/actions.html?method=detail&sid=$!vMUtils.encrypt($biz.id)" title="$!biz.title">$!biz.title</a></li>
+          #end
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--main结束-->
+  
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+  
+  <!--con_side开始-->
+  #parse( "/WEB-INF/eportalpages/common/con_side.vm" )
+  <!--con_side结束--> 
+</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+package com.renhenet.web.member;
+
+import javax.servlet.ServletException;
+
+import org.apache.commons.lang.StringUtils;
+
+import com.renhenet.fw.ServiceLocator;
+import com.renhenet.fw.waf.BasePOForm;
+import com.renhenet.fw.waf.WebContext;
+import com.renhenet.modules.CommonService;
+import com.renhenet.modules.member.RoleService;
+import com.renhenet.po.Role;
+import com.renhenet.util.searchcontext.SearchContext;
+import com.renhenet.util.searchcontext.SearchOption;
+import com.renhenet.web.DispatchActions;
+
+public class RoleAction extends DispatchActions {
+	private static RoleService service = (RoleService) ServiceLocator
+			.getService("roleService");
+
+	public String updateProcess(WebContext context) throws ServletException {
+//		context.put("moduleList", pService.getModuleList());
+		if (context.getParameter("insert") != null) {
+			int roleId = context.getIntParameter("id");
+			dealRoleModule(context, roleId);
+		}
+		return super.updateProcess(context);
+	}
+
+	public String insertProcess(WebContext context) throws ServletException {
+		context.put("action", "insert");
+//		context.put("moduleList", pService.getModuleList());
+		String forword = this.INSERT_FORWARD;
+		int roleId = 0;
+		if (context.getParameter("insert") != null) {
+			BasePOForm form = (BasePOForm) context.getForm();
+
+			roleId = (Integer) (getService().insertObject(form, Role.class));
+			context.put("inserted", true);
+			forword = INSERT_SUCCESS_FORWARD;
+			dealRoleModule(context, roleId);
+		}
+
+		return forword;
+	}
+
+	private void dealRoleModule(WebContext context, int roleId) {
+		int[] modules = context.getIntParameterValues("moduleIds");
+		if (modules != null && modules.length > 0) {
+			String[] pris = new String[modules.length];
+			String[] prises;
+			String pri = "";
+			for (int i = 0; i < modules.length; i++) {
+				prises = context.getParameterValues("pri_" + modules[i]);
+				if (prises != null) {
+					for (int j = 0; j < prises.length; j++) {
+						pri += prises[j] + ",";
+						pris[i] = pri;
+					}
+					pri = "";
+				}
+			}
+//			pService.updateRoleModules(roleId, modules, pris);
+		} else {
+//			pService.updateRoleModules(roleId, null, null);
+		}
+	}
+
+
+	@Override
+	protected SearchContext getListSearchContext(WebContext context) {
+		SearchContext searchContext = new SearchContext();
+		String name = delSearchOption(context, "name");
+		if (!StringUtils.isEmpty(name)) {
+			searchContext.addOption(new SearchOption("name", "%" + name + "%",
+					SearchOption.Option.like));
+		}
+		return searchContext;
+	}
+
+	@Override
+	public String getWebMenuType(WebContext context) throws ServletException {
+		return "";
+	}
+
+	@Override
+	protected Class getActionClass() {
+		// TODO 自动生成方法存根
+		return Role.class;
+	}
+
+	@Override
+	protected CommonService getService() {
+		// TODO 自动生成方法存根
+		return service;
+	}
+
+}

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<mime-mapping>
+		<extension>reg</extension>
+		<mime-type>application/octet-stream</mime-type>
+	</mime-mapping>
+
+	<display-name>renhecrm</display-name>
+	<filter>
+		<filter-name>SetCharacterEncoding</filter-name>
+		<filter-class>com.tyloo.web.util.ChangeCharsetFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>SqlFilter</filter-name>
+		<filter-class>com.tyloo.web.util.SqlFilter</filter-class>
+		<init-param>
+			<param-name>keywords</param-name>
+			<param-value>'|and|exec|execute|insert|create|drop|table|from|grant|use|group_concat|column_name|information_schema.columns|table_schema|union|where|select|delete|update|order|by|count|*|chr|mid|master|truncate|char|declare|;|-|--|+|,|like|//|/|%|#</param-value>
+		</init-param>
+		<init-param>
+			<param-name>excep</param-name>
+			<param-value>pwd,cpwd</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>SetCharacterEncoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SqlFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>context</servlet-name>
+		<servlet-class>com.tyloo.fw.waf.SpringLoaderServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Action Servlet Configuration -->
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>com.tyloo.fw.waf.BaseActionServlet</servlet-class>
+
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/conf/struts-config.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<init-param>
+			<param-name>detail</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	
+	<!-- 
+	<servlet>
+		<servlet-name>FDTimerListener</servlet-name>
+		<servlet-class>com.tyloo.web.util.FDTimerListener</servlet-class>
+		<load-on-startup>9</load-on-startup>
+	</servlet>
+	 -->
+	 
+	<servlet>
+		<servlet-name>velocity</servlet-name>
+		<servlet-class>
+			org.apache.velocity.tools.view.servlet.VelocityViewServlet</servlet-class>
+		<init-param>
+			<param-name>org.apache.velocity.toolbox</param-name>
+			<param-value>/WEB-INF/conf/toolbox.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>org.apache.velocity.properties</param-name>
+			<param-value>/WEB-INF/conf/velocity.properties</param-value>
+		</init-param>
+		<load-on-startup>10</load-on-startup>
+	</servlet>
+
+	<!-- 验证码 -->
+	<servlet>
+		<servlet-name>validateCode</servlet-name>
+		<servlet-class>com.tyloo.web.validateCode</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>validateCode</servlet-name>
+		<url-pattern>/validateCode.html</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Action Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>velocity</servlet-name>
+		<url-pattern>*.vm</url-pattern>
+	</servlet-mapping>
+
+	<!-- The Welcome File List -->
+	<welcome-file-list>
+	<!-- 
+		<welcome-file>https_index.html</welcome-file>
+		
+		 -->
+		 <welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/eportal/error500.html</location>
+	</error-page>
+
+	<error-page>
+		<error-code>400</error-code>
+		<location>/eportal/error.html</location>
+	</error-page>
+
+	<error-page>
+		<error-code>502</error-code>
+		<location>/eportal/error.html</location>
+	</error-page>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/eportal/error404.html</location>
+	</error-page>
+</web-app>

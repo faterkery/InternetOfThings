@@ -1,0 +1,23 @@
+<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>
+<div class="con_side">
+  <ul>
+    <li><a href="$!base/cartfull.html" title="购物车"><div class="sidebox"><i id="shopCart" style="display:block;"></i><span>0</span><img src="$base/eportalstyle/images/side_icon05.png">购物车</div></a></li>
+    <li><a href="tencent://message/?uin=1226712360&Site=sc.chinaz.com&Menu=yes" title="QQ客服"><div class="sidebox"><img src="$base/eportalstyle/images/side_icon01.png">QQ客服</div></a></li>
+    <li><a class="jiathis_button_weixin" title="微信"><div class="sidebox"><img src="$base/eportalstyle/images/side_icon02.png">微信</div></a></li>
+    <li class="last"><a href="javascript:goTop();" class="sidetop" title="返回顶部"><img src="$base/eportalstyle/images/side_icon04.png"></a></li>
+  </ul>
+</div>
+<div id="msg">已成功加入购物车！</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".con_side ul li").hover(function(){
+		$(this).find(".sidebox").stop().animate({"width":"124px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#19a7e2"})	
+	},function(){
+		$(this).find(".sidebox").stop().animate({"width":"54px"},200).css({"opacity":"0.8","filter":"Alpha(opacity=80)","background":"#888888"})	
+	});
+});
+//回到顶部
+function goTop(){
+	$('html,body').animate({'scrollTop':0},600);
+}
+</script> 

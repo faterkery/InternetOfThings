@@ -1,0 +1,69 @@
+#renhehead()
+#renheMenu("index")
+#set($urlPre = "$base/user/actions.html?method=list&menuname=$menuname")
+<style type="text/css">
+.ctl{table-layout:fixed}
+.ctl td{text-overflow:ellipsis;overflow:hidden;white-space:nowrap;padding:2px}
+.STYLE8 {font-size: xx-large}
+</style>
+<div class="Main_Right" >
+		<div class="Main_Right_Top"><span></span></div>
+		<div class="Main_Right_Content" id="Main_Right_Content">
+			<div class="Main_Right_Title">当前位置：企业服务 --> 注册用户管理</div>
+			  	  <div class="Main_Right_ListTable">   
+			 <form name="searchForm" method="post" action="$base/user/actions.html?method=list&menuname=$!menuname"> 
+			         <input type = hidden name="searchAction" value=y>
+				       <div class="ToolSearch">
+				  	 <div class="ToolSearchBar">登录名:
+                            #showFormText("userName" "$!userName" 20)&nbsp;&nbsp;
+				        <input type=submit name="search" value=" 搜 索 " class="button8" onmouseover="this.className='button8_hover'" onmouseout="this.className='button8'"/>
+					    </div></div>
+		          </form> 
+		          </div>
+				<div class="Main_Right_SearchTable_Title">
+					<span class="Main_Right_SearchTable_Title_Left"></span>
+					注册用户
+					<span class="Main_Right_SearchTable_Title_Right"></span>				</div>
+				  <div class="Main_Right_ListTable_Table">
+				  <div class="ctl">
+                  <table  width="100%"  border="0" cellpadding="0" cellspacing="0" class="listTable-01">
+                    <tr>
+					  <th width="10%" >登录名</th>					  		 
+					  <th width="10%" >邮箱</th>
+					  <th width="10%" >邮箱验证</th>
+					  <th width="10%" >认证状态</th>
+					  <th width="10%" >创建时间</th>
+					  <!--<th width="10%"  >操作</th>-->
+					</tr>
+					#set($indexNum=0)
+					#foreach($biz in $bizObjList)
+					<tr class="odd" onmouseover="this.className='even'" onmouseout="this.className='odd'">
+						<td >&nbsp;$!biz.userName</td>						
+						<td >&nbsp;$!biz.email</td>
+						<td >&nbsp;#if($!biz.isValidate==1) 邮箱已验证 #else 邮箱未验证 #end</td>
+						<td >
+							#if($!biz.isAuth==0) 未认证 #elseif($!biz.isAuth==1) 认证通过  #elseif($!biz.isAuth==2) 认证中 #elseif($!biz.isAuth==3) 认证不通过  #else  #end
+						</td>
+						<td >#showDate($!biz.timeCreate)</td>
+						<!--<td >
+						</td>-->
+			         </tr>
+					#set($indexNum=$indexNum+1)
+					#end
+					#if($indexNum<10)
+						#set($indexNum=10-$indexNum)
+						#foreach($foo in [1..$indexNum])
+							<tr class="odd" onmouseover="this.className='even'" onmouseout="this.className='odd'"><td colspan="5">&nbsp;</td></tr>
+						#end
+					#end
+                  </table>
+			  	</div>
+			  	 #parse( "/WEB-INF/pages/common/page.vm" )
+			  	</div>
+				</td>
+                </tr>
+                </table>	
+		  </div>
+		</div>
+	</div>
+#renheend()

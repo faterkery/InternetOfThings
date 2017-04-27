@@ -1,0 +1,6 @@
+<div id="main" class="w100 bgmain">
+   <div class="maintopmenu">
+      <ul class="tit">部门管理 >详情</ul>      
+   </div>
+   #parse( "/WEB-INF/pages/groups/form.vm" )
+</div>

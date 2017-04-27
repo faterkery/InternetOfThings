@@ -1,0 +1,40 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<body>
+<div id="container"> 
+  <!--site-nav开始-->
+#parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+<!--site-nav结束--> 
+  <!--header开始-->
+  <div id="header">
+    <div class="layout">
+      <div id="logo"><a href="$!base/index.html" title="E螺杆——中国螺杆产业功能服务平台"><img src="$!base/eportalstyle/images/logo.png" width="387" height="88" /></a></div>
+      <div class="step fr step1">
+        <ul>
+          <li class="on">1. 查看购物车</li>
+          <li>2. 填写核对订单信息</li>
+          <li>3. 提交订单成功</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--header结束--> 
+  
+  <form name="cartform" id="cartform" method="post" action="$!base/order/placeinit.html">
+  <div id="main_shopping">
+    <div class="layout" id="cartdiv">
+ #parse( "/WEB-INF/eportalpages/web/cart/cart_item.vm" )    
+    </div>
+  </div>
+  </form>
+  
+
+
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+</div>
+</body>
+</html>

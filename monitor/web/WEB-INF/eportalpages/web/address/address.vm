@@ -1,0 +1,218 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<link href="$!base/eportalstyle/jquerydialog/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script src="$!base/eportalstyle/jquerydialog/jquery-ui.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    if('$!flag' != "")
+	{	
+      setTimeout(function(){$("#addressinfo").removeAttr("style")},1000);
+	}
+});
+</script>
+<body>
+<div id="container"> 
+  <!--site-nav开始-->
+  #parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+  
+  <!--header开始-->
+  #parse( "/WEB-INF/eportalpages/common/header.vm" )
+  <!--header结束--> 
+ 
+  <div id="main_member">
+    <div class="layout">
+      #parse( "/WEB-INF/eportalpages/common/centre_menu.vm" )
+      <div class="member_bd box1 fr">
+        <ul class="menu"><h1>配送地址</h1></ul>
+        <div class="form_bd">
+			#if($updateinit)
+				<form name="addressform" id="addressform" method="post" action="$!base/address.html?method=update&insert=y" >
+					<input name="id" id="id" type="hidden" value="$bizObj.id" />
+					<input name="memberId" id="memberId" type="hidden" value="$bizObj.memberId" />
+			#else
+		        <form name="addressform" id="addressform" method="post" action="$!base/address.html?method=insert&insert=y" >
+			#end
+        
+          <ul>
+            <li>
+              <label><span class="red">*</span>联系人：</label>
+              <input name="userName" id="userName" type="text" class="text text3" value="$!bizObj.userName"/>
+              <i></i>
+            </li>
+            
+           <!--
+			<li>
+              <label><span class="red">*</span>省市地区：</label>
+			  <select class="select" id="province" name="province" onChange="getArea(this)">
+								<option value='' >请选择省份</option>
+								#foreach($p in $plist)
+									<option value="$!p.code">$!p.name</option>
+								#end
+			 </select>
+            </li>
+            <li><label><span class="red">*</span>邮政编码：</label><input name="" type="text" class="text text3" /></li>
+		   -->
+		   
+            <li>
+              <label><span class="red">*</span>详细地址：</label>
+			  <input name="address" id="address" type="text" class="text text3" value="$!bizObj.address"/>
+			  <i></i>
+			</li>
+            <li>
+              <label><span class="red">*</span>手机号码：</label>
+			  <input name="telephone" id="telephone" type="text" class="text text3" value="$!bizObj.telephone"/>
+			  <i></i>
+			</li>
+            <li>
+              <label>固定电话：</label>
+			  <input name="gudingphone" id="gudingphone" type="text" class="text text3" value="$!bizObj.gudingphone" />
+			</li>
+            <li>
+              <label>设为默认地址：</label><label class="checkbox">
+			  <input name="acquiesce" id="acquiesce" type="checkbox" value="1" #if($!bizObj.acquiesce ==1) checked #end/>&nbsp;设置为默认联系地址</label>
+			</li>
+            <li>
+              <label>&nbsp;</label>
+			 <input name="" type="button" value="#if($updateinit)保存#else添加#end" class="submit_btn" onClick="to_submit()">
+			  <input name="" type="reset" value="重置"  class="reset_btn" />
+			</li>
+			<li id ="upnum" style="float:left; position:relative; padding-left:140px; margin-top:-10px; color:#ff6c00;"></li>
+	      </ul>
+		  </form>
+          <table id="tlength" class="address_infor box1" width="100%" border="1" cellspacing="0" cellpadding="0" >
+            <tr>
+              <th width="10%" class="center" scope="col">联系人</th>
+              <th width="50%" class="center" scope="col">详细地址</th>
+              <th width="15%" class="center" scope="col">联系方式</th>
+              <th width="12%" class="center" scope="col">默认地址</th>
+              <th width="13%" class="center" scope="col">操作</th>
+             </tr>
+             #foreach($obj in $bizObjList)			   
+             <tr>
+               <td class="center">$!obj.userName</td>
+               <td>$!obj.address</td>
+               <td class="center">$!obj.telephone<br />$!obj.gudingphone</td>
+               <td class="center">
+			   #if($!obj.acquiesce ==1)
+				 是
+			   #else
+			      <a href="$!base/address.html?method=updateDefault&sid=$!vMUtils.encrypt($obj.id)" >设为默认</a>
+			   #end
+ 		  	  </td>
+              <td class="center">
+   			    <a href="$!base/address.html?method=update&sid=$!vMUtils.encrypt($obj.id)" title="修改">修改</a>
+                <a href="javascript:delRecod('$!vMUtils.encrypt($obj.id)')" title="删除">删除</a>
+              </td>
+            </tr>
+            #end
+          </table>
+          #parse( "/WEB-INF/eportalpages/common/no_content.vm" )
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--service开始-->
+   #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--notice结束-->
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+
+</div>
+<div id="dialog" title="删除确认" style="display:none;text-align:center;padding-top:20px;">确定要删除吗？</div>
+</body>
+<script type="text/javascript">
+function getArea(obj)
+{
+var fid = obj.value;
+jQuery.ajax({ url: '$!base/getArea.html',
+    　　data: {fid:fid},
+    　　type: 'post',
+    　　dataType: 'json',
+    　　success: function(data) {
+	    if(data.result == "success")
+		{
+		alert(data.obj);
+		    $(obj).after(data.obj);
+		}
+		else
+		{
+		   
+		}
+		return;
+			
+    },
+    　　error: function() {
+        alert("异常！");
+    }
+});
+}
+
+//提交
+function to_submit()
+{
+    var userName = $("#userName");
+    var address = $("#address");
+    var telephone = $("#telephone");
+	if("$!updateinit"==""){
+	tbobj = document.getElementById("tlength").rows.length;
+    if(tbobj==7){
+       $("#upnum").html("默认地址已达到上限");
+		      return;
+    }
+	}
+	if(jQuery.trim(userName.val())== "")
+	{
+	   userName.next().html("请输入联系人姓名");
+	   return;
+	}
+	else
+	{
+		userName.next().remove();
+	}
+	
+	if(jQuery.trim(address.val())== "")
+	{
+		address.next().html("请输入详细地址");
+	   return;
+	}
+	else
+	{
+		address.next().remove();
+	}
+	
+	if(jQuery.trim(telephone.val())== "")
+	{
+		telephone.next().html("请输入手机号码");
+	   return;
+	}
+	else
+	{
+		telephone.next().remove();
+	}
+	$("#addressform").submit();
+	
+}
+
+//删除地址
+function delRecod(sid)
+{
+$( "#dialog" ).dialog({
+					modal: true,
+					width: 250,
+					height: 150,
+					buttons: {
+						确定: function(){			
+    						 window.location="$!base/address.html?method=delete&sid="+sid;
+							 $(this).dialog("close");
+							
+						},
+						取消: function(){
+							$(this).dialog("close");
+						}
+					}
+				});
+}
+</script>
+</html>

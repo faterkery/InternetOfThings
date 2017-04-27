@@ -1,0 +1,30 @@
+@charset "utf-8";
+#page{width:100%; height:25px; background:url(../images/page/pagebg.gif) repeat-x; border-bottom:1px solid #CCD6E2; float:left; clear:both; color:#333;}
+#page .left{float:left; width:70%;}
+#page .right{float:right; width:30%; text-align:right; overflow:hidden;}
+#page li{background:url(../images/page/midline.gif) no-repeat right center; padding:0 10px 0 10px; float:left; height:25px; line-height:25px;}
+#page li.last{background:none;}
+.input_page{width:30px; height:16px; line-height:16px; border:1px solid #76A0AC; padding:0 0 0 5px;}
+.input_pagesel{width:60px; line-height:16px; border:1px solid #76A0AC; padding:0 0 0 5px;}
+
+#page .turnbtn{float:left;}
+#page .turnbtn dd{float:left; margin-right:10px;}
+#page .turnbtn dd a{height:11px; overflow:hidden; float:left; text-indent:-999px; margin-top:7px; cursor:pointer; display:block;}
+#page .turnbtn .turnhomepage a{background:url(../images/page/turnhomepage.gif) no-repeat; width:10px;}
+#page .turnbtn .turnhomepage_gray a{background:url(../images/page/turnhomepage_gray.gif) no-repeat; width:10px;}
+#page .turnbtn .turnleft a{background:url(../images/page/turnleft.gif) no-repeat; width:6px;}
+#page .turnbtn .turnleft_gray a{background:url(../images/page/turnleft_gray.gif) no-repeat; width:6px;}
+#page .turnbtn .turnendpage a{background:url(../images/page/turnendpage.gif) no-repeat; width:10px;}
+#page .turnbtn .turnendpage_gray a{background:url(../images/page/turnendpage_gray.gif) no-repeat; width:10px;}
+#page .turnbtn .turnright a{background:url(../images/page/turnright.gif) no-repeat; width:6px;}
+#page .turnbtn .turnright_gray a{background:url(../images/page/turnright_gray.gif) no-repeat; width:6px;}
+#page .gorig a{background:url(../images/page/gorig.gif) no-repeat 0 4px; width:11px; height:20px; overflow:hidden; float:left; text-indent:-999px; margin-top:3px; cursor:pointer; display:block;}
+
+#page .outbtn{float:left; background:none;}
+#page .outbtn dd{background:url(../images/page/midline.gif) no-repeat right center; padding:0 10px 0 10px; float:left; height:25px;}
+#page .outbtn dd a{overflow:hidden; float:left; text-indent:-999px; margin-top:3px; cursor:pointer; border:0px; width:20px; height:20px; display:block;}
+#page .outbtn dd.refresh a{background:url(../images/page/tn_sx.gif) no-repeat 3px 3px;}
+#page .outbtn dd.print a{background:url(../images/page/print_out.gif) no-repeat;}
+#page .outbtn dd.pdf a{background:url(../images/page/print_pdf.gif) no-repeat;}
+#page .outbtn dd.excel a{background:url(../images/page/print_excel.gif) no-repeat;}
+#page .outbtn dd.word a{background:url(../images/page/print_word.gif) no-repeat;}

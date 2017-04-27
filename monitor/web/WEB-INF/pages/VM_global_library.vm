@@ -1,0 +1,579 @@
+#macro( renheparse $template )
+	#parse( "/WEB-INF/pages/$template" )
+#end
+
+#macro( renhehead  )
+	#parse( "/WEB-INF/pages/common/top.vm" )
+#end
+
+#macro( renheheadSimple  )
+	#parse( "/WEB-INF/pages/common/top.vm" )
+#end
+#macro( renheMenu $memuModule )
+		#parse( "/WEB-INF/pages/common/menu_new.vm" )
+#end
+
+#macro( mainMenu $memuModule )
+		#parse( "/WEB-INF/pages/web/root/left.vm" )
+#end
+
+##  模版尾设置
+#macro( renheend )
+	#renheparse( "common/end.vm" )
+#end
+#macro( showFormSelect $_resourctName $_fieldName $_fieldValue)
+	#if($!action == "detail")
+		#showResourceValue($_fieldValue)
+	#else
+		#showResourceSelect($_resourctName $_fieldName $!_fieldValue)
+	#end
+#end
+#macro( showFormSelectMini $_resourctName $_fieldName $_fieldValue)
+	#if($!action == "detail")
+		#showResourceValue($_fieldValue)
+	#else
+		#showResourceSelectMini($_resourctName $_fieldName $!_fieldValue)
+	#end
+#end
+
+
+#macro( showDate $_fieldValue)
+#set($_format = "yyyy年M月d日")
+$!vMUtils.dateFormate($_fieldValue, "$_format")
+#end
+
+#macro( showDateSimple $_fieldValue)
+#set($_format = "yyyy-M-d")
+$!vMUtils.dateFormate($_fieldValue, "$_format")
+#end
+
+#macro( showTime $_fieldValue)
+#set($_format = "yyyy年M月d日 H:mm:s")$!vMUtils.dateFormate($_fieldValue, "$_format")#end
+
+#macro( showHHMMTime $_fieldValue)
+#set($_format = "yyyy年M月d日 H:mm")$!vMUtils.dateFormate($_fieldValue, "$_format")#end
+
+#macro( showDateHuman $_fieldValue)
+$!vMUtils.dateFormateHuman($_fieldValue)
+#end
+
+#macro( showMenuClass $_menuName)
+	#if($curMenu && $_menuName == $curMenu)
+		class=menubg21
+	#else
+		class=menubg2
+	#end
+#end
+
+#macro( showFormText $_fieldName $_fieldValue $_size)
+	#if($!action == "detail")
+		$_fieldValue
+		#else
+	<input name="$_fieldName" id="$_fieldName" size="$_size"  type="text" value="$!_fieldValue" class="input1">
+	#end
+#end
+
+#macro( showFormRadio $_fieldName $_fieldValue $_defaultFieldValue $_objValue $_objShowValue)
+	#if($!action == "detail")
+		#if($_fieldValue == $_objValue)
+			$!_objShowValue
+		#end
+		#else
+			$!_objShowValue<input type="radio" name="$_fieldName" id="$_fieldName"  value="$_fieldValue"  #isCheckedEx("$_fieldValue" $_objValue "$_defaultFieldValue")>
+	#end
+#end
+
+#macro( showFormTextNumber $_fieldName $_fieldValue $_size)
+	#if($!action == "detail")
+		$!vMUtils.numberFormat($_fieldValue)
+		#else
+			<input name="$_fieldName" id="$_fieldName"  style="text-align:right" size="$_size"  type="text" value="$!vMUtils.numberFormat($_fieldValue)">
+	#end
+#end
+#macro( showFormTextarea $_fieldName $_fieldValue $_rows)
+	#if($!action == "detail")
+		$_fieldValue
+		#else
+			<textarea name="$_fieldName" id="$_fieldName"  rows="$_rows" style="width:700px;" class="area1">$!_fieldValue</textarea>
+	#end
+#end
+#macro( showFormDate $_fieldName $_fieldValue)
+	#set($_format = "yyyy-MM-dd")
+	#if($!action == "detail")
+		$!vMUtils.dateFormate($_fieldValue, "$_format")
+		#else
+			<script language=javascript>createDatePicker("$_fieldName",true,"$!vMUtils.dateFormate($_fieldValue, "$_format")")</script>
+	#end
+#end
+
+#macro( showFormMonth $_fieldName $_fieldValue)
+	#set($_format = "yyyy-MM")
+	#if($!action == "detail")
+		$!vMUtils.dateFormate($_fieldValue, "$_format")
+	#elseif ($!action == "update")
+		#if( $!vMUtils.isRoleCanAccessModule($isAdmin, $crmRoleId, "infoEdit") || !$!_fieldValue )
+			<script language=javascript>createDatePicker("$_fieldName",true,"$!vMUtils.dateFormate($_fieldValue, "$_format")", true, true, true)</script>
+		#else
+			$!vMUtils.dateFormate($_fieldValue, "$_format")
+			<input name="$_fieldName" id="$_fieldName"   type="hidden" value="$!vMUtils.dateFormate($_fieldValue, "$_format")">
+		#end
+	#else
+			<script language=javascript>createDatePicker("$_fieldName",true,"$!vMUtils.dateFormate($_fieldValue, "$_format")", true, true, true)</script>
+	#end
+#end
+
+#macro( showFormTime $_fieldName $_fieldValue)
+	#set($_format = "yyyy-MM-dd HH:mm:ss")
+	#if($!action == "detail")
+		$!vMUtils.dateFormate($_fieldValue, "$_format")
+		#else
+			<script language=javascript>createDatePicker("$_fieldName",true,"$!vMUtils.dateFormate($_fieldValue, "$_format")", false, false, false)</script>
+	#end
+#end
+
+#macro( showResourceSelect $resourceType $selectName $selectValue )
+	#set($resourceTypes = $vMUtils.getResourceByType("$resourceType"))
+	<select name="$selectName" id="$selectName"  class="sel_select">
+		<option value="">-请选择-
+		</option>
+		#if($resourceTypes)
+			#foreach($_resourceType in $resourceTypes)
+				<option value="$_resourceType.id" #isSelected("$_resourceType.id" $selectValue )>$_resourceType.value
+				</option>
+			#end
+		#end
+	</select>
+#end
+
+#macro( showResourceSelectMini $resourceType $selectName $selectValue )
+	#set($resourceTypes = $vMUtils.getResourceByType("$resourceType"))
+	<select name="$selectName" id="$selectName">
+		<option value="">-请选择-
+		</option>
+		#if($resourceTypes)
+			#foreach($_resourceType in $resourceTypes)
+				<option value="$_resourceType.id" #isSelected("$_resourceType.id" $selectValue )>$_resourceType.value
+				</option>
+			#end
+		#end
+	</select>
+#end
+
+
+#macro( showSimpleSelect $selectName $selectValue )
+	<select name="$selectName" id="$selectName"  class="pulldown">
+		#if($selectValue==0)
+			<option value="0" Selected>否
+			</option>
+			<option value="1">是
+			</option>
+		#else
+		    <option value="1" Selected>是
+			</option>
+			<option value="0">否
+			</option>
+		#end
+	</select>
+#end
+
+#macro( showListPortSelect $resourceTypes $selectName $selectValue )
+	<select name="$selectName" id="$selectName"  class="pulldown">
+		<option value="">-请选择-
+		</option>
+		#if($resourceTypes)
+			#foreach($_resourceType in $resourceTypes)
+				<option value="$_resourceType.id" #isSelected("$_resourceType.id" $selectValue )>
+				    $_resourceType.portName
+				</option>
+			#end
+		#end
+	</select>
+#end
+
+#macro( showListDockSelect $resourceTypes $selectName $selectValue )
+	<select name="$selectName" id="$selectName"  class="pulldown">
+		<option value="">-请选择-
+		</option>
+		#if($resourceTypes)
+			#foreach($_resourceType in $resourceTypes)
+				<option value="$_resourceType.id" #isSelected("$_resourceType.id" $selectValue )>
+				    $_resourceType.dockName
+				</option>
+			#end
+		#end
+	</select>
+#end
+
+#macro( showListBoatSelect $resourceTypes $selectName $selectValue )
+	<select name="$selectName" id="$selectName"  class="pulldown">
+		<option value="">-请选择-
+		</option>
+		#if($resourceTypes)
+			#foreach($_resourceType in $resourceTypes)
+				<option value="$_resourceType.id" #isSelected("$_resourceType.id" $selectValue )>
+				    $_resourceType.boatName
+				</option>
+			#end
+		#end
+	</select>
+#end
+
+
+#macro( showListMember $resourceTypes $selectName $selectValue )
+	<select name="$selectName" id="$selectName"  class="pulldown">
+		<option value="">-请选择-
+		</option>
+		#if($resourceTypes)
+			#foreach($_resourceType in $resourceTypes)
+				<option value="$_resourceType.id" #isSelected("$_resourceType.id" $selectValue )>
+				    $_resourceType.username
+				</option>
+			#end
+		#end
+	</select>
+#end
+
+#macro( showListSelect $resourceTypes $selectName $selectValue )
+	<select name="$selectName" id="$selectName"  class="pulldown">
+		<option value="">-请选择-
+		</option>
+		#if($resourceTypes)
+			#foreach($_resourceType in $resourceTypes)
+				<option value="$_resourceType.id" #isSelected("$_resourceType.id" $selectValue )>
+				    $_resourceType.name
+				</option>
+			#end
+		#end
+	</select>
+#end
+
+#macro( showSalesList  )
+	<select name="salesId" id="salesId" class="pulldown">
+		<option value="">-请选择-</option>
+		#foreach($_sales in $salesList)
+			<option value="$_sales.id" #isSelected("$_sales.id" $salesId )>$_sales.name</option>
+		#end
+	</select>
+#end
+#macro( showCustomerServeList  )
+	<select name="customerServe" id="customerServe"  class="pulldown">
+		<option value="">-请选择-</option>
+		#foreach($_customerServes in $customerServeList)
+			<option value="$_customerServes.id" #isSelected("$_customerServes.id" $customerServe)>$_customerServes.name</option>
+		#end
+	</select>
+#end
+#macro( showMemberName $userId )
+	#set($_crmUser = false)
+	#if($!userId && $!userId > 0)
+		#set($_crmUser = $!vMUtils.getMember($!userId))
+		#if($_crmUser)
+			$!_crmUser.loginName
+		#end
+	#end
+#end
+
+#macro( showResourceValue $resourceId)
+	$!vMUtils.getResourceValue($!resourceId)
+#end
+##  是否设置选中标志，在select option中使用，前一个参数是option的值，后一个参数时用来对比的值
+#macro( isSelected $optionvalue $value )
+	#if($value) #if($optionvalue) #if($optionvalue==$value) selected #end #end #end
+#end
+##  是否设置选中标志，在select option中使用，前一个参数是option的值，后一个参数时用来对比的值
+#macro( isChecked $optionvalue $value )
+	#if($value) #if($optionvalue) #if($optionvalue==$value) checked #end #end #end
+#end
+##  是否设置选中标志，在select option中使用，前一个参数是option的值，后一个参数时用来对比的值
+#macro( isCheckedEx $optionvalue $value $defaultvalue)
+	#if($value && $value!="") 
+		#if($optionvalue) 
+			#if($optionvalue==$value) checked
+			#end 
+		#end 
+		#elseif($defaultvalue==$optionvalue) checked  #end
+#end
+#macro( isSelectedEx $optionvalue $value $defaultvalue )
+	#if($value)
+		#if($optionvalue) 
+			#if($optionvalue==$value) 
+				selected 
+			#end 
+		#end			
+		#elseif($defaultvalue==$optionvalue) selected  #end
+#end
+
+#macro( showMustFill )
+	#if($!action && $!action != "detail")
+		<img src="$base/branding/default/images/bi.gif" width="15" height="15">
+	#end
+#end
+
+#macro( dzd $zd $cd $cdstart $cdend $jd)
+    #if($zd && $zd.length() > $cd)
+        #if($jd == "y")
+	       ${zd.substring($cdstart,$cdend)}...
+        #else
+	       $zd.substring($cdstart,$cdend)
+        #end
+    #else
+	    $zd
+    #end		
+#end
+
+
+#macro( showState $shippingType $payType $shippingState $type $state $orderCancel $showOrhidde)
+	#if($orderCancel == 1)
+		交易关闭
+	#elseif($orderCancel == 2)
+		退款成功<br>
+		交易关闭
+	#elseif($orderCancel == 31)
+		已经撤销<br>
+		交易关闭
+	#elseif($orderCancel == 41)
+		已经退货<br>
+		交易关闭
+	#elseif($shippingType == 0)
+		未选择支付方式
+	#else
+    	#if($shippingType == 1)
+    		#if($showOrhidde==1)上门服务<br>#end
+    		#if($payType == 1)
+    			#if($showOrhidde==1)货到付款<br>#end
+    			#if($shippingState == 1)
+    				#if($type == 4 || $type == 5 || $type == 6)
+    					等待充值
+    				#elseif($type == 1 || $type == 2 || $type == 3)
+    					等待缴费
+    				#else
+    					等待发货
+    				#end
+    			#elseif($shippingState == 2)
+    				#if($type == 4 || $type == 5 || $type == 6)
+    					已充值
+    				#elseif($type == 1 || $type == 2 || $type == 3)
+    					已缴费
+    				#else
+    					已发货
+    				#end
+    			#elseif($shippingState == 3)
+    				交易完成
+    			#end
+    		#elseif($payType == 3)
+    			#if($showOrhidde==1)支付宝付款<br>#end
+    			#if($state == 0)
+    				等待付款
+    			#elseif($state == 1)
+    				#if($shippingState == 1)
+        				#if($type == 4 || $type == 5 || $type == 6)
+        					等待充值
+        				#elseif($type == 1 || $type == 2 || $type == 3)
+        					等待缴费
+    					#else
+    						等待发货
+        				#end
+        			#elseif($shippingState == 2)
+        				#if($type == 4 || $type == 5 || $type == 6)
+        					已充值
+        				#elseif($type == 1 || $type == 2 || $type == 3)
+        					已缴费
+    					#else
+    						已发货
+        				#end
+        			#elseif($shippingState == 3)
+        				交易完成
+        			#end
+    			#end
+    		#elseif($payType == 4)
+    			#if($showOrhidde==1)财付通付款<br>#end
+    			#if($state == 0)
+    				等待付款
+    			#elseif($state == 1)
+    				#if($shippingState == 1)
+        				#if($type == 4 || $type == 5 || $type == 6)
+        					等待充值
+        				#elseif($type == 1 || $type == 2 || $type == 3)
+        					等待缴费
+    					#else
+    						等待发货
+        				#end
+        			#elseif($shippingState == 2)
+        				#if($type == 4 || $type == 5 || $type == 6)
+        					已充值
+        				#elseif($type == 1 || $type == 2 || $type == 3)
+        					已缴费
+    					#else
+    						已发货
+        				#end
+        			#elseif($shippingState == 3)
+        				交易完成
+        			#end
+    			#end
+    		#end
+    	#elseif($shippingType == 2)
+    		#if($showOrhidde==1)门店自提<br>#end
+    		#if($payType == 2)
+    			#if($showOrhidde==1)门店付款<br>#end
+    			#if($shippingState == 1)
+    				#if($type == 4 || $type == 5 || $type == 6)
+    					等待充值
+    				#elseif($type == 1 || $type == 2 || $type == 3)
+    					等待缴费
+    				#else
+    					等待发货
+    				#end
+    			#elseif($shippingState == 2)
+    				#if($type == 4 || $type == 5 || $type == 6)
+    					已充值
+    				#elseif($type == 1 || $type == 2 || $type == 3)
+    					已缴费
+    				#else
+    					已发货
+    				#end
+    			#elseif($shippingState == 3)
+    				交易完成
+    			#end
+    		#elseif($payType == 3)
+    			#if($showOrhidde==1)支付宝付款<br>#end
+    			#if($state == 0)
+    				等待付款
+    			#elseif($state == 1)
+    				#if($shippingState == 1)
+        				#if($type == 4 || $type == 5 || $type == 6)
+        					等待充值
+        				#elseif($type == 1 || $type == 2 || $type == 3)
+        					等待缴费
+    					#else
+    						等待发货
+        				#end
+        			#elseif($shippingState == 2)
+        				#if($type == 4 || $type == 5 || $type == 6)
+        					已充值
+        				#elseif($type == 1 || $type == 2 || $type == 3)
+        					已缴费
+    					#else
+    						已发货
+        				#end
+        			#elseif($shippingState == 3)
+        				交易完成
+        			#end
+    			#end
+    		#elseif($payType == 4)
+    			#if($showOrhidde==1)财付通付款<br>#end
+    			#if($state == 0)
+    				等待付款
+    			#elseif($state == 1)
+    				#if($shippingState == 1)
+        				#if($type == 4 || $type == 5 || $type == 6)
+        					等待充值
+        				#elseif($type == 1 || $type == 2 || $type == 3)
+        					等待缴费
+    					#else
+    						等待发货
+        				#end
+        			#elseif($shippingState == 2)
+        				#if($type == 4 || $type == 5 || $type == 6)
+        					已充值
+        				#elseif($type == 1 || $type == 2 || $type == 3)
+        					已缴费
+    					#else
+    						已发货
+        				#end
+        			#elseif($shippingState == 3)
+        				交易完成
+        			#end
+    			#end
+    		#end
+        #elseif($shippingType == 3)
+    		在线交易<br>
+    		#if($payType == 3)
+    			#if($showOrhidde==1)支付宝付款<br>#end
+    			#if($state == 0)
+    				等待付款
+    			#elseif($state == 1)
+    				#if($shippingState == 1)
+        				#if($type == 4 || $type == 5 || $type == 6)
+        					等待充值
+        				#elseif($type == 1 || $type == 2 || $type == 3)
+        					等待缴费
+    					#else
+    						等待发货
+        				#end
+        			#elseif($shippingState == 2)
+        				#if($type == 4 || $type == 5 || $type == 6)
+        					已充值
+        				#elseif($type == 1 || $type == 2 || $type == 3)
+        					已缴费
+    					#else
+    						已发货
+        				#end
+        			#elseif($shippingState == 3)
+        				交易完成
+        			#end
+    			#end
+    		#elseif($payType == 4)
+    			#if($showOrhidde==1)财付通付款<br>#end
+    			#if($state == 0)
+    				等待付款
+    			#elseif($state == 1)
+    				#if($shippingState == 1)
+        				#if($type == 4 || $type == 5 || $type == 6)
+        					等待充值
+        				#elseif($type == 1 || $type == 2 || $type == 3)
+        					等待缴费
+    					#else
+    						等待发货
+        				#end
+        			#elseif($shippingState == 2)
+        				#if($type == 4 || $type == 5 || $type == 6)
+        					已充值
+        				#elseif($type == 1 || $type == 2 || $type == 3)
+        					已缴费
+    					#else
+    						已发货
+        				#end
+        			#elseif($shippingState == 3)
+        				交易完成
+        			#end
+    			#end
+    		#elseif($payType == 50 || $payType == 51 ||$payType == 52 ||$payType == 53 ||$payType == 54)
+    		    #if($payType == 53)
+    		    农行支付<br/>
+    		    #elseif($payType == 54)
+    		    农行跨行支付<br/>
+    		    #elseif($showOrhidde==1)
+    		    速Pay支付<br/>
+    		    #end
+    			
+    			#if($state == 0)
+    				#if($type ==23)
+    				转账中
+    				#else
+    				等待付款
+    				#end
+    			#elseif($state == 1)
+    				#if($shippingState == 1)
+        				#if($type == 4 || $type == 5 || $type == 6)
+        					等待充值
+        				#elseif($type == 1 || $type == 2 || $type == 3)
+        					等待缴费
+    					#else
+    						等待发货
+        				#end
+        			#elseif($shippingState == 2)
+        				#if($type == 4 || $type == 5 || $type == 6)
+        					已充值
+        				#elseif($type == 1 || $type == 2 || $type == 3)
+        					已缴费
+    					#else
+    						已发货
+        				#end
+        			#elseif($shippingState == 3)
+        				交易完成
+        			#end
+    			#end
+    		#end    		
+		#end
+	#end
+#end

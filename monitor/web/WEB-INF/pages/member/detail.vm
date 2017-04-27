@@ -1,0 +1,7 @@
+#set($actionUrl="$base/member/actions.html?method=insert&insert=y&menuname=$menuname")
+<div id="main" class="w100 bgmain">
+   <div class="maintopmenu">
+      <ul class="tit">用户管理 >详细</ul>      
+   </div>
+   #parse( "/WEB-INF/pages/member/form.vm" )
+</div>

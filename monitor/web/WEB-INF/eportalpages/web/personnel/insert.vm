@@ -1,0 +1,193 @@
+#if($action2=="insert")
+   #set($actionUrl="$!base/personnel.html?method=insert&insert=y&menuname=$menuname")	
+#else
+   #set($actionUrl="$!base/personnel.html?method=update&insert=y&menuname=$menuname")
+#end
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<link rel="stylesheet" href="$!base/eportalstyle/kindeditor-4.1.10/themes/default/default.css" />
+<link rel="stylesheet" href="$!base/eportalstyle/kindeditor-4.1.10/plugins/code/prettify.css" />
+<script charset="utf-8" src="$!base/eportalstyle/kindeditor-4.1.10/kindeditor-all.js"></script>
+	<script charset="utf-8" src="$!base/eportalstyle/kindeditor-4.1.10/plugins/code/prettify.js"></script>
+	<script>
+	    myroot = '$!base/getpic.html?path=';
+		var editor1;
+		KindEditor.ready(function(K) {
+		editor1 = K.create('textarea[name="content"]', {
+				cssPath : '$!base/eportalstyle/kindeditor-4.1.10/plugins/code/prettify.css',
+				uploadJson : '$!base/kindeditorUpload.html',
+				fileManagerJson : '$!base/eportalstyle/kindeditor-4.1.10/jsp/file_manager_json.jsp',
+				allowFileManager : true,
+				afterCreate : function() {
+					var self = this;
+					K.ctrl(document, 13, function() {
+						self.sync();
+						document.forms['personnelForm'].submit();
+					});
+					K.ctrl(self.edit.doc, 13, function() {
+						self.sync();
+						document.forms['personnelForm'].submit();
+					});
+				}
+			});
+		var editor = K.editor({
+			cssPath : '$!base/eportalstyle/kindeditor-master/plugins/code/prettify.css',
+			uploadJson : '$!base/kindeditorUpload.html',
+			fileManagerJson : '$!base/eportalstyle/kindeditor-master/jsp/file_manager_json.jsp',
+			allowFileManager : true
+		});
+					
+			prettyPrint();
+		});	
+		
+		
+		
+		KindEditor.ready(function(K) {
+	            var uploadbutton = K.uploadbutton({ 
+		button : K('#imgbtn')[0],
+		fieldName : 'imgFile',
+		url : '$!base/kindeditorUpload.html',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = K.formatUrl(data.url, 'absolute');
+				K('#img').val(url);
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('自定义错误信息: ' + str);
+		}
+	});
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+});	
+	</script>
+
+<body>
+<div id="container"> 
+  <!--site-nav开始-->
+  #parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+
+  <!--header开始-->
+  #parse( "/WEB-INF/eportalpages/common/header.vm" )
+  <!--header结束--> 
+
+
+<div id="main_member">
+    <div class="layout">
+      #parse( "/WEB-INF/eportalpages/common/centre_menu.vm" )
+      
+      <div class="member_bd box1 fr">
+        <ul class="menu"><h1>招聘信息</h1></ul>
+        <div class="Main_handleBar check_pass" id="Main_handleBar" #if(!$!updated)style="display:none"#end>
+	   <p>
+		#if($!updated)
+		 修改成功 
+		 #end
+	   </p>
+   </div>
+       <form id="personnelForm" name="personnelForm" method="post" action="$!actionUrl">
+		<input type="hidden" name="id" value=$bizObj.id />
+		<input type="hidden" name="insert" value="ddd" />
+		<input type="hidden" name="isPublished" value="0" />
+		<div class="about_bd">
+        <ul class="fillin">
+          <li>                               
+            <dd>
+              <label><span class="red">*</span>招聘标题：</label>
+              <input value="$!bizObj.name" id="name" name="name" type="text" class="text text4" />
+	          <i class="tips"></i>
+	        </dd>
+           </li>
+           <li>
+	          <dd>
+	            <label><span class="red">*</span>图片：</label>
+	            #if($!action=="detail")
+	              $!bizObj.img
+	            #else
+	            <input name="img" id="img" type="text" size="50" class="text text4" value="$!bizObj.img" readOnly="true" />
+	            <input name="imgbtn" id="imgbtn" type="button" value="选择图片" class="replace1" />
+	            <i id="imgerr" style="display:block; position:absolute; left:570px; top:4px; color:#f00;"></i>
+	            #end
+	          </dd>
+	        </li>
+          <li>
+            <dd>
+              <label><span class="red">*</span>招聘内容：</label>
+              <textarea id="content" name="content" cols="" rows="" class="textarea" style="width:680px;">$!bizObj.content</textarea> 
+	          <i class="tips"></i>
+	        </dd>
+          </li>
+          <li style="width:763px; margin:20px 0; padding-left:160px;"><label>&nbsp;</label>
+           <input name="" type="button" value="提交" class="submit_btn" onclick="toSubmit();" />
+           <input name="" type="button" value="返回"  class="reset_btn" onClick= "window.location='$!base/centre/perlist.html?method=list'"/>
+          </li>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </div></form>
+      </div>
+    </div>
+  </div>
+  
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+  
+  <!--con_side开始-->
+  #parse( "/WEB-INF/eportalpages/common/con_side.vm" )
+  <!--con_side结束--> 
+   <script>
+	function toSubmit(){
+			document.getElementById("content").value=editor1.html();
+		   var name =  $("#name");
+		   if(jQuery.trim(name.val())== ""){
+		       
+		      name.next().html("请填写名字");
+		      return;
+		   }else{
+		       name.next().empty();
+		   }	
+		   var img =  $("#img");
+		   if(jQuery.trim(img.val())== ""){
+		       
+		      $("#imgerr").html("请选择图片");
+		      return;
+		   }else{
+		       $("#imgerr").empty();
+		   }
+		     var content =  $("#content");
+		   if(jQuery.trim(content.val())== ""){
+		       
+		      content.next().html("请填写内容");
+		      return;
+		   }else{
+		       content.next().empty();
+		   }
+	    document.getElementById("personnelForm").submit();
+		}
+		
+		function delimg(btnObj)
+{
+   if(confirm("删除图片？"))
+   {
+       var jBtnObj = $(btnObj);
+       jBtnObj.parent().remove();
+   }
+}
+</script>
+
+	
+	
+
+  </div>
+</body>
+</html>  
+  

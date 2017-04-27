@@ -1,0 +1,653 @@
+#parse( "/WEB-INF/eportalpages/common/top.vm" )
+<link href="$base/eportalstyle/css/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$!base/eportalstyle/js/jquery.lazyload.min.js"></script><!--全部商品分类-->
+<script type="text/javascript" src="$!base/eportalstyle/js/jquery.slides.min.js"></script><!--全部商品分类-->
+<script type="text/javascript" src="$!base/eportalstyle/js/jquery.tabso_yeso.js"></script><!--tab切换-->
+<script type="text/javascript" src="$!base/eportalstyle/js/jquery.luara.0.0.1.min.js"></script><!--小banner轮播-->
+<script type="text/javascript" src="$!base/eportalstyle/js/slider.js"></script><!--产品推荐轮播-->
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#pwdshow").focus(function(){
+      $(this).hide();
+	  $("#pwd").show();
+	  $("#pwd").focus();
+  });
+  
+  $("#pwd").blur(function(){
+      if(jQuery.trim($(this).val()) =="")
+      {
+          $(this).hide();
+    	  $("#pwdshow").show();
+      } 
+  });
+  //回车事件
+	 $('#pwd').bind('keypress',function(event){
+            if(event.keyCode == "13")    
+            {
+                tologin();
+            }
+     });
+  
+});
+	$(function(){
+		//默认状态下左右滚动
+		$("#s1").xslider({
+			unitdisplayed:4,
+			movelength:1,
+			unitlen:216,
+			autoscroll:3000
+		});	
+		$("#s2").xslider({
+			unitdisplayed:4,
+			movelength:1,
+			unitlen:166,
+			autoscroll:2000
+		});	
+	})
+</script><!--产品推荐轮播-->
+<script type="text/javascript" src="$base/eportalstyle/js/jquery.tinyscrollbar.min.js"></script><!--服务中心滚动条-->
+<script type="text/javascript" src="$base/eportalstyle/js/cufon.js"></script><!--服务中心滚动条-->
+<script type="text/javascript" src="$base/eportalstyle/js/website.js"></script><!--服务中心滚动条-->
+
+<body>
+<div id="container"> 
+  <!--site-nav开始-->
+#parse( "/WEB-INF/eportalpages/common/site_nav.vm" )
+  <!--site-nav结束--> 
+  
+  <!--header开始-->
+#parse( "/WEB-INF/eportalpages/common/header.vm" )
+  <!--header结束--> 
+  
+  <!--mainnav开始-->
+#parse( "/WEB-INF/eportalpages/common/main_nav.vm" )
+  <!--mainnav结束--> 
+  
+  <!--main_visual开始-->
+  <div class="main_visual">
+    <div class="flicking_con">
+      <div class="flicking_inner">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+      </div>
+    </div>
+    <div class="main_image">
+      <ul>
+	    <li style="background-color:#057C60;"><a href="#"><span class="img_1"><img src="$base/eportalstyle/images/banner1.jpg" width="760" height="403" /></span></a></li>
+        <li style="background-color:#ed1d37;"><a href="#"><span class="img_2"><img src="$base/eportalstyle/images/banner2.jpg" width="760" height="403" /></span></a></li>
+	    <li style="background-color:#ec1d37;"><a href="#"><span class="img_3"><img src="$base/eportalstyle/images/banner3.jpg" width="760" height="403" /></span></a></li>
+      </ul>
+       <a href="javascript:;" id="btn_prev"></a>
+       <a href="javascript:;" id="btn_next"></a>
+    </div>
+    <div class="loginbox" #if($shopUser)style="display:none;"#end>
+      <h1>会员登录</h1>
+      <ul class="conbox">
+        <li>
+          <div class="putbox">
+            <em></em>
+            <input name="username" id="username" type="text" class="input1" value="手机号" onfocus="if(this.value=='手机号') {this.value='';}" onblur="if(this.value=='') {this.value='手机号';}"/>
+          </div>
+        </li>
+        <li class="psw">
+          <div class="putbox">
+            <em></em>
+            <input name="" id="pwdshow" type="text" class="input1" value="密码"  />
+            <input name="pwd" id="pwd" type="password" class="input1" value=""  style="display:none;"/>
+          </div>
+        </li>
+        <li>
+          <span class="fl"><input name="autologin" id="autologin" type="checkbox" value="1" />&nbsp;自动登录</span>
+          <span class="fr"><a href="$!base/findpwd.html" title="忘记密码">忘记密码</a>&nbsp; | &nbsp;<a href="$!base/register.html" title="免费注册">免费注册</a></span>
+        </li>
+        <li class="btnline"><input name="" type="button" class="btnbox" value="立即登录" onclick="tologin()"/></li>
+        <li class="tip none"></li>
+      </ul>            
+    </div>
+  </div>
+  <script type="text/javascript" src="$base/eportalstyle/js/jquery.touchSlider.js"></script><!--广告-->
+  <script type="text/javascript"><!--广告-->
+    $(document).ready(function () {
+        $(".main_visual").hover(function(){
+            $("#btn_prev,#btn_next").fadeIn()
+            },function(){
+            $("#btn_prev,#btn_next").fadeOut()
+            })
+        $dragBln = false;
+        $(".main_image").touchSlider({
+            flexible : true,
+            speed : 200,
+            btn_prev : $("#btn_prev"),
+            btn_next : $("#btn_next"),
+            paging : $(".flicking_con a"),
+            counter : function (e) {
+                $(".flicking_con a").removeClass("on").eq(e.current-1).addClass("on");
+            }
+        });
+        $(".main_image").bind("mousedown", function() {
+            $dragBln = false;
+        })
+        $(".main_image").bind("dragstart", function() {
+            $dragBln = true;
+        })
+        $(".main_image a").click(function() {
+            if($dragBln) {
+                return false;
+            }
+        })
+        timer = setInterval(function() { $("#btn_next").click();}, 5000);
+        $(".main_visual").hover(function() {
+            clearInterval(timer);
+        }, function() {
+            timer = setInterval(function() { $("#btn_next").click();}, 5000);
+        })
+        $(".main_image").bind("touchstart", function() {
+            clearInterval(timer);
+        }).bind("touchend", function() {
+            timer = setInterval(function() { $("#btn_next").click();}, 5000);
+        })
+    });
+    </script>
+  <!--main_visual结束-->
+  
+  <!--notice开始-->
+  <div id="notice"> 
+    <div class="layout">
+  <!--<div class="transaction fl"><h1>累计交易笔数：<span>21504</span>笔</h1></div>-->  
+      <div class="gg fl"><h1>网站公告：</h1></div>    
+      <div class="modulerig company fr">
+        <ul class="btncon">
+          <li id="downDir"></li>
+          <li id="upDir"></li>
+        </ul>
+        <div class="con1" id="scrollbox">
+          <div id="scrollcon">
+            <ul id="scrolllist">
+              #foreach($biz in $!noticeList)
+              <li>
+                <a href="$!base/noticeShow/actions.html?method=detail&sid=$!vMUtils.encrypt($biz.id)" title="$!biz.title" target="_blank">
+                  <p>$!biz.title</p>
+                  <span>[<em>$!vMUtils.dateTimeFormateSimple($!biz.timeCreate)</em>]</span>
+                </a>
+              </li>	
+              #end
+            </ul>
+            <ul id="scrolllist-copy"></ul>
+          </div>
+        </div>
+        <script type="text/javascript">
+			//上下无缝滚动
+			var speed = 100;
+			var direction="top";
+			var tab = document.getElementById("scrollbox");
+			var tab1 = document.getElementById("scrolllist");
+			var tab2 = document.getElementById("scrolllist-copy");
+			var upDir = document.getElementById("upDir");
+			var downDir = document.getElementById("downDir");
+			tab2.innerHTML = tab1.innerHTML;
+			function marquee(){
+				switch(direction){
+					case "top":
+						if(tab2.offsetHeight - tab.scrollTop <= 0){
+							tab.scrollTop -= tab1.offsetHeight;
+						}
+						else{
+							tab.scrollTop++;
+						}
+					break;
+					case "bottom":
+						if(tab.scrollTop <= 0){
+							tab.scrollTop += tab2.offsetHeight;
+						}
+						else{
+							tab.scrollTop--;
+						}
+					break;
+				}
+			}
+			function changeDirection(dir){
+			   direction = dir;
+			}
+			var timer = setInterval(marquee,speed);
+			tab.onmouseover = function(){clearInterval(timer);};
+			tab.onmouseout = function(){timer = setInterval(marquee,speed);};
+			upDir.onclick = function(){changeDirection("top");};
+			downDir.onclick = function(){changeDirection("bottom");};
+	    </script>
+      </div>
+    </div>
+  </div>
+  <!--notice结束-->
+  
+  <!--螺杆原料开始-->
+  <div id="con" class="layout mrg_t15 screw_yl">
+    <div class="dynamic fl">
+      <h1>螺杆原料</h1>
+    </div>
+    <div class="screw_info fl screw_top_line">		
+	  <ul class="tabbtn" id="move-animate-left1">
+	    #foreach($biz in $!resourcesylList)
+		<li class="current"><a href="#" title="$biz.value">$biz.value</a></li>
+        #end
+	  </ul>
+      <span><a href="$!base/material.html?method=list" title="更多">更多</a></span>
+	  <div class="tabcon" id="leftcon1">
+		<div class="subbox">
+         #foreach($biz in $!materialTypelist)	
+          <div class="sublist">
+			<ul>
+              <li class="top">
+                <dd class="y_name">品名</dd>
+                <dd class="y_factory">厂家</dd>
+                <dd class="y_crafts">工艺</dd>
+                <dd class="y_spec">规格(Φ)</dd>
+           <!-- <dd class="y_weight">库存重量</dd> -->
+                <dd class="y_price">价格</dd>
+                <dd class="y_operation">操作</dd>
+              </li>
+              #foreach($item in $biz)         
+              <li>
+                <dd class="y_name">$!vMUtils.getResourceValue($!item.nameId)</dd>
+                <dd class="y_factory">$!vMUtils.getResourceValue($!item.factoryId)</dd>
+                <dd class="y_crafts">$!vMUtils.getResourceValue($!item.craftsId)</dd>
+                <dd class="y_spec">$!vMUtils.getResourceValue($!item.specId)</dd>
+           <!-- <dd class="y_weight">$!vMUtils.getMaterialStock($!item.id)</dd> -->
+                <dd class="y_price red">$!vMUtils.changeBigNumber2String($!item.price)元/吨<!-- <i class="down"></i> --></dd>
+                <dd class="y_operation"><input name="" type="button" value="采购" class="order" onClick="window.location = '$base/material.html?method=list'" /></dd>
+              </li>
+              #end
+			</ul>
+		  </div> 
+		  #end          
+		</div>
+	  </div>
+    </div> 
+    <div class="screw_yl_banner fr screw_top_line">
+      <ul>
+        #foreach($biz in $!bannerList1)
+        <li><a href="http://$!biz.url" title="$!biz.title" target="_blank"><img src="$!base$!biz.img" width="280" height="399" /></a></li>
+        #end
+      </ul>
+      <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ol>
+    </div>
+    <script>
+      $(function(){
+        $(".screw_yl_banner").luara({width:"280",height:"399",interval:2000,selected:"seleted",deriction:"left"});
+      });
+    </script>
+  </div>
+  <!--螺杆原料结束-->
+  
+  <!--螺杆耗材开始-->
+  <div id="con" class="layout mrg_t15 screw_hc">
+    <div class="dynamic fl">
+      <h1>螺杆耗材</h1>
+    </div> 
+    <div class="screw_info fl screw_top_line">		
+	  <ul class="tabbtn" id="move-animate-left2">
+	    #foreach($biz in $!resourceshcList)
+		<li class="current"><a href="#" title="$!biz.value">$!biz.value</a></li>
+        #end
+	  </ul>
+      <span><a href="$!base/suppliesShow.html?method=list" title="更多">更多</a></span>
+	  <div class="tabcon" id="leftcon2">
+		<div class="subbox">
+         #foreach($biz in $!suppliesTypelist)	
+	      <div class="sublist">
+			<ul>
+              <li class="top">
+                <dd class="name">商品名称</dd>
+                <dd class="spec">品牌</dd>
+                <dd class="place">生产厂家</dd>
+                <dd class="type">规格</dd>
+                <dd class="price">价格</dd>
+                <dd class="operation">操作</dd>
+              </li>      
+              #foreach($item in $biz)
+              <li>
+                  <dd class="name"><a href="$!base/suppliesShow.html?method=detail&sid=$!vMUtils.encrypt($!item.id)" target="_blank">$!item.name</a></dd>
+                  <dd class="spec">$vMUtils.getResourceValue($!item.brandId)</dd>
+                  <dd class="place">$vMUtils.getResourceValue($!item.factoryId)</dd>
+                  <dd class="type">$!item.spec</dd>
+                  <dd class="price red">$!vMUtils.changeBigNumber2String($!item.price)元</dd>
+                  <dd class="operation">
+					<input name="" type="button" value="采购" class="order" onclick="window.location = '$base/suppliesShow.html?method=list'"/>
+				  </dd>
+              </li>
+              #end
+			</ul>
+		  </div>
+		 #end
+		</div>
+	  </div>
+    </div>
+    <div class="screw_hc_banner fr screw_top_line">
+      <ul>
+        #foreach($biz in $!bannerList2)
+        <li><a href="http://$!biz.url" title="$!biz.title" target="_blank"><img src="$!base$!biz.img" width="280" height="399" /></a></li>
+        #end
+      </ul>
+      <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ol>
+    </div>
+	<script>
+	 $(function(){
+	   $(".screw_hc_banner").luara({width:"280",height:"399",interval:2000,selected:"seleted",deriction:"left"});
+	 });
+	</script>
+  </div>
+  <script type="text/javascript">
+$(document).ready(function($){
+	//左右滑动选项卡切换
+	$("#move-animate-left1").tabso({
+		cntSelect:"#leftcon1",
+		tabEvent:"mouseover",
+		tabStyle:"move-animate",
+		direction : "left"
+	});
+	//左右滑动选项卡切换
+	$("#move-animate-left2").tabso({
+		cntSelect:"#leftcon2",
+		tabEvent:"mouseover",
+		tabStyle:"move-animate",
+		direction : "left"
+	});
+});
+</script>
+  <!--螺杆耗材结束-->
+  
+  <!--产品推荐开始-->
+  <div id="module" class="layout mrg_t10">
+    <div class="product_recommend fl">
+      <ul class="title">
+        <h1><a href="#" title="推荐产品">推荐产品</a></h1>
+      </ul>
+      <div class="product_recommend_list box1 fl" id="s1">
+		<a class="abtn aleft" href="#left" title="左移"></a>
+		<div class="imglist_w">
+		  <ul class="imglist">
+		  #foreach($biz in $!recommendList)
+			<li>
+			  <a href="http://$!biz.url" title="$!biz.name" target="_blank">
+                <img src="$!base$!biz.img" />
+			    <span>$!biz.name</span>
+              </a>
+			</li>
+           #end
+	      </ul>
+		</div>
+		<a class="abtn aright" href="#right" title="右移"></a>
+	  </div>
+    </div>
+    <div class="company_recommend fr">
+      <ul class="title">
+        <h1><a href="$!base/enterpriseShow/actions.html?method=list" title="推荐企业">推荐企业</a></h1>
+      </ul>
+      <div class="con2 box1">
+        <div class="list_lh" style="height:234px; overflow:hidden;">
+          <ul>
+            #foreach($biz in $!enterpriseList)
+            <li><a href="$!base/enterpriseShow/actions.html?method=detail&sid=$!vMUtils.encrypt($biz.id)" title="$!biz.title" target="_blank">$!biz.title<i>&nbsp;</i></a><span class="#if($!biz.hot=='1') hot_t #end"></span></li>
+            #end
+          </ul>
+        </div>      
+        <script type="text/javascript" src="$!base/eportalstyle/js/scroll.js"></script>
+		<script type="text/javascript">
+          $(function(){
+          $("div.list_lh").myScroll({
+            speed:100, //数值越大，速度越慢
+            rowHeight:30 //li的高度
+            });
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+  <!--产品推荐结束-->
+  
+  <!--新闻资讯开始-->
+  <div id="module" class="layout mrg_t10">
+    <div class="index_about fl"><img src="$base/eportalstyle/images/link__about_img.jpg" width="280" height="275" /></div>
+    <div class="news fl">		
+	  <ul class="tab_news" id="move-animate-left3">
+		<li class="current"><a href="$!base/eNewsShow/actions.html?method=list&type=1" target="_blank" title="网加动态">网加动态</a></li>
+		<li><a href="$!base/eNewsShow/actions.html?method=list&type=2" target="_blank" title="行业新闻">行业新闻</a></li>
+		<li><a href="$!base/eNewsShow/actions.html?method=list&type=3" target="_blank" title="会展信息">会展信息</a></li>
+	  </ul>
+	  <div class="tab_news_con box1" id="leftcon3">
+		<div class="subbox">
+			<div class="newslist">
+			  <ul class="news_img fl">
+                <a href="$!base/eNewsShow/actions.html?method=detail&sid=$!vMUtils.encrypt($enews.id)" target="_blank" title="$!enews.title"><img src="$!base$!enews.smallPic" width="270" height="215" /></a>
+              </ul>
+		      <ul class="news_list fr">
+				#foreach($obj in $wjdtList)
+				<li><a href="$!base/eNewsShow/actions.html?method=detail&sid=$!vMUtils.encrypt($obj.id)" target="_blank" title="$!obj.title">$!obj.title</a></li>
+				#end
+			  </ul>
+			</div>
+			
+			<div class="newslist">
+			  <ul class="news_img fl">
+                <a href="$!base/eNewsShow/actions.html?method=detail&sid=$!vMUtils.encrypt($hyenews.id)" target="_blank" title="$!hyenews.title"><img src="$!base$!hyenews.smallPic" width="270" height="215" /></a>
+              </ul>
+		      <ul class="news_list fr">
+		        #foreach($obj in $hyxwList)
+				<li><a href="$!base/eNewsShow/actions.html?method=detail&sid=$!vMUtils.encrypt($obj.id)" target="_blank" title="$!obj.title">$!obj.title</a></li>
+                #end
+			  </ul>
+			</div>
+			
+			<div class="newslist">
+			  <ul class="news_img fl">
+                <a href="$!base/eNewsShow/actions.html?method=detail&sid=$!vMUtils.encrypt($hzenews.id)" target="_blank" title="$!hzenews.title"><img src="$!base$!hzenews.smallPic" width="270" height="215" /></a>
+              </ul>
+		      <ul class="news_list fr">
+		        #foreach($obj in $hzxxList)
+				<li><a href="$!base/eNewsShow/actions.html?method=detail&sid=$!vMUtils.encrypt($obj.id)" target="_blank" title="$!obj.title">$!obj.title</a></li>
+                #end
+			  </ul>
+			</div>
+		</div>
+	  </div>
+    </div>
+	<script type="text/javascript">
+	$(document).ready(function($){
+		//左右滑动选项卡切换
+		$("#move-animate-left3").tabso({
+			cntSelect:"#leftcon3",
+			tabEvent:"mouseover",
+			tabStyle:"move-animate",
+			direction : "left"
+		});
+	});
+	</script>
+    <!--新闻资讯结束-->
+    
+    <!--服务中心开始-->
+    <div class="service_center fr">
+      <ul class="title">
+        <h1><a href="#" title="服务中心">服务中心</a></h1>
+      </ul>
+      <div id="scrollbar1" class="service_list box1 fl">
+        <div class="scrollbar">
+          <div class="track">
+            <div class="thumb">
+              <div class="end"></div>
+            </div>
+          </div>
+        </div>
+		<div class="viewport">
+	      <ul class="overview">
+            <li class="frist">
+              <dd class="service_pic fl"><img src="$base/eportalstyle/images/service_cio_ys.png" width="55" height="55" /></dd>
+              <dd class="service_wz fr">
+                <h1>物流运输</h1>
+                <p>流运输技术主要包括运输设施和运输作业两大类，前者属于运输硬技术，后者属于运输软技术。运输硬技术主要包括运输基础设施，如公路，铁路，海运，运输车等基础设施的完善，运输软技术则包括管理方法，物流技术，物流人员素养等。</p>
+              </dd>
+            </li>
+            <li>
+              <dd class="service_pic fl"><img src="$base/eportalstyle/images/service_cio_jg.png" width="55" height="55" /></dd>
+              <dd class="service_wz fr">
+                <h1>加工</h1>
+                <p>加工是通过一定工序和方式将原材料、半成品转化为目标需求的过程的总称。</p>
+              </dd>
+            </li>
+            <li>
+              <dd class="service_pic fl"><img src="$base/eportalstyle/images/service_cio_cc.png" width="55" height="55" /></dd>
+              <dd class="service_wz fr">
+                <h1>仓储</h1>
+                <p>仓储又称“仓库储藏”。仓储就是在指定的场所储存物品的行为，仓储过程中需要用到的仓储物流设备主要包含地龙货架、地龙搬运车、地龙堆高车、地龙电动叉车等；</p>
+              </dd>
+            </li>
+            <li>
+              <dd class="service_pic fl"><img src="$base/eportalstyle/images/service_cio_wx.png" width="55" height="55" /></dd>
+              <dd class="service_wz fr">
+                <h1>设备维修</h1>
+                <p>仓储又称“仓库储藏”。仓储就是在指定的场所储存物品的行为，仓储过程中需要用到的仓储物流设备主要包含地龙货架、地龙搬运车、地龙堆高车、地龙电动叉车等；</p>
+              </dd>
+            </li>
+            <li>
+              <dd class="service_pic fl"><img src="$base/eportalstyle/images/service_cio_jr.png" width="55" height="55" /></dd>
+              <dd class="service_wz fr">
+                <h1>金融服务</h1>
+                <p>仓储又称“仓库储藏”。仓储就是在指定的场所储存物品的行为，仓储过程中需要用到的仓储物流设备主要包含地龙货架、地龙搬运车、地龙堆高车、地龙电动叉车等；</p>
+              </dd>
+            </li>
+            <li>
+              <dd class="service_pic fl"><img src="$base/eportalstyle/images/service_cio_rc.png" width="55" height="55" /></dd>
+              <dd class="service_wz fr">
+                <h1>人才服务</h1>
+                <p>仓储又称“仓库储藏”。仓储就是在指定的场所储存物品的行为，仓储过程中需要用到的仓储物流设备主要包含地龙货架、地龙搬运车、地龙堆高车、地龙电动叉车等；</p>
+              </dd>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--服务中心结束-->
+    
+  </div>
+  
+  <!--战略合作伙伴开始-->
+  <div id="partner" class="mrg_t10 layout">
+    <ul class="title"><h1><a href="#" title="战略合作伙伴">战略合作伙伴</a></h1></ul>
+    <div class="partner_list box1">
+      <ul>
+        <li><img src="$base/eportalstyle/images/partner_ico/Partner_ico1.png" width="136" height="46" /></li>
+        <li><img src="$base/eportalstyle/images/partner_ico/Partner_ico2.png" width="136" height="46" /></li>
+        <li><img src="$base/eportalstyle/images/partner_ico/Partner_ico3.png" width="136" height="46" /></li>
+        <li><img src="$base/eportalstyle/images/partner_ico/Partner_ico4.png" width="136" height="46" /></li>
+        <li><img src="$base/eportalstyle/images/partner_ico/Partner_ico5.png" width="136" height="46" /></li>
+        <li><img src="$base/eportalstyle/images/partner_ico/Partner_ico6.png" width="136" height="46" /></li>
+        <li><img src="$base/eportalstyle/images/partner_ico/Partner_ico7.png" width="136" height="46" /></li>
+        <li><img src="$base/eportalstyle/images/partner_ico/Partner_ico8.png" width="136" height="46" /></li>
+      </ul>
+    </div>
+  </div>
+  <!--战略合作伙伴结束-->
+  
+  <!--service开始-->
+  #parse( "/WEB-INF/eportalpages/common/service.vm" )
+  <!--service结束-->
+  
+  <!--footer开始-->
+  #parse( "/WEB-INF/eportalpages/common/footer.vm" )
+  <!--footer结束-->
+  
+  <!--con_side开始-->
+  #parse( "/WEB-INF/eportalpages/common/con_side.vm" )
+  <!--con_side结束-->    
+</div>
+</body>
+<script type="text/javascript">
+function tologin()
+{
+    var name = $("#username");
+	if(jQuery.trim(name.val())=="" || jQuery.trim(name.val())=="手机号")
+	{
+	    $(".tip").attr("class", "tip");
+	    $(".tip").html("手机号不能为空");
+		return;
+	}
+	else
+	{
+	    $(".tip").attr("class", "tip none");
+		$(".tip").empty();
+	}
+	
+	var pwd =  $("#pwd");
+	if(jQuery.trim(pwd.val())=="")
+	{
+	    $(".tip").attr("class", "tip");
+	    $(".tip").html("密码不能为空");
+		return;
+	}
+	else
+	{
+	    $(".tip").attr("class", "tip none");
+		$(".tip").empty();
+	}
+	var autologin = 0;
+	if($("#autologin").prop("checked"))
+	{
+	    autologin = 1;
+	}
+	$('.btnbox').removeAttr("onclick");
+	$('.btnbox').val("登录中...");
+	jQuery.ajax({
+                        type: 'post',
+                        url: '$!base/shopuser/login.html',
+                        data: {username:name.val(), pwd:pwd.val(), login:"y", autologin:autologin},
+                        dataType: 'json',
+                        success: function (json) {
+                            if (json != null) 
+							{
+                                if (json.result == "success") 
+								{
+                                    //登录成功
+								    $(".tip").attr("class", "tip none");
+									$(".tip").empty();
+									window.location='$base/index.html'
+                                }
+                                else 
+								{
+									$('.btnbox').attr('onclick','').click(function(){
+									    tologin();
+                                    });
+									$(".tip").attr("class", "tip");
+									$(".tip").html("手机号或密码错误");
+									$('.btnbox').val("立即登录");
+                                }
+                            }
+                            else
+							{
+								$('.btnbox').attr('onclick','').click(function(){
+									    tologin();
+                                });
+								$('.btnbox').val("立即登录");
+								$(".tip").attr("class", "tip");
+								$(".tip").html("系统错误，无法登录");
+								return;
+                            }
+                        },
+                        error: function (xmlHttpRequest, textStatus, errorThrown) {
+						    $('.btnbox').attr('onclick','').click(function(){
+									    tologin();
+                                });
+							$('.btnbox').val("立即登录");
+							$(".tip").attr("class", "tip");
+							$(".tip").html("系统错误，无法登录");
+                        }
+                    });
+}
+</script>
+</html>

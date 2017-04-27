@@ -1,0 +1,59 @@
+<style type="text/css">
+.ctl{table-layout:fixed}
+.ctl td{text-overflow:ellipsis;overflow:hidden;white-space:nowrap;padding:2px}
+.STYLE8 {font-size: xx-large}
+</style>
+<form id="moduleForm" name="moduleForm" method="post" action="$!actionUrl">
+<input type=hidden name=id value=$!bizObj.id>
+				<div class="Main_Right_SearchTable_Title">
+					<span class="Main_Right_SearchTable_Title_Left"></span>
+					模块信息
+					<span class="Main_Right_SearchTable_Title_Right"></span>				</div>
+					<div class="Main_Right_p">
+					<div class="ctl">
+					  <table border="0" cellspacing="1" cellpadding="0" class="addTable" >
+							<tr> 
+								<td width="20%" class="title1">模板名称:
+								</td>
+								<td>
+									#showFormText("name" "$!bizObj.name" 20)#showMustFill()
+								</td>
+							</tr>
+							<tr> 
+								<td width="20%" class="title1">模板介绍:</td>
+								
+								#if($!action == "detail")
+								<td title="$!bizObj.memo">
+									$!bizObj.memo
+								</td>
+									#else
+									<td >
+										<textarea name="memo" id="memo"  rows="4" style="width:90%">$!bizObj.memo</textarea>
+									</td>
+								#end
+								
+							</tr>
+						</table>
+			
+</div>
+</div>
+  <div class="Main_Right_SearchTable_Bottom2">
+#if($!action != "detail")
+	 <input name="insert" type="button" class="button8"  value="确定"   onclick="toSubmit();" onmouseover="this.className='button8_hover'" onmouseout="this.className='button8'"/>
+#end
+<input type="button" class="button8" value="返回" onclick="window.location='$base/module/actions.html?method=list&menuname=$menuname'" onmouseover="this.className='button8_hover'" onmouseout="this.className='button8'"/>
+  </div>
+  </form>
+		  </div>
+		</div>
+	</div>
+<script>
+	function toSubmit(){
+	   var name = document.getElementById("name").value;
+	   if(name==""){
+	      alert("请输入模版名称");
+	      return;
+	   }
+		document.getElementById("moduleForm").submit();
+	}
+</script>
